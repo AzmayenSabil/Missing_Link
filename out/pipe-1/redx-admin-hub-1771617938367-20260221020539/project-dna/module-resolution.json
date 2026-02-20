@@ -1,0 +1,12 @@
+{
+  "baseUrl": ".",
+  "pathAliases": {
+    "@/*": [
+      "./src/*"
+    ]
+  },
+  "aliasUsageDetected": true,
+  "detectedAliasPrefixes": [
+    "@/"
+  ]
+}

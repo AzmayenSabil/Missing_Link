@@ -1,0 +1,23 @@
+{
+  "typescript": {
+    "strict": false,
+    "jsx": null,
+    "baseUrl": ".",
+    "pathAliases": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "eslint": {
+    "present": false,
+    "importantRules": {}
+  },
+  "prettier": {
+    "present": false,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "all",
+    "printWidth": 80
+  }
+}

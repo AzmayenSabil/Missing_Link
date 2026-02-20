@@ -193,6 +193,9 @@ export async function extractSymbolsAndDeps(
   ctx.metrics.ts_files_parsed = project.getSourceFiles().length;
   ctx.metrics.exports_count = exportsRows.length;
   ctx.metrics.imports_edges_count = importsRows.length;
+  ctx.metrics.imports_resolved_count = importsRows.filter(
+    (r) => r.resolvedFile !== undefined,
+  ).length;
 
   await Promise.all([
     writeJsonl(path.join(ctx.indexesDir, "exports.jsonl"), exportsRows),

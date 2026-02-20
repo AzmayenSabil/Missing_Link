@@ -78,6 +78,9 @@ export async function inventoryFilesAndStructure(
     sampleFiles: relFiles.slice(0, 500),
   };
 
+  // Expose folderRoles on context for downstream stages (architecture boundaries)
+  ctx.folderRoles = folderRoles;
+
   await writeJson(path.join(ctx.dnaDir, "structure.json"), structure);
   await writeJsonl(path.join(ctx.indexesDir, "files.jsonl"), rows);
 }

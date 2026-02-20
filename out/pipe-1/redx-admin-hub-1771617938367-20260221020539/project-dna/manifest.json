@@ -1,6 +1,6 @@
 {
-  "projectId": "redx-admin-hub-1771431253020-20260218221415",
-  "repoPath": "C:\\Users\\User\\AppData\\Local\\Temp\\missing-link\\redx-admin-hub-1771431253020",
+  "projectId": "redx-admin-hub-1771617938367-20260221020539",
+  "repoPath": "C:\\Users\\User\\AppData\\Local\\Temp\\missing-link\\redx-admin-hub-1771617938367",
   "stack": {
     "next": false,
     "react": true,
@@ -18,9 +18,9 @@
     "commitlintPresent": false
   },
   "fingerprint": {
-    "scannedAt": "2026-02-18T16:14:15.237Z",
+    "scannedAt": "2026-02-20T20:05:39.942Z",
     "totalFiles": 99,
     "tsLikeFiles": 84,
-    "gitHead": "b302049db95e97c41224d1988526b376f78bf061"
+    "gitHead": "28c5c949e3ca78727a621c8aeca8787d1dd1df4c"
   }
 }

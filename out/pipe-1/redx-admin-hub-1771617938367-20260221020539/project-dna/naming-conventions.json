@@ -1,0 +1,7 @@
+{
+  "fileStyle": "camel",
+  "componentStyle": "PascalCase",
+  "hookPrefix": "use",
+  "barrelUsageRatio": 0,
+  "testFilePattern": "test"
+}

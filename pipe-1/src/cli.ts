@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import "dotenv/config"; // loads .env into process.env before anything else runs
 import path from "node:path";
 import { runPhase1 } from "./pipeline/runPhase1";
 
@@ -8,6 +9,7 @@ interface ParsedArgs {
   git?: string;
   out?: string;
   projectId?: string;
+  openaiKey?: string;
 }
 
 function parseArgs(argv: string[]): ParsedArgs {
@@ -31,6 +33,9 @@ function parseArgs(argv: string[]): ParsedArgs {
     } else if (token === "--projectId" && value) {
       parsed.projectId = value;
       i += 1;
+    } else if (token === "--openai-key" && value) {
+      parsed.openaiKey = value;
+      i += 1;
     }
   }
 
@@ -40,7 +45,7 @@ function parseArgs(argv: string[]): ParsedArgs {
 function printUsage(): void {
   // eslint-disable-next-line no-console
   console.log(
-    "Usage:\n  missing-link phase1 --repo <path> [--out <dir>] [--projectId <id>]\n  missing-link phase1 --git <url> [--out <dir>] [--projectId <id>]",
+    "Usage:\n  missing-link phase1 --repo <path> [--out <dir>] [--projectId <id>] [--openai-key <key>]\n  missing-link phase1 --git <url> [--out <dir>] [--projectId <id>] [--openai-key <key>]\n\nSystem prompt generation:\n  Provide --openai-key or set the OPENAI_API_KEY environment variable to generate\n  project-dna/system-prompts.json after all static analysis stages complete.",
   );
 }
 
@@ -66,6 +71,7 @@ async function main(): Promise<void> {
     gitUrl: args.git,
     outDir: args.out ? path.resolve(args.out) : undefined,
     projectId: args.projectId,
+    openaiApiKey: args.openaiKey,
   });
 
   // eslint-disable-next-line no-console

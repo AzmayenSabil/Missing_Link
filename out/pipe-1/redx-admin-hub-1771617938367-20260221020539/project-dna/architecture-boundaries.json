@@ -1,0 +1,14 @@
+{
+  "roles": [
+    "api",
+    "config",
+    "hooks",
+    "routing",
+    "state",
+    "theme",
+    "types",
+    "ui"
+  ],
+  "roleEdges": {},
+  "violationsSample": []
+}
