@@ -1,0 +1,16 @@
+{
+  "sliceFiles": [
+    {
+      "file": "src/redux/slices/AuthSlice.ts",
+      "sliceName": "auth"
+    }
+  ],
+  "thunkNames": [],
+  "storeFiles": [
+    "src/redux/store.ts"
+  ],
+  "reduxPersistUsage": [
+    "src/main.tsx",
+    "src/redux/store.ts"
+  ]
+}

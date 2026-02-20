@@ -1,0 +1,87 @@
+[
+  {
+    "id": "q-scope-1",
+    "questionText": "Which user roles or personas are primarily affected by this change?",
+    "type": "multi_select",
+    "required": true,
+    "options": [
+      "Admin",
+      "End User",
+      "Guest",
+      "API Consumer",
+      "All roles"
+    ],
+    "rationale": "Scope of impacted users affects which auth/permission files need changes."
+  },
+  {
+    "id": "q-scope-2",
+    "questionText": "Should the feature be behind a feature flag / gradual rollout?",
+    "type": "single_select",
+    "required": false,
+    "options": [
+      "Yes – feature flag",
+      "Yes – gradual rollout",
+      "No – immediate for all",
+      "TBD"
+    ],
+    "rationale": "Affects config, routing and possibly state management files."
+  },
+  {
+    "id": "q-data-1",
+    "questionText": "Does this change introduce new data entities or modify existing schemas?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "New entities only",
+      "Modify existing schemas",
+      "Both",
+      "No schema changes"
+    ],
+    "rationale": "Schema changes cascade to types/, API layer and state management."
+  },
+  {
+    "id": "q-api-1",
+    "questionText": "Are new API endpoints required, or are existing endpoints being modified?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "New endpoints",
+      "Modify existing",
+      "Both",
+      "No API changes"
+    ],
+    "rationale": "Determines scope in services/api layer."
+  },
+  {
+    "id": "q-auth-1",
+    "questionText": "Does this feature require new authentication or authorisation rules?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "New auth rules",
+      "Modify existing rules",
+      "No auth changes",
+      "Unknown"
+    ],
+    "rationale": "Auth/session changes have a wide blast radius."
+  },
+  {
+    "id": "q-migration-1",
+    "questionText": "Is a data migration or database schema change needed?",
+    "type": "single_select",
+    "required": false,
+    "options": [
+      "Yes",
+      "No",
+      "TBD"
+    ],
+    "rationale": "Migrations can trigger dependency changes across services."
+  },
+  {
+    "id": "q-tbd-1",
+    "questionText": "The PRD contains unresolved items marked as \"TBD\" or \"TBA\". Please clarify these before implementation starts.",
+    "type": "text",
+    "required": true,
+    "rationale": "Unresolved PRD items lead to rework."
+  }
+]

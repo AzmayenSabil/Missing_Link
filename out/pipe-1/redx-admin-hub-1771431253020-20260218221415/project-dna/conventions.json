@@ -1,0 +1,11 @@
+{
+  "prettier": {
+    "present": false
+  },
+  "eslint": {
+    "present": false
+  },
+  "commitlint": {
+    "present": false
+  }
+}

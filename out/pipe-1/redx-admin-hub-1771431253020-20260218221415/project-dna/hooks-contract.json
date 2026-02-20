@@ -1,0 +1,86 @@
+{
+  "hookExports": [
+    {
+      "hook": "useIsMobile",
+      "file": "src/hooks/use-mobile.tsx"
+    },
+    {
+      "hook": "useToast",
+      "file": "src/hooks/use-toast.ts"
+    },
+    {
+      "hook": "useAuthorization",
+      "file": "src/hooks/useAuthorization.ts"
+    },
+    {
+      "hook": "useTable",
+      "file": "src/hooks/useTable.ts"
+    },
+    {
+      "hook": "useFormField",
+      "file": "src/components/ui/form.tsx"
+    },
+    {
+      "hook": "useSidebar",
+      "file": "src/components/ui/sidebar.tsx"
+    }
+  ],
+  "mostImportedHooks": [
+    {
+      "hook": "useState",
+      "count": 3
+    },
+    {
+      "hook": "useEffect",
+      "count": 2
+    },
+    {
+      "hook": "useCallback",
+      "count": 2
+    },
+    {
+      "hook": "useNavigate",
+      "count": 2
+    },
+    {
+      "hook": "useDispatch",
+      "count": 2
+    },
+    {
+      "hook": "useLocation",
+      "count": 2
+    },
+    {
+      "hook": "useToast",
+      "count": 2
+    },
+    {
+      "hook": "useSelector",
+      "count": 1
+    },
+    {
+      "hook": "useTable",
+      "count": 1
+    },
+    {
+      "hook": "useAuthorization",
+      "count": 1
+    },
+    {
+      "hook": "useEmblaCarousel",
+      "count": 1
+    },
+    {
+      "hook": "useFormContext",
+      "count": 1
+    },
+    {
+      "hook": "useIsMobile",
+      "count": 1
+    },
+    {
+      "hook": "useTheme",
+      "count": 1
+    }
+  ]
+}

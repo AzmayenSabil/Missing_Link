@@ -1,0 +1,19 @@
+{
+  "counts": {
+    "files_scanned": 99,
+    "ts_files_parsed": 84,
+    "exports_count": 329,
+    "imports_edges_count": 258,
+    "tokens_count": 55
+  },
+  "detected": {
+    "hooks": 6,
+    "components": 291,
+    "services": 7,
+    "slices": 3
+  },
+  "warnings": [],
+  "readiness": {
+    "READY_FOR_PHASE_2": true
+  }
+}

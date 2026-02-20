@@ -1,0 +1,23 @@
+{
+  "axiosInstances": [
+    {
+      "file": "src/services/axios.config.ts",
+      "variableName": "apiClient",
+      "baseURL": "https://dummy-api.redx.local",
+      "requestInterceptor": false,
+      "responseInterceptor": false
+    }
+  ],
+  "serviceModules": [
+    {
+      "file": "src/services/axios.config.ts",
+      "reason": "path+http usage"
+    }
+  ],
+  "endpointLiterals": [],
+  "summary": {
+    "axiosInstances": 1,
+    "serviceModules": 1,
+    "endpointLiterals": 0
+  }
+}

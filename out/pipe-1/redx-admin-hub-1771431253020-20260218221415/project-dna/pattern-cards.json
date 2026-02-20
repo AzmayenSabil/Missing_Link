@@ -1,0 +1,42 @@
+[
+  {
+    "pattern": "",
+    "file": "src/pages/Parcels.tsx",
+    "startLine": 1,
+    "endLine": 30,
+    "snippet": "/** @jsxImportSource @emotion/react */\nimport { css } from '@emotion/react';\nimport { useState, useCallback } from 'react';\nimport {\n  Input,\n  Select,\n  Button,\n  Tag,\n  Space,\n  Modal,\n  Typography,\n  message,\n} from 'antd';\nimport { SearchOutlined, ReloadOutlined } from '@ant-design/icons';\nimport type { ColumnsType } from 'antd/es/table';\nimport Authorize from '@/components/authorize/Authorize';\nimport AppLayout from '@/components/layout/AppLayout';\nimport TableRenderer from '@/components/table/TableRenderer';\nimport { useTable } from '@/hooks/useTable';\nimport { fetchParcels } from '@/services/parcelAPI';\nimport { Parcel, FetchParcelsParams } from '@/types/parcel';\n\nconst { Title, Text } = Typography;\n\nconst searchBarStyle = css`\n  display: flex;\n  gap: 12px;\n  margin-bottom: 20px;\n  flex-wrap: wrap;\n  align-items: flex-end;",
+    "found": true
+  },
+  {
+    "pattern": "",
+    "file": "src/hooks/useTable.ts",
+    "startLine": 1,
+    "endLine": 30,
+    "snippet": "import { useState, useEffect, useCallback } from 'react';\n\ninterface UseTableParams {\n  limit: number;\n  offset: number;\n}\n\ninterface UseTableOptions<T, P extends UseTableParams> {\n  initialParams: P;\n  fetchFn: (params: P) => Promise<{ results: T[]; count: number }>;\n}\n\nexport const useTable = <T, P extends UseTableParams>({\n  initialParams,\n  fetchFn,\n}: UseTableOptions<T, P>) => {\n  const [params, setParams] = useState<P>(initialParams);\n  const [data, setData] = useState<T[]>([]);\n  const [total, setTotal] = useState(0);\n  const [loading, setLoading] = useState(false);\n\n  const fetchData = useCallback(async () => {\n    setLoading(true);\n    try {\n      const res = await fetchFn(params);\n      setData(res.results);\n      setTotal(res.count);\n    } finally {\n      setLoading(false);\n    }",
+    "found": true
+  },
+  {
+    "pattern": "",
+    "file": "src/services/axios.config.ts",
+    "startLine": 1,
+    "endLine": 12,
+    "snippet": "import axios from 'axios';\n\nconst apiClient = axios.create({\n  baseURL: 'https://dummy-api.redx.local',\n  timeout: 5000,\n  headers: {\n    'Content-Type': 'application/json',\n  },\n});\n\nexport default apiClient;\n",
+    "found": true
+  },
+  {
+    "pattern": "",
+    "file": "src/redux/slices/AuthSlice.ts",
+    "startLine": 1,
+    "endLine": 26,
+    "snippet": "import { createSlice, PayloadAction } from '@reduxjs/toolkit';\nimport { AuthState, User } from '@/types/auth';\n\nconst initialState: AuthState = {\n  user: null,\n  isAuthenticated: false,\n};\n\nconst authSlice = createSlice({\n  name: 'auth',\n  initialState,\n  reducers: {\n    setUser(state, action: PayloadAction<User>) {\n      state.user = action.payload;\n      state.isAuthenticated = true;\n    },\n    clearAuth(state) {\n      state.user = null;\n      state.isAuthenticated = false;\n    },\n  },\n});\n\nexport const { setUser, clearAuth } = authSlice.actions;\nexport default authSlice.reducer;\n",
+    "found": true
+  },
+  {
+    "pattern": "",
+    "file": "src/assets/globalStyles.ts",
+    "startLine": 1,
+    "endLine": 15,
+    "snippet": "import { css } from '@emotion/react';\n\nexport const globalStyles = css`\n  body {\n    margin: 0;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',\n      Roboto, 'Helvetica Neue', Arial, sans-serif;\n    background: #f5f5f5;\n  }\n\n  #root {\n    min-height: 100vh;\n  }\n`;\n",
+    "found": true
+  }
+]

@@ -1,0 +1,348 @@
+{
+  "generatedAt": "2026-02-19T20:15:30.948Z",
+  "prompts": [
+    {
+      "stepId": "step-types-001",
+      "title": "Update shared TypeScript contracts",
+      "system": "You are a senior software engineer working on a TypeScript + React codebase. You follow repo conventions strictly and make minimal, focused changes. You do NOT refactor code that is out of scope for the current task. You always handle loading, error, and empty states in UI components. You add TypeScript types to every new function, parameter, and return value. Your current focus area is: Types. Output only the code changes required. Explain each change in a concise comment.",
+      "context": {
+        "prdSummary": "# Feature: User Profile Management ## Overview We need to implement a user profile management feature that allows administrators and end users to view and update their profile information. ## Requirements ### 1. Profile View Page - Create a new **ProfilePage** component under `pages/profile`. - Show user avatar, name, email, role, and last login timestamp. - Fetch data from the `/api/users/:id`…",
+        "impactedFiles": [
+          "src/types/auth.ts"
+        ],
+        "relevantRepoConventions": [
+          "Use named exports over default exports for non-page components",
+          "Co-locate test files next to their implementation (__tests__/ or *.test.ts)",
+          "Use TypeScript strict mode – no implicit any",
+          "Prefer async/await over raw Promise chains",
+          "Use relative imports within the same feature folder; use path aliases for cross-feature imports"
+        ],
+        "tokensOrConstraints": [
+          "--background: 222.2 84% 4.9%",
+          "--foreground: 210 40% 98%",
+          "--card: 0 0% 100%",
+          "--card-foreground: 222.2 84% 4.9%",
+          "--popover: 0 0% 100%",
+          "--popover-foreground: 222.2 84% 4.9%",
+          "--primary: 222.2 47.4% 11.2%",
+          "--primary-foreground: 210 40% 98%"
+        ],
+        "evidence": [
+          "Matched PRD terms: auth, role, user, users, userslice",
+          "Matched symbols: Role, User, AuthState"
+        ]
+      },
+      "instructions": [
+        "Open src/types/auth.ts and locate relevant interfaces",
+        "Add new fields or types as required by the PRD",
+        "Ensure all new types are exported and re-exported from index barrel if applicable",
+        "Add JSDoc comments to new public interfaces",
+        "Verify no existing consumers of changed types break (check TypeScript errors)"
+      ],
+      "guardrails": [
+        "DO NOT modify files outside the scope of this step",
+        "DO NOT remove existing exported symbols without verifying there are no other consumers",
+        "DO NOT introduce new npm dependencies without explicit approval",
+        "ALWAYS keep changes minimal – prefer additive changes over rewrites",
+        "ALWAYS follow the existing code style (indentation, naming, barrel exports)"
+      ],
+      "deliverables": [
+        "Modified file(s): src/types/auth.ts",
+        "A unified diff or complete file contents of all changes",
+        "A brief explanation of each change and why it was made"
+      ]
+    },
+    {
+      "stepId": "step-auth-002",
+      "title": "Add / update authentication and authorisation rules",
+      "system": "You are a senior software engineer working on a TypeScript + React codebase. You follow repo conventions strictly and make minimal, focused changes. You do NOT refactor code that is out of scope for the current task. You always handle loading, error, and empty states in UI components. You add TypeScript types to every new function, parameter, and return value. Your current focus area is: Auth. Output only the code changes required. Explain each change in a concise comment.",
+      "context": {
+        "prdSummary": "# Feature: User Profile Management ## Overview We need to implement a user profile management feature that allows administrators and end users to view and update their profile information. ## Requirements ### 1. Profile View Page - Create a new **ProfilePage** component under `pages/profile`. - Show user avatar, name, email, role, and last login timestamp. - Fetch data from the `/api/users/:id`…",
+        "impactedFiles": [
+          "src/types/auth.ts",
+          "src/pages/Login.tsx",
+          "src/components/authorize/Authorize.tsx",
+          "src/hooks/useAuthorization.ts",
+          "src/redux/slices/AuthSlice.ts",
+          "src/config/getPagePermissions.ts"
+        ],
+        "relevantRepoConventions": [
+          "Use named exports over default exports for non-page components",
+          "Co-locate test files next to their implementation (__tests__/ or *.test.ts)",
+          "Use TypeScript strict mode – no implicit any",
+          "Prefer async/await over raw Promise chains",
+          "Use relative imports within the same feature folder; use path aliases for cross-feature imports"
+        ],
+        "tokensOrConstraints": [
+          "--background: 222.2 84% 4.9%",
+          "--foreground: 210 40% 98%",
+          "--card: 0 0% 100%",
+          "--card-foreground: 222.2 84% 4.9%",
+          "--popover: 0 0% 100%",
+          "--popover-foreground: 222.2 84% 4.9%",
+          "--primary: 222.2 47.4% 11.2%",
+          "--primary-foreground: 210 40% 98%"
+        ],
+        "evidence": [
+          "Matched PRD terms: auth, role, user, users, userslice",
+          "Matched symbols: Role, User, AuthState",
+          "Matched PRD terms: page, component, pages, login",
+          "Matched PRD terms: component, auth, one",
+          "Matched PRD terms: hook, auth, use",
+          "Matched symbols: useAuthorization"
+        ]
+      },
+      "instructions": [
+        "Review src/types/auth.ts and related auth slice",
+        "Add any new role or permission constants to src/types/auth.ts",
+        "Update route guards / HOCs to enforce the new permissions",
+        "Handle unauthorised state gracefully in UI (redirect or 403 screen)",
+        "Document the new permission requirements in the file header"
+      ],
+      "guardrails": [
+        "DO NOT modify files outside the scope of this step",
+        "DO NOT remove existing exported symbols without verifying there are no other consumers",
+        "DO NOT introduce new npm dependencies without explicit approval",
+        "ALWAYS keep changes minimal – prefer additive changes over rewrites",
+        "ALWAYS follow the existing code style (indentation, naming, barrel exports)",
+        "DO NOT weaken existing access checks",
+        "ALWAYS validate permissions server-side (do not rely on client-only guards)",
+        "DO NOT log sensitive user data to the console"
+      ],
+      "deliverables": [
+        "Modified file(s): src/types/auth.ts, src/pages/Login.tsx, src/components/authorize/Authorize.tsx, src/hooks/useAuthorization.ts",
+        "A unified diff or complete file contents of all changes",
+        "A brief explanation of each change and why it was made"
+      ]
+    },
+    {
+      "stepId": "step-state-003",
+      "title": "Extend state management (slice / actions / selectors)",
+      "system": "You are a senior software engineer working on a TypeScript + React codebase. You follow repo conventions strictly and make minimal, focused changes. You do NOT refactor code that is out of scope for the current task. You always handle loading, error, and empty states in UI components. You add TypeScript types to every new function, parameter, and return value. Your current focus area is: State. Output only the code changes required. Explain each change in a concise comment.",
+      "context": {
+        "prdSummary": "# Feature: User Profile Management ## Overview We need to implement a user profile management feature that allows administrators and end users to view and update their profile information. ## Requirements ### 1. Profile View Page - Create a new **ProfilePage** component under `pages/profile`. - Show user avatar, name, email, role, and last login timestamp. - Fetch data from the `/api/users/:id`…",
+        "impactedFiles": [
+          "src/redux/slices/AuthSlice.ts",
+          "src/redux/store.ts"
+        ],
+        "relevantRepoConventions": [
+          "Use named exports over default exports for non-page components",
+          "Co-locate test files next to their implementation (__tests__/ or *.test.ts)",
+          "Use TypeScript strict mode – no implicit any",
+          "Prefer async/await over raw Promise chains",
+          "Use relative imports within the same feature folder; use path aliases for cross-feature imports"
+        ],
+        "tokensOrConstraints": [
+          "--background: 222.2 84% 4.9%",
+          "--foreground: 210 40% 98%",
+          "--card: 0 0% 100%",
+          "--card-foreground: 222.2 84% 4.9%",
+          "--popover: 0 0% 100%",
+          "--popover-foreground: 222.2 84% 4.9%",
+          "--primary: 222.2 47.4% 11.2%",
+          "--primary-foreground: 210 40% 98%"
+        ],
+        "evidence": [
+          "Matched PRD terms: redux, auth, authslice, user, use",
+          "Matched symbols: setUser, clearAuth",
+          "Matched PRD terms: redux, store, patch",
+          "Matched symbols: store, AppDispatch"
+        ]
+      },
+      "instructions": [
+        "Open the relevant slice (src/redux/slices/AuthSlice.ts)",
+        "Define new state shape fields with proper TypeScript interfaces",
+        "Create actions / reducers for the feature lifecycle (pending/fulfilled/rejected)",
+        "Add selectors that memoize derived data using createSelector where applicable",
+        "Register the slice in the root store if it is new",
+        "Wire async thunks to the matching service functions from the API step"
+      ],
+      "guardrails": [
+        "DO NOT modify files outside the scope of this step",
+        "DO NOT remove existing exported symbols without verifying there are no other consumers",
+        "DO NOT introduce new npm dependencies without explicit approval",
+        "ALWAYS keep changes minimal – prefer additive changes over rewrites",
+        "ALWAYS follow the existing code style (indentation, naming, barrel exports)",
+        "DO NOT mutate state directly – use actions/thunks or immutable update patterns",
+        "DO NOT re-select the same data in multiple components – create selectors"
+      ],
+      "deliverables": [
+        "Modified file(s): src/redux/slices/AuthSlice.ts, src/redux/store.ts",
+        "A unified diff or complete file contents of all changes",
+        "A brief explanation of each change and why it was made"
+      ]
+    },
+    {
+      "stepId": "step-hooks-004",
+      "title": "Create or update React hooks",
+      "system": "You are a senior software engineer working on a TypeScript + React codebase. You follow repo conventions strictly and make minimal, focused changes. You do NOT refactor code that is out of scope for the current task. You always handle loading, error, and empty states in UI components. You add TypeScript types to every new function, parameter, and return value. Your current focus area is: Hooks. Output only the code changes required. Explain each change in a concise comment.",
+      "context": {
+        "prdSummary": "# Feature: User Profile Management ## Overview We need to implement a user profile management feature that allows administrators and end users to view and update their profile information. ## Requirements ### 1. Profile View Page - Create a new **ProfilePage** component under `pages/profile`. - Show user avatar, name, email, role, and last login timestamp. - Fetch data from the `/api/users/:id`…",
+        "impactedFiles": [
+          "src/hooks/use-mobile.tsx",
+          "src/hooks/use-toast.ts",
+          "src/hooks/useAuthorization.ts",
+          "src/hooks/useTable.ts"
+        ],
+        "relevantRepoConventions": [
+          "Use named exports over default exports for non-page components",
+          "Co-locate test files next to their implementation (__tests__/ or *.test.ts)",
+          "Use TypeScript strict mode – no implicit any",
+          "Prefer async/await over raw Promise chains",
+          "Use relative imports within the same feature folder; use path aliases for cross-feature imports"
+        ],
+        "tokensOrConstraints": [
+          "--background: 222.2 84% 4.9%",
+          "--foreground: 210 40% 98%",
+          "--card: 0 0% 100%",
+          "--card-foreground: 222.2 84% 4.9%",
+          "--popover: 0 0% 100%",
+          "--popover-foreground: 222.2 84% 4.9%",
+          "--primary: 222.2 47.4% 11.2%",
+          "--primary-foreground: 210 40% 98%"
+        ],
+        "evidence": [
+          "Matched PRD terms: component, hook, mobile, use",
+          "Matched symbols: useIsMobile",
+          "Matched PRD terms: hook, toast, use, reducer",
+          "Matched symbols: reducer, useToast, toast",
+          "Matched PRD terms: hook, auth, use",
+          "Matched symbols: useAuthorization"
+        ]
+      },
+      "instructions": [
+        "Create or locate hook file (src/hooks/use-mobile.tsx)",
+        "Define the hook return type explicitly (do not rely on inference at boundaries)",
+        "Connect to state selectors and dispatch actions from the state step",
+        "Handle loading, error, and empty states",
+        "Write a minimal test using renderHook from @testing-library/react"
+      ],
+      "guardrails": [
+        "DO NOT modify files outside the scope of this step",
+        "DO NOT remove existing exported symbols without verifying there are no other consumers",
+        "DO NOT introduce new npm dependencies without explicit approval",
+        "ALWAYS keep changes minimal – prefer additive changes over rewrites",
+        "ALWAYS follow the existing code style (indentation, naming, barrel exports)"
+      ],
+      "deliverables": [
+        "Modified file(s): src/hooks/use-mobile.tsx, src/hooks/use-toast.ts, src/hooks/useAuthorization.ts, src/hooks/useTable.ts",
+        "A unified diff or complete file contents of all changes",
+        "A brief explanation of each change and why it was made"
+      ]
+    },
+    {
+      "stepId": "step-ui-005",
+      "title": "Integrate feature into UI components / pages",
+      "system": "You are a senior software engineer working on a TypeScript + React codebase. You follow repo conventions strictly and make minimal, focused changes. You do NOT refactor code that is out of scope for the current task. You always handle loading, error, and empty states in UI components. You add TypeScript types to every new function, parameter, and return value. Your current focus area is: UI. Output only the code changes required. Explain each change in a concise comment.",
+      "context": {
+        "prdSummary": "# Feature: User Profile Management ## Overview We need to implement a user profile management feature that allows administrators and end users to view and update their profile information. ## Requirements ### 1. Profile View Page - Create a new **ProfilePage** component under `pages/profile`. - Show user avatar, name, email, role, and last login timestamp. - Fetch data from the `/api/users/:id`…",
+        "impactedFiles": [
+          "src/components/ui/avatar.tsx",
+          "src/components/ui/form.tsx",
+          "src/components/table/TableRenderer.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/pages/Login.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Use named exports over default exports for non-page components",
+          "Co-locate test files next to their implementation (__tests__/ or *.test.ts)",
+          "Use TypeScript strict mode – no implicit any",
+          "Prefer async/await over raw Promise chains",
+          "Use relative imports within the same feature folder; use path aliases for cross-feature imports"
+        ],
+        "tokensOrConstraints": [
+          "--background: 222.2 84% 4.9%",
+          "--foreground: 210 40% 98%",
+          "--card: 0 0% 100%",
+          "--card-foreground: 222.2 84% 4.9%",
+          "--popover: 0 0% 100%",
+          "--popover-foreground: 222.2 84% 4.9%",
+          "--primary: 222.2 47.4% 11.2%",
+          "--primary-foreground: 210 40% 98%"
+        ],
+        "evidence": [
+          "Matched PRD terms: component, avatar, one, avatars",
+          "Matched symbols: Avatar, AvatarImage, AvatarFallback",
+          "Matched PRD terms: component, form, hook, one, use",
+          "Matched symbols: useFormField, Form, FormItem",
+          "Matched PRD terms: end, component, able, one",
+          "Matched PRD terms: component, id, one, hook, use"
+        ]
+      },
+      "instructions": [
+        "Open target page/component (src/components/ui/avatar.tsx)",
+        "Import and call the hook from the hooks step",
+        "Render loading skeleton while data is fetching",
+        "Render error state with retry action if the request fails",
+        "Render empty state when data collection is empty",
+        "Add data-testid attributes to key interactive elements",
+        "Ensure all text strings are internationalisation-ready (i18n keys or constants)"
+      ],
+      "guardrails": [
+        "DO NOT modify files outside the scope of this step",
+        "DO NOT remove existing exported symbols without verifying there are no other consumers",
+        "DO NOT introduce new npm dependencies without explicit approval",
+        "ALWAYS keep changes minimal – prefer additive changes over rewrites",
+        "ALWAYS follow the existing code style (indentation, naming, barrel exports)"
+      ],
+      "deliverables": [
+        "Modified file(s): src/components/ui/avatar.tsx, src/components/ui/form.tsx, src/components/table/TableRenderer.tsx, src/components/ui/sidebar.tsx",
+        "A unified diff or complete file contents of all changes",
+        "A brief explanation of each change and why it was made"
+      ]
+    },
+    {
+      "stepId": "step-tests-006",
+      "title": "Write unit and integration tests",
+      "system": "You are a senior software engineer working on a TypeScript + React codebase. You follow repo conventions strictly and make minimal, focused changes. You do NOT refactor code that is out of scope for the current task. You always handle loading, error, and empty states in UI components. You add TypeScript types to every new function, parameter, and return value. Your current focus area is: Tests. Output only the code changes required. Explain each change in a concise comment.",
+      "context": {
+        "prdSummary": "# Feature: User Profile Management ## Overview We need to implement a user profile management feature that allows administrators and end users to view and update their profile information. ## Requirements ### 1. Profile View Page - Create a new **ProfilePage** component under `pages/profile`. - Show user avatar, name, email, role, and last login timestamp. - Fetch data from the `/api/users/:id`…",
+        "impactedFiles": [
+          "src/components/ui/aspect-ratio.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Use named exports over default exports for non-page components",
+          "Co-locate test files next to their implementation (__tests__/ or *.test.ts)",
+          "Use TypeScript strict mode – no implicit any",
+          "Prefer async/await over raw Promise chains",
+          "Use relative imports within the same feature folder; use path aliases for cross-feature imports"
+        ],
+        "tokensOrConstraints": [
+          "--background: 222.2 84% 4.9%",
+          "--foreground: 210 40% 98%",
+          "--card: 0 0% 100%",
+          "--card-foreground: 222.2 84% 4.9%",
+          "--popover: 0 0% 100%",
+          "--popover-foreground: 222.2 84% 4.9%",
+          "--primary: 222.2 47.4% 11.2%",
+          "--primary-foreground: 210 40% 98%"
+        ],
+        "evidence": [
+          "Matched PRD terms: component, one"
+        ]
+      },
+      "instructions": [
+        "Create test file(s) alongside changed code (src/components/ui/aspect-ratio.tsx)",
+        "Cover the happy path for every public function or component",
+        "Cover at least one error/edge-case scenario per function",
+        "Mock external services and API calls to keep tests deterministic",
+        "Assert on meaningful output, not implementation details",
+        "Ensure test suite runs in CI without network access"
+      ],
+      "guardrails": [
+        "DO NOT modify files outside the scope of this step",
+        "DO NOT remove existing exported symbols without verifying there are no other consumers",
+        "DO NOT introduce new npm dependencies without explicit approval",
+        "ALWAYS keep changes minimal – prefer additive changes over rewrites",
+        "ALWAYS follow the existing code style (indentation, naming, barrel exports)"
+      ],
+      "deliverables": [
+        "Modified file(s): src/components/ui/aspect-ratio.tsx",
+        "A unified diff or complete file contents of all changes",
+        "A brief explanation of each change and why it was made",
+        "Test file(s) with passing unit tests covering happy path and at least one error path"
+      ]
+    }
+  ]
+}

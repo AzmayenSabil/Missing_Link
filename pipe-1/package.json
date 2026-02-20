@@ -1,0 +1,29 @@
+{
+  "name": "missing-link",
+  "version": "0.1.0",
+  "description": "Phase 1 MVP Project DNA extractor",
+  "main": "dist/cli.js",
+  "bin": {
+    "missing-link": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "phase1": "node dist/cli.js phase1"
+  },
+  "keywords": [
+    "project-dna",
+    "code-analysis",
+    "typescript"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "fast-glob": "^3.3.3",
+    "minisearch": "^7.1.2",
+    "simple-git": "^3.27.0",
+    "ts-morph": "^24.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,887 @@
+{
+  "prd": {
+    "hash": "a19159654faeedaceaddbc1c7785c307b486fecb1ab326ed5bd8ba6f3741c028",
+    "source": "../out/sample_prd.md"
+  },
+  "generatedAt": "2026-02-19T19:26:35.757Z",
+  "summary": {
+    "primaryCount": 4,
+    "secondaryCount": 36,
+    "areas": [
+      {
+        "area": "UI",
+        "confidence": 0.683,
+        "rationale": [
+          "30 file(s) matched in this area",
+          "e.g. src/components/ui/avatar.tsx",
+          "e.g. src/components/ui/form.tsx",
+          "e.g. src/components/table/TableRenderer.tsx"
+        ]
+      },
+      {
+        "area": "Hooks",
+        "confidence": 0.108,
+        "rationale": [
+          "4 file(s) matched in this area",
+          "e.g. src/hooks/use-mobile.tsx",
+          "e.g. src/hooks/use-toast.ts",
+          "e.g. src/hooks/useAuthorization.ts"
+        ]
+      },
+      {
+        "area": "Auth",
+        "confidence": 0.096,
+        "rationale": [
+          "2 file(s) matched in this area",
+          "e.g. src/types/auth.ts",
+          "e.g. src/pages/Login.tsx"
+        ]
+      },
+      {
+        "area": "Unknown",
+        "confidence": 0.062,
+        "rationale": [
+          "2 file(s) matched in this area",
+          "e.g. src/config/local.ts",
+          "e.g. src/config/getPagePermissions.ts"
+        ]
+      },
+      {
+        "area": "State",
+        "confidence": 0.05,
+        "rationale": [
+          "2 file(s) matched in this area",
+          "e.g. src/redux/slices/AuthSlice.ts",
+          "e.g. src/redux/store.ts"
+        ]
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "src/types/auth.ts",
+      "score": 1,
+      "role": "primary",
+      "reasons": [
+        "Matched PRD terms: auth, role, user, users, userslice",
+        "Matched symbols: Role, User, AuthState"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "auth",
+          "role",
+          "user",
+          "users",
+          "userslice",
+          "use",
+          "login"
+        ],
+        "matchedSymbols": [
+          "Role",
+          "User",
+          "AuthState",
+          "LoginPayload"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/avatar.tsx",
+      "score": 0.6,
+      "role": "primary",
+      "reasons": [
+        "Matched PRD terms: component, avatar, one, avatars",
+        "Matched symbols: Avatar, AvatarImage, AvatarFallback"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "avatar",
+          "one",
+          "avatars"
+        ],
+        "matchedSymbols": [
+          "Avatar",
+          "AvatarImage",
+          "AvatarFallback"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/form.tsx",
+      "score": 0.6,
+      "role": "primary",
+      "reasons": [
+        "Matched PRD terms: component, form, hook, one, use",
+        "Matched symbols: useFormField, Form, FormItem"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "form",
+          "hook",
+          "one",
+          "use",
+          "information"
+        ],
+        "matchedSymbols": [
+          "useFormField",
+          "Form",
+          "FormItem",
+          "FormLabel",
+          "FormControl",
+          "FormDescription",
+          "FormMessage",
+          "FormField"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/config/local.ts",
+      "score": 0.6,
+      "role": "primary",
+      "reasons": [
+        "Matched PRD terms: user, role, use",
+        "Matched symbols: getLocalUserRoles"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "user",
+          "role",
+          "use"
+        ],
+        "matchedSymbols": [
+          "getLocalUserRoles"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/table/TableRenderer.tsx",
+      "score": 0.533,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: end, component, able, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "end",
+          "component",
+          "able",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/sidebar.tsx",
+      "score": 0.533,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, id, one, hook, use",
+        "Matched symbols: Sidebar, SidebarContent, SidebarFooter"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "id",
+          "one",
+          "hook",
+          "use"
+        ],
+        "matchedSymbols": [
+          "Sidebar",
+          "SidebarContent",
+          "SidebarFooter",
+          "SidebarGroup",
+          "SidebarGroupAction",
+          "SidebarGroupContent",
+          "SidebarGroupLabel",
+          "SidebarHeader",
+          "SidebarInput",
+          "SidebarInset",
+          "SidebarMenu",
+          "SidebarMenuAction",
+          "SidebarMenuBadge",
+          "SidebarMenuButton",
+          "SidebarMenuItem",
+          "SidebarMenuSkeleton",
+          "SidebarMenuSub",
+          "SidebarMenuSubButton",
+          "SidebarMenuSubItem",
+          "SidebarProvider",
+          "SidebarRail",
+          "SidebarSeparator",
+          "SidebarTrigger",
+          "useSidebar"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/hooks/use-mobile.tsx",
+      "score": 0.533,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, hook, mobile, use",
+        "Matched symbols: useIsMobile"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "hook",
+          "mobile",
+          "use"
+        ],
+        "matchedSymbols": [
+          "useIsMobile"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/pages/Login.tsx",
+      "score": 0.533,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: page, component, pages, login"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "page",
+          "component",
+          "pages",
+          "login"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/authorize/Authorize.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, auth, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "auth",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/layout/AppLayout.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one, layout"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one",
+          "layout"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/calendar.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: end, component, one",
+        "Matched symbols: CalendarProps, Calendar"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "end",
+          "component",
+          "one"
+        ],
+        "matchedSymbols": [
+          "CalendarProps",
+          "Calendar"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/carousel.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one, use, api",
+        "Matched symbols: CarouselApi, Carousel, CarouselContent"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one",
+          "use",
+          "api"
+        ],
+        "matchedSymbols": [
+          "CarouselApi",
+          "Carousel",
+          "CarouselContent",
+          "CarouselItem",
+          "CarouselPrevious",
+          "CarouselNext"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/dropdown-menu.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, own, one, use",
+        "Matched symbols: DropdownMenu, DropdownMenuTrigger, DropdownMenuContent"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "own",
+          "one",
+          "use"
+        ],
+        "matchedSymbols": [
+          "DropdownMenu",
+          "DropdownMenuTrigger",
+          "DropdownMenuContent",
+          "DropdownMenuItem",
+          "DropdownMenuCheckboxItem",
+          "DropdownMenuRadioItem",
+          "DropdownMenuLabel",
+          "DropdownMenuSeparator",
+          "DropdownMenuShortcut",
+          "DropdownMenuGroup",
+          "DropdownMenuPortal",
+          "DropdownMenuSub",
+          "DropdownMenuSubContent",
+          "DropdownMenuSubTrigger",
+          "DropdownMenuRadioGroup"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/resizable.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, able, one",
+        "Matched symbols: ResizablePanelGroup, ResizablePanel, ResizableHandle"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "able",
+          "one"
+        ],
+        "matchedSymbols": [
+          "ResizablePanelGroup",
+          "ResizablePanel",
+          "ResizableHandle"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/slider.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, id, one",
+        "Matched symbols: Slider"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "id",
+          "one"
+        ],
+        "matchedSymbols": [
+          "Slider"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/table.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, able, one",
+        "Matched symbols: Table, TableHeader, TableBody"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "able",
+          "one"
+        ],
+        "matchedSymbols": [
+          "Table",
+          "TableHeader",
+          "TableBody",
+          "TableFooter",
+          "TableHead",
+          "TableRow",
+          "TableCell",
+          "TableCaption"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/toast.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, toast, one, id, view",
+        "Matched symbols: ToastProps, ToastActionElement, ToastProvider"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "toast",
+          "one",
+          "id",
+          "view"
+        ],
+        "matchedSymbols": [
+          "ToastProps",
+          "ToastActionElement",
+          "ToastProvider",
+          "ToastViewport",
+          "Toast",
+          "ToastTitle",
+          "ToastDescription",
+          "ToastClose",
+          "ToastAction"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/toaster.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, toast, one",
+        "Matched symbols: Toaster"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "toast",
+          "one"
+        ],
+        "matchedSymbols": [
+          "Toaster"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/hooks/use-toast.ts",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: hook, toast, use, reducer",
+        "Matched symbols: reducer, useToast, toast"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "hook",
+          "toast",
+          "use",
+          "reducer"
+        ],
+        "matchedSymbols": [
+          "reducer",
+          "useToast",
+          "toast"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/hooks/useAuthorization.ts",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: hook, auth, use",
+        "Matched symbols: useAuthorization"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "hook",
+          "auth",
+          "use"
+        ],
+        "matchedSymbols": [
+          "useAuthorization"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/hooks/useTable.ts",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: hook, able, use",
+        "Matched symbols: useTable"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "hook",
+          "able",
+          "use"
+        ],
+        "matchedSymbols": [
+          "useTable"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/pages/Index.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: page, component, pages"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "page",
+          "component",
+          "pages"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/pages/NotFound.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: page, component, pages"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "page",
+          "component",
+          "pages"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/pages/Parcels.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: page, component, pages"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "page",
+          "component",
+          "pages"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/redux/slices/AuthSlice.ts",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: redux, auth, authslice, user, use",
+        "Matched symbols: setUser, clearAuth"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "redux",
+          "auth",
+          "authslice",
+          "user",
+          "use"
+        ],
+        "matchedSymbols": [
+          "setUser",
+          "clearAuth"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/config/getPagePermissions.ts",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: page, permissions",
+        "Matched symbols: getPagePermissions"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "page",
+          "permissions"
+        ],
+        "matchedSymbols": [
+          "getPagePermissions"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/redux/store.ts",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: redux, store, patch",
+        "Matched symbols: store, AppDispatch"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "redux",
+          "store",
+          "patch"
+        ],
+        "matchedSymbols": [
+          "store",
+          "AppDispatch"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/NavLink.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/accordion.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/alert-dialog.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/alert.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/aspect-ratio.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/badge.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/breadcrumb.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one, page",
+        "Matched symbols: BreadcrumbPage"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one",
+          "page"
+        ],
+        "matchedSymbols": [
+          "BreadcrumbPage"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/card.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/chart.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one, end",
+        "Matched symbols: ChartLegend, ChartLegendContent"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one",
+          "end"
+        ],
+        "matchedSymbols": [
+          "ChartLegend",
+          "ChartLegendContent"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/checkbox.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/collapsible.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/command.tsx",
+      "score": 0.267,
+      "role": "secondary",
+      "reasons": [
+        "Matched PRD terms: component, one"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "component",
+          "one"
+        ],
+        "depDistance": 0
+      }
+    }
+  ],
+  "graphExpansion": {
+    "enabled": true,
+    "direction": "both",
+    "maxDepth": 2
+  },
+  "notes": [
+    "Analyzed using MockAIEngine (heuristics-only, no external API).",
+    "PRD tokens extracted: 157.",
+    "Search index docs scanned: 329.",
+    "Symbol index entries scanned: 293.",
+    "Ambiguity signals detected: should, maybe, tbd, tba, unknown, to be confirmed, ?."
+  ]
+}

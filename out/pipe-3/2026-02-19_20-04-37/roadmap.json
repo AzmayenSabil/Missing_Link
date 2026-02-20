@@ -1,0 +1,498 @@
+{
+  "prd": {
+    "hash": "a19159654faeedaceaddbc1c7785c307b486fecb1ab326ed5bd8ba6f3741c028",
+    "source": "../out/sample_prd.md"
+  },
+  "generatedAt": "2026-02-19T20:04:37.957Z",
+  "plan": [
+    {
+      "id": "step-types-001",
+      "title": "Update shared TypeScript contracts",
+      "description": "Add or extend TypeScript interfaces and types required by the feature. Affected files: src/types/auth.ts.",
+      "area": "Types",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/types/auth.ts"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/table/TableRenderer.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/pages/Login.tsx",
+          "src/components/authorize/Authorize.tsx",
+          "src/components/layout/AppLayout.tsx",
+          "src/components/ui/calendar.tsx",
+          "src/components/ui/carousel.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/resizable.tsx"
+        ]
+      },
+      "dependsOnStepIds": [],
+      "rationale": [
+        "Type contracts must be established before any services or UI can use them",
+        "Changing types without updating consumers causes cascading type errors"
+      ],
+      "implementationChecklist": [
+        "Open src/types/auth.ts and locate relevant interfaces",
+        "Add new fields or types as required by the PRD",
+        "Ensure all new types are exported and re-exported from index barrel if applicable",
+        "Add JSDoc comments to new public interfaces",
+        "Verify no existing consumers of changed types break (check TypeScript errors)"
+      ],
+      "doneWhen": [
+        "tsc reports 0 errors for all type files",
+        "All new types have JSDoc",
+        "Barrel re-exports are updated"
+      ]
+    },
+    {
+      "id": "step-auth-002",
+      "title": "Add / update authentication and authorisation rules",
+      "description": "Extend permission checks, route guards, and auth state for the feature. Files: src/types/auth.ts, src/pages/Login.tsx, src/components/authorize/Authorize.tsx.",
+      "area": "Auth",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/types/auth.ts",
+          "src/pages/Login.tsx",
+          "src/components/authorize/Authorize.tsx",
+          "src/hooks/useAuthorization.ts",
+          "src/redux/slices/AuthSlice.ts",
+          "src/config/getPagePermissions.ts"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/table/TableRenderer.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/pages/Login.tsx",
+          "src/components/authorize/Authorize.tsx",
+          "src/components/layout/AppLayout.tsx",
+          "src/components/ui/calendar.tsx",
+          "src/components/ui/carousel.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/resizable.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-types-001"
+      ],
+      "rationale": [
+        "Auth changes must precede UI integration to avoid exposing unguarded routes",
+        "Role/permission models drive what UI elements are rendered"
+      ],
+      "implementationChecklist": [
+        "Review src/types/auth.ts and related auth slice",
+        "Add any new role or permission constants to src/types/auth.ts",
+        "Update route guards / HOCs to enforce the new permissions",
+        "Handle unauthorised state gracefully in UI (redirect or 403 screen)",
+        "Document the new permission requirements in the file header"
+      ],
+      "doneWhen": [
+        "Unauthorised users cannot access the protected route/resource",
+        "Auth unit tests cover the new permission path",
+        "No regressions in existing auth flows"
+      ]
+    },
+    {
+      "id": "step-state-003",
+      "title": "Extend state management (slice / actions / selectors)",
+      "description": "Add or modify Redux slices, actions, selectors, or context providers. Files: src/redux/slices/AuthSlice.ts, src/redux/store.ts.",
+      "area": "State",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/redux/slices/AuthSlice.ts",
+          "src/redux/store.ts"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/table/TableRenderer.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/pages/Login.tsx",
+          "src/components/authorize/Authorize.tsx",
+          "src/components/layout/AppLayout.tsx",
+          "src/components/ui/calendar.tsx",
+          "src/components/ui/carousel.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/resizable.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-types-001",
+        "step-auth-002"
+      ],
+      "rationale": [
+        "State must be available before UI components can subscribe to it",
+        "Centralised state prevents prop-drilling and stale data issues"
+      ],
+      "implementationChecklist": [
+        "Open the relevant slice (src/redux/slices/AuthSlice.ts)",
+        "Define new state shape fields with proper TypeScript interfaces",
+        "Create actions / reducers for the feature lifecycle (pending/fulfilled/rejected)",
+        "Add selectors that memoize derived data using createSelector where applicable",
+        "Register the slice in the root store if it is new",
+        "Wire async thunks to the matching service functions from the API step"
+      ],
+      "doneWhen": [
+        "Redux DevTools shows the new state slice in the store",
+        "Selectors return correct values in unit tests",
+        "No circular imports between slice and service layer"
+      ]
+    },
+    {
+      "id": "step-hooks-004",
+      "title": "Create or update React hooks",
+      "description": "Implement custom hooks that encapsulate feature logic. Files: src/hooks/use-mobile.tsx, src/hooks/use-toast.ts, src/hooks/useAuthorization.ts.",
+      "area": "Hooks",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/hooks/use-mobile.tsx",
+          "src/hooks/use-toast.ts",
+          "src/hooks/useAuthorization.ts",
+          "src/hooks/useTable.ts"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/table/TableRenderer.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/pages/Login.tsx",
+          "src/components/authorize/Authorize.tsx",
+          "src/components/layout/AppLayout.tsx",
+          "src/components/ui/calendar.tsx",
+          "src/components/ui/carousel.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/resizable.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-types-001",
+        "step-auth-002",
+        "step-state-003"
+      ],
+      "rationale": [
+        "Custom hooks abstract complexity from UI components",
+        "Testing hooks in isolation reduces surface area of component tests"
+      ],
+      "implementationChecklist": [
+        "Create or locate hook file (src/hooks/use-mobile.tsx)",
+        "Define the hook return type explicitly (do not rely on inference at boundaries)",
+        "Connect to state selectors and dispatch actions from the state step",
+        "Handle loading, error, and empty states",
+        "Write a minimal test using renderHook from @testing-library/react"
+      ],
+      "doneWhen": [
+        "Hook is importable and returns typed data",
+        "renderHook test passes for happy path",
+        "No console errors in hook lifecycle"
+      ]
+    },
+    {
+      "id": "step-ui-005",
+      "title": "Integrate feature into UI components / pages",
+      "description": "Update pages and components to surface the new feature. Files: src/components/ui/avatar.tsx, src/components/ui/form.tsx, src/components/table/TableRenderer.tsx.",
+      "area": "UI",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/components/ui/avatar.tsx",
+          "src/components/ui/form.tsx",
+          "src/components/table/TableRenderer.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/pages/Login.tsx"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/table/TableRenderer.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/pages/Login.tsx",
+          "src/components/authorize/Authorize.tsx",
+          "src/components/layout/AppLayout.tsx",
+          "src/components/ui/calendar.tsx",
+          "src/components/ui/carousel.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/resizable.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-types-001",
+        "step-auth-002",
+        "step-state-003",
+        "step-hooks-004"
+      ],
+      "rationale": [
+        "UI is the last layer to integrate; all lower layers must be stable first",
+        "Handling loading/error/empty prevents blank screens in production"
+      ],
+      "implementationChecklist": [
+        "Open target page/component (src/components/ui/avatar.tsx)",
+        "Import and call the hook from the hooks step",
+        "Render loading skeleton while data is fetching",
+        "Render error state with retry action if the request fails",
+        "Render empty state when data collection is empty",
+        "Add data-testid attributes to key interactive elements",
+        "Ensure all text strings are internationalisation-ready (i18n keys or constants)"
+      ],
+      "doneWhen": [
+        "Feature renders correctly in the browser for all states (loading/data/error/empty)",
+        "No TypeScript errors in component files",
+        "Accessibility: interactive elements have aria-labels"
+      ]
+    },
+    {
+      "id": "step-tests-006",
+      "title": "Write unit and integration tests",
+      "description": "Add test coverage for all new and modified code. Key files: src/components/ui/aspect-ratio.tsx.",
+      "area": "Tests",
+      "kind": "test",
+      "files": {
+        "modify": [
+          "src/components/ui/aspect-ratio.tsx"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/table/TableRenderer.tsx",
+          "src/components/ui/sidebar.tsx",
+          "src/hooks/use-mobile.tsx",
+          "src/pages/Login.tsx",
+          "src/components/authorize/Authorize.tsx",
+          "src/components/layout/AppLayout.tsx",
+          "src/components/ui/calendar.tsx",
+          "src/components/ui/carousel.tsx",
+          "src/components/ui/dropdown-menu.tsx",
+          "src/components/ui/resizable.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-types-001",
+        "step-auth-002",
+        "step-state-003",
+        "step-hooks-004",
+        "step-ui-005"
+      ],
+      "rationale": [
+        "Tests prevent regressions as the codebase evolves",
+        "Tests serve as living documentation of expected behaviour"
+      ],
+      "implementationChecklist": [
+        "Create test file(s) alongside changed code (src/components/ui/aspect-ratio.tsx)",
+        "Cover the happy path for every public function or component",
+        "Cover at least one error/edge-case scenario per function",
+        "Mock external services and API calls to keep tests deterministic",
+        "Assert on meaningful output, not implementation details",
+        "Ensure test suite runs in CI without network access"
+      ],
+      "doneWhen": [
+        "All new tests pass: `npm test`",
+        "Code coverage for new files >= 80%",
+        "No test uses real network calls (all mocked)"
+      ]
+    }
+  ],
+  "artifacts": {
+    "filesToModify": [
+      "src/types/auth.ts",
+      "src/pages/Login.tsx",
+      "src/components/authorize/Authorize.tsx",
+      "src/hooks/useAuthorization.ts",
+      "src/redux/slices/AuthSlice.ts",
+      "src/config/getPagePermissions.ts",
+      "src/redux/store.ts",
+      "src/hooks/use-mobile.tsx",
+      "src/hooks/use-toast.ts",
+      "src/hooks/useTable.ts",
+      "src/components/ui/avatar.tsx",
+      "src/components/ui/form.tsx",
+      "src/components/table/TableRenderer.tsx",
+      "src/components/ui/sidebar.tsx",
+      "src/components/ui/aspect-ratio.tsx"
+    ],
+    "filesAffected": [
+      "src/types/auth.ts",
+      "src/components/ui/avatar.tsx",
+      "src/components/ui/form.tsx",
+      "src/config/local.ts",
+      "src/components/table/TableRenderer.tsx",
+      "src/components/ui/sidebar.tsx",
+      "src/hooks/use-mobile.tsx",
+      "src/pages/Login.tsx",
+      "src/components/authorize/Authorize.tsx",
+      "src/components/layout/AppLayout.tsx",
+      "src/components/ui/calendar.tsx",
+      "src/components/ui/carousel.tsx",
+      "src/components/ui/dropdown-menu.tsx",
+      "src/components/ui/resizable.tsx",
+      "src/components/ui/slider.tsx",
+      "src/components/ui/table.tsx",
+      "src/components/ui/toast.tsx",
+      "src/components/ui/toaster.tsx",
+      "src/hooks/use-toast.ts",
+      "src/hooks/useAuthorization.ts",
+      "src/hooks/useTable.ts",
+      "src/pages/Index.tsx",
+      "src/pages/NotFound.tsx",
+      "src/pages/Parcels.tsx",
+      "src/redux/slices/AuthSlice.ts",
+      "src/config/getPagePermissions.ts",
+      "src/redux/store.ts",
+      "src/components/NavLink.tsx",
+      "src/components/ui/accordion.tsx",
+      "src/components/ui/alert-dialog.tsx",
+      "src/components/ui/alert.tsx",
+      "src/components/ui/aspect-ratio.tsx",
+      "src/components/ui/badge.tsx",
+      "src/components/ui/breadcrumb.tsx",
+      "src/components/ui/button.tsx",
+      "src/components/ui/card.tsx",
+      "src/components/ui/chart.tsx",
+      "src/components/ui/checkbox.tsx",
+      "src/components/ui/collapsible.tsx",
+      "src/components/ui/command.tsx"
+    ],
+    "filesToCreate": [],
+    "dependencies": []
+  },
+  "acceptanceCriteria": [
+    "Unit tests for `ProfilePage`, `useFileUpload` hook, and `userSlice` reducer.",
+    "E2E test covering the edit and save flow."
+  ],
+  "verification": [
+    {
+      "type": "typecheck",
+      "instructions": [
+        "Run: npx tsc --noEmit",
+        "Expected: 0 errors",
+        "If there are errors, resolve them before proceeding to lint"
+      ]
+    },
+    {
+      "type": "lint",
+      "instructions": [
+        "Run: npx eslint src --ext .ts,.tsx --max-warnings 0",
+        "Expected: 0 warnings, 0 errors",
+        "Auto-fix safe issues with: npx eslint src --fix"
+      ]
+    },
+    {
+      "type": "unit_test",
+      "instructions": [
+        "Run: npm test (or npx vitest / npx jest depending on the project setup)",
+        "Expected: all existing and new tests pass",
+        "Check coverage report for new files: target >= 80%"
+      ]
+    },
+    {
+      "type": "integration_test",
+      "instructions": [
+        "Start the dev API server / use MSW (Mock Service Worker) fixtures",
+        "Exercise the feature end-to-end: create, read, update, delete flows",
+        "Verify auth flows: login, logout, token refresh, unauthorised access"
+      ]
+    },
+    {
+      "type": "manual",
+      "instructions": [
+        "Open the app in a browser (npm run dev)",
+        "Log in with a user that has the appropriate permissions",
+        "Navigate to the feature and exercise all user stories from the PRD",
+        "Verify loading state appears during data fetch",
+        "Verify error state appears when the API returns an error (use network throttling)",
+        "Verify empty state renders correctly when there is no data",
+        "Log in as a user WITHOUT permission; confirm they cannot access the feature",
+        "Check browser console: 0 errors, 0 unhandled promise rejections"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "severity": "high",
+      "risk": "Large blast radius: 36 secondary/dependent files may be affected by changes",
+      "mitigation": [
+        "Run the full test suite after each step, not just at the end",
+        "Use TypeScript's '--noEmit' flag frequently to catch cascading type errors early",
+        "Consider introducing the change behind a feature flag for gradual rollout"
+      ]
+    },
+    {
+      "severity": "high",
+      "risk": "Auth changes can break access control for all users if misconfigured",
+      "mitigation": [
+        "Test with multiple user roles explicitly",
+        "Ensure logout + token refresh still works correctly",
+        "Do not merge without a security review"
+      ]
+    },
+    {
+      "severity": "medium",
+      "risk": "State shape changes can cause stale Redux cache or selector mismatches",
+      "mitigation": [
+        "Version or migrate persisted state if redux-persist is used",
+        "Check all selectors that read from modified slices"
+      ]
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "q-scope-1",
+      "question": "Which user roles or personas are primarily affected by this change?",
+      "blocking": true,
+      "whyThisMatters": [
+        "Scope of impacted users affects which auth/permission files need changes.",
+        "This question was marked required in the phase-2 clarification bridge"
+      ]
+    },
+    {
+      "id": "q-data-1",
+      "question": "Does this change introduce new data entities or modify existing schemas?",
+      "blocking": true,
+      "whyThisMatters": [
+        "Schema changes cascade to types/, API layer and state management.",
+        "This question was marked required in the phase-2 clarification bridge"
+      ]
+    },
+    {
+      "id": "q-api-1",
+      "question": "Are new API endpoints required, or are existing endpoints being modified?",
+      "blocking": true,
+      "whyThisMatters": [
+        "Determines scope in services/api layer.",
+        "This question was marked required in the phase-2 clarification bridge"
+      ]
+    },
+    {
+      "id": "q-auth-1",
+      "question": "Does this feature require new authentication or authorisation rules?",
+      "blocking": true,
+      "whyThisMatters": [
+        "Auth/session changes have a wide blast radius.",
+        "This question was marked required in the phase-2 clarification bridge"
+      ]
+    },
+    {
+      "id": "q-tbd-1",
+      "question": "The PRD contains unresolved items marked as \"TBD\" or \"TBA\". Please clarify these before implementation starts.",
+      "blocking": true,
+      "whyThisMatters": [
+        "Unresolved PRD items lead to rework.",
+        "This question was marked required in the phase-2 clarification bridge"
+      ]
+    }
+  ],
+  "notes": [
+    "Generated by MockPlanningEngine (deterministic mock – no LLM used)",
+    "Phase-2 identified 40 impacted files across 5 area(s)",
+    "Plan contains 6 ordered steps",
+    "Analyzed using MockAIEngine (heuristics-only, no external API).",
+    "PRD tokens extracted: 157.",
+    "Search index docs scanned: 329.",
+    "Symbol index entries scanned: 293.",
+    "Ambiguity signals detected: should, maybe, tbd, tba, unknown, to be confirmed, ?."
+  ]
+}

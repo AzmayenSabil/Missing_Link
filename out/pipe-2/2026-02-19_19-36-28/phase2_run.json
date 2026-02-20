@@ -1,0 +1,11 @@
+{
+  "runId": "2026-02-19_19-36-28",
+  "phase1OutDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-1\\redx-admin-hub-1771431253020-20260218221415",
+  "prdPath": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\sample_prd.md",
+  "outDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-2\\2026-02-19_19-36-28",
+  "startedAt": "2026-02-19T19:36:28.579Z",
+  "status": "success",
+  "engineName": "MockAIEngine",
+  "finishedAt": "2026-02-19T19:36:28.616Z",
+  "durationMs": 37
+}
