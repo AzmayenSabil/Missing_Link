@@ -4,6 +4,7 @@
     "ts_files_parsed": 84,
     "exports_count": 329,
     "imports_edges_count": 258,
+    "imports_resolved_count": 6,
     "tokens_count": 55
   },
   "detected": {
@@ -13,7 +14,13 @@
     "slices": 3
   },
   "warnings": [],
+  "coverage": {
+    "tsFilesParsedRatio": 1,
+    "importsResolvedRatio": 0.023,
+    "aliasResolutionConfidence": 0.85
+  },
   "readiness": {
-    "READY_FOR_PHASE_2": true
+    "READY_FOR_PHASE_2": true,
+    "missingCriticalContracts": []
   }
 }

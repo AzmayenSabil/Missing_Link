@@ -86,8 +86,14 @@ export async function intakeRepo(
       ts_files_parsed: 0,
       exports_count: 0,
       imports_edges_count: 0,
+      imports_resolved_count: 0,
       tokens_count: 0,
     },
+    folderRoles: {},
+    pathAliases: {},
+    aliasUsageDetected: false,
+    openaiApiKey:
+      options.openaiApiKey ?? process.env["OPENAI_API_KEY"] ?? undefined,
   };
 
   return context;

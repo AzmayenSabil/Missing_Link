@@ -3,3 +3,6 @@ dist/
 out/
 .tmp/
 *.log
+
+# Local environment — never commit real keys
+.env

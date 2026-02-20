@@ -1,0 +1,10 @@
+{
+  "typedHooks": {
+    "useAppDispatch": false,
+    "useAppSelector": false,
+    "typeFiles": []
+  },
+  "directUseSelectorCount": 1,
+  "directUseDispatchCount": 2,
+  "storeLocation": "src/redux/store.ts"
+}
