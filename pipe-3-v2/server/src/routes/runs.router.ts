@@ -143,17 +143,21 @@ runsRouter.post(
  */
 runsRouter.get(
   "/:runId/status",
-  (req: Request<{ runId: string }>, res: Response) => {
-    const session = sessionManager.getSession(req.params.runId);
-    if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
+  (req: Request<{ runId: string }>, res: Response, next: NextFunction) => {
+    try {
+      const session = sessionManager.getSession(req.params.runId);
+      if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
 
-    res.json({
-      runId: session.runId,
-      status: session.status,
-      error: session.error,
-      subtaskCount: session.subtasks?.length ?? 0,
-      promptCount: session.promptPack?.prompts.length ?? 0,
-    });
+      res.json({
+        runId: session.runId,
+        status: session.status,
+        error: session.error,
+        subtaskCount: session.subtasks?.length ?? 0,
+        promptCount: session.promptPack?.prompts.length ?? 0,
+      });
+    } catch (err) {
+      next(err);
+    }
   },
 );
 
@@ -163,15 +167,19 @@ runsRouter.get(
  */
 runsRouter.get(
   "/:runId/impact",
-  (req: Request<{ runId: string }>, res: Response) => {
-    const session = sessionManager.getSession(req.params.runId);
-    if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
+  (req: Request<{ runId: string }>, res: Response, next: NextFunction) => {
+    try {
+      const session = sessionManager.getSession(req.params.runId);
+      if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
 
-    if (!session.impact) {
-      res.json({ status: "pending" });
-      return;
+      if (!session.impact) {
+        res.json({ status: "pending" });
+        return;
+      }
+
+      res.json({ status: "loaded", impact: session.impact });
+    } catch (err) {
+      next(err);
     }
-
-    res.json({ status: "loaded", impact: session.impact });
   },
 );

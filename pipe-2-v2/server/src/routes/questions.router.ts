@@ -17,45 +17,64 @@ export const questionsRouter = Router({ mergeParams: true });
  * GET /api/runs/:runId/questions
  * Return all questions and progress.
  */
-questionsRouter.get("/", (req: Request<{ runId: string }>, res: Response) => {
-  const session = sessionManager.getSession(req.params.runId);
-  if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
+questionsRouter.get(
+  "/",
+  (req: Request<{ runId: string }>, res: Response, next: NextFunction) => {
+    try {
+      const session = sessionManager.getSession(req.params.runId);
+      if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
 
-  const allAnswered = session.currentQuestionIndex >= session.questions.length
-    && session.questions.length > 0;
+      const allAnswered =
+        session.currentQuestionIndex >= session.questions.length &&
+        session.questions.length > 0;
 
-  res.json({
-    questions: session.questions,
-    currentIndex: session.currentQuestionIndex,
-    totalCount: session.questions.length,
-    allAnswered,
-  });
-});
+      res.json({
+        questions: session.questions,
+        currentIndex: session.currentQuestionIndex,
+        totalCount: session.questions.length,
+        allAnswered,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+);
 
 /**
  * GET /api/runs/:runId/questions/current
  * Return only the current unanswered question.
  */
-questionsRouter.get("/current", (req: Request<{ runId: string }>, res: Response) => {
-  const session = sessionManager.getSession(req.params.runId);
-  if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
+questionsRouter.get(
+  "/current",
+  (req: Request<{ runId: string }>, res: Response, next: NextFunction) => {
+    try {
+      const session = sessionManager.getSession(req.params.runId);
+      if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
 
-  if (session.questions.length === 0) {
-    throw new AppError("NO_QUESTIONS", "Questions have not been generated yet", 400);
-  }
+      if (session.questions.length === 0) {
+        throw new AppError(
+          "NO_QUESTIONS",
+          "Questions have not been generated yet",
+          400,
+        );
+      }
 
-  const idx = session.currentQuestionIndex;
-  if (idx >= session.questions.length) {
-    res.json({ allAnswered: true });
-    return;
-  }
+      const idx = session.currentQuestionIndex;
+      if (idx >= session.questions.length) {
+        res.json({ allAnswered: true });
+        return;
+      }
 
-  res.json({
-    question: session.questions[idx],
-    index: idx,
-    isLast: idx === session.questions.length - 1,
-  });
-});
+      res.json({
+        question: session.questions[idx],
+        index: idx,
+        isLast: idx === session.questions.length - 1,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+);
 
 /**
  * POST /api/runs/:runId/questions/:questionId/answer
@@ -63,7 +82,11 @@ questionsRouter.get("/current", (req: Request<{ runId: string }>, res: Response)
  */
 questionsRouter.post(
   "/:questionId/answer",
-  async (req: Request<{ runId: string; questionId: string }>, res: Response, next: NextFunction) => {
+  async (
+    req: Request<{ runId: string; questionId: string }>,
+    res: Response,
+    next: NextFunction,
+  ) => {
     try {
       const { runId, questionId } = req.params;
       const { value } = req.body;
@@ -74,7 +97,11 @@ questionsRouter.post(
       // Find the question
       const question = session.questions.find((q) => q.id === questionId);
       if (!question) {
-        throw new AppError("QUESTION_NOT_FOUND", `Question not found: ${questionId}`, 404);
+        throw new AppError(
+          "QUESTION_NOT_FOUND",
+          `Question not found: ${questionId}`,
+          404,
+        );
       }
 
       // Validate value
@@ -126,9 +153,14 @@ questionsRouter.post(
           sessionManager.markOutputWritten(runId);
 
           sessionManager.updateStatus(runId, "complete");
-          console.log(`  [questions] Impact analysis complete for run ${runId}`);
+          console.log(
+            `  [questions] Impact analysis complete for run ${runId}`,
+          );
         } catch (err) {
-          console.error(`  [questions] Impact analysis failed:`, (err as Error).message);
+          console.error(
+            `  [questions] Impact analysis failed:`,
+            (err as Error).message,
+          );
           sessionManager.updateStatus(
             runId,
             "error",

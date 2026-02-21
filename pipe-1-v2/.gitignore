@@ -1,0 +1,11 @@
+node_modules/
+dist/
+
+# Runtime data — cloned repos, DNA files, project registry
+data/
+
+# Environment files with secrets
+server/.env
+client/.env
+
+*.log

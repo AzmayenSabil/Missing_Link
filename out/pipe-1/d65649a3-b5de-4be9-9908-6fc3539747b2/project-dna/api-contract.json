@@ -1,0 +1,3418 @@
+{
+  "axiosInstances": [
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_axios",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "axiosWithTypes",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_axios_without_legacy_and_response_handler",
+      "baseURL": "https://${url}",
+      "requestInterceptor": false,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_axios_without_legacy_and_response_handler_v2",
+      "baseURL": "${shopup_url}",
+      "requestInterceptor": false,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_axios_without_legacy",
+      "baseURL": "https://${url}",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_sap_axios",
+      "baseURL": "https://${sap_api_prefix}",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_auth_axios",
+      "baseURL": "https://${url}${auth_api_prefix}",
+      "requestInterceptor": false,
+      "responseInterceptor": false
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_fleet_axios",
+      "baseURL": "https://${fleet_api_base_url}",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_ss2_axios",
+      "baseURL": "https://${ss2_api_base_url}",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "_aft2_axios",
+      "baseURL": "https://${aft2_api_base_url}",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "pics_axios",
+      "baseURL": "https://${pics_api_base_url}",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    },
+    {
+      "file": "services/axios.config.js",
+      "variableName": "redx_utils_axios",
+      "baseURL": "https://${redx_utils_api_base_url}",
+      "requestInterceptor": true,
+      "responseInterceptor": true
+    }
+  ],
+  "serviceModules": [],
+  "endpointLiterals": [
+    {
+      "file": "hooks/useGetSalesPoints.tsx",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/sales-points",
+      "line": 11
+    },
+    {
+      "file": "services/adjustmentsApi.js",
+      "method": "post",
+      "path": "/v4/logistics/adjustments",
+      "line": 5
+    },
+    {
+      "file": "services/adjustmentsApi.js",
+      "method": "get",
+      "path": "/v4/logistics/adjustments/parcels/${parcelTrackingId}",
+      "line": 18
+    },
+    {
+      "file": "services/adminRecoveryAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/admin-module",
+      "line": 19
+    },
+    {
+      "file": "services/adminRecoveryAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/admin-module/deliveryPartners",
+      "line": 34
+    },
+    {
+      "file": "services/adminRecoveryAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/issue-settlement/admin-module/admin-responsible/${issueId}",
+      "line": 48
+    },
+    {
+      "file": "services/adminRecoveryAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/issue-settlement/admin-module/admin-status/${issueId}",
+      "line": 57
+    },
+    {
+      "file": "services/agentAPI.js",
+      "method": "get",
+      "path": "/api/logistics/agent",
+      "line": 4
+    },
+    {
+      "file": "services/agentAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/hyper-local/agents",
+      "line": 15
+    },
+    {
+      "file": "services/agentAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/agent-control/agents",
+      "line": 31
+    },
+    {
+      "file": "services/agentAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/agent-control/agents/${agentId}/status",
+      "line": 47
+    },
+    {
+      "file": "services/agentAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/agent-control/agents/${agentId}",
+      "line": 56
+    },
+    {
+      "file": "services/agentAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/agent-control/agents",
+      "line": 75
+    },
+    {
+      "file": "services/agentAPI.js",
+      "method": "get",
+      "path": "v2/logistics/agents",
+      "line": 86
+    },
+    {
+      "file": "services/agentCountAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/hr/agents/ideal-head-count",
+      "line": 4
+    },
+    {
+      "file": "services/agentCountAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/hr/agents/ideal-head-count/${hubId}",
+      "line": 16
+    },
+    {
+      "file": "services/agentGradeAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/salary/grade-settings",
+      "line": 4
+    },
+    {
+      "file": "services/agentGradeAPI.js",
+      "method": "patch",
+      "path": "/v1/logistics/salary/grade-settings/${agentType}-agents?agentType=${agentType}&vehicleType=${vehicleType}&zoneId=${zoneId}",
+      "line": 17
+    },
+    {
+      "file": "services/analyticsAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/analytics",
+      "line": 56
+    },
+    {
+      "file": "services/analyticsAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/analytics",
+      "line": 75
+    },
+    {
+      "file": "services/analyticsAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/analytics",
+      "line": 102
+    },
+    {
+      "file": "services/appPreferenceAPI.js",
+      "method": "get",
+      "path": "/v1/pref",
+      "line": 4
+    },
+    {
+      "file": "services/appPreferenceAPI.js",
+      "method": "get",
+      "path": "/v1/pref/isLegacyPostpaidInvoiceUploadEnabled",
+      "line": 8
+    },
+    {
+      "file": "services/appPreferenceAPI.js",
+      "method": "get",
+      "path": "/v1/pref/${key}",
+      "line": 12
+    },
+    {
+      "file": "services/approvalRequestApi.js",
+      "method": "get",
+      "path": "/v3/approvals",
+      "line": 25
+    },
+    {
+      "file": "services/approvalRequestApi.js",
+      "method": "put",
+      "path": "/v3/approvals",
+      "line": 40
+    },
+    {
+      "file": "services/approvalRequestApi.js",
+      "method": "post",
+      "path": "/v3/approvals",
+      "line": 56
+    },
+    {
+      "file": "services/approvalRequestApi.js",
+      "method": "put",
+      "path": "/v3/approvals/revert/${id}",
+      "line": 67
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/api/area/zones",
+      "line": 5
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/hub-zones",
+      "line": 9
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v2/areas",
+      "line": 14
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "put",
+      "path": "/api/logistics/parcels/area-weight-changes",
+      "line": 23
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/address-mapping/area-tree?sort=true",
+      "line": 33
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/access/user-zones",
+      "line": 36
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v2/areas/by-route",
+      "line": 40
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/api/area/search",
+      "line": 48
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "put",
+      "path": "/v2/parcels/area-weight-changes",
+      "line": 52
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/areas",
+      "line": 56
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v2/areas/zones",
+      "line": 62
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/districts",
+      "line": 67
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "post",
+      "path": "v2/areas",
+      "line": 72
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "put",
+      "path": "/v2/areas/${areaId}",
+      "line": 77
+    },
+    {
+      "file": "services/areaAPI.js",
+      "method": "get",
+      "path": "/v2/areas/${areaId}",
+      "line": 81
+    },
+    {
+      "file": "services/attendanceAPI.ts",
+      "method": "get",
+      "path": "/v1/logistics/biometric-attendance/devices",
+      "line": 12
+    },
+    {
+      "file": "services/attendanceAPI.ts",
+      "method": "put",
+      "path": "/v1/logistics/biometric-attendance/devices/${hubId}",
+      "line": 18
+    },
+    {
+      "file": "services/attendanceAPI.ts",
+      "method": "get",
+      "path": "/redx_salary/agent_attendance",
+      "line": 24
+    },
+    {
+      "file": "services/attendanceAPI.ts",
+      "method": "get",
+      "path": "/redx_salary/delivery_agent_earning_details",
+      "line": 31
+    },
+    {
+      "file": "services/attendanceAPI.ts",
+      "method": "post",
+      "path": "/redx_salary/manual_attendance",
+      "line": 41
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "post",
+      "path": "/v1/user/request-login-code",
+      "line": 5
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "post",
+      "path": "/v1/user/login-with-code",
+      "line": 13
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "get",
+      "path": "/v1/user/logout",
+      "line": 20
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "get",
+      "path": "/api/logistics/management/operation/user",
+      "line": 24
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "put",
+      "path": "/api/logistics/management/operation/user/${userId}",
+      "line": 28
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "get",
+      "path": "/api/user/admin/get-token",
+      "line": 34
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "get",
+      "path": "/v3/user/permissions",
+      "line": 38
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "put",
+      "path": "/v1/user/${userId}",
+      "line": 42
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "get",
+      "path": "/v3/user",
+      "line": 45
+    },
+    {
+      "file": "services/authAPI.js",
+      "method": "get",
+      "path": "/api/user/me",
+      "line": 48
+    },
+    {
+      "file": "services/bakiApi.ts",
+      "method": "put",
+      "path": "/v1/logistics/hyper-local/parcels/${trackingId}/baki-collection",
+      "line": 30
+    },
+    {
+      "file": "services/bakiApi.ts",
+      "method": "post",
+      "path": "/v4/eloan/instant-baki-request/init",
+      "line": 44
+    },
+    {
+      "file": "services/bakiApi.ts",
+      "method": "post",
+      "path": "/v4/eloan/instant-baki-request/verify",
+      "line": 63
+    },
+    {
+      "file": "services/bakiApi.ts",
+      "method": "get",
+      "path": "/v4/eloan/baki-credit/tenures?invoiceNumber=${invoiceNumber}",
+      "line": 74
+    },
+    {
+      "file": "services/bakiApi.ts",
+      "method": "get",
+      "path": "/v4/eloan/instant-baki-request/otp-ttl-and-instant-baki-request",
+      "line": 78
+    },
+    {
+      "file": "services/bankAPI.js",
+      "method": "get",
+      "path": "/v1/banks",
+      "line": 4
+    },
+    {
+      "file": "services/bankAPI.js",
+      "method": "get",
+      "path": "/v1/banks/${bankId}/branches",
+      "line": 8
+    },
+    {
+      "file": "services/bankAPI.js",
+      "method": "get",
+      "path": "/v1/banks/${bankId}/branch/${branchName}",
+      "line": 12
+    },
+    {
+      "file": "services/bankAPIV2.js",
+      "method": "get",
+      "path": "/v2/banks",
+      "line": 5
+    },
+    {
+      "file": "services/bankAPIV2.js",
+      "method": "get",
+      "path": "/v2/banks/branchNames?branchName=${branchName}",
+      "line": 14
+    },
+    {
+      "file": "services/bankAPIV2.js",
+      "method": "post",
+      "path": "/v2/banks/branch",
+      "line": 44
+    },
+    {
+      "file": "services/bankAPIV2.js",
+      "method": "put",
+      "path": "/v2/banks/branch?branchId=${branchId}",
+      "line": 53
+    },
+    {
+      "file": "services/c2cAdvanceCashAPI.ts",
+      "method": "post",
+      "path": "v3/logistics/c2c/offline/consignments/download/csv",
+      "line": 75
+    },
+    {
+      "file": "services/cashReconAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/reconciliation/cash/agent-summary?hubId=${hubId}&from=${from}&to=${to}",
+      "line": 15
+    },
+    {
+      "file": "services/categoryPricingAPI.js",
+      "method": "get",
+      "path": "v2/logistics/pricing/categories/${shopId}",
+      "line": 5
+    },
+    {
+      "file": "services/categoryPricingAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/pricing/categories/${shopId}",
+      "line": 14
+    },
+    {
+      "file": "services/consignmentAPI.js",
+      "method": "get",
+      "path": "/consignments",
+      "line": 4
+    },
+    {
+      "file": "services/consignmentAPI.js",
+      "method": "post",
+      "path": "/consignments/${consignmentId}",
+      "line": 10
+    },
+    {
+      "file": "services/consignmentAPI.js",
+      "method": "put",
+      "path": "/consignments/${consignmentId}",
+      "line": 14
+    },
+    {
+      "file": "services/consignmentAPI.js",
+      "method": "put",
+      "path": "/consignments/${consignmentId}/transport/action",
+      "line": 18
+    },
+    {
+      "file": "services/consignmentAPI.js",
+      "method": "put",
+      "path": "/consignments/${consignmentId}/approve-subsidy",
+      "line": 22
+    },
+    {
+      "file": "services/consignmentAPI.js",
+      "method": "get",
+      "path": "/questionaire/${consignmentId}",
+      "line": 26
+    },
+    {
+      "file": "services/consignmentAPI.js",
+      "method": "post",
+      "path": "/questionaire/raise-flag",
+      "line": 30
+    },
+    {
+      "file": "services/consignmentAPI.js",
+      "method": "post",
+      "path": "/bulk-panel/retry/${consignmentId}",
+      "line": 34
+    },
+    {
+      "file": "services/couponAPI.ts",
+      "method": "get",
+      "path": "/api/shop/shops-name?filter=requested-logistics",
+      "line": 6
+    },
+    {
+      "file": "services/couponAPI.ts",
+      "method": "post",
+      "path": "/v1/logistics/coupons/create-offer",
+      "line": 10
+    },
+    {
+      "file": "services/couponAPI.ts",
+      "method": "get",
+      "path": "/v1/logistics/coupons/offers${qs.stringify(queryParams, {\r\n      addQueryPrefix: true,\r\n    })}",
+      "line": 14
+    },
+    {
+      "file": "services/couponAPI.ts",
+      "method": "post",
+      "path": "/v1/logistics/coupons/expire-offer",
+      "line": 23
+    },
+    {
+      "file": "services/couponAPI.ts",
+      "method": "post",
+      "path": "/v1/logistics/coupons/associate-offer",
+      "line": 27
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v1/logistics/ops-cache/getItem",
+      "line": 23
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v4/logistics/parcels",
+      "line": 32
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "post",
+      "path": "/v4/logistics/parcels",
+      "line": 38
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "post",
+      "path": "/v1/logistics/auto-rider-assignment/common/assign-agents/${hubId}",
+      "line": 48
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates",
+      "line": 55
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v1/download/run-sheet/new",
+      "line": 62
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v2/logistics/reconciliation/cash/get-agent-delivery-status",
+      "line": 77
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "put",
+      "path": "/v4/logistics/scan-parcel",
+      "line": 90
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "put",
+      "path": "/v4/logistics/scan-bulks",
+      "line": 102
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v1/logistics/partial-rollout/hubs",
+      "line": 110
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v4/logistics/course/user-hubs",
+      "line": 114
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v4/logistics/parcel-bulks",
+      "line": 118
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "post",
+      "path": "/v4/logistics/parcel-movement",
+      "line": 125
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v4/logistics/hubs/${params}/configs",
+      "line": 129
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/bulk-status-update/init",
+      "line": 133
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/bulk-status-update/verify",
+      "line": 140
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates",
+      "line": 150
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "get",
+      "path": "/v4/partial-rollout",
+      "line": 161
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "post",
+      "path": "/v4/logistics/parcel-statuses/request-otp",
+      "line": 165
+    },
+    {
+      "file": "services/courseLogisticsAPI.ts",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates/received-parcels-at-delivery-hub",
+      "line": 175
+    },
+    {
+      "file": "services/coursesAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/course",
+      "line": 4
+    },
+    {
+      "file": "services/coursesAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/course/all",
+      "line": 10
+    },
+    {
+      "file": "services/coursesAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/course/area",
+      "line": 16
+    },
+    {
+      "file": "services/coursesAPI.js",
+      "method": "put",
+      "path": "/v4/logistics/course",
+      "line": 22
+    },
+    {
+      "file": "services/coursesAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/course",
+      "line": 31
+    },
+    {
+      "file": "services/coursesAPI.js",
+      "method": "put",
+      "path": "/v4/logistics/course/status",
+      "line": 39
+    },
+    {
+      "file": "services/coursesAPI.js",
+      "method": "delete",
+      "path": "/v4/logistics/course",
+      "line": 46
+    },
+    {
+      "file": "services/creditApi.js",
+      "method": "post",
+      "path": "/v1/logistics/credits/${shopId}/deposit",
+      "line": 5
+    },
+    {
+      "file": "services/cutoffAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/cut-off/configurations",
+      "line": 13
+    },
+    {
+      "file": "services/cutoffAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/cut-off/configurations",
+      "line": 38
+    },
+    {
+      "file": "services/dailyDashboardAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/analytics/daily/hub/${hubId}?${qs.stringify(params)}",
+      "line": 12
+    },
+    {
+      "file": "services/deAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/de/otp-parcels",
+      "line": 4
+    },
+    {
+      "file": "services/deAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/de/otp-parcels/${otpRefId}/viewed",
+      "line": 8
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations/summary",
+      "line": 11
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations",
+      "line": 39
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations/${escalationId}/perform-action",
+      "line": 60
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/hub-managers",
+      "line": 70
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/agents",
+      "line": 76
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations/${issueId}/approve",
+      "line": 82
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations/${issueId}/resolve",
+      "line": 89
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/remarks",
+      "line": 96
+    },
+    {
+      "file": "services/escalationAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/remarks",
+      "line": 101
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/finance-module/issues",
+      "line": 27
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/finance-module/${issueId}/initiate",
+      "line": 44
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v1/logistics/reports/finance",
+      "line": 51
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v2/finance/logistics/bounced-payments",
+      "line": 62
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "/v2/finance/logistics/bounced-payments/${bouncedAccountId}/resolve",
+      "line": 66
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v4/finance/payments/bkash/balance",
+      "line": 70
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v4/finance/payments/bkash/pending-amount",
+      "line": 74
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v4/finance/payments/bkash/transfer/organization-wallet/transactions",
+      "line": 83
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "/v4/finance/payments/bkash/transfer/organization-wallet",
+      "line": 87
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v2/logistics/kam",
+      "line": 91
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "/v1/logistics/reports/finance/download",
+      "line": 95
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v1/logistics/advance-payment/shops/${shopId}/invoice-search",
+      "line": 109
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/v1/logistics/advance-payment/shops/${shopId}/invoices/${invoiceId}/parcels",
+      "line": 115
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "v4/finance/invoice/combined-invoice/image-url-for-invoice",
+      "line": 121
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "v4/finance/invoice/combined-invoice/bulk-mark-as-paid",
+      "line": 125
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "v4/finance/invoice/combined-invoice/add-jv-number",
+      "line": 129
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/api/merchant/payment-details",
+      "line": 133
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/api/banks/all-banks",
+      "line": 137
+    },
+    {
+      "file": "services/finance.js",
+      "method": "get",
+      "path": "/api/banks/${bankId}/branches",
+      "line": 141
+    },
+    {
+      "file": "services/finance.js",
+      "method": "put",
+      "path": "/v4/finance/merchants/payment-details",
+      "line": 145
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "/v2/finance/logistics/bounced-payments",
+      "line": 149
+    },
+    {
+      "file": "services/finance.js",
+      "method": "post",
+      "path": "/v1/admin/shop/24059/combined-invoices/notify-failed-payments",
+      "line": 153
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "post",
+      "path": "v4/finance/invoice/combined-invoice/margin-transfer-reference-image",
+      "line": 14
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "post",
+      "path": "v4/finance/invoice/combined-invoice/margin-transfer-reference-number",
+      "line": 21
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "get",
+      "path": "v4/finance/invoice/combined-invoice/margin-transfer-reference",
+      "line": 28
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "get",
+      "path": "/v4/finance/invoice/combined-invoice/margin-transfer-reference-summary",
+      "line": 34
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "post",
+      "path": "v2/finance/invoice/negative",
+      "line": 43
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "get",
+      "path": "/v4/finance/invoice/combined-invoice",
+      "line": 49
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "get",
+      "path": "/v4/finance/invoice/consolidated-invoice/shops",
+      "line": 53
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "get",
+      "path": "/v4/finance/invoice/consolidated-invoice/bank-statements",
+      "line": 57
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "get",
+      "path": "/api/consolidated-invoice/download-reseller-payments",
+      "line": 61
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "get",
+      "path": "/api/consolidated-invoice/download-reseller-order-breakdown",
+      "line": 67
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "put",
+      "path": "/api/consolidated-invoice/invoice/${invoiceId}",
+      "line": 73
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "post",
+      "path": "/v2/finance/logistics/settlement/prepaid/new",
+      "line": 77
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "get",
+      "path": "v2/finance/logistics/settlement/postpaid",
+      "line": 81
+    },
+    {
+      "file": "services/financeV2.ts",
+      "method": "post",
+      "path": "/v2/finance/logistics/settlement/postpaid",
+      "line": 87
+    },
+    {
+      "file": "services/fleetAPI.js",
+      "method": "get",
+      "path": "/fleet-requests",
+      "line": 4
+    },
+    {
+      "file": "services/fleetAPI.js",
+      "method": "post",
+      "path": "/fleet-requests",
+      "line": 10
+    },
+    {
+      "file": "services/fleetAPI.js",
+      "method": "put",
+      "path": "/fleet-requests/${fleetId}",
+      "line": 14
+    },
+    {
+      "file": "services/fleetAPI.js",
+      "method": "put",
+      "path": "/fleet-requests/${fleetId}/${role}/action",
+      "line": 18
+    },
+    {
+      "file": "services/fleetAPI.js",
+      "method": "get",
+      "path": "/fleet-requests/${fleetId}/rate",
+      "line": 22
+    },
+    {
+      "file": "services/fleetAPI.js",
+      "method": "get",
+      "path": "/fleet-requests/sales-team-members",
+      "line": 30
+    },
+    {
+      "file": "services/fleetAPI.js",
+      "method": "get",
+      "path": "/fleet-requests/${fleetId}/audit-logs",
+      "line": 34
+    },
+    {
+      "file": "services/fleetAPI.js",
+      "method": "get",
+      "path": "/fleet-requests/vehicle-capacity",
+      "line": 38
+    },
+    {
+      "file": "services/hrPanelAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/hr/agents/applicant-dashboard",
+      "line": 32
+    },
+    {
+      "file": "services/hrPanelAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/hr/agents/applicant-dashboard/nid-info",
+      "line": 53
+    },
+    {
+      "file": "services/hrPanelAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/hr/agents/applicant-dashboard/mark-nid-verified",
+      "line": 65
+    },
+    {
+      "file": "services/hrPanelAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/hr/agents/applicant-dashboard/call-for-interview",
+      "line": 76
+    },
+    {
+      "file": "services/hrPanelAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/hr/agents/applicant-dashboard/approve-applicant",
+      "line": 87
+    },
+    {
+      "file": "services/hrPanelAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/hr/agents/applicant-dashboard/reject-applicant",
+      "line": 98
+    },
+    {
+      "file": "services/hrPanelAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/hr/agents/employee-dashboard",
+      "line": 113
+    },
+    {
+      "file": "services/hrRecoveryAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/hr-recovery-module",
+      "line": 19
+    },
+    {
+      "file": "services/hrRecoveryAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/issue-settlement/hr-recovery-module/hr-status/${issueId}",
+      "line": 34
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/api/hubs",
+      "line": 5
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/hubs",
+      "line": 8
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/hubs",
+      "line": 12
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/hubs",
+      "line": 16
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/hubs/by-user",
+      "line": 22
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/access/zones/${zoneId}/hubs",
+      "line": 28
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v2/hubs/hub-zone-routes",
+      "line": 30
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/hubs/lists",
+      "line": 31
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/hubs?type=mh_hubs",
+      "line": 33
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v3/logistics/line-haul/custom-route",
+      "line": 40
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/linehaul/routes",
+      "line": 41
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/hubs?type=rmh_to_sub_hub&currentHubId=${hubId}",
+      "line": 43
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/hubs",
+      "line": 45
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "put",
+      "path": "/v4/logistics/hubs/${params.id}",
+      "line": 86
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/hubs/hubResolutionConfigs",
+      "line": 90
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/areas/areaHubMapping",
+      "line": 94
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "put",
+      "path": "/v4/logistics/hubs/${hub_id}/area/${areaId}/status",
+      "line": 104
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v4/partial-rollout",
+      "line": 119
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "/v4/partial-rollout",
+      "line": 131
+    },
+    {
+      "file": "services/hubAPI.js",
+      "method": "get",
+      "path": "v2/logistics/hubs/${hubId}/transfer/available-receive-hubs",
+      "line": 135
+    },
+    {
+      "file": "services/hubPaymentAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/payments/hub-payments",
+      "line": 9
+    },
+    {
+      "file": "services/hubPaymentAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/payments/hub-payments",
+      "line": 16
+    },
+    {
+      "file": "services/hubPaymentAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/payments/send-hub-payments",
+      "line": 21
+    },
+    {
+      "file": "services/hubPaymentAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/payments/hub-payments/download",
+      "line": 50
+    },
+    {
+      "file": "services/hubPaymentAPI.js",
+      "method": "get",
+      "path": "/v1/download/hub-payment",
+      "line": 60
+    },
+    {
+      "file": "services/hubPaymentAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/agent/upload/documents",
+      "line": 68
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "get",
+      "path": "/v2/logistics/payments/central-hub-payments",
+      "line": 30
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "get",
+      "path": "/v2/logistics/payments/hub-payments/download",
+      "line": 37
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "get",
+      "path": "/v4/logistics/payments/central-hub-payment-transactions",
+      "line": 45
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "post",
+      "path": "/v4/logistics/payments/update-hub-payments",
+      "line": 56
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "post",
+      "path": "/v4/logistics/payments/collect-hub-payments",
+      "line": 64
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "get",
+      "path": "/v4/logistics/payments/verify-payment",
+      "line": 76
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "post",
+      "path": "/v4/logistics/payments/create-paywell-order",
+      "line": 88
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "get",
+      "path": "/v4/logistics/payments/paywell-order-status/${hubId}",
+      "line": 99
+    },
+    {
+      "file": "services/hubPaymentAPIV2.ts",
+      "method": "put",
+      "path": "/v4/logistics/payments/paywell-order-status/${payload.hubId}",
+      "line": 112
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/hyper-local/agents",
+      "line": 4
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/shop-stores/mokam",
+      "line": 8
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/hyper-local/agents/assign-store",
+      "line": 12
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "put",
+      "path": "/v4/logistics/agents/${agentId}/parcels/${parcelId}/action",
+      "line": 20
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "put",
+      "path": "/v4/logistics/agents/${agentId}/parcels/${parcelId}/verify",
+      "line": 27
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/image-upload/${entityType}/${businessUnit}",
+      "line": 34
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "get",
+      "path": "/v4/partial-rollout",
+      "line": 41
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/parcels/vehicleRequiredParcels",
+      "line": 47
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "get",
+      "path": "v1/logistics/image-upload/${entityType}/${businessUnit}/${subOrderId}",
+      "line": 51
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/image-upload/${entityType}/${businessUnit}/${subOrderId}/${imageLabel}",
+      "line": 63
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/invoice/${orderId}/trackingId",
+      "line": 70
+    },
+    {
+      "file": "services/hyperlocalAgentAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/reconciliation/validation",
+      "line": 74
+    },
+    {
+      "file": "services/iHelpBD.ts",
+      "method": "post",
+      "path": "https://redxhub.ihelpbd.com/ihelp_call_api/click_to_call.php",
+      "line": 15
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/issues",
+      "line": 28
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}",
+      "line": 50
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues",
+      "line": 55
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/issues/tree",
+      "line": 61
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/can-raise-issue",
+      "line": 71
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/validate-parcel-id",
+      "line": 75
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/issues/types",
+      "line": 79
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/comments",
+      "line": 83
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/comments",
+      "line": 87
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/start-investigation",
+      "line": 93
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/change-type",
+      "line": 99
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/compensate",
+      "line": 106
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/resolve",
+      "line": 113
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/issues/modules",
+      "line": 116
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/can-perform-change",
+      "line": 119
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/issues/severities",
+      "line": 122
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/change-severity",
+      "line": 132
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/resolve-by-admin",
+      "line": 142
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/issue-settlement/high-value-compensation-module/compensation-status/${issueId}",
+      "line": 149
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/parcel-charge-details",
+      "line": 156
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/parcel-charge-details",
+      "line": 165
+    },
+    {
+      "file": "services/issueAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/issue-settlement/issues/${issueId}/approve-by-ir",
+      "line": 175
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/tree",
+      "line": 8
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/tree",
+      "line": 15
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/actions/bulk-issue-process-status",
+      "line": 21
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/${moduleCode}",
+      "line": 44
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/${moduleCode}",
+      "line": 52
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/comments",
+      "line": 61
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/comments?issueId=${issueId}",
+      "line": 68
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/photos/${issueId}",
+      "line": 72
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/severities",
+      "line": 76
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/severities",
+      "line": 83
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "put",
+      "path": "${BASE_URL}/actions/${moduleCode}",
+      "line": 91
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "post",
+      "path": "${BASE_URL}/validate-issue-creation",
+      "line": 95
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "post",
+      "path": "${BASE_URL}/${moduleCode}",
+      "line": 103
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "post",
+      "path": "${BASE_URL}/bulk/${moduleCode}",
+      "line": 107
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "post",
+      "path": "/v3/logistics/issue/in-transit-bulk-lost",
+      "line": 111
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "post",
+      "path": "/v3/logistics/issue/in-transit-bulk",
+      "line": 115
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "post",
+      "path": "${BASE_URL}/severity",
+      "line": 119
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "/v3/logistics/issue/${moduleCode}/${issueId}/parcel-charge-details",
+      "line": 123
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/remarks",
+      "line": 129
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/${moduleCode}/sla-escalation-level-defs",
+      "line": 133
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/${moduleCode}/sla-escalation-level-defs",
+      "line": 140
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/${moduleCode}/sla-escalation-level-defs",
+      "line": 146
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "/v1/logistics/operational-zones",
+      "line": 152
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "/v1/logistics/operational-zones",
+      "line": 157
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "/v1/logistics/operational-zones/hubs",
+      "line": 161
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "/v1/logistics/operational-zones/hubs",
+      "line": 168
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "put",
+      "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+      "line": 174
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "put",
+      "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+      "line": 178
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "put",
+      "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+      "line": 182
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "put",
+      "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+      "line": 186
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "put",
+      "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+      "line": 190
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "/v3/logistics/issue/comments-template",
+      "line": 197
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/download/${moduleCode}",
+      "line": 226
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/finance?isLimitDisable=true&financeStatus[]=open",
+      "line": 232
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "get",
+      "path": "${BASE_URL}/actions/issue-process-status?issueId=${issueId}",
+      "line": 236
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "put",
+      "path": "v3/logistics/issue/actions/finance/bulk-upload",
+      "line": 240
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "post",
+      "path": "/v3/logistics/issue/bulk-upload/sap_ops",
+      "line": 244
+    },
+    {
+      "file": "services/issueV3API.js",
+      "method": "put",
+      "path": "/v3/logistics/issue/actions/high_value_compensation/bulk-upload",
+      "line": 248
+    },
+    {
+      "file": "services/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v3/logistics/bulk",
+      "line": 21
+    },
+    {
+      "file": "services/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v3/logistics/line-haul/custom-route",
+      "line": 39
+    },
+    {
+      "file": "services/lineHaulApi.ts",
+      "method": "post",
+      "path": "/v3/logistics/line-haul/trip/agent",
+      "line": 43
+    },
+    {
+      "file": "services/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v3/logistics/bulk/bulk-groups",
+      "line": 54
+    },
+    {
+      "file": "services/lineHaulBulkDropApi.js",
+      "method": "get",
+      "path": "/v2/logistics/agent-control/agents/list",
+      "line": 4
+    },
+    {
+      "file": "services/lineHaulBulkDropApi.js",
+      "method": "put",
+      "path": "/v3/logistics/bulk/bulk-update",
+      "line": 10
+    },
+    {
+      "file": "services/lineHaulBulkDropApi.js",
+      "method": "put",
+      "path": "/v3/logistics/bulk/bulk-update-hack",
+      "line": 14
+    },
+    {
+      "file": "services/lineHaulBulkDropApi.js",
+      "method": "put",
+      "path": "/v3/logistics/line-haul/trip/agent/end-trip",
+      "line": 18
+    },
+    {
+      "file": "services/lineHaulBulkDropApi.js",
+      "method": "get",
+      "path": "/v3/logistics/line-haul/trip/agent",
+      "line": 22
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "get",
+      "path": "/supplier/list",
+      "line": 4
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "put",
+      "path": "/inventory/vendors/${vendorId}",
+      "line": 10
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "post",
+      "path": "/inventory/vendors",
+      "line": 16
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "put",
+      "path": "/inventory/vendors/${vendorId}",
+      "line": 22
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "put",
+      "path": "/inventory/vendors/${vendorId}",
+      "line": 28
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "get",
+      "path": "/v3/logistics/line-haul/truck-cost",
+      "line": 32
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "get",
+      "path": "/v3/logistics/line-haul/truck-cost/${truckCostId}/audit-logs",
+      "line": 38
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "put",
+      "path": "/v3/logistics/line-haul/truck-cost/${truckCostId}",
+      "line": 44
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "post",
+      "path": "/v3/logistics/line-haul/truck-cost",
+      "line": 48
+    },
+    {
+      "file": "services/lineHaulCostApi.js",
+      "method": "post",
+      "path": "/v3/logistics/line-haul/truck-cost/${truckCostId}/add-damage",
+      "line": 52
+    },
+    {
+      "file": "services/liquidationParcelsAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/parcel-movement",
+      "line": 4
+    },
+    {
+      "file": "services/liquidationParcelsAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/reasons",
+      "line": 14
+    },
+    {
+      "file": "services/liquidationParcelsAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates",
+      "line": 18
+    },
+    {
+      "file": "services/manyDial.ts",
+      "method": "post",
+      "path": "https://api.manydial.com/v1/portal/click-to-call",
+      "line": 15
+    },
+    {
+      "file": "services/merchantWalletApi.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-wallet/current-balance/${shopId}",
+      "line": 4
+    },
+    {
+      "file": "services/notificationAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/notifications/scenario",
+      "line": 4
+    },
+    {
+      "file": "services/notificationAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/notifications/scenario/template?${qs.stringify(payload)}",
+      "line": 14
+    },
+    {
+      "file": "services/notificationAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/notifications/recipients",
+      "line": 27
+    },
+    {
+      "file": "services/notificationAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/notifications",
+      "line": 54
+    },
+    {
+      "file": "services/notificationHulkUploadApi.ts",
+      "method": "get",
+      "path": "/v4/hulk/upload/url",
+      "line": 9
+    },
+    {
+      "file": "services/notificationHulkUploadApi.ts",
+      "method": "post",
+      "path": "/v4/hulk/upload/confirm",
+      "line": 20
+    },
+    {
+      "file": "services/orderSummaryApi.js",
+      "method": "get",
+      "path": "/v1/logistics/hyper-local/parcels/order-summary-pdf-data",
+      "line": 4
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v2/parcels/search?searchType=${searchType}&searchTerm=${searchTerm}&include=${includeQuery}",
+      "line": 9
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v2/parcels/audit-logs?${searchType}=${searchTerm}",
+      "line": 15
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/api/logistics/agent/${agentId}/parcels-new?status=pickup-pending&status=delivery-in-progress&status=delivered&status=agent-returning&status=agent-lost",
+      "line": 18
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/hyper-local/parcels/${encodedParcelId}/invoice/${invoiceNumber}",
+      "line": 23
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/agent/${agentId}/parcel/${parcelId}",
+      "line": 26
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v2/parcels/search?searchType=trackingId&searchTerm=${trackingId}",
+      "line": 29
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/api/fleets/fleet-requests/vehicle-capacity",
+      "line": 32
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/admin/parcels/${parcelId}",
+      "line": 48
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/hyper-local/parcels/modify-order/${invoiceNumber}/update-quantity",
+      "line": 61
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/hyper-local/parcels/modify-order/${invoiceNumber}/cancel-item",
+      "line": 68
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates",
+      "line": 75
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/4pl/parcels",
+      "line": 79
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates/mokam-extension",
+      "line": 83
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v1/admin/shop/${shopId}/logistics/parcels/${parcelId}/cash",
+      "line": 87
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v1/admin/shop/${shopId}/logistics/parcels/${parcelId}/value",
+      "line": 95
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/parcel/${trackingId}/partial",
+      "line": 102
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v1/exchange/parcel",
+      "line": 109
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/admin/agents/${agentId}/delivered-parcels-cash-summary${\r\n      packageType ? ",
+      "line": 113
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/admin/agents/${agentId}/actions/confirm-baki-collections-received",
+      "line": 121
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v2/admin/shop/${shopID}/logistics/parcels",
+      "line": 127
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "v2/admin/shop/${shopId}/logistics/bulk-parcel-create-log",
+      "line": 134
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/api/logistics/parcels",
+      "line": 151
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "v2/parcels/${parcelId}/customer-phone",
+      "line": 170
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "api/logistics/parcels${qs.stringify(paramas, {\r\n      indices: false,\r\n      addQueryPrefix: true,\r\n    })}",
+      "line": 193
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/parcel-movement",
+      "line": 203
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates",
+      "line": 207
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v1/download/run-sheet?bulkId=${bulkId}",
+      "line": 211
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v2/parcels/${trackingId}/invoice-info",
+      "line": 215
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v2/parcels/${parcelId}/delivery-address",
+      "line": 219
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/hyper-local/parcels/fetch-product-breakdown",
+      "line": 226
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/hyper-local/spot-sale",
+      "line": 232
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/hyper-local/parcels/notify-crt-reconciliation",
+      "line": 246
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/import/update-imported-parcels",
+      "line": 255
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v3/logistics/issue/actions/sapops-resolve-issue",
+      "line": 261
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v4/logistics/scan-parcel/mark-stagnant-parcel-reconciled",
+      "line": 267
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v1/admin/shop/999999999/pickup",
+      "line": 273
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v1/admin/shop/${shopId}/pickup/agent",
+      "line": 277
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v1/admin/shop/${shopId}/pickup",
+      "line": 288
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "put",
+      "path": "/v1/admin/shop/${shopId}/pickup",
+      "line": 302
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/return-otp/request",
+      "line": 317
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/return-otp/verify",
+      "line": 324
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/return-otp/return-otp-ttl",
+      "line": 328
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/reasons",
+      "line": 334
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/parcels/kam-alignment-update",
+      "line": 338
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/parcels/store-hub-on-hold-validation-remark",
+      "line": 346
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/ratifications/delivery-area-ratifications",
+      "line": 353
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v4/logistics/ratifications/delivery-area-ratifications",
+      "line": 357
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "post",
+      "path": "/v2/parcels/${trackingId}/comment",
+      "line": 361
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/ratifications/delivery-area-ratifications/user-performance",
+      "line": 365
+    },
+    {
+      "file": "services/parcelAPI.js",
+      "method": "get",
+      "path": "/v4/logistics/image-upload/${params.entityType}/${params.businessUnit}/${params.entityId}",
+      "line": 372
+    },
+    {
+      "file": "services/pdfAPI.ts",
+      "method": "get",
+      "path": "/v1/download/logistics-mushok/${invoiceId}",
+      "line": 14
+    },
+    {
+      "file": "services/pickupAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/inbound-pickup/${shopId}/create",
+      "line": 4
+    },
+    {
+      "file": "services/pickupAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/inbound-pickup/${shopId}/bulk-create-status",
+      "line": 8
+    },
+    {
+      "file": "services/pickupAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/inbound-pickup/${shopId}",
+      "line": 12
+    },
+    {
+      "file": "services/pickupAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/inbound-pickup/${shopId}/bulk-scan",
+      "line": 16
+    },
+    {
+      "file": "services/podAPI.ts",
+      "method": "post",
+      "path": "/v4/logistics/parcel-movement/merchant",
+      "line": 4
+    },
+    {
+      "file": "services/podAPI.ts",
+      "method": "get",
+      "path": "/v4/logistics/image-upload/parcel-pod-proof/redx/${trackingId}",
+      "line": 8
+    },
+    {
+      "file": "services/podAPI.ts",
+      "method": "post",
+      "path": "/v4/logistics/pod-parcels/upload-proof",
+      "line": 12
+    },
+    {
+      "file": "services/podAPI.ts",
+      "method": "put",
+      "path": "v4/logistics/pod-parcels/verify/${trackingId}",
+      "line": 16
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoices",
+      "line": 11
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "/v2/finance/logistics/settlement/postpaid/export-merchant-invoice-archive",
+      "line": 17
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "put",
+      "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoice/${invoiceId}/settled",
+      "line": 26
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "post",
+      "path": "/v4/finance/invoice/postpaid/collection",
+      "line": 35
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "post",
+      "path": "/v4/finance/invoice/postpaid/collection/subsidiary",
+      "line": 39
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "/v4/finance/invoice/postpaid/collection/breakdown",
+      "line": 47
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "post",
+      "path": "v4/finance/invoice/postpaid/collection/image-url-for-deduction",
+      "line": 57
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoices",
+      "line": 64
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "/v2/finance/logistics/settlement/postpaid/export-merchant-invoice-archive",
+      "line": 70
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "/v2/finance/logistics/settlement/postpaid/combined-invoices",
+      "line": 77
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "/v2/finance/logistics/settlement/postpaid/merchant-combined-invoice/${invoiceId}/details",
+      "line": 83
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "put",
+      "path": "/v2/finance/logistics/settlement/postpaid/combined-invoice/${invoiceId}/paid-cash-collection",
+      "line": 89
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "post",
+      "path": "/v4/finance/invoice/postpaid",
+      "line": 95
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "/v2/finance/logistics/settlement/postpaid/combined-invoices/export",
+      "line": 102
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "v2/finance/logistics/settlement/postpaid/postpaid-invoices",
+      "line": 109
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "get",
+      "path": "v1/download/logistics-mushok/${invoiceId}?shopId=${shopId}&requestType=merchant",
+      "line": 115
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "post",
+      "path": "https://pdfgen.shopup.com.bd/gen?",
+      "line": 121
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "put",
+      "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoice/${invoiceId}/settled",
+      "line": 129
+    },
+    {
+      "file": "services/postpaidInvoicesApi.js",
+      "method": "post",
+      "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoice/${invoiceId}/reSync",
+      "line": 136
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "post",
+      "path": "http://localhost:5974/print-bulk/",
+      "line": 47
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/zpl-templates/${requiredTemplate}",
+      "line": 58
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "post",
+      "path": "http://localhost:5974/print-bulk/",
+      "line": 83
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "post",
+      "path": "http://localhost:4005/print/",
+      "line": 103
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/zpl-templates/${requiredTemplate}/${parcelId}",
+      "line": 124
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "post",
+      "path": "http://localhost:5974/print/",
+      "line": 151
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "post",
+      "path": "http://localhost:5974/print/",
+      "line": 165
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/zpl-templates/redx-zpl-bulk-transfer-id",
+      "line": 176
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "post",
+      "path": "http://localhost:5974/print/",
+      "line": 189
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/zpl-templates/redx-zpl-bulk-dispatch",
+      "line": 197
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "get",
+      "path": "/v3/logistics/bulk/zpl-info?bulkId=${bulkTransferId}",
+      "line": 201
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "post",
+      "path": "http://localhost:5974/print/",
+      "line": 205
+    },
+    {
+      "file": "services/printAPI.js",
+      "method": "post",
+      "path": "/v2/parcels/print-logs",
+      "line": 213
+    },
+    {
+      "file": "services/reasonsApi.js",
+      "method": "get",
+      "path": "/v2/logistics/reasons",
+      "line": 9
+    },
+    {
+      "file": "services/reasonsApi.js",
+      "method": "get",
+      "path": "/v2/logistics/reasons/status-action",
+      "line": 19
+    },
+    {
+      "file": "services/receiveApi.js",
+      "method": "get",
+      "path": "/v4/logistics/parcels",
+      "line": 17
+    },
+    {
+      "file": "services/receiveApi.js",
+      "method": "post",
+      "path": "/v4/logistics/parcels",
+      "line": 33
+    },
+    {
+      "file": "services/receiveApi.js",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates",
+      "line": 53
+    },
+    {
+      "file": "services/receiveApi.js",
+      "method": "put",
+      "path": "/v2/logistics/bulk-status-updates",
+      "line": 57
+    },
+    {
+      "file": "services/receiveApi.js",
+      "method": "get",
+      "path": "/inventory",
+      "line": 61
+    },
+    {
+      "file": "services/receiveApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/consignments/dispatchLmh-pdfData",
+      "line": 69
+    },
+    {
+      "file": "services/reconciliationApi.js",
+      "method": "get",
+      "path": "v1/logistics/hyper-local/parcels/${trackingId}/trade-discount",
+      "line": 4
+    },
+    {
+      "file": "services/reconciliationApi.js",
+      "method": "put",
+      "path": "v1/logistics/hyper-local/parcels/${trackingId}/trade-discount",
+      "line": 11
+    },
+    {
+      "file": "services/reconciliationApi.js",
+      "method": "get",
+      "path": "v4/eloan/baki-credit/retailer?phoneNumber=${retailerPhone}",
+      "line": 20
+    },
+    {
+      "file": "services/reconciliationApi.js",
+      "method": "post",
+      "path": "v4/logistics/baki-independent-collections",
+      "line": 24
+    },
+    {
+      "file": "services/reconciliationApi.js",
+      "method": "patch",
+      "path": "v4/logistics/baki-independent-collections/${collectionId}",
+      "line": 28
+    },
+    {
+      "file": "services/reconciliationApi.js",
+      "method": "delete",
+      "path": "v4/logistics/baki-independent-collections/${collectionId}",
+      "line": 34
+    },
+    {
+      "file": "services/redisAPI.ts",
+      "method": "get",
+      "path": "/v1/logistics/ops-cache/getItem",
+      "line": 9
+    },
+    {
+      "file": "services/redisAPI.ts",
+      "method": "post",
+      "path": "/v1/logistics/ops-cache/setItem",
+      "line": 15
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "get",
+      "path": "/deduction/get_deductions",
+      "line": 130
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "get",
+      "path": "/deduction/get_deduction_details",
+      "line": 137
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "get",
+      "path": "/hulk/upload/get_upload_url",
+      "line": 144
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "post",
+      "path": "/hulk/upload/confirm_upload",
+      "line": 152
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "post",
+      "path": "/deduction/approve_deductions",
+      "line": 160
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "get",
+      "path": "/hulk/upload/get_template_url?upload_type=${uploadType}",
+      "line": 165
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "get",
+      "path": "/v2/logistics/agents",
+      "line": 172
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "get",
+      "path": "/redx_salary/agent_bonus_configurations",
+      "line": 177
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "post",
+      "path": "/v3/approvals",
+      "line": 185
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "get",
+      "path": "/v3/approvals",
+      "line": 190
+    },
+    {
+      "file": "services/salaryApi.ts",
+      "method": "put",
+      "path": "/v3/approvals",
+      "line": 195
+    },
+    {
+      "file": "services/salarySettleAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/salary/delivery-agents-payable/salaries",
+      "line": 12
+    },
+    {
+      "file": "services/salarySettleAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/salary/delivery-agents-payable/check-settlement",
+      "line": 26
+    },
+    {
+      "file": "services/salarySettleAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/salary/delivery-agents-payable/settle",
+      "line": 36
+    },
+    {
+      "file": "services/salarySettleAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/salary/agent-incentives",
+      "line": 44
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/api/shop/shops-name",
+      "line": 21
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v4/redx/shops",
+      "line": 33
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/shop-stores/${shopId}?status=${status}",
+      "line": 46
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/api/shop/shops-details?shop=${shopId}",
+      "line": 50
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/admin/update-shop-user-phone",
+      "line": 54
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-onboarding/requests",
+      "line": 70
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-onboarding/${deliveryId}/onboard-settings",
+      "line": 81
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/merchant-onboarding/${deliveryId}/onboard-settings",
+      "line": 85
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/merchant-onboarding/${deliveryId}/onboard-settings",
+      "line": 93
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings",
+      "line": 100
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings",
+      "line": 106
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-onboarding/charge-category-settings",
+      "line": 114
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings/upload/certificate-photo",
+      "line": 126
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings",
+      "line": 133
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "put",
+      "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings",
+      "line": 140
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-onboarding/${shopId}/referrer-info",
+      "line": 146
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-product-type/parent-category",
+      "line": 150
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-product-type/child-category?parentId=${parentId}",
+      "line": 154
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/merchant-product-type/default-selected/category?shopId=${shopId}",
+      "line": 160
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "post",
+      "path": "/v1/logistics/merchant-product-type/update-type-sub-type?shopId=${shopId}",
+      "line": 166
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/shop-stores/${shopId}",
+      "line": 176
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/pricing/shop/${shopId}",
+      "line": 180
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v1/logistics/advance-payment/shops",
+      "line": 184
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/v2/shops/logistics/${shopId}/shop-configs",
+      "line": 188
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/client-config/parent-shop",
+      "line": 192
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/client-config/parent-shop/mapping?shopId=${shopId}",
+      "line": 196
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "put",
+      "path": "/client-config/parent-shop/mapping",
+      "line": 200
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "post",
+      "path": "/client-config/parent-shop",
+      "line": 204
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "post",
+      "path": "/v3/shops/add-shop-config",
+      "line": 208
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "post",
+      "path": "/v3/shops/remove-shop-config",
+      "line": 212
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "put",
+      "path": "/v2/parcels/status/cash-received",
+      "line": 216
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "post",
+      "path": "/v2/finance/logistics/settlement/prepaid/new",
+      "line": 220
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "get",
+      "path": "/api/shop/shops-name",
+      "line": 224
+    },
+    {
+      "file": "services/shopAPI.js",
+      "method": "post",
+      "path": "/v2/finance/logistics/settlement/prepaid/single-invoice",
+      "line": 228
+    },
+    {
+      "file": "services/uploadAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/agent/upload/documents",
+      "line": 5
+    },
+    {
+      "file": "services/uploadAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/payments/upload/documents",
+      "line": 9
+    },
+    {
+      "file": "services/uploadAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/image-upload/shop/redx/${shopId}",
+      "line": 12
+    },
+    {
+      "file": "services/uploadAPI.js",
+      "method": "get",
+      "path": "/hulk/upload/get_upload_url?upload_type=${uploadType}",
+      "line": 16
+    },
+    {
+      "file": "services/uploadAPI.js",
+      "method": "post",
+      "path": "/hulk/upload/confirm_upload",
+      "line": 22
+    },
+    {
+      "file": "pages/admin/bulk-update-any.js",
+      "method": "get",
+      "path": "/v2/logistics/admin/any-table-update/allowed-tables",
+      "line": 15
+    },
+    {
+      "file": "services/fourpl/fourplApi.ts",
+      "method": "get",
+      "path": "/v4/logistics/4pl/finance/payment/${paymentInvoiceId}",
+      "line": 16
+    },
+    {
+      "file": "services/fourpl/fourplApi.ts",
+      "method": "put",
+      "path": "/v4/logistics/4pl/finance/verify-payment/${hubId}",
+      "line": 41
+    },
+    {
+      "file": "services/fourpl/fourplApi.ts",
+      "method": "put",
+      "path": "/v4/logistics/4pl/finance/parcels/${parcelId}/cash",
+      "line": 55
+    },
+    {
+      "file": "services/fourpl/fourplApi.ts",
+      "method": "get",
+      "path": "/v4/logistics/4pl/parcels/fourpl-parcels",
+      "line": 64
+    },
+    {
+      "file": "services/fourpl/fourplApi.ts",
+      "method": "get",
+      "path": "/v4/logistics/4pl/parcels/export",
+      "line": 86
+    },
+    {
+      "file": "services/fourpl/fourplApi.ts",
+      "method": "post",
+      "path": "v4/logistics/4pl/action/${action}",
+      "line": 93
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v3/logistics/bulk",
+      "line": 24
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v3/logistics/bulk/bulk-groups",
+      "line": 31
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v3/logistics/bulk/individual-bulk-group",
+      "line": 38
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v3/logistics/line-haul/custom-route",
+      "line": 45
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v2/logistics/agent-control/agents/list",
+      "line": 52
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v3/logistics/line-haul/trip/agent",
+      "line": 58
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v4/logistics/line-haul/trip/hub-trips",
+      "line": 79
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v4/logistics/line-haul/trip/trip-mode",
+      "line": 85
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "put",
+      "path": "/v4/logistics/line-haul/trip/add-bulks",
+      "line": 91
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "get",
+      "path": "/v4/logistics/line-haul/trip/pending-bulks",
+      "line": 102
+    },
+    {
+      "file": "services/logistics/lineHaulApi.ts",
+      "method": "put",
+      "path": "/v3/logistics/line-haul/trip/agent/end-trip",
+      "line": 108
+    },
+    {
+      "file": "services/logistics/vehicleDispatchApi.ts",
+      "method": "get",
+      "path": "/supplier/list_with_address",
+      "line": 22
+    },
+    {
+      "file": "services/logistics/vehicleDispatchApi.ts",
+      "method": "get",
+      "path": "/inventory",
+      "line": 29
+    },
+    {
+      "file": "services/logistics/vehicleDispatchApi.ts",
+      "method": "get",
+      "path": "/fleet-requests/configs/form-options",
+      "line": 39
+    },
+    {
+      "file": "services/logistics/vehicleDispatchApi.ts",
+      "method": "get",
+      "path": "fleet-requests/vehicle-capacity",
+      "line": 46
+    },
+    {
+      "file": "services/logistics/vehicleDispatchApi.ts",
+      "method": "post",
+      "path": "/inventory/bulk-update-inventory",
+      "line": 54
+    },
+    {
+      "file": "services/logistics/vehicleDispatchApi.ts",
+      "method": "post",
+      "path": "/v3/logistics/line-haul/custom-route",
+      "line": 65
+    },
+    {
+      "file": "services/logistics/vehicleDispatchApi.ts",
+      "method": "delete",
+      "path": "v3/logistics/line-haul/custom-route/${routeId}",
+      "line": 73
+    },
+    {
+      "file": "services/logistics/vehicleDispatchApi.ts",
+      "method": "put",
+      "path": "/v3/logistics/line-haul/custom-route",
+      "line": 80
+    },
+    {
+      "file": "services/pickupbm/pickupBmApi.ts",
+      "method": "post",
+      "path": "/v2/logistics/import/invoice-numbers",
+      "line": 4
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/b2b/consignment",
+      "line": 10
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/b2b/consignment/admin/${shopId}",
+      "line": 70
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/b2b/consignment/admin/${shopId}/${parcelId}",
+      "line": 75
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "post",
+      "path": "/v2/logistics/b2b/consignment/truck/${parcelId}",
+      "line": 81
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "delete",
+      "path": "/v2/logistics/b2b/consignment/${parcelId}/truck/${truckId}",
+      "line": 89
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/b2b/consignment/send-price/${parcelId}",
+      "line": 93
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "get",
+      "path": "/v2/logistics/b2b/consignment/admin/shops",
+      "line": 97
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "get",
+      "path": "/v2/areas",
+      "line": 102
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "put",
+      "path": "/v2/logistics/b2b/consignment/${parcelId}/mark-delivered",
+      "line": 106
+    },
+    {
+      "file": "services/redxB2b/consignmentAPI.js",
+      "method": "delete",
+      "path": "/v2/logistics/b2b/consignment/${parcelId}",
+      "line": 110
+    },
+    {
+      "file": "services/redxC2c/conditionDisbursementsAPI.ts",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/bulk-fetch",
+      "line": 55
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/consignments",
+      "line": 5
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/received-at-first-mile-hub",
+      "line": 16
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/send-to-mother-hub",
+      "line": 26
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/dispatch-to-last-mile-hub",
+      "line": 36
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/direct-dispatch",
+      "line": 46
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/dispatch-to-agent",
+      "line": 56
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/received-at-last-mile-hub",
+      "line": 67
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/delivered",
+      "line": 77
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/parcels",
+      "line": 87
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/parcels",
+      "line": 97
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "get",
+      "path": "/v1/download/download-stickers/${consignmentId}",
+      "line": 108
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/returned",
+      "line": 116
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/actions/delivery-payment-collected",
+      "line": 126
+    },
+    {
+      "file": "services/redxC2c/consignmentApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/${action}",
+      "line": 137
+    },
+    {
+      "file": "services/redxC2c/consignmentApiV2.ts",
+      "method": "delete",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}",
+      "line": 18
+    },
+    {
+      "file": "services/redxC2c/consignmentApiV2.ts",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/consignments",
+      "line": 31
+    },
+    {
+      "file": "services/redxC2c/consignmentApiV2.ts",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/parcels",
+      "line": 48
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "/v4/redx/shops",
+      "line": 4
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/shops",
+      "line": 10
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/shops/filters",
+      "line": 16
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "put",
+      "path": "/v3/logistics/c2c/offline/shops/${shopId}",
+      "line": 20
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/shops",
+      "line": 26
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/sales-points",
+      "line": 32
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/sales-points/users-sales-points",
+      "line": 38
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/sales-points/agents",
+      "line": 44
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "/v3/logistics/c2c/offline/consignments/conditionCharge",
+      "line": 50
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "put",
+      "path": "/v3/logistics/c2c/offline/sales-points/${salesPointId}",
+      "line": 56
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/sales-points",
+      "line": 62
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "post",
+      "path": "/v3/logistics/c2c/offline/consignments/create",
+      "line": 68
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "put",
+      "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}",
+      "line": 74
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "v1/download/c2c-consignment/${consignmentId}",
+      "line": 80
+    },
+    {
+      "file": "services/redxC2c/consignmentRevampApi.js",
+      "method": "get",
+      "path": "/v2/logistics/pricing/category-wise-pricing/cargo_parcel",
+      "line": 83
+    },
+    {
+      "file": "components/c2c/cash-management/DownloadAgentsSummary.js",
+      "method": "get",
+      "path": "/v1/download/hub-payment",
+      "line": 18
+    },
+    {
+      "file": "components/issue/ir/IssueDetailModal.js",
+      "method": "get",
+      "path": "/v3/logistics/issue/photos/${issueId}",
+      "line": 131
+    }
+  ],
+  "summary": {
+    "axiosInstances": 12,
+    "serviceModules": 0,
+    "endpointLiterals": 554
+  }
+}

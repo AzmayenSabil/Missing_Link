@@ -1,0 +1,3190 @@
+{
+  "projectId": "d65649a3-b5de-4be9-9908-6fc3539747b2",
+  "sections": {
+    "overview": {
+      "name": "redx-admin-panel",
+      "description": "redx-admin-panel — analyzed from https://github.com/shopuptech/redx-admin-panel.git",
+      "purpose": "Codebase at https://github.com/shopuptech/redx-admin-panel.git",
+      "mainFeatures": [
+        "React UI",
+        "Next.js SSR/SSG",
+        "Redux Toolkit state management",
+        "SWR data fetching",
+        "Axios HTTP client",
+        "Ant Design component library",
+        "Emotion CSS-in-JS styling"
+      ],
+      "targetUsers": [
+        "developers"
+      ],
+      "deploymentType": "SSR/SSG (Next.js)"
+    },
+    "techStack": {
+      "languages": [
+        "TypeScript"
+      ],
+      "frameworks": [
+        "Next.js",
+        "React",
+        "Redux Toolkit"
+      ],
+      "libraries": [
+        "Axios",
+        "SWR",
+        "Ant Design",
+        "Emotion"
+      ],
+      "buildTools": [
+        "TypeScript compiler",
+        "Prettier",
+        "ESLint",
+        "Commitlint"
+      ],
+      "testingTools": [],
+      "databases": [],
+      "devOps": []
+    },
+    "architecture": {
+      "pattern": "Next.js pages/app router",
+      "layers": [
+        {
+          "name": "theme",
+          "description": "theme layer",
+          "directories": [
+            "assets",
+            "config/styles"
+          ]
+        },
+        {
+          "name": "config",
+          "description": "config layer",
+          "directories": [
+            "config"
+          ]
+        },
+        {
+          "name": "ui",
+          "description": "ui layer",
+          "directories": [
+            "components",
+            "components/advance-payment",
+            "components/animations",
+            "components/area-change-modal",
+            "components/area-manager",
+            "components/area-rectification",
+            "components/area-update",
+            "components/authorize",
+            "components/banks",
+            "components/bulk-upload",
+            "components/c2c",
+            "components/cargo",
+            "components/cash-reconciliation",
+            "components/combined-invoices-new",
+            "components/coupons",
+            "components/custom-select",
+            "components/cutoff",
+            "components/de-panel",
+            "components/debounce-select",
+            "components/employee-recovery-panel",
+            "components/finance",
+            "components/finance-panel",
+            "components/form",
+            "components/hr-panel",
+            "components/hub-dashboard",
+            "components/hub-on-hold-validation",
+            "components/hubs",
+            "components/hyperlocal",
+            "components/issue",
+            "components/issue-resolution",
+            "components/logistics",
+            "components/ltl-credit-billing",
+            "components/merchant",
+            "components/parcel-invoice-info",
+            "components/parcel-search",
+            "components/pickup-panel",
+            "components/pickup-bm",
+            "components/pod-validation",
+            "components/postpaid-invoices",
+            "components/react-hook-form",
+            "components/reconciliation",
+            "components/redxB2b",
+            "components/salary-calculation",
+            "components/status-tags",
+            "components/svg",
+            "components/Text",
+            "components/area-management/courses",
+            "components/bio-attendance/modals",
+            "components/c2c/booth-cash-management",
+            "components/c2c/cash-management",
+            "components/c2c/cash-recon",
+            "components/c2c/central-reconciliation",
+            "components/c2c/merchant-onboard",
+            "components/c2c/condition-disbursement",
+            "components/c2c/utils",
+            "components/c2c/receive-dispacth",
+            "components/employee-recovery-panel/utils",
+            "components/hr-panel/agent-grade",
+            "components/finance-panel/modals",
+            "components/hr-panel/agent-head-count",
+            "components/hr-panel/agent-information",
+            "components/hr-panel/modals",
+            "components/hr-panel/salary-settlement",
+            "components/hub-dashboard/modals",
+            "components/hub-validation/form-items",
+            "components/hyperlocal/types",
+            "components/issue/cex",
+            "components/issue/course",
+            "components/issue/hub",
+            "components/issue/ir",
+            "components/issue/IssueDetailsModalV2",
+            "components/issue-resolution/modals",
+            "components/linehaul/truck-cost",
+            "components/linehaul/vendors",
+            "components/logistics/C2CDispatchReceive",
+            "components/logistics/constants",
+            "components/logistics/DispatchComponent",
+            "components/logistics/DispatchStation",
+            "components/logistics/finance",
+            "components/logistics/fourpl-invoice-settlement",
+            "components/logistics/GenericComponent",
+            "components/logistics/OptimizedGenericComponent",
+            "components/logistics/ReceiveComponent",
+            "components/logistics/ReceiveStation",
+            "components/logistics/stagnantParcelReconciliation",
+            "components/logistics/utils",
+            "components/ltl-credit-billing/bill-preparation",
+            "components/ltl-credit-billing/prepared-bill",
+            "components/pickup/inbound-scan",
+            "components/ltl-credit-billing/reconciliation",
+            "components/pickup/on-premise-scan",
+            "components/redxB2b/modals",
+            "components/salary-calculation/utils"
+          ]
+        },
+        {
+          "name": "hooks",
+          "description": "hooks layer",
+          "directories": [
+            "hooks",
+            "hooks/area-update",
+            "hooks/hub-validation",
+            "hooks/hubs",
+            "hooks/issue-resolution"
+          ]
+        },
+        {
+          "name": "routing",
+          "description": "routing layer",
+          "directories": [
+            "pages",
+            "components/area-approval",
+            "components/hub-approval-parcels",
+            "hooks/approval-request",
+            "pages/admin",
+            "pages/area-rectification",
+            "pages/bio-attendance",
+            "pages/bulk-cargo-parcel-update-amount",
+            "pages/bulk-mark-documents",
+            "pages/bulk-shop-com-update",
+            "pages/c2c",
+            "pages/cargo",
+            "pages/coupons",
+            "pages/credits",
+            "pages/de-panel",
+            "pages/finance",
+            "pages/hr-panel",
+            "pages/hub-dashboard",
+            "pages/hyperlocal",
+            "pages/issue",
+            "pages/line-haul",
+            "pages/logistics",
+            "pages/ltl-credit-billing",
+            "pages/shop",
+            "pages/unbranded-reconciliation",
+            "pages/c2c/consignment-panel",
+            "pages/c2c/merchant-onboard",
+            "pages/c2c/sales-point",
+            "pages/logistics/route-management",
+            "pages/logistics/[panel]",
+            "pages/salary-calculation/basic-commission",
+            "pages/salary-calculation/bonus-approval",
+            "pages/salary-calculation/bonus-commission",
+            "pages/salary-calculation/campaign-commission",
+            "pages/salary-calculation/create-campaign",
+            "pages/salary-calculation/edit-campaign-metric",
+            "pages/salary-calculation/employee-recovery",
+            "pages/salary-calculation/long-route-bonus",
+            "pages/salary-calculation/view-campaign-metric",
+            "pages/salary-calculation/view-cycle",
+            "pages/logistics/payments/central-hub",
+            "pages/logistics/payments/hub",
+            "pages/logistics/[panel]/[subpanel]",
+            "pages/logistics/[panel]/[subpanel]/[innersubpanel]"
+          ]
+        },
+        {
+          "name": "state",
+          "description": "state layer",
+          "directories": [
+            "redux",
+            "redux/fourpl",
+            "redux/logistics",
+            "redux/ltl-credit-billing",
+            "redux/salary-hr",
+            "redux/ltl-credit-billing/bill-preparation",
+            "redux/ltl-credit-billing/prepared-bill",
+            "redux/ltl-credit-billing/reconciliation"
+          ]
+        },
+        {
+          "name": "api",
+          "description": "api layer",
+          "directories": [
+            "services",
+            "services/fourpl",
+            "services/logistics",
+            "services/ltl-credit-billing",
+            "services/pickupbm",
+            "services/redxB2b",
+            "services/redxC2c"
+          ]
+        },
+        {
+          "name": "types",
+          "description": "types layer",
+          "directories": [
+            "types",
+            "types/attendance",
+            "types/c2c",
+            "types/finance",
+            "types/fourpl",
+            "types/images",
+            "types/ir",
+            "types/issue-resolution",
+            "types/logistics",
+            "types/ltl-credit-billing",
+            "types/pickupbm",
+            "types/salary",
+            "types/update-area",
+            "types/zone-hub"
+          ]
+        }
+      ],
+      "keyDecisions": [
+        "14 cross-layer dependency violations detected"
+      ],
+      "diagramDescription": "Layers: api → config → hooks → routing → state → theme → types → ui. Role edges: {\"api\":[\"types\"],\"hooks\":[\"api\",\"routing\",\"state\",\"types\",\"ui\"],\"routing\":[\"api\",\"config\",\"hooks\",\"state\",\"theme\",\"types\",\"ui\"],\"state\":[\"api\",\"config\",\"hooks\",\"types\",\"ui\"],\"types\":[\"hooks\",\"state\",\"ui\"],\"ui\":[\"api\",\"config\",\"hooks\",\"routing\",\"state\",\"theme\",\"types\"]}"
+    },
+    "modules": [
+      {
+        "name": "theme",
+        "path": "assets",
+        "description": "theme layer (2 folders)",
+        "responsibilities": [
+          "Contains theme logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "config",
+        "path": "config",
+        "description": "config layer (1 folder)",
+        "responsibilities": [
+          "Contains config logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "ui",
+        "path": "components",
+        "description": "ui layer (93 folders)",
+        "responsibilities": [
+          "Contains ui logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "hooks",
+        "path": "hooks",
+        "description": "hooks layer (5 folders)",
+        "responsibilities": [
+          "Contains hooks logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "routing",
+        "path": "pages",
+        "description": "routing layer (44 folders)",
+        "responsibilities": [
+          "Contains routing logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "state",
+        "path": "redux",
+        "description": "state layer (8 folders)",
+        "responsibilities": [
+          "Contains state logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "api",
+        "path": "services",
+        "description": "api layer (7 folders)",
+        "responsibilities": [
+          "Contains api logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "types",
+        "path": "types",
+        "description": "types layer (14 folders)",
+        "responsibilities": [
+          "Contains types logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      }
+    ],
+    "apis": {
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/sales-points",
+          "description": "Defined in hooks/useGetSalesPoints.tsx:11"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/adjustments",
+          "description": "Defined in services/adjustmentsApi.js:5"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/adjustments/parcels/${parcelTrackingId}",
+          "description": "Defined in services/adjustmentsApi.js:18"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/admin-module",
+          "description": "Defined in services/adminRecoveryAPI.js:19"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/admin-module/deliveryPartners",
+          "description": "Defined in services/adminRecoveryAPI.js:34"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/issue-settlement/admin-module/admin-responsible/${issueId}",
+          "description": "Defined in services/adminRecoveryAPI.js:48"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/issue-settlement/admin-module/admin-status/${issueId}",
+          "description": "Defined in services/adminRecoveryAPI.js:57"
+        },
+        {
+          "method": "GET",
+          "path": "/api/logistics/agent",
+          "description": "Defined in services/agentAPI.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hyper-local/agents",
+          "description": "Defined in services/agentAPI.js:15"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/agent-control/agents",
+          "description": "Defined in services/agentAPI.js:31"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/agent-control/agents/${agentId}/status",
+          "description": "Defined in services/agentAPI.js:47"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/agent-control/agents/${agentId}",
+          "description": "Defined in services/agentAPI.js:56"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/agent-control/agents",
+          "description": "Defined in services/agentAPI.js:75"
+        },
+        {
+          "method": "GET",
+          "path": "v2/logistics/agents",
+          "description": "Defined in services/agentAPI.js:86"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hr/agents/ideal-head-count",
+          "description": "Defined in services/agentCountAPI.js:4"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/hr/agents/ideal-head-count/${hubId}",
+          "description": "Defined in services/agentCountAPI.js:16"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/salary/grade-settings",
+          "description": "Defined in services/agentGradeAPI.js:4"
+        },
+        {
+          "method": "PATCH",
+          "path": "/v1/logistics/salary/grade-settings/${agentType}-agents?agentType=${agentType}&vehicleType=${vehicleType}&zoneId=${zoneId}",
+          "description": "Defined in services/agentGradeAPI.js:17"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/analytics",
+          "description": "Defined in services/analyticsAPI.js:56"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/analytics",
+          "description": "Defined in services/analyticsAPI.js:75"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/analytics",
+          "description": "Defined in services/analyticsAPI.js:102"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/pref",
+          "description": "Defined in services/appPreferenceAPI.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/pref/isLegacyPostpaidInvoiceUploadEnabled",
+          "description": "Defined in services/appPreferenceAPI.js:8"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/pref/${key}",
+          "description": "Defined in services/appPreferenceAPI.js:12"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/approvals",
+          "description": "Defined in services/approvalRequestApi.js:25"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/approvals",
+          "description": "Defined in services/approvalRequestApi.js:40"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/approvals",
+          "description": "Defined in services/approvalRequestApi.js:56"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/approvals/revert/${id}",
+          "description": "Defined in services/approvalRequestApi.js:67"
+        },
+        {
+          "method": "GET",
+          "path": "/api/area/zones",
+          "description": "Defined in services/areaAPI.js:5"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hub-zones",
+          "description": "Defined in services/areaAPI.js:9"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/areas",
+          "description": "Defined in services/areaAPI.js:14"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/logistics/parcels/area-weight-changes",
+          "description": "Defined in services/areaAPI.js:23"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/address-mapping/area-tree?sort=true",
+          "description": "Defined in services/areaAPI.js:33"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/access/user-zones",
+          "description": "Defined in services/areaAPI.js:36"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/areas/by-route",
+          "description": "Defined in services/areaAPI.js:40"
+        },
+        {
+          "method": "GET",
+          "path": "/api/area/search",
+          "description": "Defined in services/areaAPI.js:48"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/parcels/area-weight-changes",
+          "description": "Defined in services/areaAPI.js:52"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/areas",
+          "description": "Defined in services/areaAPI.js:56"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/areas/zones",
+          "description": "Defined in services/areaAPI.js:62"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/districts",
+          "description": "Defined in services/areaAPI.js:67"
+        },
+        {
+          "method": "POST",
+          "path": "v2/areas",
+          "description": "Defined in services/areaAPI.js:72"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/areas/${areaId}",
+          "description": "Defined in services/areaAPI.js:77"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/areas/${areaId}",
+          "description": "Defined in services/areaAPI.js:81"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/biometric-attendance/devices",
+          "description": "Defined in services/attendanceAPI.ts:12"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/biometric-attendance/devices/${hubId}",
+          "description": "Defined in services/attendanceAPI.ts:18"
+        },
+        {
+          "method": "GET",
+          "path": "/redx_salary/agent_attendance",
+          "description": "Defined in services/attendanceAPI.ts:24"
+        },
+        {
+          "method": "GET",
+          "path": "/redx_salary/delivery_agent_earning_details",
+          "description": "Defined in services/attendanceAPI.ts:31"
+        },
+        {
+          "method": "POST",
+          "path": "/redx_salary/manual_attendance",
+          "description": "Defined in services/attendanceAPI.ts:41"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/user/request-login-code",
+          "description": "Defined in services/authAPI.js:5"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/user/login-with-code",
+          "description": "Defined in services/authAPI.js:13"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/user/logout",
+          "description": "Defined in services/authAPI.js:20"
+        },
+        {
+          "method": "GET",
+          "path": "/api/logistics/management/operation/user",
+          "description": "Defined in services/authAPI.js:24"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/logistics/management/operation/user/${userId}",
+          "description": "Defined in services/authAPI.js:28"
+        },
+        {
+          "method": "GET",
+          "path": "/api/user/admin/get-token",
+          "description": "Defined in services/authAPI.js:34"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/user/permissions",
+          "description": "Defined in services/authAPI.js:38"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/user/${userId}",
+          "description": "Defined in services/authAPI.js:42"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/user",
+          "description": "Defined in services/authAPI.js:45"
+        },
+        {
+          "method": "GET",
+          "path": "/api/user/me",
+          "description": "Defined in services/authAPI.js:48"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/hyper-local/parcels/${trackingId}/baki-collection",
+          "description": "Defined in services/bakiApi.ts:30"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/eloan/instant-baki-request/init",
+          "description": "Defined in services/bakiApi.ts:44"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/eloan/instant-baki-request/verify",
+          "description": "Defined in services/bakiApi.ts:63"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/eloan/baki-credit/tenures?invoiceNumber=${invoiceNumber}",
+          "description": "Defined in services/bakiApi.ts:74"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/eloan/instant-baki-request/otp-ttl-and-instant-baki-request",
+          "description": "Defined in services/bakiApi.ts:78"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/banks",
+          "description": "Defined in services/bankAPI.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/banks/${bankId}/branches",
+          "description": "Defined in services/bankAPI.js:8"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/banks/${bankId}/branch/${branchName}",
+          "description": "Defined in services/bankAPI.js:12"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/banks",
+          "description": "Defined in services/bankAPIV2.js:5"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/banks/branchNames?branchName=${branchName}",
+          "description": "Defined in services/bankAPIV2.js:14"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/banks/branch",
+          "description": "Defined in services/bankAPIV2.js:44"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/banks/branch?branchId=${branchId}",
+          "description": "Defined in services/bankAPIV2.js:53"
+        },
+        {
+          "method": "POST",
+          "path": "v3/logistics/c2c/offline/consignments/download/csv",
+          "description": "Defined in services/c2cAdvanceCashAPI.ts:75"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/reconciliation/cash/agent-summary?hubId=${hubId}&from=${from}&to=${to}",
+          "description": "Defined in services/cashReconAPI.js:15"
+        },
+        {
+          "method": "GET",
+          "path": "v2/logistics/pricing/categories/${shopId}",
+          "description": "Defined in services/categoryPricingAPI.js:5"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/pricing/categories/${shopId}",
+          "description": "Defined in services/categoryPricingAPI.js:14"
+        },
+        {
+          "method": "GET",
+          "path": "/consignments",
+          "description": "Defined in services/consignmentAPI.js:4"
+        },
+        {
+          "method": "POST",
+          "path": "/consignments/${consignmentId}",
+          "description": "Defined in services/consignmentAPI.js:10"
+        },
+        {
+          "method": "PUT",
+          "path": "/consignments/${consignmentId}",
+          "description": "Defined in services/consignmentAPI.js:14"
+        },
+        {
+          "method": "PUT",
+          "path": "/consignments/${consignmentId}/transport/action",
+          "description": "Defined in services/consignmentAPI.js:18"
+        },
+        {
+          "method": "PUT",
+          "path": "/consignments/${consignmentId}/approve-subsidy",
+          "description": "Defined in services/consignmentAPI.js:22"
+        },
+        {
+          "method": "GET",
+          "path": "/questionaire/${consignmentId}",
+          "description": "Defined in services/consignmentAPI.js:26"
+        },
+        {
+          "method": "POST",
+          "path": "/questionaire/raise-flag",
+          "description": "Defined in services/consignmentAPI.js:30"
+        },
+        {
+          "method": "POST",
+          "path": "/bulk-panel/retry/${consignmentId}",
+          "description": "Defined in services/consignmentAPI.js:34"
+        },
+        {
+          "method": "GET",
+          "path": "/api/shop/shops-name?filter=requested-logistics",
+          "description": "Defined in services/couponAPI.ts:6"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/coupons/create-offer",
+          "description": "Defined in services/couponAPI.ts:10"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/coupons/offers${qs.stringify(queryParams, {\r\n      addQueryPrefix: true,\r\n    })}",
+          "description": "Defined in services/couponAPI.ts:14"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/coupons/expire-offer",
+          "description": "Defined in services/couponAPI.ts:23"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/coupons/associate-offer",
+          "description": "Defined in services/couponAPI.ts:27"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/ops-cache/getItem",
+          "description": "Defined in services/courseLogisticsAPI.ts:23"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/parcels",
+          "description": "Defined in services/courseLogisticsAPI.ts:32"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcels",
+          "description": "Defined in services/courseLogisticsAPI.ts:38"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/auto-rider-assignment/common/assign-agents/${hubId}",
+          "description": "Defined in services/courseLogisticsAPI.ts:48"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates",
+          "description": "Defined in services/courseLogisticsAPI.ts:55"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/download/run-sheet/new",
+          "description": "Defined in services/courseLogisticsAPI.ts:62"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/reconciliation/cash/get-agent-delivery-status",
+          "description": "Defined in services/courseLogisticsAPI.ts:77"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/scan-parcel",
+          "description": "Defined in services/courseLogisticsAPI.ts:90"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/scan-bulks",
+          "description": "Defined in services/courseLogisticsAPI.ts:102"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/partial-rollout/hubs",
+          "description": "Defined in services/courseLogisticsAPI.ts:110"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/course/user-hubs",
+          "description": "Defined in services/courseLogisticsAPI.ts:114"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/parcel-bulks",
+          "description": "Defined in services/courseLogisticsAPI.ts:118"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcel-movement",
+          "description": "Defined in services/courseLogisticsAPI.ts:125"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/hubs/${params}/configs",
+          "description": "Defined in services/courseLogisticsAPI.ts:129"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/bulk-status-update/init",
+          "description": "Defined in services/courseLogisticsAPI.ts:133"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/bulk-status-update/verify",
+          "description": "Defined in services/courseLogisticsAPI.ts:140"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates",
+          "description": "Defined in services/courseLogisticsAPI.ts:150"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/partial-rollout",
+          "description": "Defined in services/courseLogisticsAPI.ts:161"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcel-statuses/request-otp",
+          "description": "Defined in services/courseLogisticsAPI.ts:165"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates/received-parcels-at-delivery-hub",
+          "description": "Defined in services/courseLogisticsAPI.ts:175"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/course",
+          "description": "Defined in services/coursesAPI.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/course/all",
+          "description": "Defined in services/coursesAPI.js:10"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/course/area",
+          "description": "Defined in services/coursesAPI.js:16"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/course",
+          "description": "Defined in services/coursesAPI.js:22"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/course",
+          "description": "Defined in services/coursesAPI.js:31"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/course/status",
+          "description": "Defined in services/coursesAPI.js:39"
+        },
+        {
+          "method": "DELETE",
+          "path": "/v4/logistics/course",
+          "description": "Defined in services/coursesAPI.js:46"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/credits/${shopId}/deposit",
+          "description": "Defined in services/creditApi.js:5"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/cut-off/configurations",
+          "description": "Defined in services/cutoffAPI.js:13"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/cut-off/configurations",
+          "description": "Defined in services/cutoffAPI.js:38"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/analytics/daily/hub/${hubId}?${qs.stringify(params)}",
+          "description": "Defined in services/dailyDashboardAPI.js:12"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/de/otp-parcels",
+          "description": "Defined in services/deAPI.js:4"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/de/otp-parcels/${otpRefId}/viewed",
+          "description": "Defined in services/deAPI.js:8"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations/summary",
+          "description": "Defined in services/escalationAPI.js:11"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations",
+          "description": "Defined in services/escalationAPI.js:39"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations/${escalationId}/perform-action",
+          "description": "Defined in services/escalationAPI.js:60"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/hub-managers",
+          "description": "Defined in services/escalationAPI.js:70"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/agents",
+          "description": "Defined in services/escalationAPI.js:76"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations/${issueId}/approve",
+          "description": "Defined in services/escalationAPI.js:82"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/${hubId}/escalations/${issueId}/resolve",
+          "description": "Defined in services/escalationAPI.js:89"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/remarks",
+          "description": "Defined in services/escalationAPI.js:96"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/hub-escalation-dashboard/remarks",
+          "description": "Defined in services/escalationAPI.js:101"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/finance-module/issues",
+          "description": "Defined in services/finance.js:27"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/finance-module/${issueId}/initiate",
+          "description": "Defined in services/finance.js:44"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/reports/finance",
+          "description": "Defined in services/finance.js:51"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/finance/logistics/bounced-payments",
+          "description": "Defined in services/finance.js:62"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/finance/logistics/bounced-payments/${bouncedAccountId}/resolve",
+          "description": "Defined in services/finance.js:66"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/finance/payments/bkash/balance",
+          "description": "Defined in services/finance.js:70"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/finance/payments/bkash/pending-amount",
+          "description": "Defined in services/finance.js:74"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/finance/payments/bkash/transfer/organization-wallet/transactions",
+          "description": "Defined in services/finance.js:83"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/finance/payments/bkash/transfer/organization-wallet",
+          "description": "Defined in services/finance.js:87"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/kam",
+          "description": "Defined in services/finance.js:91"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/reports/finance/download",
+          "description": "Defined in services/finance.js:95"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/advance-payment/shops/${shopId}/invoice-search",
+          "description": "Defined in services/finance.js:109"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/advance-payment/shops/${shopId}/invoices/${invoiceId}/parcels",
+          "description": "Defined in services/finance.js:115"
+        },
+        {
+          "method": "POST",
+          "path": "v4/finance/invoice/combined-invoice/image-url-for-invoice",
+          "description": "Defined in services/finance.js:121"
+        },
+        {
+          "method": "POST",
+          "path": "v4/finance/invoice/combined-invoice/bulk-mark-as-paid",
+          "description": "Defined in services/finance.js:125"
+        },
+        {
+          "method": "POST",
+          "path": "v4/finance/invoice/combined-invoice/add-jv-number",
+          "description": "Defined in services/finance.js:129"
+        },
+        {
+          "method": "GET",
+          "path": "/api/merchant/payment-details",
+          "description": "Defined in services/finance.js:133"
+        },
+        {
+          "method": "GET",
+          "path": "/api/banks/all-banks",
+          "description": "Defined in services/finance.js:137"
+        },
+        {
+          "method": "GET",
+          "path": "/api/banks/${bankId}/branches",
+          "description": "Defined in services/finance.js:141"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/finance/merchants/payment-details",
+          "description": "Defined in services/finance.js:145"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/finance/logistics/bounced-payments",
+          "description": "Defined in services/finance.js:149"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/admin/shop/24059/combined-invoices/notify-failed-payments",
+          "description": "Defined in services/finance.js:153"
+        },
+        {
+          "method": "POST",
+          "path": "v4/finance/invoice/combined-invoice/margin-transfer-reference-image",
+          "description": "Defined in services/financeV2.ts:14"
+        },
+        {
+          "method": "POST",
+          "path": "v4/finance/invoice/combined-invoice/margin-transfer-reference-number",
+          "description": "Defined in services/financeV2.ts:21"
+        },
+        {
+          "method": "GET",
+          "path": "v4/finance/invoice/combined-invoice/margin-transfer-reference",
+          "description": "Defined in services/financeV2.ts:28"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/finance/invoice/combined-invoice/margin-transfer-reference-summary",
+          "description": "Defined in services/financeV2.ts:34"
+        },
+        {
+          "method": "POST",
+          "path": "v2/finance/invoice/negative",
+          "description": "Defined in services/financeV2.ts:43"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/finance/invoice/combined-invoice",
+          "description": "Defined in services/financeV2.ts:49"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/finance/invoice/consolidated-invoice/shops",
+          "description": "Defined in services/financeV2.ts:53"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/finance/invoice/consolidated-invoice/bank-statements",
+          "description": "Defined in services/financeV2.ts:57"
+        },
+        {
+          "method": "GET",
+          "path": "/api/consolidated-invoice/download-reseller-payments",
+          "description": "Defined in services/financeV2.ts:61"
+        },
+        {
+          "method": "GET",
+          "path": "/api/consolidated-invoice/download-reseller-order-breakdown",
+          "description": "Defined in services/financeV2.ts:67"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/consolidated-invoice/invoice/${invoiceId}",
+          "description": "Defined in services/financeV2.ts:73"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/finance/logistics/settlement/prepaid/new",
+          "description": "Defined in services/financeV2.ts:77"
+        },
+        {
+          "method": "GET",
+          "path": "v2/finance/logistics/settlement/postpaid",
+          "description": "Defined in services/financeV2.ts:81"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/finance/logistics/settlement/postpaid",
+          "description": "Defined in services/financeV2.ts:87"
+        },
+        {
+          "method": "GET",
+          "path": "/fleet-requests",
+          "description": "Defined in services/fleetAPI.js:4"
+        },
+        {
+          "method": "POST",
+          "path": "/fleet-requests",
+          "description": "Defined in services/fleetAPI.js:10"
+        },
+        {
+          "method": "PUT",
+          "path": "/fleet-requests/${fleetId}",
+          "description": "Defined in services/fleetAPI.js:14"
+        },
+        {
+          "method": "PUT",
+          "path": "/fleet-requests/${fleetId}/${role}/action",
+          "description": "Defined in services/fleetAPI.js:18"
+        },
+        {
+          "method": "GET",
+          "path": "/fleet-requests/${fleetId}/rate",
+          "description": "Defined in services/fleetAPI.js:22"
+        },
+        {
+          "method": "GET",
+          "path": "/fleet-requests/sales-team-members",
+          "description": "Defined in services/fleetAPI.js:30"
+        },
+        {
+          "method": "GET",
+          "path": "/fleet-requests/${fleetId}/audit-logs",
+          "description": "Defined in services/fleetAPI.js:34"
+        },
+        {
+          "method": "GET",
+          "path": "/fleet-requests/vehicle-capacity",
+          "description": "Defined in services/fleetAPI.js:38"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hr/agents/applicant-dashboard",
+          "description": "Defined in services/hrPanelAPI.js:32"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hr/agents/applicant-dashboard/nid-info",
+          "description": "Defined in services/hrPanelAPI.js:53"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/hr/agents/applicant-dashboard/mark-nid-verified",
+          "description": "Defined in services/hrPanelAPI.js:65"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/hr/agents/applicant-dashboard/call-for-interview",
+          "description": "Defined in services/hrPanelAPI.js:76"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/hr/agents/applicant-dashboard/approve-applicant",
+          "description": "Defined in services/hrPanelAPI.js:87"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/hr/agents/applicant-dashboard/reject-applicant",
+          "description": "Defined in services/hrPanelAPI.js:98"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hr/agents/employee-dashboard",
+          "description": "Defined in services/hrPanelAPI.js:113"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/hr-recovery-module",
+          "description": "Defined in services/hrRecoveryAPI.js:19"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/issue-settlement/hr-recovery-module/hr-status/${issueId}",
+          "description": "Defined in services/hrRecoveryAPI.js:34"
+        },
+        {
+          "method": "GET",
+          "path": "/api/hubs",
+          "description": "Defined in services/hubAPI.js:5"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/hubs",
+          "description": "Defined in services/hubAPI.js:8"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/hubs",
+          "description": "Defined in services/hubAPI.js:12"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/hubs",
+          "description": "Defined in services/hubAPI.js:16"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/hubs/by-user",
+          "description": "Defined in services/hubAPI.js:22"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/access/zones/${zoneId}/hubs",
+          "description": "Defined in services/hubAPI.js:28"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/hubs/hub-zone-routes",
+          "description": "Defined in services/hubAPI.js:30"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/hubs/lists",
+          "description": "Defined in services/hubAPI.js:31"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/hubs?type=mh_hubs",
+          "description": "Defined in services/hubAPI.js:33"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/line-haul/custom-route",
+          "description": "Defined in services/hubAPI.js:40"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/linehaul/routes",
+          "description": "Defined in services/hubAPI.js:41"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/hubs?type=rmh_to_sub_hub&currentHubId=${hubId}",
+          "description": "Defined in services/hubAPI.js:43"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/hubs",
+          "description": "Defined in services/hubAPI.js:45"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/hubs/${params.id}",
+          "description": "Defined in services/hubAPI.js:86"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/hubs/hubResolutionConfigs",
+          "description": "Defined in services/hubAPI.js:90"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/areas/areaHubMapping",
+          "description": "Defined in services/hubAPI.js:94"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/hubs/${hub_id}/area/${areaId}/status",
+          "description": "Defined in services/hubAPI.js:104"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/partial-rollout",
+          "description": "Defined in services/hubAPI.js:119"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/partial-rollout",
+          "description": "Defined in services/hubAPI.js:131"
+        },
+        {
+          "method": "GET",
+          "path": "v2/logistics/hubs/${hubId}/transfer/available-receive-hubs",
+          "description": "Defined in services/hubAPI.js:135"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/payments/hub-payments",
+          "description": "Defined in services/hubPaymentAPI.js:9"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/payments/hub-payments",
+          "description": "Defined in services/hubPaymentAPI.js:16"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/payments/send-hub-payments",
+          "description": "Defined in services/hubPaymentAPI.js:21"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/payments/hub-payments/download",
+          "description": "Defined in services/hubPaymentAPI.js:50"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/download/hub-payment",
+          "description": "Defined in services/hubPaymentAPI.js:60"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/agent/upload/documents",
+          "description": "Defined in services/hubPaymentAPI.js:68"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/payments/central-hub-payments",
+          "description": "Defined in services/hubPaymentAPIV2.ts:30"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/payments/hub-payments/download",
+          "description": "Defined in services/hubPaymentAPIV2.ts:37"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/payments/central-hub-payment-transactions",
+          "description": "Defined in services/hubPaymentAPIV2.ts:45"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/payments/update-hub-payments",
+          "description": "Defined in services/hubPaymentAPIV2.ts:56"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/payments/collect-hub-payments",
+          "description": "Defined in services/hubPaymentAPIV2.ts:64"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/payments/verify-payment",
+          "description": "Defined in services/hubPaymentAPIV2.ts:76"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/payments/create-paywell-order",
+          "description": "Defined in services/hubPaymentAPIV2.ts:88"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/payments/paywell-order-status/${hubId}",
+          "description": "Defined in services/hubPaymentAPIV2.ts:99"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/payments/paywell-order-status/${payload.hubId}",
+          "description": "Defined in services/hubPaymentAPIV2.ts:112"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hyper-local/agents",
+          "description": "Defined in services/hyperlocalAgentAPI.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/shop-stores/mokam",
+          "description": "Defined in services/hyperlocalAgentAPI.js:8"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/hyper-local/agents/assign-store",
+          "description": "Defined in services/hyperlocalAgentAPI.js:12"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/agents/${agentId}/parcels/${parcelId}/action",
+          "description": "Defined in services/hyperlocalAgentAPI.js:20"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/agents/${agentId}/parcels/${parcelId}/verify",
+          "description": "Defined in services/hyperlocalAgentAPI.js:27"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/image-upload/${entityType}/${businessUnit}",
+          "description": "Defined in services/hyperlocalAgentAPI.js:34"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/partial-rollout",
+          "description": "Defined in services/hyperlocalAgentAPI.js:41"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcels/vehicleRequiredParcels",
+          "description": "Defined in services/hyperlocalAgentAPI.js:47"
+        },
+        {
+          "method": "GET",
+          "path": "v1/logistics/image-upload/${entityType}/${businessUnit}/${subOrderId}",
+          "description": "Defined in services/hyperlocalAgentAPI.js:51"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/image-upload/${entityType}/${businessUnit}/${subOrderId}/${imageLabel}",
+          "description": "Defined in services/hyperlocalAgentAPI.js:63"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/invoice/${orderId}/trackingId",
+          "description": "Defined in services/hyperlocalAgentAPI.js:70"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/reconciliation/validation",
+          "description": "Defined in services/hyperlocalAgentAPI.js:74"
+        },
+        {
+          "method": "POST",
+          "path": "https://redxhub.ihelpbd.com/ihelp_call_api/click_to_call.php",
+          "description": "Defined in services/iHelpBD.ts:15"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/issues",
+          "description": "Defined in services/issueAPI.js:28"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}",
+          "description": "Defined in services/issueAPI.js:50"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues",
+          "description": "Defined in services/issueAPI.js:55"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/issues/tree",
+          "description": "Defined in services/issueAPI.js:61"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/can-raise-issue",
+          "description": "Defined in services/issueAPI.js:71"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/validate-parcel-id",
+          "description": "Defined in services/issueAPI.js:75"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/issues/types",
+          "description": "Defined in services/issueAPI.js:79"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/comments",
+          "description": "Defined in services/issueAPI.js:83"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/comments",
+          "description": "Defined in services/issueAPI.js:87"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/start-investigation",
+          "description": "Defined in services/issueAPI.js:93"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/change-type",
+          "description": "Defined in services/issueAPI.js:99"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/compensate",
+          "description": "Defined in services/issueAPI.js:106"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/resolve",
+          "description": "Defined in services/issueAPI.js:113"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/issues/modules",
+          "description": "Defined in services/issueAPI.js:116"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/can-perform-change",
+          "description": "Defined in services/issueAPI.js:119"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/issues/severities",
+          "description": "Defined in services/issueAPI.js:122"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/change-severity",
+          "description": "Defined in services/issueAPI.js:132"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/resolve-by-admin",
+          "description": "Defined in services/issueAPI.js:142"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/issue-settlement/high-value-compensation-module/compensation-status/${issueId}",
+          "description": "Defined in services/issueAPI.js:149"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/parcel-charge-details",
+          "description": "Defined in services/issueAPI.js:156"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/parcel-charge-details",
+          "description": "Defined in services/issueAPI.js:165"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/issue-settlement/issues/${issueId}/approve-by-ir",
+          "description": "Defined in services/issueAPI.js:175"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/tree",
+          "description": "Defined in services/issueV3API.js:8"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/tree",
+          "description": "Defined in services/issueV3API.js:15"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/actions/bulk-issue-process-status",
+          "description": "Defined in services/issueV3API.js:21"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/${moduleCode}",
+          "description": "Defined in services/issueV3API.js:44"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/${moduleCode}",
+          "description": "Defined in services/issueV3API.js:52"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/comments",
+          "description": "Defined in services/issueV3API.js:61"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/comments?issueId=${issueId}",
+          "description": "Defined in services/issueV3API.js:68"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/photos/${issueId}",
+          "description": "Defined in services/issueV3API.js:72"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/severities",
+          "description": "Defined in services/issueV3API.js:76"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/severities",
+          "description": "Defined in services/issueV3API.js:83"
+        },
+        {
+          "method": "PUT",
+          "path": "${BASE_URL}/actions/${moduleCode}",
+          "description": "Defined in services/issueV3API.js:91"
+        },
+        {
+          "method": "POST",
+          "path": "${BASE_URL}/validate-issue-creation",
+          "description": "Defined in services/issueV3API.js:95"
+        },
+        {
+          "method": "POST",
+          "path": "${BASE_URL}/${moduleCode}",
+          "description": "Defined in services/issueV3API.js:103"
+        },
+        {
+          "method": "POST",
+          "path": "${BASE_URL}/bulk/${moduleCode}",
+          "description": "Defined in services/issueV3API.js:107"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/issue/in-transit-bulk-lost",
+          "description": "Defined in services/issueV3API.js:111"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/issue/in-transit-bulk",
+          "description": "Defined in services/issueV3API.js:115"
+        },
+        {
+          "method": "POST",
+          "path": "${BASE_URL}/severity",
+          "description": "Defined in services/issueV3API.js:119"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/issue/${moduleCode}/${issueId}/parcel-charge-details",
+          "description": "Defined in services/issueV3API.js:123"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/remarks",
+          "description": "Defined in services/issueV3API.js:129"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/${moduleCode}/sla-escalation-level-defs",
+          "description": "Defined in services/issueV3API.js:133"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/${moduleCode}/sla-escalation-level-defs",
+          "description": "Defined in services/issueV3API.js:140"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/${moduleCode}/sla-escalation-level-defs",
+          "description": "Defined in services/issueV3API.js:146"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/operational-zones",
+          "description": "Defined in services/issueV3API.js:152"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/operational-zones",
+          "description": "Defined in services/issueV3API.js:157"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/operational-zones/hubs",
+          "description": "Defined in services/issueV3API.js:161"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/operational-zones/hubs",
+          "description": "Defined in services/issueV3API.js:168"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+          "description": "Defined in services/issueV3API.js:174"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+          "description": "Defined in services/issueV3API.js:178"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+          "description": "Defined in services/issueV3API.js:182"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+          "description": "Defined in services/issueV3API.js:186"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/issue/actions/in_transit_lost_damage",
+          "description": "Defined in services/issueV3API.js:190"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/issue/comments-template",
+          "description": "Defined in services/issueV3API.js:197"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/download/${moduleCode}",
+          "description": "Defined in services/issueV3API.js:226"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/finance?isLimitDisable=true&financeStatus[]=open",
+          "description": "Defined in services/issueV3API.js:232"
+        },
+        {
+          "method": "GET",
+          "path": "${BASE_URL}/actions/issue-process-status?issueId=${issueId}",
+          "description": "Defined in services/issueV3API.js:236"
+        },
+        {
+          "method": "PUT",
+          "path": "v3/logistics/issue/actions/finance/bulk-upload",
+          "description": "Defined in services/issueV3API.js:240"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/issue/bulk-upload/sap_ops",
+          "description": "Defined in services/issueV3API.js:244"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/issue/actions/high_value_compensation/bulk-upload",
+          "description": "Defined in services/issueV3API.js:248"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/bulk",
+          "description": "Defined in services/lineHaulApi.ts:21"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/line-haul/custom-route",
+          "description": "Defined in services/lineHaulApi.ts:39"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/line-haul/trip/agent",
+          "description": "Defined in services/lineHaulApi.ts:43"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/bulk/bulk-groups",
+          "description": "Defined in services/lineHaulApi.ts:54"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/agent-control/agents/list",
+          "description": "Defined in services/lineHaulBulkDropApi.js:4"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/bulk/bulk-update",
+          "description": "Defined in services/lineHaulBulkDropApi.js:10"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/bulk/bulk-update-hack",
+          "description": "Defined in services/lineHaulBulkDropApi.js:14"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/line-haul/trip/agent/end-trip",
+          "description": "Defined in services/lineHaulBulkDropApi.js:18"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/line-haul/trip/agent",
+          "description": "Defined in services/lineHaulBulkDropApi.js:22"
+        },
+        {
+          "method": "GET",
+          "path": "/supplier/list",
+          "description": "Defined in services/lineHaulCostApi.js:4"
+        },
+        {
+          "method": "PUT",
+          "path": "/inventory/vendors/${vendorId}",
+          "description": "Defined in services/lineHaulCostApi.js:10"
+        },
+        {
+          "method": "POST",
+          "path": "/inventory/vendors",
+          "description": "Defined in services/lineHaulCostApi.js:16"
+        },
+        {
+          "method": "PUT",
+          "path": "/inventory/vendors/${vendorId}",
+          "description": "Defined in services/lineHaulCostApi.js:22"
+        },
+        {
+          "method": "PUT",
+          "path": "/inventory/vendors/${vendorId}",
+          "description": "Defined in services/lineHaulCostApi.js:28"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/line-haul/truck-cost",
+          "description": "Defined in services/lineHaulCostApi.js:32"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/line-haul/truck-cost/${truckCostId}/audit-logs",
+          "description": "Defined in services/lineHaulCostApi.js:38"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/line-haul/truck-cost/${truckCostId}",
+          "description": "Defined in services/lineHaulCostApi.js:44"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/line-haul/truck-cost",
+          "description": "Defined in services/lineHaulCostApi.js:48"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/line-haul/truck-cost/${truckCostId}/add-damage",
+          "description": "Defined in services/lineHaulCostApi.js:52"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcel-movement",
+          "description": "Defined in services/liquidationParcelsAPI.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/reasons",
+          "description": "Defined in services/liquidationParcelsAPI.js:14"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates",
+          "description": "Defined in services/liquidationParcelsAPI.js:18"
+        },
+        {
+          "method": "POST",
+          "path": "https://api.manydial.com/v1/portal/click-to-call",
+          "description": "Defined in services/manyDial.ts:15"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-wallet/current-balance/${shopId}",
+          "description": "Defined in services/merchantWalletApi.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/notifications/scenario",
+          "description": "Defined in services/notificationAPI.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/notifications/scenario/template?${qs.stringify(payload)}",
+          "description": "Defined in services/notificationAPI.js:14"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/notifications/recipients",
+          "description": "Defined in services/notificationAPI.js:27"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/notifications",
+          "description": "Defined in services/notificationAPI.js:54"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/hulk/upload/url",
+          "description": "Defined in services/notificationHulkUploadApi.ts:9"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/hulk/upload/confirm",
+          "description": "Defined in services/notificationHulkUploadApi.ts:20"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hyper-local/parcels/order-summary-pdf-data",
+          "description": "Defined in services/orderSummaryApi.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/parcels/search?searchType=${searchType}&searchTerm=${searchTerm}&include=${includeQuery}",
+          "description": "Defined in services/parcelAPI.js:9"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/parcels/audit-logs?${searchType}=${searchTerm}",
+          "description": "Defined in services/parcelAPI.js:15"
+        },
+        {
+          "method": "GET",
+          "path": "/api/logistics/agent/${agentId}/parcels-new?status=pickup-pending&status=delivery-in-progress&status=delivered&status=agent-returning&status=agent-lost",
+          "description": "Defined in services/parcelAPI.js:18"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/hyper-local/parcels/${encodedParcelId}/invoice/${invoiceNumber}",
+          "description": "Defined in services/parcelAPI.js:23"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/agent/${agentId}/parcel/${parcelId}",
+          "description": "Defined in services/parcelAPI.js:26"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/parcels/search?searchType=trackingId&searchTerm=${trackingId}",
+          "description": "Defined in services/parcelAPI.js:29"
+        },
+        {
+          "method": "GET",
+          "path": "/api/fleets/fleet-requests/vehicle-capacity",
+          "description": "Defined in services/parcelAPI.js:32"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/admin/parcels/${parcelId}",
+          "description": "Defined in services/parcelAPI.js:48"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/hyper-local/parcels/modify-order/${invoiceNumber}/update-quantity",
+          "description": "Defined in services/parcelAPI.js:61"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/hyper-local/parcels/modify-order/${invoiceNumber}/cancel-item",
+          "description": "Defined in services/parcelAPI.js:68"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates",
+          "description": "Defined in services/parcelAPI.js:75"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/4pl/parcels",
+          "description": "Defined in services/parcelAPI.js:79"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates/mokam-extension",
+          "description": "Defined in services/parcelAPI.js:83"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/admin/shop/${shopId}/logistics/parcels/${parcelId}/cash",
+          "description": "Defined in services/parcelAPI.js:87"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/admin/shop/${shopId}/logistics/parcels/${parcelId}/value",
+          "description": "Defined in services/parcelAPI.js:95"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/parcel/${trackingId}/partial",
+          "description": "Defined in services/parcelAPI.js:102"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/exchange/parcel",
+          "description": "Defined in services/parcelAPI.js:109"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/admin/agents/${agentId}/delivered-parcels-cash-summary${\r\n      packageType ? ",
+          "description": "Defined in services/parcelAPI.js:113"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/admin/agents/${agentId}/actions/confirm-baki-collections-received",
+          "description": "Defined in services/parcelAPI.js:121"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/admin/shop/${shopID}/logistics/parcels",
+          "description": "Defined in services/parcelAPI.js:127"
+        },
+        {
+          "method": "GET",
+          "path": "v2/admin/shop/${shopId}/logistics/bulk-parcel-create-log",
+          "description": "Defined in services/parcelAPI.js:134"
+        },
+        {
+          "method": "GET",
+          "path": "/api/logistics/parcels",
+          "description": "Defined in services/parcelAPI.js:151"
+        },
+        {
+          "method": "PUT",
+          "path": "v2/parcels/${parcelId}/customer-phone",
+          "description": "Defined in services/parcelAPI.js:170"
+        },
+        {
+          "method": "GET",
+          "path": "api/logistics/parcels${qs.stringify(paramas, {\r\n      indices: false,\r\n      addQueryPrefix: true,\r\n    })}",
+          "description": "Defined in services/parcelAPI.js:193"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcel-movement",
+          "description": "Defined in services/parcelAPI.js:203"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates",
+          "description": "Defined in services/parcelAPI.js:207"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/download/run-sheet?bulkId=${bulkId}",
+          "description": "Defined in services/parcelAPI.js:211"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/parcels/${trackingId}/invoice-info",
+          "description": "Defined in services/parcelAPI.js:215"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/parcels/${parcelId}/delivery-address",
+          "description": "Defined in services/parcelAPI.js:219"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/hyper-local/parcels/fetch-product-breakdown",
+          "description": "Defined in services/parcelAPI.js:226"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/hyper-local/spot-sale",
+          "description": "Defined in services/parcelAPI.js:232"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/hyper-local/parcels/notify-crt-reconciliation",
+          "description": "Defined in services/parcelAPI.js:246"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/import/update-imported-parcels",
+          "description": "Defined in services/parcelAPI.js:255"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/issue/actions/sapops-resolve-issue",
+          "description": "Defined in services/parcelAPI.js:261"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/scan-parcel/mark-stagnant-parcel-reconciled",
+          "description": "Defined in services/parcelAPI.js:267"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/admin/shop/999999999/pickup",
+          "description": "Defined in services/parcelAPI.js:273"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/admin/shop/${shopId}/pickup/agent",
+          "description": "Defined in services/parcelAPI.js:277"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/admin/shop/${shopId}/pickup",
+          "description": "Defined in services/parcelAPI.js:288"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/admin/shop/${shopId}/pickup",
+          "description": "Defined in services/parcelAPI.js:302"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/return-otp/request",
+          "description": "Defined in services/parcelAPI.js:317"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/return-otp/verify",
+          "description": "Defined in services/parcelAPI.js:324"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/return-otp/return-otp-ttl",
+          "description": "Defined in services/parcelAPI.js:328"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/reasons",
+          "description": "Defined in services/parcelAPI.js:334"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcels/kam-alignment-update",
+          "description": "Defined in services/parcelAPI.js:338"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcels/store-hub-on-hold-validation-remark",
+          "description": "Defined in services/parcelAPI.js:346"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/ratifications/delivery-area-ratifications",
+          "description": "Defined in services/parcelAPI.js:353"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/ratifications/delivery-area-ratifications",
+          "description": "Defined in services/parcelAPI.js:357"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/parcels/${trackingId}/comment",
+          "description": "Defined in services/parcelAPI.js:361"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/ratifications/delivery-area-ratifications/user-performance",
+          "description": "Defined in services/parcelAPI.js:365"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/image-upload/${params.entityType}/${params.businessUnit}/${params.entityId}",
+          "description": "Defined in services/parcelAPI.js:372"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/download/logistics-mushok/${invoiceId}",
+          "description": "Defined in services/pdfAPI.ts:14"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/inbound-pickup/${shopId}/create",
+          "description": "Defined in services/pickupAPI.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/inbound-pickup/${shopId}/bulk-create-status",
+          "description": "Defined in services/pickupAPI.js:8"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/inbound-pickup/${shopId}",
+          "description": "Defined in services/pickupAPI.js:12"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/inbound-pickup/${shopId}/bulk-scan",
+          "description": "Defined in services/pickupAPI.js:16"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcel-movement/merchant",
+          "description": "Defined in services/podAPI.ts:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/image-upload/parcel-pod-proof/redx/${trackingId}",
+          "description": "Defined in services/podAPI.ts:8"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/pod-parcels/upload-proof",
+          "description": "Defined in services/podAPI.ts:12"
+        },
+        {
+          "method": "PUT",
+          "path": "v4/logistics/pod-parcels/verify/${trackingId}",
+          "description": "Defined in services/podAPI.ts:16"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoices",
+          "description": "Defined in services/postpaidInvoicesApi.js:11"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/finance/logistics/settlement/postpaid/export-merchant-invoice-archive",
+          "description": "Defined in services/postpaidInvoicesApi.js:17"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoice/${invoiceId}/settled",
+          "description": "Defined in services/postpaidInvoicesApi.js:26"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/finance/invoice/postpaid/collection",
+          "description": "Defined in services/postpaidInvoicesApi.js:35"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/finance/invoice/postpaid/collection/subsidiary",
+          "description": "Defined in services/postpaidInvoicesApi.js:39"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/finance/invoice/postpaid/collection/breakdown",
+          "description": "Defined in services/postpaidInvoicesApi.js:47"
+        },
+        {
+          "method": "POST",
+          "path": "v4/finance/invoice/postpaid/collection/image-url-for-deduction",
+          "description": "Defined in services/postpaidInvoicesApi.js:57"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoices",
+          "description": "Defined in services/postpaidInvoicesApi.js:64"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/finance/logistics/settlement/postpaid/export-merchant-invoice-archive",
+          "description": "Defined in services/postpaidInvoicesApi.js:70"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/finance/logistics/settlement/postpaid/combined-invoices",
+          "description": "Defined in services/postpaidInvoicesApi.js:77"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/finance/logistics/settlement/postpaid/merchant-combined-invoice/${invoiceId}/details",
+          "description": "Defined in services/postpaidInvoicesApi.js:83"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/finance/logistics/settlement/postpaid/combined-invoice/${invoiceId}/paid-cash-collection",
+          "description": "Defined in services/postpaidInvoicesApi.js:89"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/finance/invoice/postpaid",
+          "description": "Defined in services/postpaidInvoicesApi.js:95"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/finance/logistics/settlement/postpaid/combined-invoices/export",
+          "description": "Defined in services/postpaidInvoicesApi.js:102"
+        },
+        {
+          "method": "GET",
+          "path": "v2/finance/logistics/settlement/postpaid/postpaid-invoices",
+          "description": "Defined in services/postpaidInvoicesApi.js:109"
+        },
+        {
+          "method": "GET",
+          "path": "v1/download/logistics-mushok/${invoiceId}?shopId=${shopId}&requestType=merchant",
+          "description": "Defined in services/postpaidInvoicesApi.js:115"
+        },
+        {
+          "method": "POST",
+          "path": "https://pdfgen.shopup.com.bd/gen?",
+          "description": "Defined in services/postpaidInvoicesApi.js:121"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoice/${invoiceId}/settled",
+          "description": "Defined in services/postpaidInvoicesApi.js:129"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/finance/logistics/settlement/postpaid/postpaid-invoice/${invoiceId}/reSync",
+          "description": "Defined in services/postpaidInvoicesApi.js:136"
+        },
+        {
+          "method": "POST",
+          "path": "http://localhost:5974/print-bulk/",
+          "description": "Defined in services/printAPI.js:47"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/zpl-templates/${requiredTemplate}",
+          "description": "Defined in services/printAPI.js:58"
+        },
+        {
+          "method": "POST",
+          "path": "http://localhost:5974/print-bulk/",
+          "description": "Defined in services/printAPI.js:83"
+        },
+        {
+          "method": "POST",
+          "path": "http://localhost:4005/print/",
+          "description": "Defined in services/printAPI.js:103"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/zpl-templates/${requiredTemplate}/${parcelId}",
+          "description": "Defined in services/printAPI.js:124"
+        },
+        {
+          "method": "POST",
+          "path": "http://localhost:5974/print/",
+          "description": "Defined in services/printAPI.js:151"
+        },
+        {
+          "method": "POST",
+          "path": "http://localhost:5974/print/",
+          "description": "Defined in services/printAPI.js:165"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/zpl-templates/redx-zpl-bulk-transfer-id",
+          "description": "Defined in services/printAPI.js:176"
+        },
+        {
+          "method": "POST",
+          "path": "http://localhost:5974/print/",
+          "description": "Defined in services/printAPI.js:189"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/zpl-templates/redx-zpl-bulk-dispatch",
+          "description": "Defined in services/printAPI.js:197"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/bulk/zpl-info?bulkId=${bulkTransferId}",
+          "description": "Defined in services/printAPI.js:201"
+        },
+        {
+          "method": "POST",
+          "path": "http://localhost:5974/print/",
+          "description": "Defined in services/printAPI.js:205"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/parcels/print-logs",
+          "description": "Defined in services/printAPI.js:213"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/reasons",
+          "description": "Defined in services/reasonsApi.js:9"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/reasons/status-action",
+          "description": "Defined in services/reasonsApi.js:19"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/parcels",
+          "description": "Defined in services/receiveApi.js:17"
+        },
+        {
+          "method": "POST",
+          "path": "/v4/logistics/parcels",
+          "description": "Defined in services/receiveApi.js:33"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates",
+          "description": "Defined in services/receiveApi.js:53"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/bulk-status-updates",
+          "description": "Defined in services/receiveApi.js:57"
+        },
+        {
+          "method": "GET",
+          "path": "/inventory",
+          "description": "Defined in services/receiveApi.js:61"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/consignments/dispatchLmh-pdfData",
+          "description": "Defined in services/receiveApi.js:69"
+        },
+        {
+          "method": "GET",
+          "path": "v1/logistics/hyper-local/parcels/${trackingId}/trade-discount",
+          "description": "Defined in services/reconciliationApi.js:4"
+        },
+        {
+          "method": "PUT",
+          "path": "v1/logistics/hyper-local/parcels/${trackingId}/trade-discount",
+          "description": "Defined in services/reconciliationApi.js:11"
+        },
+        {
+          "method": "GET",
+          "path": "v4/eloan/baki-credit/retailer?phoneNumber=${retailerPhone}",
+          "description": "Defined in services/reconciliationApi.js:20"
+        },
+        {
+          "method": "POST",
+          "path": "v4/logistics/baki-independent-collections",
+          "description": "Defined in services/reconciliationApi.js:24"
+        },
+        {
+          "method": "PATCH",
+          "path": "v4/logistics/baki-independent-collections/${collectionId}",
+          "description": "Defined in services/reconciliationApi.js:28"
+        },
+        {
+          "method": "DELETE",
+          "path": "v4/logistics/baki-independent-collections/${collectionId}",
+          "description": "Defined in services/reconciliationApi.js:34"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/ops-cache/getItem",
+          "description": "Defined in services/redisAPI.ts:9"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/ops-cache/setItem",
+          "description": "Defined in services/redisAPI.ts:15"
+        },
+        {
+          "method": "GET",
+          "path": "/deduction/get_deductions",
+          "description": "Defined in services/salaryApi.ts:130"
+        },
+        {
+          "method": "GET",
+          "path": "/deduction/get_deduction_details",
+          "description": "Defined in services/salaryApi.ts:137"
+        },
+        {
+          "method": "GET",
+          "path": "/hulk/upload/get_upload_url",
+          "description": "Defined in services/salaryApi.ts:144"
+        },
+        {
+          "method": "POST",
+          "path": "/hulk/upload/confirm_upload",
+          "description": "Defined in services/salaryApi.ts:152"
+        },
+        {
+          "method": "POST",
+          "path": "/deduction/approve_deductions",
+          "description": "Defined in services/salaryApi.ts:160"
+        },
+        {
+          "method": "GET",
+          "path": "/hulk/upload/get_template_url?upload_type=${uploadType}",
+          "description": "Defined in services/salaryApi.ts:165"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/agents",
+          "description": "Defined in services/salaryApi.ts:172"
+        },
+        {
+          "method": "GET",
+          "path": "/redx_salary/agent_bonus_configurations",
+          "description": "Defined in services/salaryApi.ts:177"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/approvals",
+          "description": "Defined in services/salaryApi.ts:185"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/approvals",
+          "description": "Defined in services/salaryApi.ts:190"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/approvals",
+          "description": "Defined in services/salaryApi.ts:195"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/salary/delivery-agents-payable/salaries",
+          "description": "Defined in services/salarySettleAPI.js:12"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/salary/delivery-agents-payable/check-settlement",
+          "description": "Defined in services/salarySettleAPI.js:26"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/salary/delivery-agents-payable/settle",
+          "description": "Defined in services/salarySettleAPI.js:36"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/salary/agent-incentives",
+          "description": "Defined in services/salarySettleAPI.js:44"
+        },
+        {
+          "method": "GET",
+          "path": "/api/shop/shops-name",
+          "description": "Defined in services/shopAPI.js:21"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/redx/shops",
+          "description": "Defined in services/shopAPI.js:33"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/shop-stores/${shopId}?status=${status}",
+          "description": "Defined in services/shopAPI.js:46"
+        },
+        {
+          "method": "GET",
+          "path": "/api/shop/shops-details?shop=${shopId}",
+          "description": "Defined in services/shopAPI.js:50"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/admin/update-shop-user-phone",
+          "description": "Defined in services/shopAPI.js:54"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-onboarding/requests",
+          "description": "Defined in services/shopAPI.js:70"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-onboarding/${deliveryId}/onboard-settings",
+          "description": "Defined in services/shopAPI.js:81"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/merchant-onboarding/${deliveryId}/onboard-settings",
+          "description": "Defined in services/shopAPI.js:85"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/merchant-onboarding/${deliveryId}/onboard-settings",
+          "description": "Defined in services/shopAPI.js:93"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings",
+          "description": "Defined in services/shopAPI.js:100"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings",
+          "description": "Defined in services/shopAPI.js:106"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-onboarding/charge-category-settings",
+          "description": "Defined in services/shopAPI.js:114"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings/upload/certificate-photo",
+          "description": "Defined in services/shopAPI.js:126"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings",
+          "description": "Defined in services/shopAPI.js:133"
+        },
+        {
+          "method": "PUT",
+          "path": "/v1/logistics/merchant-onboarding/${deliveryId}/payment-settings",
+          "description": "Defined in services/shopAPI.js:140"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-onboarding/${shopId}/referrer-info",
+          "description": "Defined in services/shopAPI.js:146"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-product-type/parent-category",
+          "description": "Defined in services/shopAPI.js:150"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-product-type/child-category?parentId=${parentId}",
+          "description": "Defined in services/shopAPI.js:154"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/merchant-product-type/default-selected/category?shopId=${shopId}",
+          "description": "Defined in services/shopAPI.js:160"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/logistics/merchant-product-type/update-type-sub-type?shopId=${shopId}",
+          "description": "Defined in services/shopAPI.js:166"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/shop-stores/${shopId}",
+          "description": "Defined in services/shopAPI.js:176"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/pricing/shop/${shopId}",
+          "description": "Defined in services/shopAPI.js:180"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logistics/advance-payment/shops",
+          "description": "Defined in services/shopAPI.js:184"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/shops/logistics/${shopId}/shop-configs",
+          "description": "Defined in services/shopAPI.js:188"
+        },
+        {
+          "method": "GET",
+          "path": "/client-config/parent-shop",
+          "description": "Defined in services/shopAPI.js:192"
+        },
+        {
+          "method": "GET",
+          "path": "/client-config/parent-shop/mapping?shopId=${shopId}",
+          "description": "Defined in services/shopAPI.js:196"
+        },
+        {
+          "method": "PUT",
+          "path": "/client-config/parent-shop/mapping",
+          "description": "Defined in services/shopAPI.js:200"
+        },
+        {
+          "method": "POST",
+          "path": "/client-config/parent-shop",
+          "description": "Defined in services/shopAPI.js:204"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/shops/add-shop-config",
+          "description": "Defined in services/shopAPI.js:208"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/shops/remove-shop-config",
+          "description": "Defined in services/shopAPI.js:212"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/parcels/status/cash-received",
+          "description": "Defined in services/shopAPI.js:216"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/finance/logistics/settlement/prepaid/new",
+          "description": "Defined in services/shopAPI.js:220"
+        },
+        {
+          "method": "GET",
+          "path": "/api/shop/shops-name",
+          "description": "Defined in services/shopAPI.js:224"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/finance/logistics/settlement/prepaid/single-invoice",
+          "description": "Defined in services/shopAPI.js:228"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/agent/upload/documents",
+          "description": "Defined in services/uploadAPI.js:5"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/payments/upload/documents",
+          "description": "Defined in services/uploadAPI.js:9"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/image-upload/shop/redx/${shopId}",
+          "description": "Defined in services/uploadAPI.js:12"
+        },
+        {
+          "method": "GET",
+          "path": "/hulk/upload/get_upload_url?upload_type=${uploadType}",
+          "description": "Defined in services/uploadAPI.js:16"
+        },
+        {
+          "method": "POST",
+          "path": "/hulk/upload/confirm_upload",
+          "description": "Defined in services/uploadAPI.js:22"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/admin/any-table-update/allowed-tables",
+          "description": "Defined in pages/admin/bulk-update-any.js:15"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/4pl/finance/payment/${paymentInvoiceId}",
+          "description": "Defined in services/fourpl/fourplApi.ts:16"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/4pl/finance/verify-payment/${hubId}",
+          "description": "Defined in services/fourpl/fourplApi.ts:41"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/4pl/finance/parcels/${parcelId}/cash",
+          "description": "Defined in services/fourpl/fourplApi.ts:55"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/4pl/parcels/fourpl-parcels",
+          "description": "Defined in services/fourpl/fourplApi.ts:64"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/4pl/parcels/export",
+          "description": "Defined in services/fourpl/fourplApi.ts:86"
+        },
+        {
+          "method": "POST",
+          "path": "v4/logistics/4pl/action/${action}",
+          "description": "Defined in services/fourpl/fourplApi.ts:93"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/bulk",
+          "description": "Defined in services/logistics/lineHaulApi.ts:24"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/bulk/bulk-groups",
+          "description": "Defined in services/logistics/lineHaulApi.ts:31"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/bulk/individual-bulk-group",
+          "description": "Defined in services/logistics/lineHaulApi.ts:38"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/line-haul/custom-route",
+          "description": "Defined in services/logistics/lineHaulApi.ts:45"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/agent-control/agents/list",
+          "description": "Defined in services/logistics/lineHaulApi.ts:52"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/line-haul/trip/agent",
+          "description": "Defined in services/logistics/lineHaulApi.ts:58"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/line-haul/trip/hub-trips",
+          "description": "Defined in services/logistics/lineHaulApi.ts:79"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/line-haul/trip/trip-mode",
+          "description": "Defined in services/logistics/lineHaulApi.ts:85"
+        },
+        {
+          "method": "PUT",
+          "path": "/v4/logistics/line-haul/trip/add-bulks",
+          "description": "Defined in services/logistics/lineHaulApi.ts:91"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/logistics/line-haul/trip/pending-bulks",
+          "description": "Defined in services/logistics/lineHaulApi.ts:102"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/line-haul/trip/agent/end-trip",
+          "description": "Defined in services/logistics/lineHaulApi.ts:108"
+        },
+        {
+          "method": "GET",
+          "path": "/supplier/list_with_address",
+          "description": "Defined in services/logistics/vehicleDispatchApi.ts:22"
+        },
+        {
+          "method": "GET",
+          "path": "/inventory",
+          "description": "Defined in services/logistics/vehicleDispatchApi.ts:29"
+        },
+        {
+          "method": "GET",
+          "path": "/fleet-requests/configs/form-options",
+          "description": "Defined in services/logistics/vehicleDispatchApi.ts:39"
+        },
+        {
+          "method": "GET",
+          "path": "fleet-requests/vehicle-capacity",
+          "description": "Defined in services/logistics/vehicleDispatchApi.ts:46"
+        },
+        {
+          "method": "POST",
+          "path": "/inventory/bulk-update-inventory",
+          "description": "Defined in services/logistics/vehicleDispatchApi.ts:54"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/line-haul/custom-route",
+          "description": "Defined in services/logistics/vehicleDispatchApi.ts:65"
+        },
+        {
+          "method": "DELETE",
+          "path": "v3/logistics/line-haul/custom-route/${routeId}",
+          "description": "Defined in services/logistics/vehicleDispatchApi.ts:73"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/line-haul/custom-route",
+          "description": "Defined in services/logistics/vehicleDispatchApi.ts:80"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/import/invoice-numbers",
+          "description": "Defined in services/pickupbm/pickupBmApi.ts:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/b2b/consignment",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:10"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/b2b/consignment/admin/${shopId}",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:70"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/b2b/consignment/admin/${shopId}/${parcelId}",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:75"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/logistics/b2b/consignment/truck/${parcelId}",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:81"
+        },
+        {
+          "method": "DELETE",
+          "path": "/v2/logistics/b2b/consignment/${parcelId}/truck/${truckId}",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:89"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/b2b/consignment/send-price/${parcelId}",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:93"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/b2b/consignment/admin/shops",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:97"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/areas",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:102"
+        },
+        {
+          "method": "PUT",
+          "path": "/v2/logistics/b2b/consignment/${parcelId}/mark-delivered",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:106"
+        },
+        {
+          "method": "DELETE",
+          "path": "/v2/logistics/b2b/consignment/${parcelId}",
+          "description": "Defined in services/redxB2b/consignmentAPI.js:110"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/bulk-fetch",
+          "description": "Defined in services/redxC2c/conditionDisbursementsAPI.ts:55"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/consignments",
+          "description": "Defined in services/redxC2c/consignmentApi.js:5"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/received-at-first-mile-hub",
+          "description": "Defined in services/redxC2c/consignmentApi.js:16"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/send-to-mother-hub",
+          "description": "Defined in services/redxC2c/consignmentApi.js:26"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/dispatch-to-last-mile-hub",
+          "description": "Defined in services/redxC2c/consignmentApi.js:36"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/direct-dispatch",
+          "description": "Defined in services/redxC2c/consignmentApi.js:46"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/dispatch-to-agent",
+          "description": "Defined in services/redxC2c/consignmentApi.js:56"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/received-at-last-mile-hub",
+          "description": "Defined in services/redxC2c/consignmentApi.js:67"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/delivered",
+          "description": "Defined in services/redxC2c/consignmentApi.js:77"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/parcels",
+          "description": "Defined in services/redxC2c/consignmentApi.js:87"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/parcels",
+          "description": "Defined in services/redxC2c/consignmentApi.js:97"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/download/download-stickers/${consignmentId}",
+          "description": "Defined in services/redxC2c/consignmentApi.js:108"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/returned",
+          "description": "Defined in services/redxC2c/consignmentApi.js:116"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/actions/delivery-payment-collected",
+          "description": "Defined in services/redxC2c/consignmentApi.js:126"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/actions/${action}",
+          "description": "Defined in services/redxC2c/consignmentApi.js:137"
+        },
+        {
+          "method": "DELETE",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}",
+          "description": "Defined in services/redxC2c/consignmentApiV2.ts:18"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/consignments",
+          "description": "Defined in services/redxC2c/consignmentApiV2.ts:31"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}/parcels",
+          "description": "Defined in services/redxC2c/consignmentApiV2.ts:48"
+        },
+        {
+          "method": "GET",
+          "path": "/v4/redx/shops",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:4"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/shops",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:10"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/shops/filters",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:16"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/c2c/offline/shops/${shopId}",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:20"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/shops",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:26"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/sales-points",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:32"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/sales-points/users-sales-points",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:38"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/sales-points/agents",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:44"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/c2c/offline/consignments/conditionCharge",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:50"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/c2c/offline/sales-points/${salesPointId}",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:56"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/sales-points",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:62"
+        },
+        {
+          "method": "POST",
+          "path": "/v3/logistics/c2c/offline/consignments/create",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:68"
+        },
+        {
+          "method": "PUT",
+          "path": "/v3/logistics/c2c/offline/consignments/${consignmentId}",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:74"
+        },
+        {
+          "method": "GET",
+          "path": "v1/download/c2c-consignment/${consignmentId}",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:80"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/logistics/pricing/category-wise-pricing/cargo_parcel",
+          "description": "Defined in services/redxC2c/consignmentRevampApi.js:83"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/download/hub-payment",
+          "description": "Defined in components/c2c/cash-management/DownloadAgentsSummary.js:18"
+        },
+        {
+          "method": "GET",
+          "path": "/v3/logistics/issue/photos/${issueId}",
+          "description": "Defined in components/issue/ir/IssueDetailModal.js:131"
+        }
+      ],
+      "patterns": [
+        "Request interceptors",
+        "Response interceptors"
+      ]
+    },
+    "dataModels": {
+      "models": [],
+      "patterns": []
+    },
+    "conventions": {
+      "fileNaming": "mixed",
+      "componentNaming": "mixed",
+      "variableNaming": "camelCase (inferred)",
+      "functionNaming": "camelCase; hooks prefixed with \"use\"",
+      "directoryStructure": "theme, config, ui, hooks, routing, state, api, types",
+      "codeStyle": [
+        "Prettier (.prettierrc)",
+        "ESLint (.eslintrc.json)"
+      ],
+      "commitStyle": "Commitlint enforced"
+    },
+    "constraints": {
+      "browserSupport": [],
+      "performance": [],
+      "security": [],
+      "dependencies": [
+        "next",
+        "react",
+        "typescript",
+        "antd",
+        "emotion",
+        "reduxToolkit",
+        "swr",
+        "axios"
+      ],
+      "devDependencies": [
+        "typescript",
+        "eslint",
+        "prettier",
+        "commitlint"
+      ]
+    }
+  },
+  "generatedAt": "2026-02-21T06:18:36.156Z",
+  "rawContext": {
+    "directoryTree": "assets\nconfig\ncomponents\nhooks\npages\nredux\nservices\ntypes\nconfig/styles\ncomponents/advance-payment\ncomponents/animations\ncomponents/area-approval\ncomponents/area-change-modal\ncomponents/area-manager\ncomponents/area-rectification\ncomponents/area-update\ncomponents/authorize\ncomponents/banks\ncomponents/bulk-upload\ncomponents/c2c",
+    "keyFileSummaries": [
+      {
+        "path": "project-dna/manifest.json",
+        "summary": "Stack: {\"next\":true,\"react\":true,\"typescript\":true,\"antd\":true,\"emotion\":true,\"reduxToolkit\":true,\"swr\":true,\"axios\":true}"
+      },
+      {
+        "path": "project-dna/naming-conventions.json",
+        "summary": "fileStyle=mixed, componentStyle=mixed"
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "q-access-1",
+    "questionText": "Which specific user roles should have the ability to see and use the Edit button for parcels?",
+    "type": "multi_select",
+    "required": true,
+    "options": [
+      "Ops",
+      "Support",
+      "Admin",
+      "Other"
+    ],
+    "rationale": "Understanding which user roles can access the edit functionality helps define access control and ensures only authorized users can make changes."
+  },
+  {
+    "id": "q-ui-1",
+    "questionText": "What should the user see if they try to access the Edit Parcel screen without the necessary permissions?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "Error message",
+      "Redirect to login",
+      "Redirect to home page",
+      "Access denied page"
+    ],
+    "rationale": "Defining the user experience for unauthorized access ensures a consistent and secure application behavior."
+  },
+  {
+    "id": "q-flow-1",
+    "questionText": "When a user clicks the Edit button, should the Edit Parcel screen open in a new tab or the same tab?",
+    "type": "single_select",
+    "required": false,
+    "options": [
+      "New tab",
+      "Same tab"
+    ],
+    "rationale": "This affects navigation flow and user experience, impacting how users interact with the application."
+  },
+  {
+    "id": "q-data-1",
+    "questionText": "Are there any additional parcel attributes that should be editable on the Edit Parcel screen beyond those listed?",
+    "type": "text",
+    "required": false,
+    "rationale": "Identifying all editable fields ensures the Edit Parcel screen is comprehensive and meets user needs."
+  },
+  {
+    "id": "q-error-1",
+    "questionText": "What should happen if there's an error while saving changes on the Edit Parcel screen?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "Show error message",
+      "Retry option",
+      "Log error silently",
+      "Other"
+    ],
+    "rationale": "Defining error handling ensures users are informed and can take appropriate action if something goes wrong."
+  },
+  {
+    "id": "q-scope-1",
+    "questionText": "Is the addition of the 'Delivered At' column intended to be a permanent feature or is it part of a temporary experiment?",
+    "type": "single_select",
+    "required": false,
+    "options": [
+      "Permanent",
+      "Temporary"
+    ],
+    "rationale": "Understanding the duration of the feature helps in planning maintenance and future updates."
+  },
+  {
+    "id": "q-priority-1",
+    "questionText": "Is there a specific deadline or launch date for these enhancements to be live?",
+    "type": "text",
+    "required": false,
+    "rationale": "Knowing the timeline helps prioritize development tasks and manage resources effectively."
+  },
+  {
+    "id": "q-ui-2",
+    "questionText": "What should the user see in the 'Delivered At' column if the parcel delivery date is not available?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "—",
+      "Not Delivered",
+      "N/A",
+      "Other"
+    ],
+    "rationale": "Defining a consistent placeholder for missing data ensures clarity and improves user experience."
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "question": "What are the main modules in this project?",
+    "answer": "The main modules in the redx-admin-panel project are: theme, config, ui, hooks, routing, state, api, and types.",
+    "referencedSections": [
+      "modules"
+    ],
+    "confidence": "high",
+    "timestamp": "2026-02-21T06:43:47.086Z"
+  }
+]

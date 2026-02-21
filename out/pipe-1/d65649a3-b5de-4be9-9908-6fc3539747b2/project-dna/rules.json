@@ -1,0 +1,6 @@
+{
+  "rules": [
+    "Pages should wrap route content with Authorize where access control is required.",
+    "Prefer Ant Design components for consistent UI patterns."
+  ]
+}
