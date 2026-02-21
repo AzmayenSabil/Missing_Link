@@ -26,11 +26,65 @@ import { buildImpactAnalysisPrompt } from "./prompts/impactAnalysis.prompt";
 // ---------------------------------------------------------------------------
 
 const VALID_AREAS: ImpactArea[] = [
-  "UI", "Hooks", "State", "API/Service", "Auth", "Routing",
-  "Styling", "Types", "Tests", "Build/Config", "Unknown",
+  "UI",
+  "Hooks",
+  "State",
+  "API/Service",
+  "Auth",
+  "Routing",
+  "Styling",
+  "Types",
+  "Tests",
+  "Build/Config",
+  "Unknown",
 ];
 
-const VALID_ROLES = ["primary", "secondary", "dependency", "dependent"] as const;
+const VALID_ROLES = [
+  "primary",
+  "secondary",
+  "dependency",
+  "dependent",
+] as const;
+
+// ---------------------------------------------------------------------------
+// Retry helper
+// ---------------------------------------------------------------------------
+
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  label: string,
+  maxAttempts = 3,
+  delayMs = 3000,
+): Promise<T> {
+  let lastErr: unknown;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      const msg = (err as Error).message ?? "";
+      const isTransient =
+        msg.includes("Connection error") ||
+        msg.includes("ECONNRESET") ||
+        msg.includes("ETIMEDOUT") ||
+        msg.includes("ENOTFOUND") ||
+        msg.includes("network") ||
+        (err as { status?: number }).status === 429 ||
+        (err as { status?: number }).status === 503;
+
+      if (isTransient && attempt < maxAttempts) {
+        const wait = delayMs * attempt;
+        console.warn(
+          `  [OpenAI] ${label} attempt ${attempt}/${maxAttempts} failed (${msg}). Retrying in ${wait}ms…`,
+        );
+        await new Promise((r) => setTimeout(r, wait));
+      } else {
+        break;
+      }
+    }
+  }
+  throw lastErr;
+}
 
 // ---------------------------------------------------------------------------
 // OpenAI Engine
@@ -58,19 +112,24 @@ export class OpenAIEngine {
 
     console.log("  [OpenAI] Generating clarifying questions...");
 
-    const response = await this.client.chat.completions.create({
-      model: this.model,
-      messages: [
-        { role: "system", content: system },
-        { role: "user", content: user },
-      ],
-      response_format: { type: "json_object" },
-      temperature: 0.3,
-      max_completion_tokens: 4096,
-    });
+    const response = await withRetry(
+      () =>
+        this.client.chat.completions.create({
+          model: this.model,
+          messages: [
+            { role: "system", content: system },
+            { role: "user", content: user },
+          ],
+          response_format: { type: "json_object" },
+          temperature: 0.3,
+          max_completion_tokens: 4096,
+        }),
+      "generateQuestions",
+    );
 
     const content = response.choices[0]?.message?.content;
-    if (!content) throw new Error("OpenAI returned empty response for question generation");
+    if (!content)
+      throw new Error("OpenAI returned empty response for question generation");
 
     const parsed = JSON.parse(content);
     const questions = parsed.questions ?? parsed;
@@ -89,7 +148,9 @@ export class OpenAIEngine {
       .map((q: Record<string, unknown>, idx: number) => ({
         id: (q.id as string) || `q-auto-${idx + 1}`,
         questionText: q.questionText as string,
-        type: (["text", "single_select", "multi_select"].includes(q.type as string)
+        type: (["text", "single_select", "multi_select"].includes(
+          q.type as string,
+        )
           ? q.type
           : "text") as Question["type"],
         required: q.required !== false,
@@ -121,19 +182,24 @@ export class OpenAIEngine {
 
     console.log("  [OpenAI] Generating impact analysis...");
 
-    const response = await this.client.chat.completions.create({
-      model: this.model,
-      messages: [
-        { role: "system", content: system },
-        { role: "user", content: user },
-      ],
-      response_format: { type: "json_object" },
-      temperature: 0.2,
-      max_completion_tokens: 8192,
-    });
+    const response = await withRetry(
+      () =>
+        this.client.chat.completions.create({
+          model: this.model,
+          messages: [
+            { role: "system", content: system },
+            { role: "user", content: user },
+          ],
+          response_format: { type: "json_object" },
+          temperature: 0.2,
+          max_completion_tokens: 8192,
+        }),
+      "generateImpactAnalysis",
+    );
 
     const content = response.choices[0]?.message?.content;
-    if (!content) throw new Error("OpenAI returned empty response for impact analysis");
+    if (!content)
+      throw new Error("OpenAI returned empty response for impact analysis");
 
     const parsed = JSON.parse(content);
 
@@ -155,26 +221,40 @@ export class OpenAIEngine {
     const rawFiles = (raw.files as Array<Record<string, unknown>>) ?? [];
     const rawAreas = (raw.areas as Array<Record<string, unknown>>) ?? [];
     const rawNotes = (raw.notes as string[]) ?? [];
-    const newFileSuggestions = (raw.newFileSuggestions as Array<Record<string, unknown>>) ?? [];
+    const newFileSuggestions =
+      (raw.newFileSuggestions as Array<Record<string, unknown>>) ?? [];
 
     // Validate and clean files
     const files: ImpactFile[] = rawFiles
       .filter((f) => f.path && typeof f.score === "number")
       .map((f) => ({
         path: f.path as string,
-        score: Math.round(Math.min(1, Math.max(0, f.score as number)) * 1000) / 1000,
-        role: VALID_ROLES.includes(f.role as typeof VALID_ROLES[number])
+        score:
+          Math.round(Math.min(1, Math.max(0, f.score as number)) * 1000) / 1000,
+        role: VALID_ROLES.includes(f.role as (typeof VALID_ROLES)[number])
           ? (f.role as ImpactFile["role"])
           : "secondary",
         reasons: Array.isArray(f.reasons) ? (f.reasons as string[]) : [],
         evidence: {
-          ...(Array.isArray((f.evidence as Record<string, unknown>)?.matchedTerms)
-            ? { matchedTerms: (f.evidence as Record<string, unknown>).matchedTerms as string[] }
+          ...(Array.isArray(
+            (f.evidence as Record<string, unknown>)?.matchedTerms,
+          )
+            ? {
+                matchedTerms: (f.evidence as Record<string, unknown>)
+                  .matchedTerms as string[],
+              }
             : {}),
-          ...(Array.isArray((f.evidence as Record<string, unknown>)?.matchedSymbols)
-            ? { matchedSymbols: (f.evidence as Record<string, unknown>).matchedSymbols as string[] }
+          ...(Array.isArray(
+            (f.evidence as Record<string, unknown>)?.matchedSymbols,
+          )
+            ? {
+                matchedSymbols: (f.evidence as Record<string, unknown>)
+                  .matchedSymbols as string[],
+              }
             : {}),
-          depDistance: ((f.evidence as Record<string, unknown>)?.depDistance as number) ?? 0,
+          depDistance:
+            ((f.evidence as Record<string, unknown>)?.depDistance as number) ??
+            0,
         },
       }));
 
@@ -182,8 +262,12 @@ export class OpenAIEngine {
     const areas = rawAreas
       .filter((a) => a.area && typeof a.confidence === "number")
       .map((a) => ({
-        area: (VALID_AREAS.includes(a.area as ImpactArea) ? a.area : "Unknown") as ImpactArea,
-        confidence: Math.round(Math.min(1, Math.max(0, a.confidence as number)) * 1000) / 1000,
+        area: (VALID_AREAS.includes(a.area as ImpactArea)
+          ? a.area
+          : "Unknown") as ImpactArea,
+        confidence:
+          Math.round(Math.min(1, Math.max(0, a.confidence as number)) * 1000) /
+          1000,
         rationale: Array.isArray(a.rationale) ? (a.rationale as string[]) : [],
       }));
 

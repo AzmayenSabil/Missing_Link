@@ -15,17 +15,76 @@ import type {
   ImpactArea,
   StepKind,
 } from "../contracts/phase3";
-import { buildCodebaseContext, buildImpactContext } from "./prompts/contextBuilder";
+import {
+  buildCodebaseContext,
+  buildImpactContext,
+} from "./prompts/contextBuilder";
 import { buildSubtaskGenerationPrompt } from "./prompts/subtaskGeneration.prompt";
 import { buildPromptGenerationPrompt } from "./prompts/promptGeneration.prompt";
 
 const MODEL = "gpt-5.2";
 
+// ---------------------------------------------------------------------------
+// Retry helper
+// ---------------------------------------------------------------------------
+
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  label: string,
+  maxAttempts = 3,
+  delayMs = 3000,
+): Promise<T> {
+  let lastErr: unknown;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      const msg = (err as Error).message ?? "";
+      const isTransient =
+        msg.includes("Connection error") ||
+        msg.includes("ECONNRESET") ||
+        msg.includes("ETIMEDOUT") ||
+        msg.includes("ENOTFOUND") ||
+        msg.includes("network") ||
+        (err as { status?: number }).status === 429 ||
+        (err as { status?: number }).status === 503;
+
+      if (isTransient && attempt < maxAttempts) {
+        const wait = delayMs * attempt;
+        console.warn(
+          `  [OpenAI] ${label} attempt ${attempt}/${maxAttempts} failed (${msg}). Retrying in ${wait}ms…`,
+        );
+        await new Promise((r) => setTimeout(r, wait));
+      } else {
+        break;
+      }
+    }
+  }
+  throw lastErr;
+}
+
 const VALID_AREAS: ImpactArea[] = [
-  "UI", "Hooks", "State", "API/Service", "Auth",
-  "Routing", "Styling", "Types", "Tests", "Build/Config", "Unknown",
+  "UI",
+  "Hooks",
+  "State",
+  "API/Service",
+  "Auth",
+  "Routing",
+  "Styling",
+  "Types",
+  "Tests",
+  "Build/Config",
+  "Unknown",
 ];
-const VALID_KINDS: StepKind[] = ["create", "modify", "refactor", "config", "test", "docs"];
+const VALID_KINDS: StepKind[] = [
+  "create",
+  "modify",
+  "refactor",
+  "config",
+  "test",
+  "docs",
+];
 
 export class OpenAIEngine {
   private client: OpenAI;
@@ -53,16 +112,20 @@ export class OpenAIEngine {
 
     console.log("  [ai] Calling OpenAI for subtask generation...");
 
-    const response = await this.client.chat.completions.create({
-      model: MODEL,
-      temperature: 0.3,
-      max_completion_tokens: 16384,
-      response_format: { type: "json_object" },
-      messages: [
-        { role: "system", content: prompt.system },
-        { role: "user", content: prompt.user },
-      ],
-    });
+    const response = await withRetry(
+      () =>
+        this.client.chat.completions.create({
+          model: MODEL,
+          temperature: 0.3,
+          max_completion_tokens: 16384,
+          response_format: { type: "json_object" },
+          messages: [
+            { role: "system", content: prompt.system },
+            { role: "user", content: prompt.user },
+          ],
+        }),
+      "generateSubtasks",
+    );
 
     const content = response.choices[0]?.message?.content ?? "{}";
     const parsed = JSON.parse(content) as { subtasks?: unknown[] };
@@ -93,7 +156,9 @@ export class OpenAIEngine {
       const files = s.files as Record<string, string[]> | undefined;
 
       validated.push({
-        id: (s.id as string) || `step-${area.toLowerCase().replace(/\//g, "-")}-${counter}`,
+        id:
+          (s.id as string) ||
+          `step-${area.toLowerCase().replace(/\//g, "-")}-${counter}`,
         title: s.title as string,
         description: s.description as string,
         area,
@@ -111,9 +176,10 @@ export class OpenAIEngine {
           ? (s.implementationChecklist as string[])
           : [],
         doneWhen: Array.isArray(s.doneWhen) ? (s.doneWhen as string[]) : [],
-        durationHours: typeof s.durationHours === "number"
-          ? Math.max(0.5, Math.min(40, s.durationHours))
-          : 1,
+        durationHours:
+          typeof s.durationHours === "number"
+            ? Math.max(0.5, Math.min(40, s.durationHours))
+            : 1,
       });
     }
 
@@ -140,16 +206,20 @@ export class OpenAIEngine {
 
     console.log("  [ai] Calling OpenAI for prompt pack generation...");
 
-    const response = await this.client.chat.completions.create({
-      model: MODEL,
-      temperature: 0.2,
-      max_completion_tokens: 16384,
-      response_format: { type: "json_object" },
-      messages: [
-        { role: "system", content: prompt.system },
-        { role: "user", content: prompt.user },
-      ],
-    });
+    const response = await withRetry(
+      () =>
+        this.client.chat.completions.create({
+          model: MODEL,
+          temperature: 0.2,
+          max_completion_tokens: 16384,
+          response_format: { type: "json_object" },
+          messages: [
+            { role: "system", content: prompt.system },
+            { role: "user", content: prompt.user },
+          ],
+        }),
+      "generatePrompts",
+    );
 
     const content = response.choices[0]?.message?.content ?? "{}";
     const parsed = JSON.parse(content) as { prompts?: unknown[] };
@@ -229,21 +299,31 @@ export class OpenAIEngine {
     }
 
     // Derive risks
-    const risks: Array<{ severity: "low" | "medium" | "high"; risk: string; mitigation: string[] }> = [];
+    const risks: Array<{
+      severity: "low" | "medium" | "high";
+      risk: string;
+      mitigation: string[];
+    }> = [];
     const totalFiles = allModify.size + allCreate.size + allTouch.size;
 
     if (totalFiles > 20) {
       risks.push({
         severity: "high",
         risk: `Large blast radius: ${totalFiles} files affected`,
-        mitigation: ["Consider phased rollout", "Thorough code review required"],
+        mitigation: [
+          "Consider phased rollout",
+          "Thorough code review required",
+        ],
       });
     }
     if (subtasks.some((s) => s.area === "Auth")) {
       risks.push({
         severity: "high",
         risk: "Auth changes can break access control",
-        mitigation: ["Test with multiple user roles", "Security review required"],
+        mitigation: [
+          "Test with multiple user roles",
+          "Security review required",
+        ],
       });
     }
     if (totalFiles > 5 && totalFiles <= 20) {
@@ -270,9 +350,21 @@ export class OpenAIEngine {
         "New functionality matches PRD requirements",
       ],
       verification: [
-        { type: "typecheck", instructions: ["Run: npx tsc --noEmit", "Expected: 0 errors"] },
-        { type: "lint", instructions: ["Run: npx eslint src --ext .ts,.tsx", "Expected: 0 errors"] },
-        { type: "unit_test", instructions: ["Run: npm test", "Expected: all tests pass"] },
+        {
+          type: "typecheck",
+          instructions: ["Run: npx tsc --noEmit", "Expected: 0 errors"],
+        },
+        {
+          type: "lint",
+          instructions: [
+            "Run: npx eslint src --ext .ts,.tsx",
+            "Expected: 0 errors",
+          ],
+        },
+        {
+          type: "unit_test",
+          instructions: ["Run: npm test", "Expected: all tests pass"],
+        },
       ],
       risks,
       openQuestions: [],

@@ -40,6 +40,8 @@ app.get("*", (_req, res) => {
 app.use(errorHandler);
 
 app.listen(config.port, () => {
-  console.log(`\n  pipe-3-v2 server running on http://localhost:${config.port}`);
+  console.log(
+    `\n  pipe-3-v2 server running on http://localhost:${config.port}`,
+  );
   console.log(`  Output directory: ${config.outDir}\n`);
 });

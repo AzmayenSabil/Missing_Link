@@ -71,7 +71,7 @@ function startService(service) {
 
   proc.on("exit", (code) => {
     console.error(
-      `${prefix(service)}process exited with code ${code}. Restarting in 3s…`
+      `${prefix(service)}process exited with code ${code}. Restarting in 3s…`,
     );
     setTimeout(() => startService(service), 3000);
   });

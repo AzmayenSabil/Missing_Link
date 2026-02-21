@@ -44,13 +44,16 @@ app.get("*", (_req, res) => {
   res.sendFile(path.join(clientDist, "index.html"));
 });
 
-
 // ---------------------------------------------------------------------------
 // Start
 // ---------------------------------------------------------------------------
 
 app.listen(config.port, () => {
-  console.log(`\n  pipe-2-v2 server running on http://localhost:${config.port}`);
+  console.log(
+    `\n  pipe-2-v2 server running on http://localhost:${config.port}`,
+  );
   console.log(`  Output directory: ${config.outDir}`);
-  console.log(`  OpenAI API key: ${config.openaiApiKey ? "configured" : "NOT SET"}\n`);
+  console.log(
+    `  OpenAI API key: ${config.openaiApiKey ? "configured" : "NOT SET"}\n`,
+  );
 });
