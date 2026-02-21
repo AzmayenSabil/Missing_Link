@@ -4,6 +4,8 @@
   "description": "AI-Driven Requirements to Code Pipeline - Monorepo",
   "private": true,
   "scripts": {
+    "start": "node deploy/start.js",
+    "build": "bash deploy/build.sh",
     "start:all": "start-all-pipes.bat",
     "dev:pipe1:server": "cd pipe-1-v2/server && npm run dev",
     "dev:pipe1:client": "cd pipe-1-v2/client && npm run dev",

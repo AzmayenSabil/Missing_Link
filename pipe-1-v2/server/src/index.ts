@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 import { env } from './config/env';
 import projectsRouter from './routes/projects.router';
 import queryRouter from './routes/query.router';
@@ -17,6 +18,13 @@ app.use('/api/projects', queryRouter);
 // Health check
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'project-dna-engine', timestamp: new Date().toISOString() });
+});
+
+// Serve React frontend (production build)
+const clientDist = path.join(__dirname, '../../client/dist');
+app.use(express.static(clientDist));
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(clientDist, 'index.html'));
 });
 
 // Global error handler (must be last)

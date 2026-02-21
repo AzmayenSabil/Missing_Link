@@ -4,7 +4,7 @@ import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 export const env = {
-  PORT: parseInt(process.env.PORT || '3001', 10),
+  PORT: parseInt(process.env.PORT_PIPE1 || process.env.PORT || '3001', 10),
   OPENAI_API_KEY: process.env.OPENAI_API_KEY || '',
   OPENAI_MODEL: process.env.OPENAI_MODEL || 'gpt-4o',
   // Repo-root out/pipe-1/ — same level as out/pipe-2, out/pipe-3
