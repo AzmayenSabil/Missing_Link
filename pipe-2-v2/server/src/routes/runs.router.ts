@@ -90,14 +90,14 @@ runsRouter.post("/", async (req, res, next) => {
       sessionManager.updateStatus(session.runId, "asking_questions");
       console.log(`  [runs] Questions ready for run ${session.runId}`);
     } catch (err) {
-      console.error(
-        `  [runs] Question generation failed:`,
-        (err as Error).message,
-      );
+      const error = err as Error & { cause?: unknown; status?: number };
+      console.error(`  [runs] Question generation failed:`, error.message);
+      if (error.cause) console.error(`  [runs] Caused by:`, error.cause);
+      if (error.status) console.error(`  [runs] HTTP status:`, error.status);
       sessionManager.updateStatus(
         session.runId,
         "error",
-        `Question generation failed: ${(err as Error).message}`,
+        `Question generation failed: ${error.message}`,
       );
     }
   } catch (err) {

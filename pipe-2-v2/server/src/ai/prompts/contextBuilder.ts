@@ -186,5 +186,12 @@ function buildSymbolSummary(symbolIndex: SymbolIndex): string {
 
 function buildFileList(allFiles: string[]): string {
   if (allFiles.length === 0) return "";
-  return ["## All File Paths", ...allFiles.map((f) => `  ${f}`)].join("\n");
+  const MAX_FILES = 300;
+  const truncated = allFiles.length > MAX_FILES;
+  const files = truncated ? allFiles.slice(0, MAX_FILES) : allFiles;
+  const lines = files.map((f) => `  ${f}`);
+  if (truncated) {
+    lines.push(`  ... (${allFiles.length - MAX_FILES} more files not shown)`);
+  }
+  return ["## All File Paths", ...lines].join("\n");
 }
