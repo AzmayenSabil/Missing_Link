@@ -1,0 +1,30 @@
+[
+  {
+    "questionId": "q-access-1",
+    "value": "Specific roles"
+  },
+  {
+    "questionId": "q-ui-1",
+    "value": "Visible by default"
+  },
+  {
+    "questionId": "q-error-1",
+    "value": "Not Delivered"
+  },
+  {
+    "questionId": "q-flow-1",
+    "value": "Affect current settings"
+  },
+  {
+    "questionId": "q-data-1",
+    "value": "Specific format: DD MMM YYYY, hh:mm A"
+  },
+  {
+    "questionId": "q-priority-1",
+    "value": "High priority"
+  },
+  {
+    "questionId": "q-scope-1",
+    "value": "no"
+  }
+]

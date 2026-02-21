@@ -1,0 +1,161 @@
+{
+  "prd": {
+    "hash": "d5de3c451feec359c1c8da81dcdb041655248a615af9e437fcfc585c9f44c246",
+    "source": "pasted-prd.md"
+  },
+  "generatedAt": "2026-02-21T08:03:39.277Z",
+  "summary": {
+    "primaryCount": 4,
+    "secondaryCount": 2,
+    "areas": [
+      {
+        "area": "UI",
+        "confidence": 0.5,
+        "rationale": [
+          "3 files in UI area",
+          "Primary page component affected"
+        ]
+      },
+      {
+        "area": "API/Service",
+        "confidence": 0.25,
+        "rationale": [
+          "API changes required for new field"
+        ]
+      },
+      {
+        "area": "Types",
+        "confidence": 0.15,
+        "rationale": [
+          "Type definition updates for new field"
+        ]
+      },
+      {
+        "area": "Tests",
+        "confidence": 0.1,
+        "rationale": [
+          "Test files need updates for new functionality"
+        ]
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "src/pages/Parcels.tsx",
+      "score": 0.9,
+      "role": "primary",
+      "reasons": [
+        "Add new column to the table",
+        "Ensure sorting and filtering work with new column"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "Parcels table",
+          "Delivered At column"
+        ],
+        "matchedSymbols": [],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/table/TableRenderer.tsx",
+      "score": 0.8,
+      "role": "primary",
+      "reasons": [
+        "Modify table rendering logic to include new column",
+        "Ensure sorting functionality"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "table",
+          "column",
+          "sortable"
+        ],
+        "matchedSymbols": [],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/services/parcelAPI.ts",
+      "score": 0.7,
+      "role": "primary",
+      "reasons": [
+        "API must include delivered_at field in parcel response"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "API",
+          "parcel response",
+          "delivered_at"
+        ],
+        "matchedSymbols": [
+          "fetchParcels"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/types/parcel.ts",
+      "score": 0.6,
+      "role": "primary",
+      "reasons": [
+        "Update parcel type to include delivered_at field"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "parcel type",
+          "delivered_at"
+        ],
+        "matchedSymbols": [
+          "Parcel",
+          "FetchParcelsResponse"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/ui/table.tsx",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Ensure UI components support new column"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "table",
+          "UI"
+        ],
+        "matchedSymbols": [],
+        "depDistance": 1
+      }
+    },
+    {
+      "path": "src/test/example.test.ts",
+      "score": 0.3,
+      "role": "secondary",
+      "reasons": [
+        "Add tests for new column functionality"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "test",
+          "column"
+        ],
+        "matchedSymbols": [],
+        "depDistance": 1
+      }
+    }
+  ],
+  "graphExpansion": {
+    "enabled": false,
+    "direction": "both",
+    "maxDepth": 0
+  },
+  "notes": [
+    "Analyzed using OpenAIEngine (gpt-4o).",
+    "The primary impact is on the UI and API layers to support the new 'Delivered At' column.",
+    "Ensure that the sorting and filtering logic is updated to accommodate the new column.",
+    "Type definitions must be updated to include the new field in parcel responses.",
+    "Regression testing is necessary to ensure existing table functionalities are not broken."
+  ]
+}

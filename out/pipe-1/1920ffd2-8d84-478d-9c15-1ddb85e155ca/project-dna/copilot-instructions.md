@@ -4,27 +4,26 @@
 
 ## applyTo: '**'
 
-This file serves as the authoritative guide for AI coding assistants working on the RedX Admin Hub project. It provides comprehensive instructions and conventions that must be followed to ensure consistency and quality across the codebase. AI coding assistants should use this document as the primary reference for understanding the project's architecture, coding standards, and development practices.
+This file serves as the authoritative guide for AI coding assistants working with the RedX Admin Hub project. It provides comprehensive instructions on the project's architecture, coding standards, state management, component patterns, API integration, and more. AI coding assistants should use this document to ensure consistency and adherence to the project's conventions and best practices.
 
 ## Project Overview
 
-The RedX Admin Hub is a web application designed to manage and oversee parcel deliveries within the RedX logistics network. Its primary users include administrators and finance team members who require access to parcel tracking, user management, and reporting features. The project operates within the logistics and delivery business domain, focusing on efficient parcel management and user authentication. The codebase consists of 99 files, predominantly written in TypeScript, and leverages React for the frontend interface.
+The RedX Admin Hub is a web application designed for administrative users of the RedX platform. Its primary purpose is to manage and oversee various operations related to parcel delivery services. The application is built using React and TypeScript, with a focus on providing a robust and user-friendly interface for administrators. The primary users are internal staff members, including super admins and finance team members. The project is medium-scale, with a total of 99 files, and is situated within the logistics and delivery business domain.
 
 ## Architecture & Technology Stack
 
 ### Core Technologies
 
-- **React**: The primary library for building the user interface.
-- **TypeScript**: Used for type safety and enhanced code quality.
-- **Ant Design**: Version unspecified, used for UI components.
-- **Emotion**: Version unspecified, used for CSS-in-JS styling.
-- **Redux Toolkit**: Version unspecified, used for state management.
-- **Axios**: Version unspecified, used for HTTP requests.
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **Ant Design**: A UI library for building rich user interfaces.
+- **Emotion**: A library for writing CSS styles with JavaScript.
+- **Redux Toolkit**: A library for managing application state.
+- **Axios**: A promise-based HTTP client for the browser and Node.js.
 
 ### Project Structure
 
 ```plaintext
-.
 ├── .gitignore
 ├── bun.lockb
 ├── components.json
@@ -112,6 +111,9 @@ The RedX Admin Hub is a web application designed to manage and oversee parcel de
     │   ├── use-toast.ts
     │   ├── useAuthorization.ts
     │   └── useTable.ts
+    ├── lib
+    │   ├── formHelpers.ts
+    │   └── utils.ts
     ├── pages
     │   ├── Index.tsx
     │   ├── Login.tsx
@@ -139,30 +141,16 @@ The RedX Admin Hub is a web application designed to manage and oversee parcel de
 
 - **Prettier**: Not present in the project.
 - **ESLint**: Not present in the project.
-- **Commitlint**: Not present in the project.
 - **File Naming**: Uses camelCase for files and PascalCase for components.
-- **TypeScript Config**: 
-
-```json
-{
-  "strict": false,
-  "jsx": null,
-  "baseUrl": ".",
-  "pathAliases": {
-    "@/*": [
-      "./src/*"
-    ]
-  }
-}
-```
+- **Commitlint**: Not present in the project.
 
 ### Import Organization
 
-Preferred import order:
+The preferred import order is as follows:
 
-1. Framework imports
-2. UI library imports
-3. Third-party imports
+1. Framework imports (e.g., React)
+2. UI library imports (e.g., Ant Design)
+3. Third-party library imports
 4. Local hooks
 5. Redux/state imports
 6. Services
@@ -172,20 +160,20 @@ Preferred import order:
 Example:
 
 ```typescript
-import React, { useState, useEffect } from 'react'; // Framework
-import { Button, Input } from 'antd'; // UI library
-import axios from 'axios'; // Third-party
-import { useTable } from '@/hooks/useTable'; // Local hooks
-import { setUser } from '@/redux/slices/AuthSlice'; // Redux/state
-import { fetchParcels } from '@/services/parcelAPI'; // Services
-import { Parcel } from '@/types/parcel'; // Types
+import React, { useState, useEffect } from 'react';
+import { Button, Input } from 'antd';
+import axios from 'axios';
+import { useTable } from '@/hooks/useTable';
+import { setUser } from '@/redux/slices/AuthSlice';
+import { fetchParcels } from '@/services/parcelAPI';
+import { Parcel } from '@/types/parcel';
 ```
 
 ## State Management
 
 ### Redux Toolkit
 
-- **Configuration / Setup Snippet**:
+The project uses Redux Toolkit for state management. Below is a configuration snippet for the Redux store:
 
 ```typescript
 import { configureStore } from '@reduxjs/toolkit';
@@ -198,7 +186,7 @@ export const store = configureStore({
 });
 ```
 
-- **Full Pattern Example**:
+#### Auth Slice Example
 
 ```typescript
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
@@ -228,16 +216,27 @@ export const { setUser, clearAuth } = authSlice.actions;
 export default authSlice.reducer;
 ```
 
-- **Typed Hooks Pattern**: Not detected in this project.
+### Typed Hooks
 
-- **Usage Example**:
+Typed hooks such as `useAppDispatch` and `useAppSelector` are not used in this project.
+
+### Usage Example
 
 ```typescript
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import { setUser } from '@/redux/slices/AuthSlice';
 
-const dispatch = useDispatch();
-dispatch(setUser({ phone: '1234567890', roles: [{ name: 'Admin' }] }));
+const Component = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.auth.user);
+
+  const handleLogin = (user: User) => {
+    dispatch(setUser(user));
+  };
+
+  return <div>{user ? `Welcome, ${user.phone}` : 'Please log in'}</div>;
+};
 ```
 
 ## Component Patterns
@@ -245,48 +244,42 @@ dispatch(setUser({ phone: '1234567890', roles: [{ name: 'Admin' }] }));
 ### Page Structure with Authorization
 
 ```typescript
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { useState, useCallback } from 'react';
-import { Input, Select, Button, Tag, Space, Modal, Typography, message } from 'antd';
-import { SearchOutlined, ReloadOutlined } from '@ant-design/icons';
-import type { ColumnsType } from 'antd/es/table';
+import React from 'react';
 import Authorize from '@/components/authorize/Authorize';
 import AppLayout from '@/components/layout/AppLayout';
-import TableRenderer from '@/components/table/TableRenderer';
-import { useTable } from '@/hooks/useTable';
-import { fetchParcels } from '@/services/parcelAPI';
-import { Parcel, FetchParcelsParams } from '@/types/parcel';
+import Parcels from '@/pages/Parcels';
 
-const { Title, Text } = Typography;
+const ParcelsPage = () => (
+  <Authorize roles={['RedX Super Admin']}>
+    <AppLayout>
+      <Parcels />
+    </AppLayout>
+  </Authorize>
+);
 
-const searchBarStyle = css`
-  display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  align-items: flex-end;
-`;
+export default ParcelsPage;
 ```
 
 ### Permission-Based Conditional Rendering
 
 ```typescript
+import React from 'react';
 import { useAuthorization } from '@/hooks/useAuthorization';
 
-const { isAuthorized } = useAuthorization({ roles: ['Admin'] });
+const Component = () => {
+  const { isAuthorized } = useAuthorization({ roles: ['RedX Super Admin'] });
 
-if (isAuthorized) {
-  return <AdminPanel />;
-} else {
-  return <UnauthorizedMessage />;
-}
+  return isAuthorized ? <div>Authorized Content</div> : <div>Access Denied</div>;
+};
 ```
 
 ### Primary Form Handling Pattern
 
+The project uses Ant Design's Form component for form handling.
+
 ```typescript
-import { Form, Input, Button, message } from 'antd';
+import React from 'react';
+import { Form, Input, Button } from 'antd';
 
 const LoginForm = () => {
   const [form] = Form.useForm();
@@ -294,42 +287,43 @@ const LoginForm = () => {
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
-      // Handle login logic
+      console.log('Success:', values);
     } catch (error) {
-      message.error('Validation failed');
+      console.log('Failed:', error);
     }
   };
 
   return (
-    <Form form={form} layout="vertical">
+    <Form form={form} layout="vertical" onFinish={handleSubmit}>
       <Form.Item name="username" label="Username" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
       <Form.Item name="password" label="Password" rules={[{ required: true }]}>
         <Input.Password />
       </Form.Item>
-      <Button type="primary" onClick={handleSubmit}>
-        Login
-      </Button>
+      <Form.Item>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
     </Form>
   );
 };
+
+export default LoginForm;
 ```
 
-### Secondary Form Pattern
-
-Not detected in this project.
-
-### Table / Data-Grid Pattern
+### Table/Data-Grid Pattern
 
 ```typescript
-import { Table } from 'antd';
+import React from 'react';
+import { Table, Tag } from 'antd';
 import { useTable } from '@/hooks/useTable';
 import { fetchParcels } from '@/services/parcelAPI';
-import { Parcel, FetchParcelsParams } from '@/types/parcel';
+import { Parcel } from '@/types/parcel';
 
 const ParcelsTable = () => {
-  const { data, total, loading, onPaginationChange } = useTable<Parcel, FetchParcelsParams>({
+  const { data, loading } = useTable<Parcel>({
     initialParams: { limit: 10, offset: 0 },
     fetchFn: fetchParcels,
   });
@@ -344,40 +338,44 @@ const ParcelsTable = () => {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+      render: (status: string) => <Tag>{status}</Tag>,
     },
   ];
 
-  return <Table columns={columns} dataSource={data} loading={loading} pagination={{ total }} />;
+  return <Table columns={columns} dataSource={data} loading={loading} />;
 };
+
+export default ParcelsTable;
 ```
 
 ### Styling Approach
 
+The project uses Emotion for styling.
+
 ```typescript
 import { css } from '@emotion/react';
 
-export const globalStyles = css`
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: #f5f5f5;
-  }
+export const containerStyle = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+`;
 
-  #root {
-    min-height: 100vh;
-  }
+export const cardStyle = css`
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
 ```
-
-### Other Recurring Component Patterns
-
-Not detected in this project.
 
 ## API Integration
 
 ### HTTP Client Configuration
 
-- **Axios Instance**:
+The project uses Axios for HTTP requests. Below is the configuration for the Axios instance:
 
 ```typescript
 import axios from 'axios';
@@ -406,40 +404,50 @@ export const fetchParcels = async (params: FetchParcelsParams): Promise<FetchPar
 
 ### Error Handling
 
+The project uses Ant Design's message component for error handling.
+
 ```typescript
+import { message } from 'antd';
+
+const handleError = (error: any) => {
+  message.error(error.message || 'An error occurred');
+};
+
 try {
-  const response = await apiClient.get('/endpoint');
-  // Handle response
+  // API call
 } catch (error) {
-  message.error('An error occurred');
+  handleError(error);
 }
 ```
 
 ## Navigation & Routing
 
-### Routing Approach
-
 The project uses React Router for navigation.
 
 ```typescript
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from '@/pages/Login';
+import Parcels from '@/pages/Parcels';
+import NotFound from '@/pages/NotFound';
 
-const App = () => (
-  <BrowserRouter>
+const AppRoutes = () => (
+  <Router>
     <Routes>
-      <Route path="/" element={<Navigate to="/parcels" replace />} />
+      <Route path="/" element={<Parcels />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/parcels" element={<Parcels />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  </BrowserRouter>
+  </Router>
 );
+
+export default AppRoutes;
 ```
 
-### Menu / Navigation Configuration
+### Menu/Navigation Configuration
 
 ```typescript
-export const navigationItems: NavItem[] = [
+export const navigationItems = [
   {
     key: 'parcels',
     label: 'Parcels',
@@ -449,45 +457,27 @@ export const navigationItems: NavItem[] = [
 ];
 ```
 
-### Page-Level Permissions Configuration
-
-```typescript
-export const getPagePermissions = (path: string): string[] => {
-  return pagePermissions[path] || [];
-};
-```
-
 ## Authentication & Authorization
 
 ### Auth Flow
 
-1. User enters phone number and requests OTP.
-2. OTP is sent and user enters it for verification.
-3. Upon successful verification, user is authenticated and redirected.
+1. User enters phone number and requests an OTP.
+2. User receives OTP and enters it for verification.
+3. On successful verification, user is logged in and redirected to the dashboard.
 
-### Hook-Based Authorization Pattern
+### Hook-Based Authorization
 
 ```typescript
-export const useAuthorization = ({ roles }: UseAuthorizationProps): { isAuthorized: boolean; isAuthenticated: boolean } => {
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+
+export const useAuthorization = ({ roles }: { roles: string[] }) => {
   const auth = useSelector((state: RootState) => state.auth);
 
-  if (!auth.isAuthenticated || !auth.user) {
-    return { isAuthorized: false, isAuthenticated: false };
-  }
+  const isAuthorized = roles.some((role) => auth.user?.roles.includes(role));
 
-  const userRoleNames = auth.user.roles.map((r) => r.name);
-  const isAuthorized = roles.some((role) => userRoleNames.includes(role));
-
-  return { isAuthorized, isAuthenticated: true };
+  return { isAuthorized, isAuthenticated: auth.isAuthenticated };
 };
-```
-
-### Role/Permission Constants
-
-```typescript
-export interface Role {
-  name: string;
-}
 ```
 
 ## Common Utilities
@@ -497,6 +487,10 @@ export interface Role {
 ```typescript
 export const handleNumericValueChange = (value: string): string => {
   return value.replace(/[^0-9]/g, '');
+};
+
+export const disableFutureDates = (current: Dayjs): boolean => {
+  return current && current.valueOf() > Date.now();
 };
 ```
 
@@ -514,36 +508,23 @@ export function cn(...inputs: ClassValue[]) {
 
 The project uses Vitest for testing.
 
-```typescript
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: ['./src/test/setup.ts'],
-    include: ['src/**/*.{test,spec}.{ts,tsx}'],
-  },
-});
+```bash
+# Run tests
+vitest
 ```
 
 ### Test-ID Conventions
 
-Not explicitly defined in the project.
+Test IDs are used in form inputs for testing purposes.
 
-### Lint / Test / Type-Check Commands
-
-```bash
-# Run tests
-vitest
-
-# Type-check
-tsc --noEmit
+```typescript
+<Input data-testid="phone-input" />
 ```
 
 ## Environment Variables
 
 ```bash
-# Example .env file
+# .env.example
 API_BASE_URL=https://dummy-api.redx.local
 ```
 
@@ -567,91 +548,62 @@ npm start
 
 ### Local Setup Requirements
 
-- Node.js version: Unspecified
-- Package manager: npm
-- External services: None specified
+- Node.js version 16.x
+- npm as the package manager
 
 ### Git Workflow
 
-- **Branch Naming**: Not specified
-- **PR Review Requirements**: Not specified
-- **CI/CD Pipeline**: Not specified
+- Branch naming: feature/branch-name, bugfix/branch-name
+- Conventional commits: Not enforced
 
 ## Performance Considerations
 
-### Code Splitting Strategy
-
-Not explicitly defined in the project.
-
-### Lazy Loading
-
-Not explicitly defined in the project.
-
-### Tree-Shaking Setup
-
-Not explicitly defined in the project.
-
-### Bundle Analysis Tools
-
-Not explicitly defined in the project.
+- Code splitting and lazy loading are not explicitly configured.
+- Tree-shaking is enabled by default with Vite.
 
 ## Common Patterns to Follow
 
-1. Use design tokens for colors instead of hex values.
-2. Wrap route content with `Authorize` for access control.
-3. Prefer Ant Design components for UI consistency.
-4. Use `useTable` hook for table data management.
-5. Implement error handling with `try/catch` and user feedback.
-6. Use `useAuthorization` hook for role-based access control.
-7. Organize imports in the specified order.
-8. Use `axios` for HTTP requests with a centralized configuration.
-9. Follow TypeScript conventions for type safety.
-10. Use `reduxToolkit` for state management.
-11. Implement form handling with Ant Design's `Form` component.
-12. Use `emotion` for styling with CSS-in-JS.
+1. Use Emotion for styling components.
+2. Use Ant Design components for UI consistency.
+3. Wrap pages with the `Authorize` component for access control.
+4. Use Redux Toolkit for state management.
+5. Use Axios for HTTP requests.
+6. Use `useTable` hook for table data management.
+7. Use `useAuthorization` hook for role-based access control.
+8. Use `useToast` hook for notifications.
+9. Use TypeScript for type safety.
+10. Use React Router for navigation.
+11. Use Vitest for testing.
+12. Use design tokens for consistent theming.
 
 ## Domain-Specific Features
 
 ### Parcel Management
 
-- **Purpose**: Manage and track parcel deliveries.
-- **Key Components**: `Parcels.tsx`, `TableRenderer.tsx`
-- **Special Patterns**: Use of `useTable` hook for data fetching and pagination.
+- Purpose: Manage parcel delivery operations.
+- Key Components: `Parcels`, `TableRenderer`, `Authorize`
+- Special Patterns: Use of `useTable` hook for data fetching and pagination.
 
 ## Debugging & Development Tools
 
-### DevTools Integration
-
-- **Redux DevTools**: Not explicitly mentioned but can be integrated.
-- **React DevTools**: Standard for React applications.
-
-### Logging Patterns
-
-```typescript
-useEffect(() => {
-  console.error('404 Error: User attempted to access non-existent route:', location.pathname);
-}, [location.pathname]);
-```
-
-### Source Maps
-
-Not explicitly defined in the project.
+- Redux DevTools for state inspection.
+- React DevTools for component inspection.
 
 ## Migration Notes
 
-No ongoing migrations detected in the project.
+No ongoing migrations detected.
 
 ## Best Practices
 
-1. Always use design tokens for styling.
-2. Ensure all routes requiring authentication are wrapped with `Authorize`.
-3. Use `useTable` for managing table data and pagination.
-4. Centralize API configurations in `axios.config.ts`.
-5. Use `reduxToolkit` for state management to ensure consistency.
-6. Implement error handling with user feedback mechanisms.
-7. Follow TypeScript conventions for type safety.
-8. Use `emotion` for styling to maintain consistency.
-9. Organize imports according to the specified order.
-10. Use Ant Design components for a consistent UI experience.
+1. Use Emotion for all styling needs.
+2. Prefer Ant Design components for UI elements.
+3. Use Redux Toolkit for managing global state.
+4. Use Axios for making HTTP requests.
+5. Use `useTable` hook for managing table data.
+6. Use `useAuthorization` for role-based access control.
+7. Use `useToast` for displaying notifications.
+8. Use TypeScript for type safety and clarity.
+9. Use React Router for managing application routes.
+10. Use Vitest for testing and ensuring code quality.
 
-Remember: The RedX Admin Hub is designed to efficiently manage parcel deliveries within the RedX logistics network.
+Remember: The RedX Admin Hub is designed to streamline parcel management for administrative users, ensuring efficient and secure operations.

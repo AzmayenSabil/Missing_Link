@@ -9,7 +9,10 @@ interface Phase1SelectorProps {
   onSelect: (runId: string) => void;
 }
 
-export default function Phase1Selector({ selected, onSelect }: Phase1SelectorProps) {
+export default function Phase1Selector({
+  selected,
+  onSelect,
+}: Phase1SelectorProps) {
   const [runs, setRuns] = useState<Phase1RunInfo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -18,7 +21,6 @@ export default function Phase1Selector({ selected, onSelect }: Phase1SelectorPro
     fetchPhase1Runs()
       .then((r) => {
         setRuns(r);
-        // Auto-select if only one run
         if (r.length === 1 && !selected) {
           onSelect(r[0].id);
         }
@@ -28,10 +30,15 @@ export default function Phase1Selector({ selected, onSelect }: Phase1SelectorPro
   }, []);
 
   if (loading) return <LoadingSpinner text="Loading codebases..." />;
-  if (error) return <p className="text-red-500 text-sm">Failed to load: {error}</p>;
+  if (error)
+    return (
+      <p className="text-sm font-mono" style={{ color: "#ff4466" }}>
+        Failed to load: {error}
+      </p>
+    );
   if (runs.length === 0) {
     return (
-      <p className="text-slate-500 text-sm">
+      <p className="text-sm font-mono" style={{ color: "#00d4ff55" }}>
         No pipe-1 runs found. Run pipe-1 first to analyze a codebase.
       </p>
     );
@@ -39,30 +46,65 @@ export default function Phase1Selector({ selected, onSelect }: Phase1SelectorPro
 
   return (
     <div className="space-y-2">
-      {runs.map((run) => (
-        <button
-          key={run.id}
-          onClick={() => onSelect(run.id)}
-          className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-            selected === run.id
-              ? "border-primary-500 bg-primary-50"
-              : "border-slate-200 hover:border-slate-300 bg-white"
-          }`}
-        >
-          <div className="flex items-center gap-3">
-            <Database className={`w-5 h-5 ${selected === run.id ? "text-primary-500" : "text-slate-400"}`} />
-            <div className="flex-1 min-w-0">
-              <p className="font-medium text-slate-800 truncate">{run.projectId}</p>
-              {run.scannedAt && (
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Scanned: {new Date(run.scannedAt).toLocaleString()}
+      {runs.map((run) => {
+        const isSelected = selected === run.id;
+        return (
+          <button
+            key={run.id}
+            onClick={() => onSelect(run.id)}
+            className="w-full text-left rounded-xl transition-all duration-200"
+            style={
+              isSelected
+                ? {
+                    background: "linear-gradient(135deg, #00d4ff14, #8b5cf614)",
+                    border: "1px solid #00d4ff66",
+                    padding: "12px 16px",
+                    boxShadow: "0 0 16px #00d4ff11",
+                  }
+                : {
+                    background: "#0f1f3a",
+                    border: "1px solid #1a3055",
+                    padding: "12px 16px",
+                  }
+            }
+          >
+            <div className="flex items-center gap-3">
+              <Database
+                className="w-5 h-5 flex-shrink-0"
+                style={{
+                  color: isSelected ? "#00d4ff" : "#1a3055",
+                  filter: isSelected ? "drop-shadow(0 0 4px #00d4ff)" : "none",
+                }}
+              />
+              <div className="flex-1 min-w-0">
+                <p
+                  className="font-mono text-sm font-medium truncate"
+                  style={{ color: isSelected ? "#e2e8f0" : "#4a6080" }}
+                >
+                  {run.projectId}
                 </p>
+                {run.scannedAt && (
+                  <p
+                    className="text-xs font-mono mt-0.5"
+                    style={{ color: isSelected ? "#00d4ff55" : "#1a3055" }}
+                  >
+                    Scanned: {new Date(run.scannedAt).toLocaleString()}
+                  </p>
+                )}
+              </div>
+              {isSelected && (
+                <Check
+                  className="w-4 h-4 flex-shrink-0"
+                  style={{
+                    color: "#00d4ff",
+                    filter: "drop-shadow(0 0 4px #00d4ff)",
+                  }}
+                />
               )}
             </div>
-            {selected === run.id && <Check className="w-5 h-5 text-primary-500" />}
-          </div>
-        </button>
-      ))}
+          </button>
+        );
+      })}
     </div>
   );
 }

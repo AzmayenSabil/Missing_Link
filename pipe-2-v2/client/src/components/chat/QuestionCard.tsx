@@ -9,12 +9,26 @@ interface QuestionCardProps {
   disabled?: boolean;
 }
 
-export default function QuestionCard({ question, onAnswer, disabled }: QuestionCardProps) {
+export default function QuestionCard({
+  question,
+  onAnswer,
+  disabled,
+}: QuestionCardProps) {
   return (
     <div>
-      <p className="text-sm font-medium text-slate-800">{question.questionText}</p>
+      <p
+        className="text-sm font-medium leading-relaxed"
+        style={{ color: "#c8d8e8" }}
+      >
+        {question.questionText}
+      </p>
       {question.rationale && (
-        <p className="text-xs text-slate-500 mt-1 italic">{question.rationale}</p>
+        <p
+          className="text-xs font-mono mt-1 italic"
+          style={{ color: "#00d4ff44" }}
+        >
+          {question.rationale}
+        </p>
       )}
 
       {question.type === "text" && (

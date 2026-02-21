@@ -9,8 +9,15 @@ interface MessageBubbleProps {
 export default function MessageBubble({ role, children }: MessageBubbleProps) {
   if (role === "system") {
     return (
-      <div className="flex justify-center my-2">
-        <div className="bg-slate-100 text-slate-500 text-xs px-4 py-1.5 rounded-full">
+      <div className="flex justify-center my-3 slide-up">
+        <div
+          className="text-xs px-4 py-1.5 rounded-full font-mono tracking-widest uppercase"
+          style={{
+            background: "linear-gradient(135deg, #0f1f3a, #111d30)",
+            border: "1px solid #1a3055",
+            color: "#00d4ff66",
+          }}
+        >
           {children}
         </div>
       </div>
@@ -20,24 +27,55 @@ export default function MessageBubble({ role, children }: MessageBubbleProps) {
   const isUser = role === "user";
 
   return (
-    <div className={`flex items-start gap-3 ${isUser ? "flex-row-reverse" : ""} max-w-[85%] ${isUser ? "ml-auto" : ""}`}>
+    <div
+      className={`flex items-start gap-3 slide-up ${isUser ? "flex-row-reverse" : ""} max-w-[85%] ${isUser ? "ml-auto" : ""}`}
+    >
+      {/* Avatar */}
       <div
-        className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-          isUser ? "bg-primary-600" : "bg-primary-100"
-        }`}
+        className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 relative"
+        style={
+          isUser
+            ? {
+                background: "linear-gradient(135deg, #0090b2, #006e88)",
+                border: "1px solid #00d4ff44",
+                boxShadow: "0 0 10px #00d4ff22",
+              }
+            : {
+                background: "linear-gradient(135deg, #00d4ff22, #8b5cf622)",
+                border: "1px solid #00d4ff44",
+                boxShadow: "0 0 12px #00d4ff22",
+              }
+        }
       >
         {isUser ? (
-          <User className="w-4 h-4 text-white" />
+          <User className="w-4 h-4" style={{ color: "#e2e8f0" }} />
         ) : (
-          <Bot className="w-4 h-4 text-primary-700" />
+          <Bot
+            className="w-4 h-4"
+            style={{ color: "#00d4ff", filter: "drop-shadow(0 0 4px #00d4ff)" }}
+          />
         )}
       </div>
+
+      {/* Bubble */}
       <div
-        className={`rounded-2xl px-4 py-3 ${
+        className={`rounded-2xl px-4 py-3 ${isUser ? "rounded-tr-sm" : "rounded-tl-sm corner-bracket"}`}
+        style={
           isUser
-            ? "bg-primary-600 text-white rounded-tr-sm"
-            : "bg-chat-ai text-slate-800 rounded-tl-sm"
-        }`}
+            ? {
+                background: "linear-gradient(135deg, #0090b2, #006e88)",
+                border: "1px solid #00d4ff44",
+                color: "#f0faff",
+                boxShadow: "0 4px 16px rgba(0,144,178,0.25)",
+              }
+            : {
+                background: "linear-gradient(135deg, #0f1f3a, #111d30)",
+                border: "1px solid #1a3055",
+                color: "#c8d8e8",
+                boxShadow:
+                  "0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(0,212,255,0.06)",
+              }
+        }
       >
         {children}
       </div>

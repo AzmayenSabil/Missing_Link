@@ -40,18 +40,35 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
     }
   };
 
+  /* ── File confirmed ── */
   if (fileName) {
     return (
-      <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-        <FileText className="w-5 h-5 text-green-600" />
-        <span className="text-green-800 font-medium flex-1">{fileName}</span>
+      <div
+        className="flex items-center gap-3 p-4 rounded-xl"
+        style={{
+          background: "linear-gradient(135deg, #0a1f1a, #0d2a1e)",
+          border: "1px solid #00ffa344",
+          boxShadow: "0 0 16px #00ffa311",
+        }}
+      >
+        <FileText
+          className="w-5 h-5 flex-shrink-0"
+          style={{ color: "#00ffa3", filter: "drop-shadow(0 0 4px #00ffa3)" }}
+        />
+        <span
+          className="font-mono text-sm font-medium flex-1 truncate"
+          style={{ color: "#00ffa3" }}
+        >
+          {fileName}
+        </span>
         <button
           onClick={() => {
             setFileName(null);
             setPasteText("");
             setPasteMode(false);
           }}
-          className="text-green-500 hover:text-green-700"
+          className="transition-opacity hover:opacity-70"
+          style={{ color: "#00ffa366" }}
         >
           <X className="w-4 h-4" />
         </button>
@@ -59,6 +76,7 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
     );
   }
 
+  /* ── Paste mode ── */
   if (pasteMode) {
     return (
       <div className="space-y-3">
@@ -66,44 +84,94 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
           value={pasteText}
           onChange={(e) => setPasteText(e.target.value)}
           placeholder="Paste your PRD content here..."
-          className="w-full h-48 p-4 border border-slate-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+          className="w-full h-48 p-4 rounded-xl resize-none text-sm font-mono focus:outline-none"
+          style={{
+            background: "#0f1f3a",
+            border: "1px solid #1a3055",
+            color: "#c8d8e8",
+            caretColor: "#00d4ff",
+          }}
+          onFocus={(e) => {
+            e.currentTarget.style.borderColor = "#00d4ff44";
+            e.currentTarget.style.boxShadow = "0 0 0 2px #00d4ff11";
+          }}
+          onBlur={(e) => {
+            e.currentTarget.style.borderColor = "#1a3055";
+            e.currentTarget.style.boxShadow = "none";
+          }}
           autoFocus
         />
         <div className="flex gap-2">
           <button
             onClick={handlePasteSubmit}
             disabled={!pasteText.trim()}
-            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
+            className="px-4 py-2 rounded-lg font-mono text-sm font-bold tracking-wider uppercase transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            style={{
+              background: "linear-gradient(135deg, #00d4ff22, #8b5cf622)",
+              border: "1px solid #00d4ff44",
+              color: "#00d4ff",
+            }}
           >
             Use this PRD
           </button>
           <button
             onClick={() => setPasteMode(false)}
-            className="px-4 py-2 text-slate-600 hover:text-slate-800 text-sm"
+            className="px-4 py-2 rounded-lg font-mono text-sm transition-opacity hover:opacity-70"
+            style={{ color: "#00d4ff44" }}
           >
-            Back to upload
+            ← Back to upload
           </button>
         </div>
       </div>
     );
   }
 
+  /* ── Drop zone ── */
   return (
     <div>
       <div
-        onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragging(true);
+        }}
         onDragLeave={() => setDragging(false)}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
-        className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+        className="rounded-xl p-8 text-center cursor-pointer transition-all duration-200 relative overflow-hidden"
+        style={
           dragging
-            ? "border-primary-400 bg-primary-50"
-            : "border-slate-300 hover:border-slate-400 bg-white"
-        }`}
+            ? {
+                background: "linear-gradient(135deg, #00d4ff14, #8b5cf614)",
+                border: "1px dashed #00d4ff",
+                boxShadow: "0 0 20px #00d4ff11",
+              }
+            : {
+                background: "linear-gradient(135deg, #0f1f3a, #111d30)",
+                border: "1px dashed #1a3055",
+              }
+        }
       >
-        <Upload className="w-8 h-8 text-slate-400 mx-auto mb-3" />
-        <p className="text-slate-600 font-medium">Drop your PRD file here</p>
-        <p className="text-slate-400 text-sm mt-1">Supports .md and .txt files</p>
+        {dragging && <div className="scan-beam" style={{ opacity: 0.3 }} />}
+        <Upload
+          className="w-8 h-8 mx-auto mb-3"
+          style={{
+            color: dragging ? "#00d4ff" : "#1a3055",
+            filter: dragging ? "drop-shadow(0 0 6px #00d4ff)" : "none",
+            transition: "all 0.2s",
+          }}
+        />
+        <p
+          className="font-mono text-sm font-medium"
+          style={{ color: dragging ? "#00d4ff" : "#4a6080" }}
+        >
+          Drop your PRD file here
+        </p>
+        <p
+          className="text-xs font-mono mt-1"
+          style={{ color: dragging ? "#00d4ff66" : "#1a3055" }}
+        >
+          Supports .md and .txt files
+        </p>
         <input
           ref={fileInputRef}
           type="file"
@@ -117,9 +185,10 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
       </div>
       <button
         onClick={() => setPasteMode(true)}
-        className="mt-3 text-sm text-primary-600 hover:text-primary-800 font-medium"
+        className="mt-3 text-xs font-mono tracking-wider uppercase transition-opacity hover:opacity-70"
+        style={{ color: "#00d4ff44" }}
       >
-        Or paste PRD content directly
+        Or paste PRD content directly →
       </button>
     </div>
   );

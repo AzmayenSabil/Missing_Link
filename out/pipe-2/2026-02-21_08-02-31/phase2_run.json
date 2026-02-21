@@ -1,0 +1,11 @@
+{
+  "runId": "2026-02-21_08-02-31",
+  "phase1OutDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-1\\1920ffd2-8d84-478d-9c15-1ddb85e155ca",
+  "prdPath": "pasted-prd.md",
+  "outDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-2/2026-02-21_08-02-31",
+  "startedAt": "2026-02-21T08:02:31.076Z",
+  "finishedAt": "2026-02-21T08:03:39.279Z",
+  "durationMs": 68203,
+  "status": "success",
+  "engineName": "OpenAIEngine (gpt-4o)"
+}

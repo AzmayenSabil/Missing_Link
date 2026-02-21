@@ -60,17 +60,17 @@
           ]
         },
         {
-          "name": "config",
-          "description": "config layer",
-          "directories": [
-            "src/config"
-          ]
-        },
-        {
           "name": "hooks",
           "description": "hooks layer",
           "directories": [
             "src/hooks"
+          ]
+        },
+        {
+          "name": "config",
+          "description": "config layer",
+          "directories": [
+            "src/config"
           ]
         },
         {
@@ -130,21 +130,21 @@
         "dependencies": []
       },
       {
-        "name": "config",
-        "path": "src/config",
-        "description": "config layer (1 folder)",
-        "responsibilities": [
-          "Contains config logic"
-        ],
-        "exposedAPIs": [],
-        "dependencies": []
-      },
-      {
         "name": "hooks",
         "path": "src/hooks",
         "description": "hooks layer (1 folder)",
         "responsibilities": [
           "Contains hooks logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "config",
+        "path": "src/config",
+        "description": "config layer (1 folder)",
+        "responsibilities": [
+          "Contains config logic"
         ],
         "exposedAPIs": [],
         "dependencies": []
@@ -204,7 +204,7 @@
       "componentNaming": "PascalCase",
       "variableNaming": "camelCase (inferred)",
       "functionNaming": "camelCase; hooks prefixed with \"use\"",
-      "directoryStructure": "theme, ui, config, hooks, routing, state, api, types",
+      "directoryStructure": "theme, ui, hooks, config, routing, state, api, types",
       "codeStyle": []
     },
     "constraints": {
@@ -224,9 +224,9 @@
       ]
     }
   },
-  "generatedAt": "2026-02-21T06:16:40.763Z",
+  "generatedAt": "2026-02-21T08:01:03.301Z",
   "rawContext": {
-    "directoryTree": "src/assets\nsrc/components\nsrc/config\nsrc/hooks\nsrc/pages\nsrc/redux\nsrc/services\nsrc/types\nsrc/components/authorize\nsrc/components/layout\nsrc/components/table\nsrc/components/ui\nsrc/redux/slices",
+    "directoryTree": "src/assets\nsrc/components\nsrc/hooks\nsrc/config\nsrc/pages\nsrc/redux\nsrc/services\nsrc/types\nsrc/components/authorize\nsrc/components/layout\nsrc/components/table\nsrc/components/ui\nsrc/redux/slices",
     "keyFileSummaries": [
       {
         "path": "project-dna/manifest.json",
@@ -238,7 +238,7 @@
       },
       {
         "path": "project-dna/copilot-instructions.md",
-        "summary": "# GitHub Copilot Instructions for RedX Admin Hub\n\n---\n\n## applyTo: '**'\n\nThis file serves as the authoritative guide for AI coding assistants working on the RedX Admin Hub project. It provides comprehensive instructions and conventions that must be followed to ensure consistency and quality across the codebase. AI coding assistants should use this document as the primary reference for understanding the project's architecture, coding standards, and development practices.\n\n## Project Overview\n\nThe"
+        "summary": "# GitHub Copilot Instructions for RedX Admin Hub\n\n---\n\n## applyTo: '**'\n\nThis file serves as the authoritative guide for AI coding assistants working with the RedX Admin Hub project. It provides comprehensive instructions on the project's architecture, coding standards, state management, component patterns, API integration, and more. AI coding assistants should use this document to ensure consistency and adherence to the project's conventions and best practices.\n\n## Project Overview\n\nThe RedX Ad"
       }
     ]
   }
