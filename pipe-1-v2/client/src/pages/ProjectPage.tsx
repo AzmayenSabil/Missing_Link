@@ -46,13 +46,11 @@ export default function ProjectPage() {
 
   const pollingRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Load project on mount
   useEffect(() => {
     if (!id) return;
     selectProject(id);
   }, [id]);
 
-  // Auto-poll when project is in an active state
   useEffect(() => {
     if (!id || !selectedProject) return;
     const { status } = selectedProject;
@@ -111,7 +109,6 @@ export default function ProjectPage() {
     }
   };
 
-  // Loading state (initial load)
   if (isLoading && !selectedProject) {
     return <LoadingSpinner message="Loading project DNA..." />;
   }
@@ -134,27 +131,29 @@ export default function ProjectPage() {
       <div className="flex items-center gap-4 flex-wrap">
         <button
           onClick={() => navigate('/')}
-          className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+          className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-primary-400 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Projects
         </button>
         <div className="flex-1 flex items-center gap-3 min-w-0">
-          <h1 className="text-xl font-bold text-gray-900 truncate">{selectedProject.name}</h1>
+          <h1 className="text-xl font-bold text-slate-100 truncate">{selectedProject.name}</h1>
           <StatusBadge status={selectedProject.status} />
         </div>
         <div className="flex gap-2 flex-shrink-0">
           <button
             onClick={handleRefresh}
             disabled={isAnalyzing}
-            className="flex items-center gap-1.5 px-3 py-2 text-sm border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-40 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 text-sm text-slate-300 rounded-lg cyber-border hover:text-primary-400 disabled:opacity-40 transition-colors"
+            style={{ background: '#0d1830' }}
           >
             <RefreshCw className={`w-4 h-4 ${isAnalyzing ? 'animate-spin' : ''}`} />
             Refresh
           </button>
           <button
             onClick={handleDelete}
-            className="flex items-center gap-1.5 px-3 py-2 text-sm border border-red-200 text-red-500 rounded-lg hover:bg-red-50 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg transition-colors"
+            style={{ background: '#1a0a10', border: '1px solid #ff446633', color: '#ff4466' }}
           >
             <Trash2 className="w-4 h-4" />
             Delete
@@ -167,21 +166,25 @@ export default function ProjectPage() {
 
       {/* ── Ingesting state ────────────────────────────── */}
       {isAnalyzing && (
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 text-center">
+        <div
+          className="rounded-xl p-8 text-center cyber-border-glow"
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0d1830)' }}
+        >
           <LoadingSpinner message="Cloning repository and analyzing DNA..." />
-          <p className="text-xs text-blue-400 mt-2">{selectedProject.repoUrl}</p>
-          <p className="text-xs text-blue-400 mt-1">This typically takes 1–3 minutes.</p>
+          <p className="text-xs text-slate-500 mt-2">{selectedProject.repoUrl}</p>
+          <p className="text-xs text-slate-500 mt-1">This typically takes 1-3 minutes.</p>
         </div>
       )}
 
       {/* ── Error state ────────────────────────────────── */}
       {selectedProject.status === 'error' && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-5">
-          <p className="text-sm font-semibold text-red-800 mb-1">Analysis failed</p>
-          <p className="text-sm text-red-700">{selectedProject.errorMessage}</p>
+        <div className="rounded-xl p-5" style={{ background: '#1a0a10', border: '1px solid #ff446633' }}>
+          <p className="text-sm font-semibold mb-1" style={{ color: '#ff4466' }}>Analysis failed</p>
+          <p className="text-sm text-slate-400">{selectedProject.errorMessage}</p>
           <button
             onClick={handleRefresh}
-            className="mt-3 text-sm text-red-600 hover:text-red-800 underline"
+            className="mt-3 text-sm underline transition-colors"
+            style={{ color: '#ff4466' }}
           >
             Try again
           </button>
@@ -192,12 +195,12 @@ export default function ProjectPage() {
       {hasDNA && selectedProject.dna && (
         <>
           {/* Meta row */}
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-400">
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
             <a
               href={selectedProject.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 hover:text-indigo-500 transition-colors"
+              className="flex items-center gap-1 hover:text-primary-400 transition-colors"
             >
               <ExternalLink className="w-3 h-3" />
               {selectedProject.repoUrl}
@@ -221,41 +224,41 @@ export default function ProjectPage() {
           </div>
 
           {/* ── Evolve DNA panel ───────────────────────── */}
-          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="rounded-xl overflow-hidden cyber-border" style={{ background: '#0d1830' }}>
             <button
               onClick={() => {
                 setShowEvolve((v) => !v);
                 setEvolveChangelog(null);
               }}
-              className="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50 transition-colors"
+              className="w-full flex items-center justify-between px-5 py-4 hover:bg-cyber-card transition-colors"
             >
               <div className="flex items-center gap-2">
-                <GitMerge className="w-5 h-5 text-violet-500" />
-                <span className="font-semibold text-gray-900">Evolve DNA after PR merge</span>
+                <GitMerge className="w-5 h-5 neon-text-purple" />
+                <span className="font-semibold text-slate-200">Evolve DNA after PR merge</span>
               </div>
               {showEvolve ? (
-                <ChevronDown className="w-5 h-5 text-gray-400" />
+                <ChevronDown className="w-5 h-5 text-slate-500" />
               ) : (
-                <ChevronUp className="w-5 h-5 text-gray-400" />
+                <ChevronUp className="w-5 h-5 text-slate-500" />
               )}
             </button>
 
             {showEvolve && (
-              <div className="px-5 pb-5 pt-1 space-y-3 border-t border-gray-100">
-                <p className="text-xs text-gray-400 leading-relaxed">
+              <div className="px-5 pb-5 pt-1 space-y-3" style={{ borderTop: '1px solid #1a3055' }}>
+                <p className="text-xs text-slate-500 leading-relaxed">
                   Paste a PR summary and optionally list changed files. The DNA Engine will
                   analyze the impact and update the relevant sections.
                 </p>
 
                 {evolveChangelog && (
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                    <p className="text-sm font-semibold text-green-800 mb-2">
+                  <div className="rounded-xl p-4" style={{ background: '#0a1f1a', border: '1px solid #00ffa333' }}>
+                    <p className="text-sm font-semibold mb-2 neon-text-green">
                       DNA evolved! Changes applied:
                     </p>
                     <ul className="space-y-1">
                       {evolveChangelog.map((change, i) => (
-                        <li key={i} className="text-sm text-green-700 flex gap-1.5">
-                          <span className="text-green-500 flex-shrink-0">›</span>
+                        <li key={i} className="text-sm text-slate-300 flex gap-1.5">
+                          <span style={{ color: '#00ffa3' }} className="flex-shrink-0">›</span>
                           {change}
                         </li>
                       ))}
@@ -266,21 +269,27 @@ export default function ProjectPage() {
                 <textarea
                   value={prSummary}
                   onChange={(e) => setPrSummary(e.target.value)}
-                  placeholder="Describe what this PR changes (e.g., 'Added JWT authentication. New /auth/login and /auth/refresh endpoints. Updated User model with tokenHash field...')"
+                  placeholder="Describe what this PR changes..."
                   rows={4}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
+                  className="w-full border border-cyber-border bg-cyber-bg rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyber-purple/50 resize-none"
                 />
                 <textarea
                   value={changedFiles}
                   onChange={(e) => setChangedFiles(e.target.value)}
                   placeholder="Changed files (one per line, optional)&#10;src/routes/auth.ts&#10;src/models/User.ts"
                   rows={3}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 font-mono resize-none"
+                  className="w-full border border-cyber-border bg-cyber-bg rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyber-purple/50 font-mono resize-none"
                 />
                 <button
                   onClick={handleEvolve}
                   disabled={!prSummary.trim() || isEvolving}
-                  className="bg-violet-600 text-white rounded-xl px-5 py-2.5 text-sm font-medium hover:bg-violet-700 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 transition-colors"
+                  className="rounded-xl px-5 py-2.5 text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 transition-all"
+                  style={{
+                    background: 'linear-gradient(135deg, #8b5cf622, #00d4ff11)',
+                    border: '1px solid #8b5cf644',
+                    color: '#8b5cf6',
+                    boxShadow: '0 0 12px #8b5cf622',
+                  }}
                 >
                   {isEvolving ? (
                     <>

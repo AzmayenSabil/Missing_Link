@@ -42,7 +42,7 @@ export default function ProgressBar({ steps }: { steps: Step[] }) {
                     : {
                         background: "#0f1f3a",
                         border: "1px solid #1a3055",
-                        color: "#1a3055",
+                        color: "#64748b",
                       }
               }
             >
@@ -70,7 +70,7 @@ export default function ProgressBar({ steps }: { steps: Step[] }) {
                   ? { color: "#00d4ff", textShadow: "0 0 6px #00d4ff66" }
                   : step.status === "complete"
                     ? { color: "#00ffa3" }
-                    : { color: "#1a3055" }
+                    : { color: "#64748b" }
               }
             >
               {step.label}

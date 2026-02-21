@@ -249,3 +249,9 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ─── Placeholder text ───────────────────────────────────── */
+::placeholder {
+  color: #64748b;
+  opacity: 1;
+}

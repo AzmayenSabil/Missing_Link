@@ -131,7 +131,7 @@ function AnalysisOverlay({ phase }: { phase: "questions" | "impact" }) {
             </p>
             <p
               className="text-xs font-mono mt-0.5"
-              style={{ color: "#00d4ff66" }}
+              style={{ color: "#94a3b8" }}
             >
               {subtitle}
             </p>
@@ -181,7 +181,7 @@ function AnalysisOverlay({ phase }: { phase: "questions" | "impact" }) {
               <span
                 className="text-xs font-mono"
                 style={{
-                  color: i === 0 ? "#00d4ff" : "#00d4ff55",
+                  color: i === 0 ? "#00d4ff" : "#64748b",
                   animation:
                     i === 0 ? "neonFlicker 3s ease-in-out infinite" : undefined,
                 }}
@@ -372,7 +372,7 @@ export default function ChatPage() {
           <button
             onClick={() => navigate("/")}
             className="flex items-center gap-1.5 text-xs font-mono tracking-wider uppercase mb-4 transition-all hover:opacity-80"
-            style={{ color: "#00d4ff55" }}
+            style={{ color: "#94a3b8" }}
           >
             <span>←</span> New Analysis
           </button>
@@ -471,7 +471,7 @@ export default function ChatPage() {
                 </h2>
                 <p
                   className="text-sm font-mono max-w-md mx-auto mb-6"
-                  style={{ color: "#00ffa366" }}
+                  style={{ color: "#94a3b8" }}
                 >
                   All clarifications captured. The development team will use
                   your answers to plan the implementation. Output artefacts
@@ -488,7 +488,7 @@ export default function ChatPage() {
                     <div key={stat.label} className="text-center">
                       <p
                         className="text-xs font-mono mb-1"
-                        style={{ color: "#00ffa355" }}
+                        style={{ color: "#64748b" }}
                       >
                         {stat.label}
                       </p>

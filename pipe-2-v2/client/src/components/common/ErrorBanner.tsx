@@ -25,7 +25,7 @@ export default function ErrorBanner({
         style={{ color: "#ff4466", filter: "drop-shadow(0 0 4px #ff446688)" }}
       />
       <div className="flex-1">
-        <p className="text-sm font-mono" style={{ color: "#ffb3c0" }}>
+        <p className="text-sm font-mono" style={{ color: "#fecdd3" }}>
           {message}
         </p>
         {onRetry && (
@@ -42,7 +42,7 @@ export default function ErrorBanner({
         <button
           onClick={onDismiss}
           className="transition-opacity hover:opacity-60"
-          style={{ color: "#ff446666" }}
+          style={{ color: "#ff4466" }}
         >
           <X className="w-4 h-4" />
         </button>

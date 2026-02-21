@@ -9,8 +9,8 @@ interface LoadingSpinnerProps {
 export default function LoadingSpinner({ message = 'Loading...', size = 'md' }: LoadingSpinnerProps) {
   const sizeClass = size === 'sm' ? 'w-5 h-5' : size === 'lg' ? 'w-10 h-10' : 'w-7 h-7';
   return (
-    <div className="flex flex-col items-center justify-center py-16 gap-3 text-gray-400">
-      <Loader2 className={`${sizeClass} animate-spin text-indigo-500`} />
+    <div className="flex flex-col items-center justify-center py-16 gap-3 text-slate-400">
+      <Loader2 className={`${sizeClass} animate-spin neon-text`} />
       {message && <p className="text-sm">{message}</p>}
     </div>
   );

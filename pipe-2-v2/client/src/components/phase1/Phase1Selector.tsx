@@ -38,7 +38,7 @@ export default function Phase1Selector({
     );
   if (runs.length === 0) {
     return (
-      <p className="text-sm font-mono" style={{ color: "#00d4ff55" }}>
+      <p className="text-sm font-mono" style={{ color: "#94a3b8" }}>
         No pipe-1 runs found. Run pipe-1 first to analyze a codebase.
       </p>
     );
@@ -72,21 +72,21 @@ export default function Phase1Selector({
               <Database
                 className="w-5 h-5 flex-shrink-0"
                 style={{
-                  color: isSelected ? "#00d4ff" : "#1a3055",
+                  color: isSelected ? "#00d4ff" : "#64748b",
                   filter: isSelected ? "drop-shadow(0 0 4px #00d4ff)" : "none",
                 }}
               />
               <div className="flex-1 min-w-0">
                 <p
                   className="font-mono text-sm font-medium truncate"
-                  style={{ color: isSelected ? "#e2e8f0" : "#4a6080" }}
+                  style={{ color: isSelected ? "#e2e8f0" : "#94a3b8" }}
                 >
                   {run.projectId}
                 </p>
                 {run.scannedAt && (
                   <p
                     className="text-xs font-mono mt-0.5"
-                    style={{ color: isSelected ? "#00d4ff55" : "#1a3055" }}
+                    style={{ color: isSelected ? "#94a3b8" : "#64748b" }}
                   >
                     Scanned: {new Date(run.scannedAt).toLocaleString()}
                   </p>

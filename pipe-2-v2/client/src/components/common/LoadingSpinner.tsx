@@ -33,7 +33,7 @@ export default function LoadingSpinner({ text }: { text?: string }) {
       {text && (
         <span
           className="text-xs font-mono tracking-widest uppercase"
-          style={{ color: "#00d4ff99" }}
+          style={{ color: "#94a3b8" }}
         >
           {text}
         </span>
