@@ -2,7 +2,7 @@
  * runs.router.ts – Endpoints for creating and querying run sessions.
  */
 
-import { Router } from "express";
+import { Router, Request, Response, NextFunction } from "express";
 import path from "node:path";
 import { config } from "../config/env";
 import { AppError } from "../middleware/errorHandler";
@@ -23,9 +23,18 @@ runsRouter.post("/", async (req, res, next) => {
   try {
     const { phase1RunId, prdText, prdFileName } = req.body;
 
-    if (!phase1RunId) throw new AppError("INVALID_INPUT", "phase1RunId is required", 400);
-    if (!prdText || typeof prdText !== "string" || prdText.trim().length === 0) {
-      throw new AppError("PRD_EMPTY", "PRD text is required and cannot be empty", 400);
+    if (!phase1RunId)
+      throw new AppError("INVALID_INPUT", "phase1RunId is required", 400);
+    if (
+      !prdText ||
+      typeof prdText !== "string" ||
+      prdText.trim().length === 0
+    ) {
+      throw new AppError(
+        "PRD_EMPTY",
+        "PRD text is required and cannot be empty",
+        400,
+      );
     }
 
     const phase1Dir = path.join(config.outDir, "pipe-1", phase1RunId);
@@ -81,7 +90,10 @@ runsRouter.post("/", async (req, res, next) => {
       sessionManager.updateStatus(session.runId, "asking_questions");
       console.log(`  [runs] Questions ready for run ${session.runId}`);
     } catch (err) {
-      console.error(`  [runs] Question generation failed:`, (err as Error).message);
+      console.error(
+        `  [runs] Question generation failed:`,
+        (err as Error).message,
+      );
       sessionManager.updateStatus(
         session.runId,
         "error",
@@ -97,37 +109,45 @@ runsRouter.post("/", async (req, res, next) => {
  * GET /api/runs/:runId
  * Return full session state.
  */
-runsRouter.get("/:runId", (req, res) => {
-  const session = sessionManager.getSession(req.params.runId);
-  if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
+runsRouter.get("/:runId", (req, res, next) => {
+  try {
+    const session = sessionManager.getSession(req.params.runId);
+    if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
 
-  res.json({
-    runId: session.runId,
-    status: session.status,
-    phase1RunId: session.phase1RunId,
-    prdFileName: session.prdFileName,
-    createdAt: session.createdAt,
-    error: session.error,
-    questionsCount: session.questions.length,
-    answersCount: session.answers.length,
-    currentQuestionIndex: session.currentQuestionIndex,
-    outputWritten: session.outputWritten,
-  });
+    res.json({
+      runId: session.runId,
+      status: session.status,
+      phase1RunId: session.phase1RunId,
+      prdFileName: session.prdFileName,
+      createdAt: session.createdAt,
+      error: session.error,
+      questionsCount: session.questions.length,
+      answersCount: session.answers.length,
+      currentQuestionIndex: session.currentQuestionIndex,
+      outputWritten: session.outputWritten,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
 /**
  * GET /api/runs/:runId/status
  * Lightweight status poll.
  */
-runsRouter.get("/:runId/status", (req, res) => {
-  const session = sessionManager.getSession(req.params.runId);
-  if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
+runsRouter.get("/:runId/status", (req, res, next) => {
+  try {
+    const session = sessionManager.getSession(req.params.runId);
+    if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
 
-  res.json({
-    runId: session.runId,
-    status: session.status,
-    currentQuestionIndex: session.currentQuestionIndex,
-    totalQuestions: session.questions.length,
-    error: session.error,
-  });
+    res.json({
+      runId: session.runId,
+      status: session.status,
+      currentQuestionIndex: session.currentQuestionIndex,
+      totalQuestions: session.questions.length,
+      error: session.error,
+    });
+  } catch (err) {
+    next(err);
+  }
 });

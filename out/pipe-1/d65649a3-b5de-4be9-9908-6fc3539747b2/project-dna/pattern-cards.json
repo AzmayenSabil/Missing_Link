@@ -1,0 +1,42 @@
+[
+  {
+    "pattern": "",
+    "file": "pages/admin/daraz-reattempt-update.js",
+    "startLine": 1,
+    "endLine": 30,
+    "snippet": "import React from 'react';\nimport { DownloadOutlined, UploadOutlined } from '@ant-design/icons';\nimport { css, jsx } from '@emotion/react';\nimport { Button, Col, message, PageHeader, Row, Select, Space, Upload } from 'antd';\nimport { useCallback, useState } from 'react';\nimport { Authorize } from '../../components/authorize/Authorize';\nimport ShopUpLayout from '../../components/ShopUpLayout';\nimport { Text } from '../../components/Text/Text';\nimport { googleDocLinks } from '../../config/googleDocLinks';\nimport { api_base_url as url } from '../../services/axios.config';\n\nconst { Option } = Select;\n\nconst uploadUrl = `https://${url}/v4/logistics/parcels/bulk-update`;\n\nconst UploadBtn = ({ afterUpload, size, type, status }) => {\n  const [isUploading, setIsUploading] = useState(false);\n\n  const handleUpload = async ({ file }) => {\n    if (file.status === 'uploading') {\n      return;\n    }\n\n    if (file.status === 'error') {\n      setIsUploading(false);\n      message.error(file?.response?.message || 'Something went wrong.');\n    }\n\n    if (\n      file.status === 'done' &&",
+    "found": true
+  },
+  {
+    "pattern": "",
+    "file": "hooks/useTable.tsx",
+    "startLine": 24,
+    "endLine": 53,
+    "snippet": "export interface CommonParametersType {\n  limit: number;\n  offset: number;\n}\n\ninterface StateTypes<DataType, ParametersType> {\n  fetching: boolean;\n  error: any;\n  data: Array<DataType>;\n  count: number;\n  params: ParametersType;\n}\n\nexport function useTable<\n  ParametersType,\n  SuccessResponseType,\n  ErrorResponseType,\n  DataType\n>(props: Props<ParametersType, SuccessResponseType, ErrorResponseType, DataType>) {\n  const initialState = {\n    fetching: false,\n    error: {},\n    data: [],\n    count: 0,\n    params: {\n      ...props.initialParameters,\n    },\n  };\n\n  function reducer(",
+    "found": true
+  },
+  {
+    "pattern": "",
+    "file": "services/adjustmentsApi.js",
+    "startLine": 1,
+    "endLine": 25,
+    "snippet": "import ax from './axios.config';\n\nconst addAdjustments = async ({ amount, shopId, parcelTrackingId, reason, comment }) => {\n  try {\n    return await ax.post(`/v4/logistics/adjustments`, {\n      amount,\n      shopId,\n      parcelTrackingId,\n      reason,\n      comment,\n    });\n  } catch (err) {\n    return err.response.data;\n  }\n};\n\nconst fetchInvoices = async ({ parcelTrackingId }) => {\n  return await ax.get(`/v4/logistics/adjustments/parcels/${parcelTrackingId}`);\n};\n\nexport default {\n  addAdjustments,\n  fetchInvoices,\n};\n",
+    "found": true
+  },
+  {
+    "pattern": "",
+    "file": "redux/AdminRecoverySlice.js",
+    "startLine": 20,
+    "endLine": 49,
+    "snippet": "  adminRecoveryAPI.getDeliveryPartners,\n);\n\nconst setResponsibleAsync = createAsyncThunk(\n  'admin/setResponsible',\n  adminRecoveryAPI.setResponsible,\n);\n\nconst updateAdminIssueStatusAsync = createAsyncThunk(\n  'admin/updateAdminIssueStatus',\n  adminRecoveryAPI.updateAdminIssueStatus,\n);\n\nconst AdminRecoverySlice = createSlice({\n  name: 'issue',\n  initialState,\n  reducers: {\n    setAdminRecoveryTablePageNumber: (state, action) => {\n      state.adminIssueTablePageNumber = action.payload;\n    },\n    selectIssue: (state, action) => {\n      state.selectedIssue = action.payload;\n    },\n    showResponsibleModal: (state) => {\n      state.isResponsibleModal = true;\n    },\n    hideResponsibleModal: (state) => {\n      state.isResponsibleModal = false;\n    },\n    setAdminStatusLoadingId: (state, action) => {",
+    "found": true
+  },
+  {
+    "pattern": "",
+    "file": "assets/global-styles.js",
+    "startLine": 1,
+    "endLine": 30,
+    "snippet": "import React from 'react';\nimport { css, Global } from '@emotion/react';\nimport { mq } from '../lib/facepaint';\n\n// ant-page-header-heading-title\n\nconst global_css = css`\n  #__next {\n    display: block;\n    flex-shrink: initial;\n    flex-basis: initial;\n    flex-direction: initial;\n    flex-grow: initial;\n    flex: initial;\n  }\n  .d-flex {\n    display: flex;\n  }\n  .mt-10 {\n    margin-top: 10px;\n  }\n  .mt-20 {\n    margin-top: 20px;\n  }\n  .mb-10 {\n    margin-bottom: 10px;\n  }\n  .ta-center {\n    text-align: center;\n  }",
+    "found": true
+  }
+]

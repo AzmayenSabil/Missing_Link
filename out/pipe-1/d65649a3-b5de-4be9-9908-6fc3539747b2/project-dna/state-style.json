@@ -1,0 +1,10 @@
+{
+  "typedHooks": {
+    "useAppDispatch": false,
+    "useAppSelector": false,
+    "typeFiles": []
+  },
+  "directUseSelectorCount": 414,
+  "directUseDispatchCount": 191,
+  "storeLocation": "redux/store.js"
+}

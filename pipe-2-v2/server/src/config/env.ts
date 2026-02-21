@@ -10,7 +10,7 @@ dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
 
 export const config = {
   openaiApiKey: process.env.OPENAI_API_KEY ?? "",
-  port: parseInt(process.env.PORT ?? "3001", 10),
+  port: parseInt(process.env.PORT ?? "3002", 10),
   outDir: path.resolve(__dirname, "../../../../out"),
 } as const;
 

@@ -1,0 +1,23 @@
+{
+  "name": "ai-driven-req-2-code-pipeline",
+  "version": "1.0.0",
+  "description": "AI-Driven Requirements to Code Pipeline - Monorepo",
+  "private": true,
+  "scripts": {
+    "start:all": "start-all-pipes.bat",
+    "dev:pipe1:server": "cd pipe-1-v2/server && npm run dev",
+    "dev:pipe1:client": "cd pipe-1-v2/client && npm run dev",
+    "dev:pipe2:server": "cd pipe-2-v2/server && npm run dev",
+    "dev:pipe2:client": "cd pipe-2-v2/client && npm run dev",
+    "dev:pipe3:server": "cd pipe-3-v2/server && npm run dev",
+    "dev:pipe3:client": "cd pipe-3-v2/client && npm run dev",
+    "install:all": "cd pipe-1-v2/server && npm install && cd ../client && npm install && cd ../../pipe-2-v2/server && npm install && cd ../client && npm install && cd ../../pipe-3-v2/server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "ai",
+    "pipeline",
+    "code-generation"
+  ],
+  "author": "",
+  "license": "MIT"
+}

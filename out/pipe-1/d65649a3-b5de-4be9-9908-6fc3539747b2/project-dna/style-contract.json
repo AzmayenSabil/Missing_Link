@@ -1,0 +1,17 @@
+{
+  "typescript": {
+    "strict": false,
+    "jsx": null
+  },
+  "eslint": {
+    "present": true,
+    "importantRules": {}
+  },
+  "prettier": {
+    "present": true,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 90
+  }
+}

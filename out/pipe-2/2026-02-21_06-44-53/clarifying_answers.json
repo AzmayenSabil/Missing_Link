@@ -1,0 +1,37 @@
+[
+  {
+    "questionId": "q-access-1",
+    "value": [
+      "Admin",
+      "Ops"
+    ]
+  },
+  {
+    "questionId": "q-ui-1",
+    "value": "Access denied page"
+  },
+  {
+    "questionId": "q-flow-1",
+    "value": "Same tab"
+  },
+  {
+    "questionId": "q-data-1",
+    "value": "no"
+  },
+  {
+    "questionId": "q-error-1",
+    "value": "Show error message"
+  },
+  {
+    "questionId": "q-scope-1",
+    "value": "Permanent"
+  },
+  {
+    "questionId": "q-priority-1",
+    "value": "1 week"
+  },
+  {
+    "questionId": "q-ui-2",
+    "value": "N/A"
+  }
+]

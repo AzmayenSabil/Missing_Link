@@ -1,0 +1,25 @@
+{
+  "prettier": {
+    "present": true,
+    "file": ".prettierrc",
+    "parsed": {
+      "trailingComma": "all",
+      "tabWidth": 2,
+      "semi": true,
+      "singleQuote": true,
+      "printWidth": 90,
+      "bracketSpacing": true,
+      "jsxBracketSameLine": true,
+      "arrowParens": "always"
+    }
+  },
+  "eslint": {
+    "present": true,
+    "file": ".eslintrc.json",
+    "rawSnippet": "{\r\n  \"root\": true,\r\n  \"parserOptions\": {\r\n    \"ecmaVersion\": 2020,\r\n    \"sourceType\": \"module\",\r\n    \"ecmaFeatures\": {\r\n      \"jsx\": true,\r\n      \"modules\": true\r\n    }\r\n  },\r\n  \"settings\": {\r\n    \"react\": {\r\n      \"version\": \"detect\" // Automatically detect the react version\r\n    }\r\n  },\r\n  \"env\": {\r\n    \"browser\": true, // Enables browser globals like window and document\r\n    \"amd\": true, // Enables require() and define() as global variables as per the amd spec.\r\n    \"node\": true, // Enables Node.js global variables and Node.js scoping.\r\n    \"es6\": true\r\n  },\r\n  \"extends\": [\r\n    \"eslint:recommended\",\r\n    \"plugin:@typescript-eslint/recommended\",\r\n    \"plugin:react/recommended\",\r\n    \"plugin:jsx-a11y/recommended\",\r\n    \"plugin:react-hooks/recommended\"\r\n  ],\r\n  \"plugins\": [\"eslint-plugin-local-rules\"],\r\n  \"rules\": {\r\n    \"react/react-in-jsx-scope\": \"off\",\r\n    \"jsx-a11y/anchor-is-valid\": [\r\n      \"error\",\r\n      {\r\n        \"components\": [\"Link\"],\r\n        \"specialLink\": [\"hrefLeft\", \"hrefRight\"],\r\n        \"aspects\": [\"invalidHref\", \"preferButton\"]\r\n      }\r\n    ],\r\n    \"react/prop-types\": 0,\r\n    \"react/display-name\": \"off\",\r\n    \"jsx-a11y/click-events-have-key-events\": \"off\",\r\n    \"jsx-a11y/no-static-element-interactions\": \"off\",\r\n    \"jsx-a11y/no-autofocus\": \"off\",\r\n    \"no-use-before-define\": [\r\n      \"error\",\r\n      {\r\n        \"functions\": true,\r\n        \"classes\": true,\r\n        \"variables\": false,\r\n        \"allowNamedExports\": false\r\n      }\r\n    ],\r\n    \"local-rules/rule\": [\r\n      \"error\",\r\n      {\r\n        \"isCI\": false,\r\n        \"uikitPackages\": [\"antd\", \"antd/lib/**\"],\r\n        \"testIdProps\": [\"data-testid\"],\r\n        \"componentsToExclude\": [\r\n          \"div\",\r\n          \"p\",\r\n          \"span\",\r\n          \"Row\",\r\n          \"Col\",\r\n          \"Form\",\r\n          \"Space\",\r\n          \"Paragraph\",\r\n          \"Divider\",\r\n          \"br\",\r\n          \"Text\",\r\n          \"PageHeader\",\r\n          \"hr\",\r\n          \"Spin\",\r\n          \"tr\",\r\n          \"th\",\r\n          \""
+  },
+  "commitlint": {
+    "present": true,
+    "file": "commitlint.config.js"
+  }
+}

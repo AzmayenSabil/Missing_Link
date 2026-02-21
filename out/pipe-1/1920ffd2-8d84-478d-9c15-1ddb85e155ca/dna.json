@@ -1,0 +1,245 @@
+{
+  "projectId": "1920ffd2-8d84-478d-9c15-1ddb85e155ca",
+  "sections": {
+    "overview": {
+      "name": "redx-admin-hub",
+      "description": "Project analyzed by pipe-1. See copilot-instructions for full summary.",
+      "purpose": "Codebase at https://github.com/AzmayenSabil/redx-admin-hub.git",
+      "mainFeatures": [
+        "React UI",
+        "Redux Toolkit state management",
+        "Axios HTTP client",
+        "Ant Design component library",
+        "Emotion CSS-in-JS styling",
+        "REST API service layer"
+      ],
+      "targetUsers": [
+        "developers"
+      ],
+      "deploymentType": "SPA"
+    },
+    "techStack": {
+      "languages": [
+        "TypeScript"
+      ],
+      "frameworks": [
+        "React",
+        "Redux Toolkit"
+      ],
+      "libraries": [
+        "Axios",
+        "Ant Design",
+        "Emotion"
+      ],
+      "buildTools": [
+        "TypeScript compiler"
+      ],
+      "testingTools": [],
+      "databases": [],
+      "devOps": []
+    },
+    "architecture": {
+      "pattern": "React SPA with layered folders",
+      "layers": [
+        {
+          "name": "theme",
+          "description": "theme layer",
+          "directories": [
+            "src/assets"
+          ]
+        },
+        {
+          "name": "ui",
+          "description": "ui layer",
+          "directories": [
+            "src/components",
+            "src/components/authorize",
+            "src/components/layout",
+            "src/components/table",
+            "src/components/ui"
+          ]
+        },
+        {
+          "name": "config",
+          "description": "config layer",
+          "directories": [
+            "src/config"
+          ]
+        },
+        {
+          "name": "hooks",
+          "description": "hooks layer",
+          "directories": [
+            "src/hooks"
+          ]
+        },
+        {
+          "name": "routing",
+          "description": "routing layer",
+          "directories": [
+            "src/pages"
+          ]
+        },
+        {
+          "name": "state",
+          "description": "state layer",
+          "directories": [
+            "src/redux",
+            "src/redux/slices"
+          ]
+        },
+        {
+          "name": "api",
+          "description": "api layer",
+          "directories": [
+            "src/services"
+          ]
+        },
+        {
+          "name": "types",
+          "description": "types layer",
+          "directories": [
+            "src/types"
+          ]
+        }
+      ],
+      "keyDecisions": [
+        "Path aliases configured: @/*"
+      ],
+      "diagramDescription": "Layers: api → config → hooks → routing → state → theme → types → ui. Role edges: {}"
+    },
+    "modules": [
+      {
+        "name": "theme",
+        "path": "src/assets",
+        "description": "theme layer (1 folder)",
+        "responsibilities": [
+          "Contains theme logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "ui",
+        "path": "src/components",
+        "description": "ui layer (5 folders)",
+        "responsibilities": [
+          "Contains ui logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "config",
+        "path": "src/config",
+        "description": "config layer (1 folder)",
+        "responsibilities": [
+          "Contains config logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "hooks",
+        "path": "src/hooks",
+        "description": "hooks layer (1 folder)",
+        "responsibilities": [
+          "Contains hooks logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "routing",
+        "path": "src/pages",
+        "description": "routing layer (1 folder)",
+        "responsibilities": [
+          "Contains routing logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "state",
+        "path": "src/redux",
+        "description": "state layer (2 folders)",
+        "responsibilities": [
+          "Contains state logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "api",
+        "path": "src/services",
+        "description": "api layer (1 folder)",
+        "responsibilities": [
+          "Contains api logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      },
+      {
+        "name": "types",
+        "path": "src/types",
+        "description": "types layer (1 folder)",
+        "responsibilities": [
+          "Contains types logic"
+        ],
+        "exposedAPIs": [],
+        "dependencies": []
+      }
+    ],
+    "apis": {
+      "baseUrl": "https://dummy-api.redx.local",
+      "endpoints": [],
+      "patterns": []
+    },
+    "dataModels": {
+      "models": [],
+      "patterns": []
+    },
+    "conventions": {
+      "fileNaming": "camel",
+      "componentNaming": "PascalCase",
+      "variableNaming": "camelCase (inferred)",
+      "functionNaming": "camelCase; hooks prefixed with \"use\"",
+      "directoryStructure": "theme, ui, config, hooks, routing, state, api, types",
+      "codeStyle": []
+    },
+    "constraints": {
+      "browserSupport": [],
+      "performance": [],
+      "security": [],
+      "dependencies": [
+        "react",
+        "typescript",
+        "antd",
+        "emotion",
+        "reduxToolkit",
+        "axios"
+      ],
+      "devDependencies": [
+        "typescript"
+      ]
+    }
+  },
+  "generatedAt": "2026-02-21T06:16:40.763Z",
+  "rawContext": {
+    "directoryTree": "src/assets\nsrc/components\nsrc/config\nsrc/hooks\nsrc/pages\nsrc/redux\nsrc/services\nsrc/types\nsrc/components/authorize\nsrc/components/layout\nsrc/components/table\nsrc/components/ui\nsrc/redux/slices",
+    "keyFileSummaries": [
+      {
+        "path": "project-dna/manifest.json",
+        "summary": "Stack: {\"next\":false,\"react\":true,\"typescript\":true,\"antd\":true,\"emotion\":true,\"reduxToolkit\":true,\"swr\":false,\"axios\":true}"
+      },
+      {
+        "path": "project-dna/naming-conventions.json",
+        "summary": "fileStyle=camel, componentStyle=PascalCase"
+      },
+      {
+        "path": "project-dna/copilot-instructions.md",
+        "summary": "# GitHub Copilot Instructions for RedX Admin Hub\n\n---\n\n## applyTo: '**'\n\nThis file serves as the authoritative guide for AI coding assistants working on the RedX Admin Hub project. It provides comprehensive instructions and conventions that must be followed to ensure consistency and quality across the codebase. AI coding assistants should use this document as the primary reference for understanding the project's architecture, coding standards, and development practices.\n\n## Project Overview\n\nThe"
+      }
+    ]
+  }
+}
