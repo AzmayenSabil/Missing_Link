@@ -9,6 +9,8 @@ const path = require("path");
 
 const root = path.resolve(__dirname, "..");
 
+// Each pipe service gets its own fixed internal port so Railway's public
+// PORT variable (used by the gateway) never bleeds into a pipe server.
 const services = [
   {
     name: "pipe-1",
@@ -16,6 +18,7 @@ const services = [
     cmd: "node",
     args: ["dist/index.js"],
     color: "\x1b[35m", // magenta
+    extraEnv: { PORT_PIPE1: "3001" },
   },
   {
     name: "pipe-2",
@@ -23,6 +26,7 @@ const services = [
     cmd: "node",
     args: ["dist/index.js"],
     color: "\x1b[36m", // cyan
+    extraEnv: { PORT_PIPE2: "3002" },
   },
   {
     name: "pipe-3",
@@ -30,6 +34,7 @@ const services = [
     cmd: "node",
     args: ["dist/index.js"],
     color: "\x1b[32m", // green
+    extraEnv: { PORT_PIPE3: "3003" },
   },
   {
     name: "gateway",
@@ -37,6 +42,7 @@ const services = [
     cmd: "node",
     args: ["index.js"],
     color: "\x1b[33m", // yellow
+    extraEnv: {}, // gateway uses Railway's PORT as-is
   },
 ];
 
@@ -50,7 +56,9 @@ function startService(service) {
   const proc = spawn(service.cmd, service.args, {
     cwd: service.cwd,
     stdio: ["ignore", "pipe", "pipe"],
-    env: { ...process.env },
+    // extraEnv overrides come last so pipe-specific PORT_PIPEn values
+    // always win over Railway's public PORT variable.
+    env: { ...process.env, ...service.extraEnv },
   });
 
   proc.stdout.on("data", (data) => {

@@ -5,8 +5,12 @@
 import dotenv from "dotenv";
 import path from "node:path";
 
-// Load .env from pipe-2-v2 root
-dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
+// Load env vars for local development.
+// Railway injects vars directly into process.env — dotenv is a no-op there.
+// Try the pipe-specific .env first, then the repo root .env as a fallback.
+// Neither call overrides vars already in process.env (Railway env vars are safe).
+dotenv.config({ path: path.resolve(__dirname, "../../../.env") });    // pipe-2-v2/.env
+dotenv.config({ path: path.resolve(__dirname, "../../../../.env") }); // repo root .env
 
 export const config = {
   openaiApiKey: process.env.OPENAI_API_KEY ?? "",

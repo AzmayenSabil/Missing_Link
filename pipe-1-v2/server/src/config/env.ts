@@ -1,7 +1,12 @@
 import dotenv from "dotenv";
 import path from "path";
 
-dotenv.config({ path: path.resolve(__dirname, "../../.env") });
+// Load env vars for local development.
+// Railway injects vars directly into process.env — dotenv is a no-op there.
+// Try the pipe-specific .env first, then the repo root .env as a fallback.
+// Neither call overrides vars already in process.env (Railway env vars are safe).
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });       // pipe-1-v2/server/.env
+dotenv.config({ path: path.resolve(__dirname, "../../../../.env") }); // repo root .env
 
 export const env = {
   PORT: parseInt(process.env.PORT_PIPE1 || process.env.PORT || "3001", 10),
