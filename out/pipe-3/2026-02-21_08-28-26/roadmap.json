@@ -1,0 +1,211 @@
+{
+  "prd": {
+    "hash": "d5de3c451feec359c1c8da81dcdb041655248a615af9e437fcfc585c9f44c246",
+    "source": "pasted-prd.md"
+  },
+  "generatedAt": "2026-02-21T08:28:43.062Z",
+  "plan": [
+    {
+      "id": "step-types-1",
+      "title": "Update Parcel Type Definitions",
+      "description": "Add the 'delivered_at' field to the parcel type definition to support the new column in the UI.",
+      "area": "Types",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/types/parcel.ts"
+        ],
+        "create": [],
+        "touch": []
+      },
+      "dependsOnStepIds": [],
+      "rationale": [
+        "The UI and API layers depend on the type definition to correctly handle the new 'delivered_at' field."
+      ],
+      "implementationChecklist": [
+        "Add 'delivered_at: string | null' to the parcel type definition.",
+        "Ensure the type reflects the correct format and optionality."
+      ],
+      "doneWhen": [
+        "'delivered_at' field is present in the parcel type definition."
+      ],
+      "durationHours": 0.5
+    },
+    {
+      "id": "step-api-1",
+      "title": "Modify Parcel API to Include 'Delivered At' Field",
+      "description": "Update the parcel API to include the 'delivered_at' field in the parcel response.",
+      "area": "API/Service",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/services/parcelAPI.ts"
+        ],
+        "create": [],
+        "touch": []
+      },
+      "dependsOnStepIds": [
+        "step-types-1"
+      ],
+      "rationale": [
+        "The API needs to provide the 'delivered_at' data for the UI to display it."
+      ],
+      "implementationChecklist": [
+        "Update the API response handling to include 'delivered_at'.",
+        "Ensure the API correctly formats the 'delivered_at' field."
+      ],
+      "doneWhen": [
+        "API responses include the 'delivered_at' field."
+      ],
+      "durationHours": 1.5
+    },
+    {
+      "id": "step-ui-1",
+      "title": "Add 'Delivered At' Column to Parcels Page",
+      "description": "Update the Parcels page to display the new 'Delivered At' column with sorting and filtering capabilities.",
+      "area": "UI",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/pages/Parcels.tsx"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/table/TableRenderer.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-api-1"
+      ],
+      "rationale": [
+        "The new column needs to be visible on the Parcels page to meet the PRD requirements."
+      ],
+      "implementationChecklist": [
+        "Add a new column for 'Delivered At' in the table.",
+        "Ensure the column is sortable and filterable.",
+        "Display 'Not Delivered' if the date is not available."
+      ],
+      "doneWhen": [
+        "'Delivered At' column is visible and functional on the Parcels page."
+      ],
+      "durationHours": 3
+    },
+    {
+      "id": "step-ui-2",
+      "title": "Update Table Renderer for New Column",
+      "description": "Modify the TableRenderer component to support rendering of the 'Delivered At' column.",
+      "area": "UI",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/components/table/TableRenderer.tsx"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/ui/table.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-ui-1"
+      ],
+      "rationale": [
+        "The TableRenderer component needs to be aware of the new column to render it correctly."
+      ],
+      "implementationChecklist": [
+        "Update the rendering logic to include the 'Delivered At' column.",
+        "Ensure sorting functionality is integrated with the new column."
+      ],
+      "doneWhen": [
+        "TableRenderer correctly displays and sorts the 'Delivered At' column."
+      ],
+      "durationHours": 2
+    },
+    {
+      "id": "step-tests-1",
+      "title": "Add Tests for 'Delivered At' Column Functionality",
+      "description": "Create tests to ensure the 'Delivered At' column is displayed correctly and supports sorting and filtering.",
+      "area": "Tests",
+      "kind": "test",
+      "files": {
+        "modify": [
+          "src/test/example.test.ts"
+        ],
+        "create": [],
+        "touch": []
+      },
+      "dependsOnStepIds": [
+        "step-ui-2"
+      ],
+      "rationale": [
+        "Testing ensures that the new column functions as expected and does not introduce regressions."
+      ],
+      "implementationChecklist": [
+        "Write tests to check the visibility of the 'Delivered At' column.",
+        "Test sorting and filtering functionality for the new column.",
+        "Verify the display of 'Not Delivered' for missing dates."
+      ],
+      "doneWhen": [
+        "All tests for the 'Delivered At' column pass successfully."
+      ],
+      "durationHours": 2
+    }
+  ],
+  "artifacts": {
+    "filesToModify": [
+      "src/types/parcel.ts",
+      "src/services/parcelAPI.ts",
+      "src/pages/Parcels.tsx",
+      "src/components/table/TableRenderer.tsx",
+      "src/test/example.test.ts"
+    ],
+    "filesAffected": [
+      "src/components/table/TableRenderer.tsx",
+      "src/components/ui/table.tsx"
+    ],
+    "filesToCreate": [],
+    "dependencies": []
+  },
+  "acceptanceCriteria": [
+    "All TypeScript compilation errors are resolved (tsc exits 0)",
+    "All existing tests continue to pass after changes",
+    "New functionality matches PRD requirements"
+  ],
+  "verification": [
+    {
+      "type": "typecheck",
+      "instructions": [
+        "Run: npx tsc --noEmit",
+        "Expected: 0 errors"
+      ]
+    },
+    {
+      "type": "lint",
+      "instructions": [
+        "Run: npx eslint src --ext .ts,.tsx",
+        "Expected: 0 errors"
+      ]
+    },
+    {
+      "type": "unit_test",
+      "instructions": [
+        "Run: npm test",
+        "Expected: all tests pass"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "severity": "medium",
+      "risk": "Moderate blast radius: 7 files",
+      "mitigation": [
+        "Incremental testing after each subtask"
+      ]
+    }
+  ],
+  "openQuestions": [],
+  "notes": [
+    "Generated by OpenAIEngine (gpt-4o)",
+    "5 implementation subtasks across 4 areas",
+    "Total estimated duration: 9 hours"
+  ]
+}

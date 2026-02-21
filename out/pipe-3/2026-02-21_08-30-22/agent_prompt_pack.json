@@ -1,0 +1,168 @@
+{
+  "generatedAt": "2026-02-21T08:31:27.816Z",
+  "prompts": [
+    {
+      "stepId": "step-types-1",
+      "title": "Update parcel type definition",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current task is to update type definitions in the project.",
+      "context": {
+        "prdSummary": "The RedX Admin Hub is a web application designed for administrative users of the RedX platform. Its primary purpose is to manage and oversee various operations related to parcel delivery services.",
+        "impactedFiles": [
+          "src/types/parcel.ts"
+        ],
+        "relevantRepoConventions": [
+          "File Naming: Uses camelCase for files and PascalCase for components."
+        ],
+        "tokensOrConstraints": [
+          "Do not use hex colors directly; use design tokens."
+        ],
+        "evidence": [
+          "The parcel type needs to include the 'delivered_at' field to ensure type safety across the application."
+        ]
+      },
+      "instructions": [
+        "Add 'delivered_at: string' to the Parcel interface in src/types/parcel.ts."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style"
+      ],
+      "deliverables": [
+        "The 'delivered_at' field is present in the Parcel type definition in src/types/parcel.ts."
+      ]
+    },
+    {
+      "stepId": "step-api-2",
+      "title": "Modify parcel API to include 'delivered_at' field",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current task is to modify API services to include new data fields.",
+      "context": {
+        "prdSummary": "The RedX Admin Hub is a web application designed for administrative users of the RedX platform. Its primary purpose is to manage and oversee various operations related to parcel delivery services.",
+        "impactedFiles": [
+          "src/services/parcelAPI.ts"
+        ],
+        "relevantRepoConventions": [
+          "Use Axios for HTTP requests."
+        ],
+        "tokensOrConstraints": [
+          "Do not use hex colors directly; use design tokens."
+        ],
+        "evidence": [
+          "The API needs to provide the 'delivered_at' field to the frontend for display in the table."
+        ]
+      },
+      "instructions": [
+        "Update the API call in src/services/parcelAPI.ts to include 'delivered_at' in the response."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style",
+        "Use existing API client for HTTP requests"
+      ],
+      "deliverables": [
+        "The API response includes the 'delivered_at' field in src/services/parcelAPI.ts."
+      ]
+    },
+    {
+      "stepId": "step-ui-3",
+      "title": "Add 'Delivered At' column to TableRenderer",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current task is to modify UI components to display new data fields.",
+      "context": {
+        "prdSummary": "The RedX Admin Hub is a web application designed for administrative users of the RedX platform. Its primary purpose is to manage and oversee various operations related to parcel delivery services.",
+        "impactedFiles": [
+          "src/components/table/TableRenderer.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design components for consistent UI patterns."
+        ],
+        "tokensOrConstraints": [
+          "Do not use hex colors directly; use design tokens."
+        ],
+        "evidence": [
+          "The TableRenderer component needs to display the new 'Delivered At' column for users."
+        ]
+      },
+      "instructions": [
+        "Add a new column definition for 'Delivered At' in TableRenderer.",
+        "Ensure the column uses the format 'DD MMM YYYY, hh:mm A'.",
+        "Handle cases where 'delivered_at' is null by displaying 'Not Delivered'."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style",
+        "Use Ant Design components for table rendering"
+      ],
+      "deliverables": [
+        "The 'Delivered At' column is visible in the table with correct formatting and fallback text in src/components/table/TableRenderer.tsx."
+      ]
+    },
+    {
+      "stepId": "step-ui-4",
+      "title": "Update Parcels page to support new column",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current task is to update page components to integrate modified UI components.",
+      "context": {
+        "prdSummary": "The RedX Admin Hub is a web application designed for administrative users of the RedX platform. Its primary purpose is to manage and oversee various operations related to parcel delivery services.",
+        "impactedFiles": [
+          "src/pages/Parcels.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Pages should wrap route content with Authorize where access control is required."
+        ],
+        "tokensOrConstraints": [
+          "Do not use hex colors directly; use design tokens."
+        ],
+        "evidence": [
+          "The Parcels page needs to be updated to correctly display the new 'Delivered At' column."
+        ]
+      },
+      "instructions": [
+        "Ensure the Parcels page passes the correct data to TableRenderer.",
+        "Verify sorting and filtering functionality works with the new column."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style"
+      ],
+      "deliverables": [
+        "The Parcels page displays the 'Delivered At' column with sorting and filtering working as expected in src/pages/Parcels.tsx."
+      ]
+    },
+    {
+      "stepId": "step-tests-5",
+      "title": "Add tests for 'Delivered At' column functionality",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current task is to write tests to ensure new UI functionality works as expected.",
+      "context": {
+        "prdSummary": "The RedX Admin Hub is a web application designed for administrative users of the RedX platform. Its primary purpose is to manage and oversee various operations related to parcel delivery services.",
+        "impactedFiles": [
+          "src/test/example.test.ts"
+        ],
+        "relevantRepoConventions": [
+          "Use Vitest for testing."
+        ],
+        "tokensOrConstraints": [
+          "Do not use hex colors directly; use design tokens."
+        ],
+        "evidence": [
+          "Tests are needed to ensure the new column behaves correctly and does not break existing functionality."
+        ]
+      },
+      "instructions": [
+        "Add test cases to check the display of 'Delivered At' values.",
+        "Test the sorting and filtering functionality for the new column.",
+        "Verify the fallback text 'Not Delivered' is displayed when 'delivered_at' is null."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style",
+        "Use Vitest for writing tests"
+      ],
+      "deliverables": [
+        "All tests for the 'Delivered At' column pass successfully in src/test/example.test.ts."
+      ]
+    }
+  ]
+}

@@ -16,20 +16,41 @@ export default function SubtaskTimeline({
   return (
     <div className="space-y-4">
       {/* Summary header */}
-      <div className="flex items-center gap-6">
-        <div className="flex items-center gap-2 text-sm text-slate-600">
-          <ListChecks className="w-4 h-4 text-primary-500" />
-          <span className="font-medium">{subtasks.length} subtasks</span>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-slate-600">
-          <Clock className="w-4 h-4 text-primary-500" />
-          <span className="font-medium">
-            ~{totalDurationHours.toFixed(1)} hours total
+      <div
+        className="flex items-center gap-6 px-4 py-3 rounded-lg"
+        style={{
+          background: "rgba(10,22,40,0.6)",
+          border: "1px solid #1a3055",
+        }}
+      >
+        <div className="flex items-center gap-2">
+          <ListChecks
+            className="w-4 h-4"
+            style={{ color: "#00d4ff", filter: "drop-shadow(0 0 4px #00d4ff)" }}
+          />
+          <span
+            className="text-sm font-mono font-medium"
+            style={{ color: "#e2e8f0" }}
+          >
+            {subtasks.length} <span style={{ color: "#94a3b8" }}>subtasks</span>
           </span>
         </div>
-        <div className="text-xs text-slate-400">
+        <div className="flex items-center gap-2">
+          <Clock
+            className="w-4 h-4"
+            style={{ color: "#8b5cf6", filter: "drop-shadow(0 0 4px #8b5cf6)" }}
+          />
+          <span
+            className="text-sm font-mono font-medium"
+            style={{ color: "#e2e8f0" }}
+          >
+            ~{totalDurationHours.toFixed(1)}h{" "}
+            <span style={{ color: "#94a3b8" }}>total</span>
+          </span>
+        </div>
+        <div className="text-xs font-mono" style={{ color: "#64748b" }}>
           Across {areas.length} area{areas.length !== 1 ? "s" : ""}:{" "}
-          {areas.join(", ")}
+          <span style={{ color: "#94a3b8" }}>{areas.join(", ")}</span>
         </div>
       </div>
 

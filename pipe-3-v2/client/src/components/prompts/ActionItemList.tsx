@@ -17,14 +17,35 @@ export default function ActionItemList({
 
   return (
     <div className={className}>
-      <h5 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+      <h5
+        className="text-xs font-mono tracking-widest uppercase mb-2"
+        style={{ color: "#00d4ff44" }}
+      >
         {title}
       </h5>
-      <Tag className={`space-y-1 ${ordered ? "list-decimal list-inside" : ""}`}>
+      <Tag className={`space-y-1 ${ordered ? "" : ""}`}>
         {items.map((item, idx) => (
-          <li key={idx} className="text-xs text-slate-700 leading-relaxed">
-            {!ordered && <span className="text-primary-400 mr-1">&#8226;</span>}
-            {item}
+          <li
+            key={idx}
+            className="text-xs leading-relaxed flex items-start gap-2"
+            style={{ color: "#cbd5e1" }}
+          >
+            {ordered ? (
+              <span
+                className="text-xs font-mono flex-shrink-0 w-4"
+                style={{ color: "#00d4ff33" }}
+              >
+                {idx + 1}.
+              </span>
+            ) : (
+              <span
+                className="text-xs font-mono flex-shrink-0"
+                style={{ color: "#00d4ff44" }}
+              >
+                ›
+              </span>
+            )}
+            <span>{item}</span>
           </li>
         ))}
       </Tag>
