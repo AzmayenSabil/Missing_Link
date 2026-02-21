@@ -183,3 +183,30 @@ runsRouter.get(
     }
   },
 );
+
+/**
+ * GET /api/runs/:runId/copilot-instructions
+ * Return the copilot-instructions.md content and system-prompts.json from pipe-1.
+ */
+runsRouter.get(
+  "/:runId/copilot-instructions",
+  (req: Request<{ runId: string }>, res: Response, next: NextFunction) => {
+    try {
+      const session = sessionManager.getSession(req.params.runId);
+      if (!session) throw new AppError("RUN_NOT_FOUND", "Run not found", 404);
+
+      if (!session.phase1Summary) {
+        res.json({ status: "pending" });
+        return;
+      }
+
+      res.json({
+        status: "loaded",
+        copilotInstructions: session.phase1Summary.copilotInstructions,
+        systemPrompts: session.phase1Summary.systemPrompts,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+);

@@ -1,0 +1,11 @@
+{
+  "runId": "2026-02-21_08-30-22",
+  "phase1OutDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-1\\1920ffd2-8d84-478d-9c15-1ddb85e155ca",
+  "phase2OutDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-2\\2026-02-21_08-02-31",
+  "outDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-3\\2026-02-21_08-30-22",
+  "startedAt": "2026-02-21T08:30:22.592Z",
+  "finishedAt": "2026-02-21T08:31:27.817Z",
+  "durationMs": 65225,
+  "status": "success",
+  "engineName": "OpenAIEngine (gpt-4o)"
+}

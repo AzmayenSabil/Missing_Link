@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-02-21T08:27:23.481Z",
+  "prompts": [
+    {
+      "stepId": "step-types-1",
+      "title": "Update Parcel Type Definition",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current focus is on updating type definitions.",
+      "context": {
+        "prdSummary": "Add 'delivered_at' field to the Parcel type definition to support the new column in the table.",
+        "impactedFiles": [
+          "src/types/parcel.ts"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design components for consistent UI patterns."
+        ],
+        "tokensOrConstraints": [
+          "--primary: 222.2 47.4% 11.2%"
+        ],
+        "evidence": [
+          "The API response needs to include the 'delivered_at' field, which requires updating the type definition."
+        ]
+      },
+      "instructions": [
+        "Add 'delivered_at: string' to the Parcel type definition in src/types/parcel.ts."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style"
+      ],
+      "deliverables": [
+        "The Parcel type includes the 'delivered_at' field."
+      ]
+    },
+    {
+      "stepId": "step-api-1",
+      "title": "Update Parcel API to Include 'Delivered At' Field",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current focus is on API service modifications.",
+      "context": {
+        "prdSummary": "Modify the parcelAPI service to ensure the 'delivered_at' field is included in the parcel response.",
+        "impactedFiles": [
+          "src/services/parcelAPI.ts"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design components for consistent UI patterns."
+        ],
+        "tokensOrConstraints": [
+          "--primary: 222.2 47.4% 11.2%"
+        ],
+        "evidence": [
+          "The API must provide the 'delivered_at' data for the UI to display it."
+        ]
+      },
+      "instructions": [
+        "Ensure the API endpoint response includes 'delivered_at'.",
+        "Update any relevant data transformation logic in src/services/parcelAPI.ts."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style",
+        "Use existing API client for making requests"
+      ],
+      "deliverables": [
+        "The API response includes the 'delivered_at' field."
+      ]
+    },
+    {
+      "stepId": "step-ui-1",
+      "title": "Add 'Delivered At' Column to Parcels Page",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current focus is on UI modifications.",
+      "context": {
+        "prdSummary": "Modify the Parcels page to display the new 'Delivered At' column in the table, ensuring it is visible by default.",
+        "impactedFiles": [
+          "src/pages/Parcels.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design components for consistent UI patterns."
+        ],
+        "tokensOrConstraints": [
+          "--primary: 222.2 47.4% 11.2%"
+        ],
+        "evidence": [
+          "The UI needs to display the new 'Delivered At' column as specified in the PRD."
+        ]
+      },
+      "instructions": [
+        "Add a new column for 'Delivered At' in the table on src/pages/Parcels.tsx.",
+        "Ensure the column is visible by default.",
+        "Format the date as 'DD MMM YYYY, hh:mm A'.",
+        "Display 'Not Delivered' if the delivery date is not available."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style",
+        "Use Ant Design Table component for table rendering"
+      ],
+      "deliverables": [
+        "The 'Delivered At' column is visible and correctly formatted on the Parcels page."
+      ]
+    },
+    {
+      "stepId": "step-ui-2",
+      "title": "Update Table Renderer for New Column",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current focus is on UI component modifications.",
+      "context": {
+        "prdSummary": "Modify the TableRenderer component to handle the new 'Delivered At' column, including sorting functionality.",
+        "impactedFiles": [
+          "src/components/table/TableRenderer.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design components for consistent UI patterns."
+        ],
+        "tokensOrConstraints": [
+          "--primary: 222.2 47.4% 11.2%"
+        ],
+        "evidence": [
+          "The TableRenderer needs to support rendering and sorting the new column."
+        ]
+      },
+      "instructions": [
+        "Update rendering logic in src/components/table/TableRenderer.tsx to include 'Delivered At' column.",
+        "Implement sorting functionality for the new column."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style",
+        "Ensure sorting logic is consistent with existing columns"
+      ],
+      "deliverables": [
+        "The TableRenderer can render and sort the 'Delivered At' column."
+      ]
+    },
+    {
+      "stepId": "step-ui-3",
+      "title": "Ensure UI Components Support New Column",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current focus is on ensuring UI component compatibility.",
+      "context": {
+        "prdSummary": "Verify and update any UI components that interact with the table to support the new 'Delivered At' column.",
+        "impactedFiles": [
+          "src/components/ui/table.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design components for consistent UI patterns."
+        ],
+        "tokensOrConstraints": [
+          "--primary: 222.2 47.4% 11.2%"
+        ],
+        "evidence": [
+          "Ensure all UI components are compatible with the new column addition."
+        ]
+      },
+      "instructions": [
+        "Check if any UI components in src/components/ui/table.tsx need updates to support the new column.",
+        "Make necessary adjustments to ensure compatibility."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style",
+        "Ensure compatibility with Ant Design components"
+      ],
+      "deliverables": [
+        "All relevant UI components support the 'Delivered At' column."
+      ]
+    },
+    {
+      "stepId": "step-tests-1",
+      "title": "Add Tests for 'Delivered At' Column Functionality",
+      "system": "You are a senior software engineer working on a React and TypeScript codebase. Your current focus is on testing new UI functionality.",
+      "context": {
+        "prdSummary": "Create or update tests to cover the new 'Delivered At' column functionality, including visibility, sorting, and formatting.",
+        "impactedFiles": [
+          "src/test/example.test.ts"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design components for consistent UI patterns."
+        ],
+        "tokensOrConstraints": [
+          "--primary: 222.2 47.4% 11.2%"
+        ],
+        "evidence": [
+          "Testing is needed to ensure the new column behaves as expected and does not break existing functionality."
+        ]
+      },
+      "instructions": [
+        "Write tests in src/test/example.test.ts to verify the 'Delivered At' column is visible by default.",
+        "Test the sorting functionality of the new column.",
+        "Check the date formatting and 'Not Delivered' display logic."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside this step's scope",
+        "DO NOT remove existing exports without checking consumers",
+        "ALWAYS follow existing code style",
+        "Ensure tests cover all edge cases"
+      ],
+      "deliverables": [
+        "Tests are passing and cover all aspects of the 'Delivered At' column functionality."
+      ]
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import {
   Loader2,
   Copy,
   Check,
+  BookOpen,
 } from "lucide-react";
 import { useSessionStore } from "../store/useSessionStore";
 import {
@@ -15,15 +16,20 @@ import {
   fetchImpact,
   fetchSubtasks,
   fetchPrompts,
+  fetchCopilotInstructions,
 } from "../api/runs.api";
 import ImpactDashboard from "../components/impact/ImpactDashboard";
 import SubtaskTimeline from "../components/subtasks/SubtaskTimeline";
 import PromptViewer from "../components/prompts/PromptViewer";
 import ProgressBar from "../components/common/ProgressBar";
 import ErrorBanner from "../components/common/ErrorBanner";
+import CopilotInstructionsModal from "../components/common/CopilotInstructionsModal";
 import type { RunStatus } from "../types";
 
-type ProgressStep = { label: string; status: "pending" | "active" | "complete" };
+type ProgressStep = {
+  label: string;
+  status: "pending" | "active" | "complete";
+};
 
 function getProgressSteps(status: string): ProgressStep[] {
   const steps: ProgressStep[] = [
@@ -73,6 +79,8 @@ export default function RunPage() {
   const impactLoadedRef = useRef(false);
   const subtasksLoadedRef = useRef(false);
   const promptsLoadedRef = useRef(false);
+  const copilotLoadedRef = useRef(false);
+  const [showCopilotModal, setShowCopilotModal] = useState(false);
 
   // Poll for status changes
   useEffect(() => {
@@ -92,12 +100,31 @@ export default function RunPage() {
         // Load impact data when available
         if (
           !impactLoadedRef.current &&
-          ["generating_subtasks", "generating_prompts", "complete"].includes(res.status)
+          ["generating_subtasks", "generating_prompts", "complete"].includes(
+            res.status,
+          )
         ) {
           impactLoadedRef.current = true;
           const impactRes = await fetchImpact(runId);
           if (impactRes.impact) {
             store.setImpact(impactRes.impact);
+          }
+        }
+
+        // Load copilot instructions as soon as inputs are loaded
+        if (
+          !copilotLoadedRef.current &&
+          ["generating_subtasks", "generating_prompts", "complete"].includes(
+            res.status,
+          )
+        ) {
+          copilotLoadedRef.current = true;
+          const ciRes = await fetchCopilotInstructions(runId);
+          if (ciRes.copilotInstructions !== undefined) {
+            store.setCopilotInstructions(
+              ciRes.copilotInstructions ?? "",
+              ciRes.systemPrompts ?? {},
+            );
           }
         }
 
@@ -159,13 +186,19 @@ export default function RunPage() {
         parts.push(`# Step ${i + 1}: ${p.title}\n`);
         parts.push(`## System\n${p.system}\n`);
         if (p.instructions.length > 0) {
-          parts.push(`## Instructions\n${p.instructions.map((inst, j) => `${j + 1}. ${inst}`).join("\n")}\n`);
+          parts.push(
+            `## Instructions\n${p.instructions.map((inst, j) => `${j + 1}. ${inst}`).join("\n")}\n`,
+          );
         }
         if (p.guardrails.length > 0) {
-          parts.push(`## Guardrails\n${p.guardrails.map((g) => `- ${g}`).join("\n")}\n`);
+          parts.push(
+            `## Guardrails\n${p.guardrails.map((g) => `- ${g}`).join("\n")}\n`,
+          );
         }
         if (p.deliverables.length > 0) {
-          parts.push(`## Deliverables\n${p.deliverables.map((d) => `- ${d}`).join("\n")}\n`);
+          parts.push(
+            `## Deliverables\n${p.deliverables.map((d) => `- ${d}`).join("\n")}\n`,
+          );
         }
         return parts.join("\n");
       })
@@ -212,8 +245,17 @@ export default function RunPage() {
             );
           })}
 
-          {/* Back button */}
-          <div className="ml-auto">
+          {/* Copilot instructions + Back */}
+          <div className="ml-auto flex items-center gap-2">
+            {store.copilotInstructions !== null && (
+              <button
+                onClick={() => setShowCopilotModal(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors"
+              >
+                <BookOpen className="w-4 h-4" />
+                View Instructions
+              </button>
+            )}
             <button
               onClick={() => navigate("/")}
               className="flex items-center gap-1 text-sm text-slate-400 hover:text-slate-600 py-2"
@@ -333,13 +375,26 @@ export default function RunPage() {
               </div>
               <div className="space-y-2">
                 {store.prompts.map((prompt, idx) => (
-                  <PromptViewer key={prompt.stepId} prompt={prompt} index={idx} />
+                  <PromptViewer
+                    key={prompt.stepId}
+                    prompt={prompt}
+                    index={idx}
+                  />
                 ))}
               </div>
             </div>
           )}
         </div>
       </div>
+
+      {/* Copilot Instructions Modal */}
+      {showCopilotModal && store.copilotInstructions !== null && (
+        <CopilotInstructionsModal
+          copilotInstructions={store.copilotInstructions}
+          systemPrompts={store.systemPrompts ?? {}}
+          onClose={() => setShowCopilotModal(false)}
+        />
+      )}
     </div>
   );
 }

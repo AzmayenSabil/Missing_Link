@@ -144,6 +144,10 @@ export interface Phase1Summary {
   rules: Record<string, unknown>;
   tokens: Record<string, unknown>;
   projectDna: unknown[];
+  /** Raw markdown text of project-dna/copilot-instructions.md */
+  copilotInstructions: string;
+  /** Parsed content of project-dna/system-prompts.json */
+  systemPrompts: Record<string, unknown>;
 }
 
 export interface ImpactFile {

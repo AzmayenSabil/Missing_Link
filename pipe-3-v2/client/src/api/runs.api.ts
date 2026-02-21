@@ -18,7 +18,9 @@ export async function createRun(params: {
   return res.data;
 }
 
-export async function fetchRunStatus(runId: string): Promise<RunStatusResponse> {
+export async function fetchRunStatus(
+  runId: string,
+): Promise<RunStatusResponse> {
   const res = await apiClient.get(`/runs/${runId}/status`);
   return res.data;
 }
@@ -30,9 +32,7 @@ export async function fetchImpact(
   return res.data;
 }
 
-export async function fetchSubtasks(
-  runId: string,
-): Promise<{
+export async function fetchSubtasks(runId: string): Promise<{
   status: string;
   subtasks: PlanStep[];
   totalCount: number;
@@ -42,9 +42,7 @@ export async function fetchSubtasks(
   return res.data;
 }
 
-export async function fetchPrompts(
-  runId: string,
-): Promise<{
+export async function fetchPrompts(runId: string): Promise<{
   status: string;
   prompts: AgentPrompt[];
   totalCount: number;
@@ -59,5 +57,14 @@ export async function fetchSinglePrompt(
   stepId: string,
 ): Promise<{ prompt: AgentPrompt }> {
   const res = await apiClient.get(`/runs/${runId}/subtasks/prompts/${stepId}`);
+  return res.data;
+}
+
+export async function fetchCopilotInstructions(runId: string): Promise<{
+  status: string;
+  copilotInstructions?: string;
+  systemPrompts?: Record<string, unknown>;
+}> {
+  const res = await apiClient.get(`/runs/${runId}/copilot-instructions`);
   return res.data;
 }

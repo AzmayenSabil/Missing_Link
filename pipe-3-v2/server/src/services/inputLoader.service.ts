@@ -146,19 +146,19 @@ export function loadPhase1(phase1Dir: string): LoadPhase1Result {
   }
 
   // Conventions
-  const conventions = readJson<Record<string, unknown>>(
-    path.join(dnaDir, "conventions.json"),
-  ) ?? {};
+  const conventions =
+    readJson<Record<string, unknown>>(path.join(dnaDir, "conventions.json")) ??
+    {};
 
   // Rules
-  const rules = readJson<Record<string, unknown>>(
-    path.join(dnaDir, "rules.json"),
-  ) ?? {};
+  const rules =
+    readJson<Record<string, unknown>>(path.join(dnaDir, "rules.json")) ?? {};
 
   // Tokens
-  const tokensRaw = readJson<{ tokens?: Array<{ name: string; value: string }> } | Record<string, unknown>>(
-    path.join(dnaDir, "tokens.json"),
-  );
+  const tokensRaw = readJson<
+    | { tokens?: Array<{ name: string; value: string }> }
+    | Record<string, unknown>
+  >(path.join(dnaDir, "tokens.json"));
 
   let tokens: Record<string, unknown> = {};
   if (tokensRaw && "tokens" in tokensRaw && Array.isArray(tokensRaw.tokens)) {
@@ -176,8 +176,34 @@ export function loadPhase1(phase1Dir: string): LoadPhase1Result {
   const manifest = readJson<unknown>(path.join(dnaDir, "manifest.json"));
   if (manifest) projectDna.push(manifest);
 
+  // Copilot instructions (markdown)
+  const copilotInstructions =
+    tryReadText(path.join(dnaDir, "copilot-instructions.md")) ?? "";
+  if (!copilotInstructions) {
+    warnings.push("project-dna/copilot-instructions.md not found – skipping.");
+  }
+
+  // System prompts (JSON)
+  const systemPrompts =
+    readJson<Record<string, unknown>>(
+      path.join(dnaDir, "system-prompts.json"),
+    ) ?? {};
+  if (Object.keys(systemPrompts).length === 0) {
+    warnings.push(
+      "project-dna/system-prompts.json not found or empty – skipping.",
+    );
+  }
+
   return {
-    summary: { allFiles, conventions, rules, tokens, projectDna },
+    summary: {
+      allFiles,
+      conventions,
+      rules,
+      tokens,
+      projectDna,
+      copilotInstructions,
+      systemPrompts,
+    },
     warnings,
   };
 }
@@ -194,8 +220,17 @@ export interface LoadPhase2Result {
 }
 
 const VALID_AREAS: ImpactArea[] = [
-  "UI", "Hooks", "State", "API/Service", "Auth",
-  "Routing", "Styling", "Types", "Tests", "Build/Config", "Unknown",
+  "UI",
+  "Hooks",
+  "State",
+  "API/Service",
+  "Auth",
+  "Routing",
+  "Styling",
+  "Types",
+  "Tests",
+  "Build/Config",
+  "Unknown",
 ];
 
 export function loadPhase2(phase2Dir: string): LoadPhase2Result {
@@ -243,14 +278,16 @@ export function loadPhase2(phase2Dir: string): LoadPhase2Result {
   };
 
   // Questions
-  const questions = readJson<ClarifyingQuestion[]>(
-    path.join(phase2Dir, "clarifying_questions.json"),
-  ) ?? [];
+  const questions =
+    readJson<ClarifyingQuestion[]>(
+      path.join(phase2Dir, "clarifying_questions.json"),
+    ) ?? [];
 
   // Answers
-  const answers = readJson<ClarifyingAnswer[]>(
-    path.join(phase2Dir, "clarifying_answers.json"),
-  ) ?? [];
+  const answers =
+    readJson<ClarifyingAnswer[]>(
+      path.join(phase2Dir, "clarifying_answers.json"),
+    ) ?? [];
 
   // PRD text
   const runMeta = readJson<{ prdPath?: string }>(

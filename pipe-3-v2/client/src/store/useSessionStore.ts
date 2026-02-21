@@ -20,6 +20,8 @@ interface SessionState {
 
   // Loaded data
   impact: ImpactAnalysis | null;
+  copilotInstructions: string | null;
+  systemPrompts: Record<string, unknown> | null;
 
   // Generated data
   subtasks: PlanStep[];
@@ -34,6 +36,10 @@ interface SessionState {
   setStatus: (status: RunStatus) => void;
   setError: (error: string) => void;
   setImpact: (impact: ImpactAnalysis) => void;
+  setCopilotInstructions: (
+    text: string,
+    systemPrompts: Record<string, unknown>,
+  ) => void;
   setSubtasks: (subtasks: PlanStep[], totalDurationHours: number) => void;
   setPrompts: (prompts: AgentPrompt[]) => void;
   setActiveTab: (tab: "impact" | "subtasks" | "prompts") => void;
@@ -47,6 +53,8 @@ const initialState = {
   status: "idle" as const,
   error: null,
   impact: null,
+  copilotInstructions: null,
+  systemPrompts: null,
   subtasks: [],
   prompts: [],
   totalDurationHours: 0,
@@ -64,6 +72,8 @@ export const useSessionStore = create<SessionState>((set) => ({
       status: "created",
       error: null,
       impact: null,
+      copilotInstructions: null,
+      systemPrompts: null,
       subtasks: [],
       prompts: [],
       totalDurationHours: 0,
@@ -75,6 +85,9 @@ export const useSessionStore = create<SessionState>((set) => ({
   setError: (error) => set({ error, status: "error" }),
 
   setImpact: (impact) => set({ impact }),
+
+  setCopilotInstructions: (copilotInstructions, systemPrompts) =>
+    set({ copilotInstructions, systemPrompts }),
 
   setSubtasks: (subtasks, totalDurationHours) =>
     set({ subtasks, totalDurationHours }),
