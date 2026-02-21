@@ -72,7 +72,7 @@ class SessionManager {
   private sessions: Map<string, RunSession> = new Map();
 
   createSession(params: CreateSessionParams): RunSession {
-    const runId = generateRunId();
+    const runId = generateRunId(params.phase1RunId);
     const session: RunSession = {
       runId,
       phase1RunId: params.phase1RunId,

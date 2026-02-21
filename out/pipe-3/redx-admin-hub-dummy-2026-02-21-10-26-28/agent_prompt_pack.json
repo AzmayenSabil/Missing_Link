@@ -1,0 +1,294 @@
+{
+  "generatedAt": "2026-02-21T10:28:07.196Z",
+  "prompts": [
+    {
+      "stepId": "step-types-1",
+      "title": "Add delivered_at to Parcel type contract",
+      "system": "You are a senior software engineer working in a React + TypeScript codebase (Ant Design, Emotion, Redux Toolkit, Axios). Focus area: Types/contracts. Implement the new Parcel field in the shared type definitions with minimal, safe changes.",
+      "context": {
+        "prdSummary": "(PRD text not available)",
+        "impactedFiles": [
+          "src/types/parcel.ts"
+        ],
+        "relevantRepoConventions": [
+          "TypeScript-first: prefer explicit interfaces/types for API contracts",
+          "Keep changes minimal and backwards-compatible (optional/nullable fields during backend rollout)",
+          "Do not introduce hex colors; use design tokens (not applicable in this step)"
+        ],
+        "tokensOrConstraints": [
+          "Architectural rule: optional typing to handle missing/corrupted backend data safely"
+        ],
+        "evidence": [
+          "Subtask requires extending Parcel contract to include backend-provided delivered_at field",
+          "Other layers (API/UI) will reference delivered_at and need it typed to avoid TS errors"
+        ]
+      },
+      "instructions": [
+        "Open `src/types/parcel.ts` and locate the primary `Parcel` interface/type used by the parcels listing and API responses.",
+        "Add a new field `delivered_at?: string | null` to the `Parcel` type (match existing naming and date field conventions in this file; keep snake_case if other backend fields are snake_case).",
+        "Search within `src/types/parcel.ts` for any derived/related types (e.g., list item types, table row types, DTOs) that are based on `Parcel` and ensure they also include `delivered_at` if they explicitly pick/omit fields rather than referencing `Parcel` directly.",
+        "Ensure the change is backwards compatible: the field must be optional and allow null.",
+        "Do not change runtime logic; this step is types-only."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside `src/types/parcel.ts` for this step.",
+        "DO NOT rename existing fields or change existing exported type names.",
+        "DO NOT remove existing exports without checking consumers (avoid removals entirely in this step).",
+        "ALWAYS follow existing code style and naming conventions found in `src/types/parcel.ts`."
+      ],
+      "deliverables": [
+        "Modified `src/types/parcel.ts` with `delivered_at?: string | null` added to the appropriate Parcel-related type(s).",
+        "TypeScript should compile in later steps when UI references `delivered_at` without type errors."
+      ]
+    },
+    {
+      "stepId": "step-api/service-1",
+      "title": "Update parcel API mapping to include delivered_at",
+      "system": "You are a senior software engineer working in a React + TypeScript codebase (Ant Design, Emotion, Redux Toolkit, Axios). Focus area: API/service layer. Ensure the parcels API returns delivered_at end-to-end and does not drop it during mapping/normalization.",
+      "context": {
+        "prdSummary": "(PRD text not available)",
+        "impactedFiles": [
+          "src/services/parcelAPI.ts"
+        ],
+        "relevantRepoConventions": [
+          "Use existing Axios client/config (do not create a new HTTP client)",
+          "Keep API normalization/mapping centralized in service modules",
+          "Type API responses using shared types from `src/types/*`"
+        ],
+        "tokensOrConstraints": [
+          "Treat delivered_at as optional/nullable; preserve nulls to allow UI to render N/A"
+        ],
+        "evidence": [
+          "Subtask explicitly targets `src/services/parcelAPI.ts` to pass through backend `delivered_at`",
+          "If the service maps fields, delivered_at must be included or it will never reach UI/state"
+        ]
+      },
+      "instructions": [
+        "Open `src/services/parcelAPI.ts` and identify the parcels list fetch function(s) used by the Parcels page (look for list endpoints, pagination, or search).",
+        "Inspect how the response is typed and whether there is a mapping/normalization step (e.g., `map`, `transform`, `normalize`, or manual object construction).",
+        "Update the response typing (if present in this file) so that raw items can include `delivered_at` (snake_case) and the returned `Parcel` objects include `delivered_at` as defined in `src/types/parcel.ts`.",
+        "If there is a transform function that constructs parcel objects, ensure it sets `delivered_at: raw.delivered_at ?? null` (or equivalent) so the field is preserved and normalized to null when missing.",
+        "If the service currently returns the raw object without mapping, ensure it does not destructure/omit fields in a way that drops `delivered_at`.",
+        "Keep behavior unchanged for other fields; only add delivered_at pass-through."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside `src/services/parcelAPI.ts` for this step.",
+        "DO NOT change endpoint URLs, request params, or pagination behavior unless required to preserve delivered_at.",
+        "ALWAYS use the existing Axios configuration/imports already used in this file (no new HTTP client).",
+        "DO NOT remove or rename existing exported API functions; update in-place."
+      ],
+      "deliverables": [
+        "Modified `src/services/parcelAPI.ts` that returns parcel objects including `delivered_at` when present in the backend response (and null/undefined safely when absent).",
+        "No regressions to existing API return shapes besides the additive field."
+      ]
+    },
+    {
+      "stepId": "step-state-1",
+      "title": "Verify Redux store/state can carry delivered_at field end-to-end",
+      "system": "You are a senior software engineer working in a React + TypeScript codebase (Redux Toolkit). Focus area: State/store wiring. Verify that adding delivered_at does not get stripped by store configuration or typing, and make minimal adjustments only if necessary.",
+      "context": {
+        "prdSummary": "(PRD text not available)",
+        "impactedFiles": [
+          "src/redux/store.ts"
+        ],
+        "relevantRepoConventions": [
+          "Redux Toolkit store configuration should remain stable; avoid unnecessary changes",
+          "Prefer additive, minimal changes; do not refactor slices in this step",
+          "Serializable checks: date strings are serializable; avoid introducing Date objects into state"
+        ],
+        "tokensOrConstraints": [
+          "Keep delivered_at as string/null in state (serializable); do not convert to Date in reducers/store"
+        ],
+        "evidence": [
+          "Subtask is a safety check to ensure store/middleware/transforms do not strip unknown fields",
+          "The only file in scope to modify is `src/redux/store.ts`"
+        ]
+      },
+      "instructions": [
+        "Open `src/redux/store.ts` and inspect store configuration for middleware that could transform or filter state (e.g., serializableCheck configuration, transforms, persistence, custom middleware).",
+        "Confirm that storing parcels with an additional `delivered_at` string/null field will not violate serializable checks (it should not).",
+        "Search within `src/redux/store.ts` for any explicit typing that references `Parcel` or parcel-related state shapes; if present and now out of date, update it to include the new `Parcel` type from `src/types/parcel.ts` (additive only).",
+        "If no changes are required, keep the file unchanged (this step can be a no-op). If a minimal change is required (e.g., typing), implement only that minimal change."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside `src/redux/store.ts` for this step.",
+        "DO NOT change middleware behavior unless you can prove it breaks delivered_at propagation.",
+        "DO NOT introduce non-serializable values (Date, Moment) into Redux state.",
+        "ALWAYS follow existing store configuration patterns in this repo."
+      ],
+      "deliverables": [
+        "Either: (a) no code changes because store already supports the new field, or (b) a minimal, additive update to `src/redux/store.ts` ensuring typing/config does not block delivered_at.",
+        "No runtime/state errors when parcels include delivered_at in later steps."
+      ]
+    },
+    {
+      "stepId": "step-ui-1",
+      "title": "Add Delivered At column rendering + sorting in TableRenderer",
+      "system": "You are a senior software engineer working in a React + TypeScript codebase (Ant Design tables, Emotion). Focus area: shared table rendering. Add a Delivered At column for parcels with robust formatting and sorting, scoped to parcels table configuration.",
+      "context": {
+        "prdSummary": "(PRD text not available)",
+        "impactedFiles": [
+          "src/components/table/TableRenderer.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design Table patterns (columns with render/sorter)",
+          "Keep shared components generic; scope parcel-specific behavior to parcel table config only",
+          "Use existing date formatting utilities if present (check `src/lib/utils.ts` usage patterns)",
+          "Do not use hex colors directly; use design tokens (not expected for a table column)"
+        ],
+        "tokensOrConstraints": [
+          "No hex colors; if styling is needed, use existing tokens/CSS variables (e.g., hsl(var(--foreground)))",
+          "Delivered At display must show `N/A` when missing/corrupted"
+        ],
+        "evidence": [
+          "Subtask explicitly modifies `src/components/table/TableRenderer.tsx` to add a Delivered At column with render + sorter",
+          "TableRenderer centralizes column behavior to keep Parcels page lean"
+        ]
+      },
+      "instructions": [
+        "Open `src/components/table/TableRenderer.tsx` and locate the parcels table column definitions/configuration (identify how TableRenderer decides which columns to render for parcels).",
+        "Add a new column titled `Delivered At` that reads from the `delivered_at` field on the parcel row object (ensure the accessor matches the row shape used by the table).",
+        "Implement `render` for the column: if `delivered_at` is missing/null/empty or cannot be parsed into a valid date, render `N/A` (as plain text). Otherwise format as `DD MMM YYYY, hh:mm A` unless the app already has a standard formatter—if a formatter exists in `src/lib/utils.ts` and is already used in TableRenderer, reuse it for consistency.",
+        "Implement `sorter` for the column: parse both timestamps; compare numeric timestamps. Decide and implement a consistent rule for missing/invalid values (e.g., treat missing/invalid as lowest so they appear first when ascending, or highest—pick one and keep consistent). Ensure when both are missing/invalid, sorter returns 0.",
+        "Ensure the change is scoped to parcels table configuration only (do not affect other tables rendered by TableRenderer).",
+        "Run a quick local type-check mentally: ensure the row type supports `delivered_at?: string | null` and no implicit any is introduced."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside `src/components/table/TableRenderer.tsx` for this step.",
+        "DO NOT introduce new date libraries unless the repo already uses one in this file; prefer existing utilities/imports.",
+        "DO NOT change unrelated columns or table behaviors.",
+        "ALWAYS follow existing Ant Design Table column patterns used in this file."
+      ],
+      "deliverables": [
+        "Modified `src/components/table/TableRenderer.tsx` with a new `Delivered At` column for parcels including robust render + sorter behavior.",
+        "Column shows `N/A` for missing/invalid values and sorts correctly by timestamp."
+      ]
+    },
+    {
+      "stepId": "step-auth-1",
+      "title": "Gate Delivered At column visibility to Ops/Support users",
+      "system": "You are a senior software engineer working in a React + TypeScript codebase with role/permission-based access control. Focus area: authorization. Ensure only Ops/Support users can see the Delivered At column, using existing authorization utilities and conventions.",
+      "context": {
+        "prdSummary": "(PRD text not available)",
+        "impactedFiles": [
+          "src/pages/Parcels.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Pages should wrap route content with `Authorize` where access control is required (page-level); for column-level gating, use existing auth hooks/utilities",
+          "Prefer existing `useAuthorization` hook and permissions config patterns if present",
+          "Keep UI changes minimal and additive"
+        ],
+        "tokensOrConstraints": [
+          "Do not expose Delivered At column to unauthorized roles; column-level gating only (page remains accessible)"
+        ],
+        "evidence": [
+          "Subtask explicitly modifies `src/pages/Parcels.tsx` to compute a boolean like `canViewDeliveredAt` and conditionally include the column",
+          "Touched files indicate existing auth utilities: `src/hooks/useAuthorization.ts`, `src/config/getPagePermissions.ts`, `src/components/authorize/Authorize.tsx`, and TableRenderer"
+        ]
+      },
+      "instructions": [
+        "Open `src/pages/Parcels.tsx` and identify how the page currently handles authorization (e.g., `Authorize` wrapper, `useAuthorization`, permissions from `getPagePermissions`).",
+        "Determine how Ops/Support roles are represented in this codebase (role strings, permission keys, or page permissions). Use the existing mechanism—do not invent a new auth model.",
+        "Implement a boolean `canViewDeliveredAt` that is true only for Ops/Support users per existing conventions.",
+        "Conditionally include the Delivered At column in the table configuration only when `canViewDeliveredAt` is true. Choose the approach that best matches current architecture: either (a) pass a flag into `TableRenderer` if it already supports feature flags, or (b) build columns in `Parcels.tsx` and include/exclude the column there.",
+        "Ensure the page remains accessible as before; only the column visibility changes.",
+        "Verify that when `canViewDeliveredAt` is false, the column is not present at all (not just hidden via CSS)."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside `src/pages/Parcels.tsx` for this step.",
+        "DO NOT change route-level/page-level authorization behavior unless it is required for column gating (it should not be).",
+        "DO NOT hardcode user roles if the repo uses permission keys; follow existing auth abstractions.",
+        "ALWAYS follow existing code style and authorization conventions used in this repo."
+      ],
+      "deliverables": [
+        "Modified `src/pages/Parcels.tsx` that conditionally shows the Delivered At column only for Ops/Support users.",
+        "Non Ops/Support users do not see the column; Ops/Support users do."
+      ]
+    },
+    {
+      "stepId": "step-ui-2",
+      "title": "Wire Delivered At column into Parcels page table config",
+      "system": "You are a senior software engineer working in a React + TypeScript codebase (Ant Design tables, Redux Toolkit). Focus area: Parcels page integration. Ensure the Delivered At column is included by default for authorized users and that data wiring/sorting remains functional.",
+      "context": {
+        "prdSummary": "(PRD text not available)",
+        "impactedFiles": [
+          "src/pages/Parcels.tsx"
+        ],
+        "relevantRepoConventions": [
+          "Prefer Ant Design components and existing table hooks (e.g., `useTable`) for consistent behavior",
+          "Keep page lean; shared table behavior should live in TableRenderer when possible",
+          "Do not introduce new styling with hex colors; use design tokens if needed"
+        ],
+        "tokensOrConstraints": [
+          "Delivered At should render `N/A` when missing/invalid (handled in TableRenderer, but verify integration)",
+          "Column should be present by default for authorized users"
+        ],
+        "evidence": [
+          "Subtask explicitly modifies `src/pages/Parcels.tsx` to ensure table receives delivered_at and includes the column when authorized",
+          "Touched files include `src/hooks/useTable.ts`, `src/services/parcelAPI.ts`, and TableRenderer, indicating the page likely uses shared hooks and service data"
+        ]
+      },
+      "instructions": [
+        "Open `src/pages/Parcels.tsx` and trace the parcels data source: confirm the fetch/service call returns `delivered_at` and that the page passes the parcel rows directly (or mapped) into the table.",
+        "Ensure the table columns include the Delivered At column by default when `canViewDeliveredAt` (from the prior auth step) is true. If columns are defined in TableRenderer, ensure the page selects the correct table type/config that now includes Delivered At.",
+        "Verify existing filtering/sorting wiring still works: if the page controls sort state (e.g., via `useTable`), ensure adding the new sorter does not break controlled sorting or default sort order.",
+        "Validate the `N/A` rendering path by ensuring the page does not pre-format delivered_at into something that would break parsing (keep it as string/null).",
+        "Keep changes minimal and focused on integration; do not refactor unrelated page logic."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside `src/pages/Parcels.tsx` for this step.",
+        "DO NOT duplicate formatting/sorting logic in the page if it already exists in TableRenderer; integrate with existing abstractions.",
+        "DO NOT change API/service logic here; assume service already provides delivered_at.",
+        "ALWAYS follow existing page patterns (hooks usage, table config composition)."
+      ],
+      "deliverables": [
+        "Modified `src/pages/Parcels.tsx` that wires Delivered At into the parcels table for authorized users and preserves existing table interactions.",
+        "Manual verification notes (in PR description or comments) are not required, but the code should clearly show the integration."
+      ]
+    },
+    {
+      "stepId": "step-tests-1",
+      "title": "Update and add tests for Delivered At column rendering and sorting",
+      "system": "You are a senior software engineer writing tests for a React + TypeScript app using the repo’s existing test setup. Focus area: UI behavior tests for column visibility, rendering, and sorting. Add/extend tests without refactoring unrelated test infrastructure.",
+      "context": {
+        "prdSummary": "(PRD text not available)",
+        "impactedFiles": [
+          "src/test/example.test.ts"
+        ],
+        "relevantRepoConventions": [
+          "Use existing test runner/framework and patterns already present in `src/test/example.test.ts`",
+          "Prefer testing user-visible behavior (headers/cells/order) over implementation details",
+          "Mock authorization via existing hook/utilities rather than bypassing app logic"
+        ],
+        "tokensOrConstraints": [
+          "Delivered At must show `N/A` for missing/invalid values",
+          "Column visible only for Ops/Support users"
+        ],
+        "evidence": [
+          "Subtask explicitly modifies `src/test/example.test.ts` to add coverage for Delivered At column presence/absence, N/A rendering, and sorting",
+          "Touched files include `src/pages/Parcels.tsx`, `src/components/table/TableRenderer.tsx`, and `src/hooks/useAuthorization.ts`, implying tests should mock auth and render the Parcels page/table"
+        ]
+      },
+      "instructions": [
+        "Open `src/test/example.test.ts` and identify the existing testing framework (e.g., Jest/Vitest) and React testing utilities (e.g., React Testing Library). Follow the existing import/setup patterns.",
+        "Add parcel fixtures representing: (a) valid `delivered_at` timestamps with different times, (b) missing `delivered_at` (undefined/null), and (c) invalid `delivered_at` (non-date string).",
+        "Mock authorization/role to simulate an Ops/Support user and a non-authorized user. Use the existing mechanism used elsewhere in tests (likely mocking `useAuthorization` or a permissions provider).",
+        "Test 1 (visibility): render the Parcels page/table as Ops/Support and assert the `Delivered At` column header is present; render as non-authorized and assert the header is absent.",
+        "Test 2 (rendering): for rows with missing/invalid delivered_at, assert the cell displays `N/A`.",
+        "Test 3 (sorting): trigger sorting on the Delivered At column (via clicking the column header or calling the sorter depending on existing test patterns) and assert row order matches expected timestamp ordering; include a case where date is same but time differs to ensure time tie-break works.",
+        "Ensure tests are deterministic: avoid relying on locale/timezone-sensitive formatting unless the app formatter is stable; assert on `N/A` and relative ordering more than exact formatted strings if formatting is timezone-dependent.",
+        "Run/ensure the test file compiles and all tests pass."
+      ],
+      "guardrails": [
+        "DO NOT modify files outside `src/test/example.test.ts` for this step.",
+        "DO NOT rewrite the test setup; use existing utilities/mocks already present.",
+        "DO NOT assert brittle implementation details (internal column arrays) if user-visible assertions are feasible.",
+        "ALWAYS keep tests isolated and restore mocks between tests if the file’s conventions require it."
+      ],
+      "deliverables": [
+        "Modified `src/test/example.test.ts` with new/updated tests covering Delivered At column visibility, N/A rendering, and sorting behavior.",
+        "All tests passing locally (or in CI) with no changes to other test infrastructure files."
+      ]
+    }
+  ]
+}

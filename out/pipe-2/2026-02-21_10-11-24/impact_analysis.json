@@ -1,0 +1,164 @@
+{
+  "prd": {
+    "hash": "d5de3c451feec359c1c8da81dcdb041655248a615af9e437fcfc585c9f44c246",
+    "source": "pasted-prd.md"
+  },
+  "generatedAt": "2026-02-21T10:12:45.980Z",
+  "summary": {
+    "primaryCount": 4,
+    "secondaryCount": 2,
+    "areas": [
+      {
+        "area": "UI",
+        "confidence": 0.5,
+        "rationale": [
+          "2 files in UI area",
+          "Primary page component and table renderer affected"
+        ]
+      },
+      {
+        "area": "API/Service",
+        "confidence": 0.25,
+        "rationale": [
+          "API service file needs update for new field"
+        ]
+      },
+      {
+        "area": "Types",
+        "confidence": 0.15,
+        "rationale": [
+          "Parcel type definition needs update"
+        ]
+      },
+      {
+        "area": "Tests",
+        "confidence": 0.1,
+        "rationale": [
+          "Test file needs updates for new functionality"
+        ]
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "src/pages/Parcels.tsx",
+      "score": 0.9,
+      "role": "primary",
+      "reasons": [
+        "Add new column to table",
+        "Ensure sorting and filtering"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "Parcels",
+          "table",
+          "column"
+        ],
+        "matchedSymbols": [],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/components/table/TableRenderer.tsx",
+      "score": 0.8,
+      "role": "primary",
+      "reasons": [
+        "Modify table structure to include new column",
+        "Implement sorting logic"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "table",
+          "column",
+          "sorting"
+        ],
+        "matchedSymbols": [],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/services/parcelAPI.ts",
+      "score": 0.7,
+      "role": "primary",
+      "reasons": [
+        "Update API call to include 'delivered_at' field"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "API",
+          "parcel",
+          "delivered_at"
+        ],
+        "matchedSymbols": [
+          "fetchParcels"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/types/parcel.ts",
+      "score": 0.6,
+      "role": "primary",
+      "reasons": [
+        "Update parcel type to include 'delivered_at' field"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "Parcel",
+          "type",
+          "delivered_at"
+        ],
+        "matchedSymbols": [
+          "Parcel"
+        ],
+        "depDistance": 0
+      }
+    },
+    {
+      "path": "src/redux/store.ts",
+      "score": 0.4,
+      "role": "secondary",
+      "reasons": [
+        "Ensure state management supports new data field"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "store",
+          "state"
+        ],
+        "matchedSymbols": [
+          "store"
+        ],
+        "depDistance": 1
+      }
+    },
+    {
+      "path": "src/test/example.test.ts",
+      "score": 0.5,
+      "role": "secondary",
+      "reasons": [
+        "Add tests for new column and sorting functionality"
+      ],
+      "evidence": {
+        "matchedTerms": [
+          "test",
+          "table",
+          "column"
+        ],
+        "matchedSymbols": [],
+        "depDistance": 1
+      }
+    }
+  ],
+  "graphExpansion": {
+    "enabled": false,
+    "direction": "both",
+    "maxDepth": 0
+  },
+  "notes": [
+    "Analyzed using OpenAIEngine (gpt-4o).",
+    "The primary changes are focused on the UI components for the Parcels page and the table renderer.",
+    "API and type updates are necessary to support the new 'delivered_at' field.",
+    "Ensure that sorting and filtering logic is correctly implemented and tested."
+  ]
+}

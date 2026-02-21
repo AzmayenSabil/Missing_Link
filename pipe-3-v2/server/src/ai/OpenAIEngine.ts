@@ -19,7 +19,7 @@ import { buildCodebaseContext, buildImpactContext } from "./prompts/contextBuild
 import { buildSubtaskGenerationPrompt } from "./prompts/subtaskGeneration.prompt";
 import { buildPromptGenerationPrompt } from "./prompts/promptGeneration.prompt";
 
-const MODEL = "gpt-4o";
+const MODEL = "gpt-5.2";
 
 const VALID_AREAS: ImpactArea[] = [
   "UI", "Hooks", "State", "API/Service", "Auth",
@@ -56,7 +56,7 @@ export class OpenAIEngine {
     const response = await this.client.chat.completions.create({
       model: MODEL,
       temperature: 0.3,
-      max_tokens: 8192,
+      max_completion_tokens: 16384,
       response_format: { type: "json_object" },
       messages: [
         { role: "system", content: prompt.system },
@@ -143,7 +143,7 @@ export class OpenAIEngine {
     const response = await this.client.chat.completions.create({
       model: MODEL,
       temperature: 0.2,
-      max_tokens: 16384,
+      max_completion_tokens: 16384,
       response_format: { type: "json_object" },
       messages: [
         { role: "system", content: prompt.system },

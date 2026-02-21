@@ -61,28 +61,28 @@ export function buildCodebaseContext(phase1: Phase1Summary): string {
     sections.push(["## Design Tokens", ...lines].join("\n"));
   }
 
-  // File list
-  if (phase1.allFiles.length > 0) {
-    sections.push(
-      ["## All File Paths", ...phase1.allFiles.map((f) => `  ${f}`)].join("\n"),
-    );
-  }
-
-  // Copilot instructions (project-specific AI guidelines)
+  // Copilot instructions (project-specific AI guidelines) — truncated to 1500 chars
   if (phase1.copilotInstructions) {
+    const instructions = phase1.copilotInstructions.trim();
+    const truncated = instructions.length > 1500
+      ? instructions.slice(0, 1500) + "\n... (truncated)"
+      : instructions;
     sections.push(
       [
         "## Copilot Instructions (Project-Specific Guidelines)",
-        phase1.copilotInstructions.trim(),
+        truncated,
       ].join("\n"),
     );
   }
 
-  // System prompts
-  const systemPromptEntries = Object.entries(phase1.systemPrompts);
+  // System prompts — cap at 5 entries
+  const systemPromptEntries = Object.entries(phase1.systemPrompts).slice(0, 5);
   if (systemPromptEntries.length > 0) {
     const lines = systemPromptEntries.map(
-      ([k, v]) => `  ${k}: ${typeof v === "string" ? v : JSON.stringify(v)}`,
+      ([k, v]) => {
+        const val = typeof v === "string" ? v : JSON.stringify(v);
+        return `  ${k}: ${val.slice(0, 200)}`;
+      },
     );
     sections.push(["## System Prompts / Behaviour Rules", ...lines].join("\n"));
   }

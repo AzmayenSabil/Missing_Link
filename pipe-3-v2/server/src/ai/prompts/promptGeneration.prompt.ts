@@ -13,15 +13,17 @@ export function buildPromptGenerationPrompt(
   rules: Record<string, unknown>,
   tokens: Record<string, unknown>,
 ): { system: string; user: string } {
-  // Format conventions for prompt
+  // Format conventions for prompt — cap at 20 entries
   const conventionLines: string[] = [];
-  for (const [k, v] of Object.entries(conventions)) {
-    conventionLines.push(`${k}: ${JSON.stringify(v)}`);
+  for (const [k, v] of Object.entries(conventions).slice(0, 20)) {
+    const val = JSON.stringify(v);
+    conventionLines.push(`${k}: ${val.slice(0, 150)}`);
   }
 
-  const ruleList = (rules as { rules?: string[] }).rules ?? [];
+  const ruleList = ((rules as { rules?: string[] }).rules ?? []).slice(0, 20);
+  // Design tokens — cap at 20 entries
   const tokenLines: string[] = [];
-  for (const [k, v] of Object.entries(tokens)) {
+  for (const [k, v] of Object.entries(tokens).slice(0, 20)) {
     tokenLines.push(`${k}: ${v}`);
   }
 
@@ -69,7 +71,7 @@ You MUST respond with ONLY a valid JSON object:
 }`,
 
     user: `## PRD
-${prdText || "(PRD text not available)"}
+${prdText ? prdText.slice(0, 2000) : "(PRD text not available)"}
 
 ## Codebase Context
 ${codebaseContext}
@@ -84,7 +86,7 @@ ${ruleList.length > 0 ? ruleList.map((r) => `- ${r}`).join("\n") : "None extract
 ${tokenLines.length > 0 ? tokenLines.join("\n") : "None extracted"}
 
 ## Subtasks to Generate Prompts For
-${JSON.stringify(subtasks, null, 2)}
+${JSON.stringify(subtasks)}
 
 Generate one AgentPrompt per subtask. Return ONLY valid JSON.`,
   };

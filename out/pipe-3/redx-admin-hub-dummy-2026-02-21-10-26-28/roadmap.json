@@ -1,0 +1,330 @@
+{
+  "prd": {
+    "hash": "d5de3c451feec359c1c8da81dcdb041655248a615af9e437fcfc585c9f44c246",
+    "source": "pasted-prd.md"
+  },
+  "generatedAt": "2026-02-21T10:28:07.196Z",
+  "plan": [
+    {
+      "id": "step-types-1",
+      "title": "Add delivered_at to Parcel type contract",
+      "description": "Extend the Parcel type to include the new backend-provided `delivered_at` field. Treat it as optional/nullable to safely handle missing/corrupted data and allow UI to render `N/A`.",
+      "area": "Types",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/types/parcel.ts"
+        ],
+        "create": [],
+        "touch": [
+          "src/pages/Parcels.tsx",
+          "src/components/table/TableRenderer.tsx",
+          "src/services/parcelAPI.ts"
+        ]
+      },
+      "dependsOnStepIds": [],
+      "rationale": [
+        "UI and API layers need a typed contract for the new field.",
+        "Optional typing prevents runtime issues while backend rollout is in progress."
+      ],
+      "implementationChecklist": [
+        "Locate the Parcel interface/type used by Parcels listing.",
+        "Add `delivered_at?: string | null` (or match existing date field conventions in this file).",
+        "Ensure any derived types (e.g., ParcelListItem) also include the field if applicable."
+      ],
+      "doneWhen": [
+        "TypeScript compiles with `delivered_at` referenced in UI without type errors."
+      ],
+      "durationHours": 0.5
+    },
+    {
+      "id": "step-api/service-1",
+      "title": "Update parcel API mapping to include delivered_at",
+      "description": "Update the parcels fetch call to pass through the backend `delivered_at` field into the returned parcel objects. If the service maps/normalizes fields, ensure `delivered_at` is preserved and not dropped.",
+      "area": "API/Service",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/services/parcelAPI.ts"
+        ],
+        "create": [],
+        "touch": [
+          "src/services/axios.config.ts",
+          "src/types/parcel.ts",
+          "src/pages/Parcels.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-types-1"
+      ],
+      "rationale": [
+        "Without service-layer support, UI will never receive the new field.",
+        "Keeps data normalization consistent in one place."
+      ],
+      "implementationChecklist": [
+        "Identify the parcels list endpoint call and its response typing.",
+        "Ensure response typing includes `delivered_at` and mapping retains it.",
+        "If there is a transform function, add `delivered_at: raw.delivered_at ?? null`."
+      ],
+      "doneWhen": [
+        "Parcels API function returns objects that include `delivered_at` when present in response."
+      ],
+      "durationHours": 1.5
+    },
+    {
+      "id": "step-state-1",
+      "title": "Verify Redux store/state can carry delivered_at field end-to-end",
+      "description": "Confirm that parcels data stored/consumed via Redux (or any centralized state) does not strip unknown fields. If there is a slice/normalizer elsewhere, ensure `delivered_at` is retained. Impact analysis flags store as secondary; this step is a safety check and minimal adjustment if required.",
+      "area": "State",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/redux/store.ts"
+        ],
+        "create": [],
+        "touch": [
+          "src/pages/Parcels.tsx",
+          "src/services/parcelAPI.ts",
+          "src/types/parcel.ts"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-api/service-1"
+      ],
+      "rationale": [
+        "Prevents subtle bugs where new fields are lost during state serialization/normalization.",
+        "Ensures UI can access `delivered_at` consistently."
+      ],
+      "implementationChecklist": [
+        "Inspect store setup for any middleware/serializable checks or transforms that might affect date strings.",
+        "If parcels are stored in a slice (not listed), confirm store wiring doesn’t require changes; otherwise keep this as a no-op commit.",
+        "If any typing in store references Parcel, update it to the new type."
+      ],
+      "doneWhen": [
+        "No runtime/state errors occur when parcels include `delivered_at` and UI can read it."
+      ],
+      "durationHours": 1
+    },
+    {
+      "id": "step-ui-1",
+      "title": "Add Delivered At column rendering + sorting in TableRenderer",
+      "description": "Extend the shared table renderer to support a new `Delivered At` column for parcels, including robust display formatting and sorting by timestamp (date then time; effectively numeric timestamp sort). Display `N/A` when missing/corrupted.",
+      "area": "UI",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/components/table/TableRenderer.tsx"
+        ],
+        "create": [],
+        "touch": [
+          "src/pages/Parcels.tsx",
+          "src/types/parcel.ts",
+          "src/lib/utils.ts"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-types-1",
+        "step-api/service-1"
+      ],
+      "rationale": [
+        "Centralizes column behavior (render/sort) to keep Parcels page lean.",
+        "Sorting must be consistent and handle missing values."
+      ],
+      "implementationChecklist": [
+        "Locate parcels table column definitions in TableRenderer.",
+        "Add a `Delivered At` column with `dataIndex`/accessor for `delivered_at`.",
+        "Implement render: parse date string; if invalid/missing show `N/A`; otherwise format as `DD MMM YYYY, hh:mm A` (or existing app date formatting if present).",
+        "Implement sorter: compare parsed timestamps; treat missing/invalid as lowest (or highest) consistently; ensure stable behavior when both missing.",
+        "If TableRenderer is generic, ensure changes are scoped to parcels table configuration only."
+      ],
+      "doneWhen": [
+        "Delivered At column appears and sorts correctly with valid timestamps and shows `N/A` for missing/invalid values."
+      ],
+      "durationHours": 3
+    },
+    {
+      "id": "step-auth-1",
+      "title": "Gate Delivered At column visibility to Ops/Support users",
+      "description": "Ensure only Ops/Support users can see the `Delivered At` column. Use existing authorization utilities/conventions (e.g., `Authorize` wrapper or `useAuthorization`) to conditionally include the column definition.",
+      "area": "Auth",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/pages/Parcels.tsx"
+        ],
+        "create": [],
+        "touch": [
+          "src/hooks/useAuthorization.ts",
+          "src/config/getPagePermissions.ts",
+          "src/components/authorize/Authorize.tsx",
+          "src/components/table/TableRenderer.tsx"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-ui-1"
+      ],
+      "rationale": [
+        "PRD clarification requires Ops/Support-only access to this data.",
+        "Column-level gating avoids exposing data in UI for unauthorized roles."
+      ],
+      "implementationChecklist": [
+        "Identify how roles/permissions are represented (via `useAuthorization` or permissions config).",
+        "Compute a boolean like `canViewDeliveredAt` for Ops/Support.",
+        "Conditionally pass a flag to TableRenderer or conditionally add the column in Parcels page (whichever matches current architecture).",
+        "Confirm the page itself remains accessible per existing rules; only the column is restricted."
+      ],
+      "doneWhen": [
+        "Non Ops/Support users do not see the Delivered At column; Ops/Support users do."
+      ],
+      "durationHours": 2
+    },
+    {
+      "id": "step-ui-2",
+      "title": "Wire Delivered At column into Parcels page table config",
+      "description": "Update the Parcels listing page to include the new column by default (for authorized users), ensure any existing filtering/sorting wiring still works, and confirm the table receives `delivered_at` from data source.",
+      "area": "UI",
+      "kind": "modify",
+      "files": {
+        "modify": [
+          "src/pages/Parcels.tsx"
+        ],
+        "create": [],
+        "touch": [
+          "src/components/table/TableRenderer.tsx",
+          "src/services/parcelAPI.ts",
+          "src/hooks/useTable.ts"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-auth-1",
+        "step-state-1"
+      ],
+      "rationale": [
+        "Parcels page is the primary integration point for the new column.",
+        "Ensures default visibility and no regressions in table behaviors."
+      ],
+      "implementationChecklist": [
+        "Confirm parcels data fetch populates `delivered_at` in the row data.",
+        "Ensure the table columns include Delivered At when `canViewDeliveredAt` is true.",
+        "Verify any existing table-level sorting state doesn’t break with the new sorter.",
+        "Validate `N/A` rendering path by simulating missing/invalid values."
+      ],
+      "doneWhen": [
+        "Parcels page shows Delivered At column by default for Ops/Support and table interactions remain functional."
+      ],
+      "durationHours": 2
+    },
+    {
+      "id": "step-tests-1",
+      "title": "Update and add tests for Delivered At column rendering and sorting",
+      "description": "Extend existing tests to cover: (1) column presence for Ops/Support and absence for others, (2) `N/A` rendering when missing/invalid, and (3) sorting by delivered_at timestamp (including time tie-break behavior).",
+      "area": "Tests",
+      "kind": "test",
+      "files": {
+        "modify": [
+          "src/test/example.test.ts"
+        ],
+        "create": [],
+        "touch": [
+          "src/test/setup.ts",
+          "src/pages/Parcels.tsx",
+          "src/components/table/TableRenderer.tsx",
+          "src/hooks/useAuthorization.ts"
+        ]
+      },
+      "dependsOnStepIds": [
+        "step-ui-2"
+      ],
+      "rationale": [
+        "Prevents regressions in table behavior and access control.",
+        "Validates the key acceptance criteria: visibility, formatting, sorting."
+      ],
+      "implementationChecklist": [
+        "Add fixtures with parcels having valid delivered_at, missing delivered_at, and invalid delivered_at.",
+        "Mock authorization/role to simulate Ops/Support vs non-authorized user.",
+        "Assert column header/cells render correctly and show `N/A` when appropriate.",
+        "Trigger sorter and assert row order matches expected timestamp ordering."
+      ],
+      "doneWhen": [
+        "All tests pass and fail appropriately if Delivered At column/sorting/auth gating is removed or broken."
+      ],
+      "durationHours": 2.5
+    }
+  ],
+  "artifacts": {
+    "filesToModify": [
+      "src/types/parcel.ts",
+      "src/services/parcelAPI.ts",
+      "src/redux/store.ts",
+      "src/components/table/TableRenderer.tsx",
+      "src/pages/Parcels.tsx",
+      "src/test/example.test.ts"
+    ],
+    "filesAffected": [
+      "src/pages/Parcels.tsx",
+      "src/components/table/TableRenderer.tsx",
+      "src/services/parcelAPI.ts",
+      "src/services/axios.config.ts",
+      "src/types/parcel.ts",
+      "src/lib/utils.ts",
+      "src/hooks/useAuthorization.ts",
+      "src/config/getPagePermissions.ts",
+      "src/components/authorize/Authorize.tsx",
+      "src/hooks/useTable.ts",
+      "src/test/setup.ts"
+    ],
+    "filesToCreate": [],
+    "dependencies": []
+  },
+  "acceptanceCriteria": [
+    "All TypeScript compilation errors are resolved (tsc exits 0)",
+    "All existing tests continue to pass after changes",
+    "New functionality matches PRD requirements"
+  ],
+  "verification": [
+    {
+      "type": "typecheck",
+      "instructions": [
+        "Run: npx tsc --noEmit",
+        "Expected: 0 errors"
+      ]
+    },
+    {
+      "type": "lint",
+      "instructions": [
+        "Run: npx eslint src --ext .ts,.tsx",
+        "Expected: 0 errors"
+      ]
+    },
+    {
+      "type": "unit_test",
+      "instructions": [
+        "Run: npm test",
+        "Expected: all tests pass"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "severity": "high",
+      "risk": "Auth changes can break access control",
+      "mitigation": [
+        "Test with multiple user roles",
+        "Security review required"
+      ]
+    },
+    {
+      "severity": "medium",
+      "risk": "Moderate blast radius: 17 files",
+      "mitigation": [
+        "Incremental testing after each subtask"
+      ]
+    }
+  ],
+  "openQuestions": [],
+  "notes": [
+    "Generated by OpenAIEngine (gpt-5.2)",
+    "7 implementation subtasks across 6 areas",
+    "Total estimated duration: 12.5 hours"
+  ]
+}

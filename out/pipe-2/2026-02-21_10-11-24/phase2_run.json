@@ -1,0 +1,11 @@
+{
+  "runId": "2026-02-21_10-11-24",
+  "phase1OutDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-1\\redx-admin-hub-dummy-2026-02-21-10-10-12",
+  "prdPath": "pasted-prd.md",
+  "outDir": "H:\\ShopUp\\ai-driven-req-2-code-pipeline\\out\\pipe-2/2026-02-21_10-11-24",
+  "startedAt": "2026-02-21T10:11:24.397Z",
+  "finishedAt": "2026-02-21T10:12:45.982Z",
+  "durationMs": 81585,
+  "status": "success",
+  "engineName": "OpenAIEngine (gpt-4o)"
+}

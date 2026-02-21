@@ -1,0 +1,26 @@
+{
+  "projectId": "redx-admin-hub-dummy-2026-02-21-10-10-12",
+  "repoPath": "C:\\Users\\User\\AppData\\Local\\Temp\\missing-link\\redx-admin-hub-1771668613098",
+  "stack": {
+    "next": false,
+    "react": true,
+    "typescript": true,
+    "antd": true,
+    "emotion": true,
+    "reduxToolkit": true,
+    "swr": false,
+    "axios": true
+  },
+  "configs": {
+    "tsconfigPresent": true,
+    "eslintPresent": false,
+    "prettierPresent": false,
+    "commitlintPresent": false
+  },
+  "fingerprint": {
+    "scannedAt": "2026-02-21T10:10:14.580Z",
+    "totalFiles": 99,
+    "tsLikeFiles": 84,
+    "gitHead": "28c5c949e3ca78727a621c8aeca8787d1dd1df4c"
+  }
+}

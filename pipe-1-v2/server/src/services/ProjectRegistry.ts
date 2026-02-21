@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { v4 as uuidv4 } from 'uuid';
 import { env } from '../config/env';
 import { ProjectMeta } from '../types';
 
@@ -37,10 +36,11 @@ export function getProject(id: string): ProjectMeta | null {
 }
 
 export function createProject(repoUrl: string, name?: string): ProjectMeta {
-  const id = uuidv4();
+  const resolvedName = name || extractRepoName(repoUrl);
+  const id = generateProjectId(resolvedName, readRegistry().map((p) => p.id));
   const meta: ProjectMeta = {
     id,
-    name: name || extractRepoName(repoUrl),
+    name: resolvedName,
     repoUrl,
     status: 'pending',
     createdAt: new Date().toISOString(),
@@ -90,6 +90,43 @@ export function getDNADir(id: string): string {
 /** Queries history file: out/pipe-1/<id>/queries.json */
 export function getQueriesPath(id: string): string {
   return path.join(getProjectDir(id), 'queries.json');
+}
+
+function toKebabCase(name: string): string {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, '')   // strip non-alphanumeric (keep spaces and hyphens)
+    .replace(/\s+/g, '-')            // spaces → hyphens
+    .replace(/-+/g, '-')             // collapse repeated hyphens
+    .replace(/^-|-$/g, '');          // trim leading/trailing hyphens
+}
+
+function toBSTDatetime(): string {
+  // Europe/London automatically switches between GMT (UTC+0) and BST (UTC+1)
+  const now = new Date();
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).formatToParts(now);
+
+  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '00';
+  return `${get('year')}-${get('month')}-${get('day')}-${get('hour')}-${get('minute')}-${get('second')}`;
+}
+
+function generateProjectId(name: string, existingIds: string[]): string {
+  const base = `${toKebabCase(name) || 'project'}-${toBSTDatetime()}`;
+  if (!existingIds.includes(base)) return base;
+  // Collision guard: append a counter if the same name+timestamp already exists
+  let counter = 2;
+  while (existingIds.includes(`${base}-${counter}`)) counter++;
+  return `${base}-${counter}`;
 }
 
 function extractRepoName(url: string): string {

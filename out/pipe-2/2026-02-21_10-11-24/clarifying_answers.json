@@ -1,0 +1,30 @@
+[
+  {
+    "questionId": "q-access-1",
+    "value": "Ops/Support users only"
+  },
+  {
+    "questionId": "q-ui-1",
+    "value": "Visible by default"
+  },
+  {
+    "questionId": "q-error-1",
+    "value": "show N/A"
+  },
+  {
+    "questionId": "q-scope-1",
+    "value": "noo"
+  },
+  {
+    "questionId": "q-flow-1",
+    "value": "Sort by time if dates are the same"
+  },
+  {
+    "questionId": "q-data-1",
+    "value": "Requires backend update"
+  },
+  {
+    "questionId": "q-priority-1",
+    "value": "2 days"
+  }
+]

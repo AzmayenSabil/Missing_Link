@@ -1,0 +1,69 @@
+[
+  {
+    "id": "q-access-1",
+    "questionText": "Which types of users should have access to view the 'Delivered At' column in the Parcels table? Is it limited to Ops/Support users only?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "Ops/Support users only",
+      "All logged-in users",
+      "Admin users only",
+      "Custom roles"
+    ],
+    "rationale": "Understanding user access helps determine if there are any additional permissions or roles needed to display this column."
+  },
+  {
+    "id": "q-ui-1",
+    "questionText": "Should the 'Delivered At' column be visible by default, or should users have the option to toggle its visibility?",
+    "type": "single_select",
+    "required": false,
+    "options": [
+      "Visible by default",
+      "Toggle visibility option"
+    ],
+    "rationale": "Knowing if the column is always visible or optional affects how the table layout is managed and user preferences are stored."
+  },
+  {
+    "id": "q-error-1",
+    "questionText": "What should happen if the delivery date and time data is missing or corrupted for a parcel? Should it display a specific message or symbol?",
+    "type": "text",
+    "required": false,
+    "rationale": "Handling missing or corrupted data gracefully ensures a consistent user experience and helps prevent confusion."
+  },
+  {
+    "id": "q-scope-1",
+    "questionText": "Is there any specific reason to choose between the exact delivery date format (DD MMM YYYY, hh:mm A) and the system default format?",
+    "type": "text",
+    "required": false,
+    "rationale": "Clarifying the date format choice ensures consistency with other parts of the application and meets user expectations."
+  },
+  {
+    "id": "q-flow-1",
+    "questionText": "How should the sorting functionality for the 'Delivered At' column be implemented? Should it sort by date first or by time if dates are the same?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "Sort by date first",
+      "Sort by time if dates are the same"
+    ],
+    "rationale": "Understanding the sorting logic is crucial for implementing the feature correctly and ensuring it meets user expectations."
+  },
+  {
+    "id": "q-data-1",
+    "questionText": "Does the backend currently provide the 'delivered_at' field in the parcel response, or will this require an update to the backend data structure?",
+    "type": "single_select",
+    "required": true,
+    "options": [
+      "Provided already",
+      "Requires backend update"
+    ],
+    "rationale": "Knowing if backend changes are needed helps plan the development timeline and resource allocation."
+  },
+  {
+    "id": "q-priority-1",
+    "questionText": "Is there a specific timeline or deadline for implementing this enhancement on the Parcels listing page?",
+    "type": "text",
+    "required": false,
+    "rationale": "Understanding the urgency helps prioritize this task within the development schedule."
+  }
+]

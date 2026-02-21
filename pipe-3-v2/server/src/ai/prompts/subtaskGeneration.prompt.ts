@@ -80,7 +80,7 @@ You MUST respond with ONLY a valid JSON object:
 }`,
 
     user: `## PRD
-${prdText || "(PRD text not available — use impact analysis for context)"}
+${prdText ? prdText.slice(0, 3000) : "(PRD text not available — use impact analysis for context)"}
 
 ## Codebase Context
 ${codebaseContext}
@@ -88,8 +88,8 @@ ${codebaseContext}
 ## Impact Analysis
 ${impactContext}
 
-## Available File Paths
-${allFilePaths.join("\n")}
+## Available File Paths (${allFilePaths.length} total, showing first 150)
+${allFilePaths.slice(0, 150).join("\n")}
 
 Generate the implementation subtasks as ordered JSON. Return ONLY valid JSON.`,
   };

@@ -39,7 +39,7 @@ runsRouter.post(
       const phase1Dir = path.join(config.outDir, "pipe-1", phase1RunId);
       const phase2Dir = path.join(config.outDir, "pipe-2", phase2RunId);
 
-      const runId = generateRunId();
+      const runId = generateRunId(phase1RunId);
       const outputDir = path.join(config.outDir, "pipe-3", runId);
 
       const session = sessionManager.createSession({

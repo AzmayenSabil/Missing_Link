@@ -1,21 +1,11 @@
 [
   {
-    "id": "d65649a3-b5de-4be9-9908-6fc3539747b2",
-    "name": "redx-admin-main",
-    "repoUrl": "https://github.com/shopuptech/redx-admin-panel.git",
-    "status": "ready",
-    "createdAt": "2026-02-21T06:18:26.721Z",
-    "scannedAt": "2026-02-21T06:18:44.541Z",
-    "gitHead": "2fbdc4996ad922271020debaa06671312990fa69",
-    "description": "redx-admin-panel — analyzed from https://github.com/shopuptech/redx-admin-panel.git"
-  },
-  {
-    "id": "1920ffd2-8d84-478d-9c15-1ddb85e155ca",
-    "name": "redx-admin-hub",
+    "id": "redx-admin-hub-dummy-2026-02-21-10-10-12",
+    "name": "redx-admin-hub-dummy",
     "repoUrl": "https://github.com/AzmayenSabil/redx-admin-hub.git",
     "status": "ready",
-    "createdAt": "2026-02-21T06:16:38.892Z",
-    "scannedAt": "2026-02-21T08:01:47.137Z",
+    "createdAt": "2026-02-21T10:10:12.729Z",
+    "scannedAt": "2026-02-21T10:10:55.659Z",
     "gitHead": "28c5c949e3ca78727a621c8aeca8787d1dd1df4c",
     "description": "Project analyzed by pipe-1. See copilot-instructions for full summary."
   }
