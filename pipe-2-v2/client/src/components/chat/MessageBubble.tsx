@@ -15,7 +15,7 @@ export default function MessageBubble({ role, children }: MessageBubbleProps) {
           style={{
             background: "linear-gradient(135deg, #0f1f3a, #111d30)",
             border: "1px solid #1a3055",
-            color: "#00d4ff66",
+            color: "#94a3b8",
           }}
         >
           {children}
@@ -71,7 +71,7 @@ export default function MessageBubble({ role, children }: MessageBubbleProps) {
             : {
                 background: "linear-gradient(135deg, #0f1f3a, #111d30)",
                 border: "1px solid #1a3055",
-                color: "#c8d8e8",
+                color: "#cbd5e1",
                 boxShadow:
                   "0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(0,212,255,0.06)",
               }

@@ -68,7 +68,7 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
             setPasteMode(false);
           }}
           className="transition-opacity hover:opacity-70"
-          style={{ color: "#00ffa366" }}
+          style={{ color: "#64748b" }}
         >
           <X className="w-4 h-4" />
         </button>
@@ -88,7 +88,7 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
           style={{
             background: "#0f1f3a",
             border: "1px solid #1a3055",
-            color: "#c8d8e8",
+            color: "#cbd5e1",
             caretColor: "#00d4ff",
           }}
           onFocus={(e) => {
@@ -117,7 +117,7 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
           <button
             onClick={() => setPasteMode(false)}
             className="px-4 py-2 rounded-lg font-mono text-sm transition-opacity hover:opacity-70"
-            style={{ color: "#00d4ff44" }}
+            style={{ color: "#94a3b8" }}
           >
             ← Back to upload
           </button>
@@ -155,20 +155,20 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
         <Upload
           className="w-8 h-8 mx-auto mb-3"
           style={{
-            color: dragging ? "#00d4ff" : "#1a3055",
+            color: dragging ? "#00d4ff" : "#64748b",
             filter: dragging ? "drop-shadow(0 0 6px #00d4ff)" : "none",
             transition: "all 0.2s",
           }}
         />
         <p
           className="font-mono text-sm font-medium"
-          style={{ color: dragging ? "#00d4ff" : "#4a6080" }}
+          style={{ color: dragging ? "#00d4ff" : "#94a3b8" }}
         >
           Drop your PRD file here
         </p>
         <p
           className="text-xs font-mono mt-1"
-          style={{ color: dragging ? "#00d4ff66" : "#1a3055" }}
+          style={{ color: dragging ? "#94a3b8" : "#64748b" }}
         >
           Supports .md and .txt files
         </p>
@@ -186,7 +186,7 @@ export default function PrdUploader({ onPrdReady }: PrdUploaderProps) {
       <button
         onClick={() => setPasteMode(true)}
         className="mt-3 text-xs font-mono tracking-wider uppercase transition-opacity hover:opacity-70"
-        style={{ color: "#00d4ff44" }}
+        style={{ color: "#94a3b8" }}
       >
         Or paste PRD content directly →
       </button>

@@ -18,14 +18,14 @@ export default function QuestionCard({
     <div>
       <p
         className="text-sm font-medium leading-relaxed"
-        style={{ color: "#c8d8e8" }}
+        style={{ color: "#cbd5e1" }}
       >
         {question.questionText}
       </p>
       {question.rationale && (
         <p
           className="text-xs font-mono mt-1 italic"
-          style={{ color: "#00d4ff44" }}
+          style={{ color: "#94a3b8" }}
         >
           {question.rationale}
         </p>

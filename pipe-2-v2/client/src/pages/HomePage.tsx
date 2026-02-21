@@ -82,7 +82,7 @@ export default function HomePage() {
           </h1>
           <p
             className="text-sm font-mono max-w-md mx-auto"
-            style={{ color: "#00d4ff55", lineHeight: 1.7 }}
+            style={{ color: "#94a3b8", lineHeight: 1.7 }}
           >
             Analyze your PRD against an existing codebase to generate clarifying
             questions and a full impact analysis.
@@ -97,7 +97,7 @@ export default function HomePage() {
                 style={{
                   background: "#0f1f3a",
                   border: "1px solid #1a3055",
-                  color: "#00d4ff44",
+                  color: "#64748b",
                 }}
               >
                 {tag}
@@ -127,7 +127,7 @@ export default function HomePage() {
             </span>
             <span
               className="text-xs font-mono tracking-widest uppercase"
-              style={{ color: "#00d4ff66" }}
+              style={{ color: "#94a3b8" }}
             >
               Select Codebase
             </span>
@@ -151,7 +151,7 @@ export default function HomePage() {
             </span>
             <span
               className="text-xs font-mono tracking-widest uppercase"
-              style={{ color: "#8b5cf666" }}
+              style={{ color: "#94a3b8" }}
             >
               Upload PRD
             </span>
@@ -174,7 +174,7 @@ export default function HomePage() {
               <LoadingSpinner />
               <span
                 className="text-xs font-mono tracking-widest uppercase"
-                style={{ color: "#00d4ff66" }}
+                style={{ color: "#94a3b8" }}
               >
                 Initializing Pipeline...
               </span>
@@ -196,7 +196,7 @@ export default function HomePage() {
                   : {
                       background: "#0f1f3a",
                       border: "1px solid #1a3055",
-                      color: "#1a3055",
+                      color: "#64748b",
                       cursor: "not-allowed",
                     }
               }
@@ -219,7 +219,7 @@ export default function HomePage() {
               Launch Analysis
               <span
                 className="text-xs font-normal"
-                style={{ color: canStart ? "#00d4ff66" : "#1a3055" }}
+                style={{ color: canStart ? "#94a3b8" : "#64748b" }}
               >
                 →
               </span>

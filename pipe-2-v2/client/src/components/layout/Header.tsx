@@ -41,7 +41,7 @@ export default function Header() {
 
       <span
         className="text-xs font-mono tracking-widest uppercase"
-        style={{ color: "#00d4ff55" }}
+        style={{ color: "#94a3b8" }}
       >
         PRD Validation Pipeline
       </span>
@@ -52,7 +52,7 @@ export default function Header() {
           className="w-1.5 h-1.5 rounded-full animate-pulse"
           style={{ backgroundColor: "#00ffa3", boxShadow: "0 0 6px #00ffa3" }}
         />
-        <span className="text-xs font-mono" style={{ color: "#00ffa366" }}>
+        <span className="text-xs font-mono" style={{ color: "#64748b" }}>
           ONLINE
         </span>
       </div>

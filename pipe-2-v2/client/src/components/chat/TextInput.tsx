@@ -34,7 +34,7 @@ export default function TextInput({
         style={{
           background: "#060d1f",
           border: "1px solid #1a3055",
-          color: "#c8d8e8",
+          color: "#cbd5e1",
           caretColor: "#00d4ff",
         }}
         onFocus={(e) => {

@@ -33,7 +33,6 @@ export default function HomePage() {
     };
   }, []);
 
-  // Start polling for projects actively ingesting
   useEffect(() => {
     projects.forEach((p) => {
       if (
@@ -69,7 +68,6 @@ export default function HomePage() {
       setRepoUrl('');
       setProjectName('');
 
-      // Poll for this new project
       const iv = pollStatus(project.id, (status) => {
         intervalsRef.current.delete(project.id);
         if (status === 'ready') loadProjects();
@@ -94,22 +92,34 @@ export default function HomePage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Hero */}
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-full text-sm font-medium mb-4">
+      <div className="text-center mb-12 animate-slide-up">
+        <div
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-4"
+          style={{
+            background: 'linear-gradient(135deg, #00d4ff15, #8b5cf615)',
+            border: '1px solid #00d4ff33',
+            color: '#00d4ff',
+          }}
+        >
           <Sparkles className="w-4 h-4" />
           AI-Powered Project Understanding
         </div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-3">Project DNA Engine</h1>
-        <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+        <h1 className="text-4xl font-bold mb-3 gradient-text-cyber">
+          Project DNA Engine
+        </h1>
+        <p className="text-lg text-slate-400 max-w-xl mx-auto leading-relaxed">
           Onboard any GitHub repository, extract its architecture, APIs, and conventions — then
           query it in plain language.
         </p>
       </div>
 
       {/* Onboard form */}
-      <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-10 max-w-2xl mx-auto shadow-sm">
-        <h2 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-          <Github className="w-5 h-5" />
+      <div
+        className="rounded-2xl p-6 mb-10 max-w-2xl mx-auto cyber-border animate-slide-up"
+        style={{ background: '#0d1830', boxShadow: '0 4px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(0,212,255,0.08)' }}
+      >
+        <h2 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+          <Github className="w-5 h-5 text-primary-500" />
           Analyze a Repository
         </h2>
 
@@ -129,12 +139,14 @@ export default function HomePage() {
                 setUrlError('');
               }}
               placeholder="https://github.com/owner/repository"
-              className={`w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent ${
-                urlError ? 'border-red-300 bg-red-50' : 'border-gray-200'
+              className={`w-full rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 ${
+                urlError
+                  ? 'border border-cyber-red/50 bg-cyber-red/5'
+                  : 'border border-cyber-border bg-cyber-bg'
               }`}
             />
             {urlError && (
-              <p className="text-xs text-red-500 mt-1.5 flex items-center gap-1">
+              <p className="text-xs mt-1.5 flex items-center gap-1" style={{ color: '#ff4466' }}>
                 <AlertCircle className="w-3 h-3" />
                 {urlError}
               </p>
@@ -145,12 +157,18 @@ export default function HomePage() {
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
             placeholder="Project name (optional — auto-detected from URL)"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="w-full border border-cyber-border bg-cyber-bg rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50"
           />
           <button
             type="submit"
             disabled={onboarding}
-            className="w-full bg-indigo-600 text-white rounded-xl py-3 font-medium hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors"
+            className="w-full rounded-xl py-3 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all"
+            style={{
+              background: 'linear-gradient(135deg, #00d4ff22, #8b5cf622)',
+              border: '1px solid #00d4ff44',
+              color: '#00d4ff',
+              boxShadow: '0 0 16px #00d4ff22',
+            }}
           >
             {onboarding ? (
               <>
@@ -170,21 +188,21 @@ export default function HomePage() {
       {/* Projects grid */}
       <div>
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="text-lg font-semibold text-slate-200">
             Projects{' '}
-            <span className="text-gray-400 font-normal text-base">({projects.length})</span>
+            <span className="text-slate-500 font-normal text-base">({projects.length})</span>
           </h2>
         </div>
 
         {isLoading && projects.length === 0 && (
-          <div className="flex items-center justify-center py-16 text-gray-400 gap-2">
-            <Loader2 className="w-5 h-5 animate-spin" />
+          <div className="flex items-center justify-center py-16 text-slate-500 gap-2">
+            <Loader2 className="w-5 h-5 animate-spin text-primary-500" />
             Loading projects...
           </div>
         )}
 
         {!isLoading && projects.length === 0 && (
-          <div className="text-center py-16 text-gray-400">
+          <div className="text-center py-16 text-slate-500">
             <p className="text-sm">
               No projects yet. Paste a GitHub URL above to get started.
             </p>
@@ -198,14 +216,15 @@ export default function HomePage() {
               onClick={() =>
                 project.status === 'ready' ? navigate(`/projects/${project.id}`) : undefined
               }
-              className={`bg-white rounded-xl border p-5 flex flex-col gap-3 transition-all ${
+              className={`rounded-xl p-5 flex flex-col gap-3 transition-all cyber-border ${
                 project.status === 'ready'
-                  ? 'border-gray-200 hover:border-indigo-300 hover:shadow-md cursor-pointer'
-                  : 'border-gray-200 opacity-80 cursor-default'
+                  ? 'hover:shadow-neon-cyan cursor-pointer'
+                  : 'opacity-60 cursor-default'
               }`}
+              style={{ background: '#0d1830' }}
             >
               <div className="flex items-start justify-between gap-2">
-                <h3 className="font-semibold text-gray-900 truncate">{project.name}</h3>
+                <h3 className="font-semibold text-slate-100 truncate">{project.name}</h3>
                 <StatusBadge status={project.status} />
               </div>
 
@@ -214,23 +233,23 @@ export default function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-1 text-xs text-gray-400 hover:text-indigo-500 transition-colors truncate"
+                className="flex items-center gap-1 text-xs text-slate-500 hover:text-primary-400 transition-colors truncate"
               >
                 <ExternalLink className="w-3 h-3 flex-shrink-0" />
                 <span className="truncate">{project.repoUrl}</span>
               </a>
 
               {project.description && (
-                <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+                <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed">
                   {project.description}
                 </p>
               )}
 
               {project.status === 'error' && project.errorMessage && (
-                <p className="text-xs text-red-500 line-clamp-2">{project.errorMessage}</p>
+                <p className="text-xs line-clamp-2" style={{ color: '#ff4466' }}>{project.errorMessage}</p>
               )}
 
-              <div className="flex items-center justify-between text-xs text-gray-400 pt-2 border-t border-gray-100 mt-auto">
+              <div className="flex items-center justify-between text-xs text-slate-500 pt-2 mt-auto" style={{ borderTop: '1px solid #1a3055' }}>
                 <span>Added {fmtDate(project.createdAt)}</span>
                 {project.scannedAt && <span>Scanned {fmtDate(project.scannedAt)}</span>}
               </div>

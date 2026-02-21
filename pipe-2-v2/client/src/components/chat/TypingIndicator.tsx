@@ -67,7 +67,7 @@ export default function TypingIndicator({ text }: { text?: string }) {
         {text && (
           <p
             className="text-xs font-mono tracking-wide mt-2"
-            style={{ color: "#00d4ff88" }}
+            style={{ color: "#94a3b8" }}
           >
             <span className="animate-pulse">▸</span> {text}
           </p>

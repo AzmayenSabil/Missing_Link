@@ -64,7 +64,7 @@ export default function SingleSelectInput({
             </div>
             <span
               className="text-sm font-mono"
-              style={{ color: isSelected ? "#c8d8e8" : "#4a6080" }}
+              style={{ color: isSelected ? "#cbd5e1" : "#94a3b8" }}
             >
               {opt}
             </span>
