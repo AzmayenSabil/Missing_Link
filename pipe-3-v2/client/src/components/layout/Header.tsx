@@ -3,12 +3,58 @@ import { Zap } from "lucide-react";
 
 export default function Header() {
   return (
-    <header className="bg-white border-b border-slate-200 px-6 py-3 flex items-center gap-3">
-      <Link to="/" className="flex items-center gap-2 text-primary-700 hover:text-primary-800 transition-colors">
-        <Zap className="w-5 h-5" />
-        <span className="font-semibold text-lg">Missing Link</span>
+    <header
+      className="px-6 py-3 flex items-center gap-3 relative"
+      style={{
+        background:
+          "linear-gradient(90deg, #060d1f 0%, #0d1830 50%, #060d1f 100%)",
+        borderBottom: "1px solid #1a3055",
+        boxShadow: "0 1px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,212,255,0.04)",
+      }}
+    >
+      <Link
+        to="/"
+        className="flex items-center gap-2 transition-all duration-200 hover:opacity-90 group"
+      >
+        {/* Logo icon */}
+        <div
+          className="w-8 h-8 rounded-lg flex items-center justify-center relative"
+          style={{
+            background: "linear-gradient(135deg, #00d4ff22, #8b5cf622)",
+            border: "1px solid #00d4ff44",
+            boxShadow: "0 0 12px #00d4ff22",
+          }}
+        >
+          <Zap
+            className="w-4 h-4 transition-all group-hover:scale-110"
+            style={{ color: "#00d4ff", filter: "drop-shadow(0 0 4px #00d4ff)" }}
+          />
+        </div>
+        <span className="font-bold text-lg font-mono tracking-tight gradient-text-cyber neon-flicker">
+          Missing Link
+        </span>
       </Link>
-      <span className="text-slate-400 text-sm ml-2">Implementation Planner</span>
+
+      {/* Divider */}
+      <div className="h-4 w-px mx-1" style={{ background: "#1a3055" }} />
+
+      <span
+        className="text-xs font-mono tracking-widest uppercase"
+        style={{ color: "#00d4ff55" }}
+      >
+        Implementation Planner
+      </span>
+
+      {/* Status indicator */}
+      <div className="ml-auto flex items-center gap-1.5">
+        <div
+          className="w-1.5 h-1.5 rounded-full animate-pulse"
+          style={{ backgroundColor: "#00ffa3", boxShadow: "0 0 6px #00ffa3" }}
+        />
+        <span className="text-xs font-mono" style={{ color: "#00ffa366" }}>
+          ONLINE
+        </span>
+      </div>
     </header>
   );
 }

@@ -6,23 +6,46 @@ interface ErrorBannerProps {
   onRetry?: () => void;
 }
 
-export default function ErrorBanner({ message, onDismiss, onRetry }: ErrorBannerProps) {
+export default function ErrorBanner({
+  message,
+  onDismiss,
+  onRetry,
+}: ErrorBannerProps) {
   return (
-    <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 flex items-start gap-3">
-      <AlertTriangle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+    <div
+      className="flex items-start gap-3 px-4 py-3 rounded-lg"
+      style={{
+        background: "rgba(255,68,102,0.08)",
+        border: "1px solid #ff446644",
+        boxShadow: "0 0 12px #ff446622",
+      }}
+    >
+      <AlertTriangle
+        className="w-5 h-5 flex-shrink-0 mt-0.5"
+        style={{ color: "#ff4466", filter: "drop-shadow(0 0 4px #ff446688)" }}
+      />
       <div className="flex-1">
-        <p className="text-red-800 text-sm">{message}</p>
+        <p className="text-sm font-mono" style={{ color: "#ff8899" }}>
+          {message}
+        </p>
         {onRetry && (
           <button
             onClick={onRetry}
-            className="mt-2 text-sm text-red-600 hover:text-red-800 font-medium underline"
+            className="mt-2 text-xs font-mono underline transition-colors"
+            style={{ color: "#ff4466" }}
           >
-            Retry
+            RETRY
           </button>
         )}
       </div>
       {onDismiss && (
-        <button onClick={onDismiss} className="text-red-400 hover:text-red-600">
+        <button
+          onClick={onDismiss}
+          className="transition-colors"
+          style={{ color: "#ff446666" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#ff4466")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#ff446666")}
+        >
           <X className="w-4 h-4" />
         </button>
       )}

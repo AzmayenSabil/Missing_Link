@@ -7,7 +7,11 @@ interface CopyButtonProps {
   className?: string;
 }
 
-export default function CopyButton({ text, label = "Copy", className = "" }: CopyButtonProps) {
+export default function CopyButton({
+  text,
+  label = "Copy",
+  className = "",
+}: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -19,11 +23,21 @@ export default function CopyButton({ text, label = "Copy", className = "" }: Cop
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${className}`}
+      style={
         copied
-          ? "bg-green-100 text-green-700"
-          : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-      } ${className}`}
+          ? {
+              background: "rgba(0,255,163,0.1)",
+              border: "1px solid #00ffa355",
+              color: "#00ffa3",
+              boxShadow: "0 0 8px #00ffa322",
+            }
+          : {
+              background: "rgba(0,212,255,0.06)",
+              border: "1px solid #00d4ff2a",
+              color: "#00d4ff",
+            }
+      }
     >
       {copied ? (
         <>
