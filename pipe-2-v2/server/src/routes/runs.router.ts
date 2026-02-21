@@ -79,7 +79,13 @@ runsRouter.post("/", async (req, res, next) => {
     sessionManager.updateStatus(session.runId, "generating_questions");
 
     try {
+      const keySnippet = config.openaiApiKey
+        ? `set (len=${config.openaiApiKey.length}, ends=...${config.openaiApiKey.slice(-4)})`
+        : "NOT SET — calls will fail";
+      console.log(`  [runs] OpenAI key: ${keySnippet}`);
+
       const engine = new OpenAIEngine(config.openaiApiKey);
+      console.log(`  [runs] Engine created, calling generateQuestions...`);
       const questions = await engine.generateQuestions(
         prd.normalizedText,
         dna,

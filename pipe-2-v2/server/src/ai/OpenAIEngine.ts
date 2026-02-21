@@ -110,7 +110,10 @@ export class OpenAIEngine {
     const context = buildCodebaseContext(dna, indexes);
     const { system, user } = buildQuestionGenerationPrompt(prdText, context);
 
-    console.log("  [OpenAI] Generating clarifying questions...");
+    const promptChars = system.length + user.length;
+    console.log(
+      `  [OpenAI] Generating questions — prompt: ${promptChars} chars (~${Math.round(promptChars / 4)} tokens)`,
+    );
 
     const response = await withRetry(
       () =>
@@ -122,7 +125,7 @@ export class OpenAIEngine {
           ],
           response_format: { type: "json_object" },
           temperature: 0.3,
-          max_completion_tokens: 4096,
+          max_tokens: 4096,
         }),
       "generateQuestions",
     );
@@ -180,7 +183,10 @@ export class OpenAIEngine {
       indexes.allFiles,
     );
 
-    console.log("  [OpenAI] Generating impact analysis...");
+    const impactChars = system.length + user.length;
+    console.log(
+      `  [OpenAI] Generating impact analysis — prompt: ${impactChars} chars (~${Math.round(impactChars / 4)} tokens)`,
+    );
 
     const response = await withRetry(
       () =>
@@ -192,7 +198,7 @@ export class OpenAIEngine {
           ],
           response_format: { type: "json_object" },
           temperature: 0.2,
-          max_completion_tokens: 8192,
+          max_tokens: 8192,
         }),
       "generateImpactAnalysis",
     );
